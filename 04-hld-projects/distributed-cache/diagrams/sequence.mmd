@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant C as Client
+    participant R as Router
+    participant P as Primary Node
+    participant S as Replica Node
+    C->>R: PUT key,value,ttl
+    R->>P: route write
+    P->>P: persist in-memory
+    P->>S: replicate async/sync
+    S-->>P: ack
+    P-->>R: write success
+    R-->>C: 200 OK

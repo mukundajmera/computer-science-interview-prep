@@ -1,0 +1,30 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "odd length returns center suffix",
+      "input": { "head": [10, 20, 30, 40, 50] },
+      "expected": [30, 40, 50],
+      "linkedListContract": {
+        "result": { "from": "head", "nodeIndices": [2, 3, 4] }
+      }
+    },
+    {
+      "name": "even length returns second middle",
+      "input": { "head": [4, 8, 15, 16] },
+      "expected": [15, 16],
+      "linkedListContract": {
+        "result": { "from": "head", "nodeIndices": [2, 3] }
+      }
+    },
+    {
+      "name": "single node is middle",
+      "input": { "head": [7] },
+      "expected": [7],
+      "linkedListContract": {
+        "result": { "from": "head", "nodeIndices": [0] }
+      }
+    }
+  ]
+}

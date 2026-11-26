@@ -1,0 +1,135 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "directory and file listing",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "ls",
+          "input": {
+            "path": "/"
+          },
+          "expected": []
+        },
+        {
+          "type": "call",
+          "method": "mkdir",
+          "input": {
+            "path": "/a/b"
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "addContentToFile",
+          "input": {
+            "filePath": "/a/b/note",
+            "content": "hi"
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "ls",
+          "input": {
+            "path": "/a/b"
+          },
+          "expected": [
+            "note"
+          ]
+        },
+        {
+          "type": "call",
+          "method": "readContentFromFile",
+          "input": {
+            "filePath": "/a/b/note"
+          },
+          "expected": "hi"
+        },
+        {
+          "type": "call",
+          "method": "addContentToFile",
+          "input": {
+            "filePath": "/a/b/note",
+            "content": "!"
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "readContentFromFile",
+          "input": {
+            "filePath": "/a/b/note"
+          },
+          "expected": "hi!"
+        }
+      ]
+    },
+    {
+      "name": "sorted root entries and file ls",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "mkdir",
+          "input": {
+            "path": "/z"
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "mkdir",
+          "input": {
+            "path": "/a"
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "addContentToFile",
+          "input": {
+            "filePath": "/m.txt",
+            "content": "x"
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "ls",
+          "input": {
+            "path": "/"
+          },
+          "expected": [
+            "a",
+            "m.txt",
+            "z"
+          ]
+        },
+        {
+          "type": "call",
+          "method": "ls",
+          "input": {
+            "path": "/m.txt"
+          },
+          "expected": [
+            "m.txt"
+          ]
+        }
+      ]
+    }
+  ]
+}

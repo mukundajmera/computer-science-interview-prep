@@ -1,0 +1,58 @@
+erDiagram
+    USERS {
+        uuid id PK
+        string username
+        string email
+        datetime created_at
+    }
+
+    ITEMS {
+        uuid id PK
+        string title
+        text description
+        uuid seller_id FK
+    }
+
+    AUCTIONS {
+        uuid id PK
+        uuid item_id FK
+        decimal start_price
+        decimal current_highest_bid
+        uuid highest_bidder_id FK
+        datetime start_time
+        datetime close_time
+        string status
+    }
+
+    BIDS {
+        uuid id PK
+        uuid auction_id FK
+        uuid bidder_id FK
+        decimal amount
+        datetime created_at
+    }
+
+    WATCHLISTS {
+        uuid id PK
+        uuid user_id FK
+        uuid auction_id FK
+        datetime added_at
+    }
+
+    AUCTION_SETTLEMENTS {
+        uuid id PK
+        uuid auction_id FK
+        uuid winner_id FK
+        decimal final_price
+        string payment_status
+        datetime settled_at
+    }
+
+    USERS ||--o{ ITEMS : "sells"
+    ITEMS ||--o| AUCTIONS : "listed in"
+    USERS ||--o{ BIDS : "places"
+    AUCTIONS ||--o{ BIDS : "receives"
+    USERS ||--o{ WATCHLISTS : "maintains"
+    AUCTIONS ||--o{ WATCHLISTS : "watched by"
+    AUCTIONS ||--o| AUCTION_SETTLEMENTS : "results in"
+    USERS ||--o{ AUCTION_SETTLEMENTS : "pays for"

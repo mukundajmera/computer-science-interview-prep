@@ -1,0 +1,73 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "repeat cooldown",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "shouldPrintMessage",
+          "input": {
+            "timestamp": 1,
+            "message": "a"
+          },
+          "expected": true
+        },
+        {
+          "type": "call",
+          "method": "shouldPrintMessage",
+          "input": {
+            "timestamp": 2,
+            "message": "a"
+          },
+          "expected": false
+        },
+        {
+          "type": "call",
+          "method": "shouldPrintMessage",
+          "input": {
+            "timestamp": 11,
+            "message": "a"
+          },
+          "expected": true
+        }
+      ]
+    },
+    {
+      "name": "independent messages",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "shouldPrintMessage",
+          "input": {
+            "timestamp": 5,
+            "message": "x"
+          },
+          "expected": true
+        },
+        {
+          "type": "call",
+          "method": "shouldPrintMessage",
+          "input": {
+            "timestamp": 6,
+            "message": "y"
+          },
+          "expected": true
+        }
+      ]
+    }
+  ]
+}

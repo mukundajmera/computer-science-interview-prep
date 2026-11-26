@@ -1,0 +1,67 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "three papers qualify",
+      "input": {
+        "citations": [
+          4,
+          4,
+          0,
+          2,
+          8
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "name": "one cited paper",
+      "input": {
+        "citations": [
+          0,
+          0,
+          1
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "all uncited",
+      "input": {
+        "citations": [
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "huge counts capped by papers",
+      "input": {
+        "citations": [
+          20,
+          20,
+          20,
+          20
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "two high papers",
+      "input": {
+        "citations": [
+          10,
+          1,
+          2,
+          100
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

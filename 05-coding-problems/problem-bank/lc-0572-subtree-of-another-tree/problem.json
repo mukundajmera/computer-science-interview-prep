@@ -1,0 +1,112 @@
+{
+  "id": "lc-0572-subtree-of-another-tree",
+  "title": "Subtree of Another Tree",
+  "difficulty": "easy",
+  "status": "verified",
+  "patterns": [
+    "binary-tree",
+    "depth-first-search",
+    "tree"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 155,
+      "group": "binary-tree",
+      "sourceUrl": "https://leetcode.com/problems/subtree-of-another-tree"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 390,
+      "group": "Trees",
+      "sourceUrl": "https://leetcode.com/problems/subtree-of-another-tree"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "572",
+    "titleSlug": "subtree-of-another-tree",
+    "url": "https://leetcode.com/problems/subtree-of-another-tree",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "isSubtree",
+      "returnType": "boolean",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "TreeNode"
+        },
+        {
+          "name": "subRoot",
+          "type": "TreeNode"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "isSubtree",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "Optional[TreeNode]"
+        },
+        {
+          "name": "subRoot",
+          "type": "Optional[TreeNode]"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-serialize-with-null-markers/Solution.java",
+      "python/solution-1-serialize-with-null-markers/solution.py",
+      "java/solution-2-dfs-tree-match/Solution.java",
+      "python/solution-2-dfs-tree-match/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+graph TD;
+  A[Prompt] --> B[Prefill Phase];
+  B --> C[KV Cache Generation];
+  C --> D[Decode Phase];
+  D --> E[Token Streaming];

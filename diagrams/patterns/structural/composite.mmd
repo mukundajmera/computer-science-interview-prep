@@ -1,0 +1,34 @@
+%% Composite Pattern Class Diagram
+%% Composes objects into tree structures to represent part-whole hierarchies
+
+classDiagram
+    class Component {
+        <<interface>>
+        +operation() void
+        +add(Component) void
+        +remove(Component) void
+        +getChild(int) Component
+    }
+    
+    class Leaf {
+        +operation() void
+    }
+    
+    class Composite {
+        -children List~Component~
+        +operation() void
+        +add(Component) void
+        +remove(Component) void
+        +getChild(int) Component
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Component <|.. Leaf
+    Component <|.. Composite
+    Composite o--> Component : contains
+    Client --> Component : uses
+    
+    note for Composite "Stores child components.\noperation() iterates over\nchildren and calls their\noperation() methods."

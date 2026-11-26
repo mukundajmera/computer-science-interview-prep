@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-inorder-list",
+      "title": "Inorder list",
+      "tier": 1,
+      "strategy": "Materialize the inorder traversal and return the node after p.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The traversal can visit every node."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The inorder list stores every node."
+      },
+      "javaPath": "java/solution-1-inorder-list/Solution.java",
+      "pythonPath": "python/solution-1-inorder-list/solution.py"
+    },
+    {
+      "id": "solution-2-bst-walk",
+      "title": "BST walk",
+      "tier": 2,
+      "strategy": "Use BST ordering to track the lowest ancestor larger than p.",
+      "timeComplexity": {
+        "class": "O(h)",
+        "explanation": "Only one root-to-leaf search path is followed."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The iterative walk stores a candidate pointer."
+      },
+      "javaPath": "java/solution-2-bst-walk/Solution.java",
+      "pythonPath": "python/solution-2-bst-walk/solution.py"
+    }
+  ]
+}

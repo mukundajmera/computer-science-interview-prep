@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-check-each-square",
+      "title": "Check each candidate square",
+      "tier": 1,
+      "strategy": "Try every top-left corner and square side length, scanning each candidate for a zero cell.",
+      "timeComplexity": {
+        "class": "O(rows*cols*min(rows, cols)^3)",
+        "explanation": "Each cell can test O(min(rows, cols)) sizes and each size can scan a square."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only counters and the best side length are stored."
+      },
+      "javaPath": "java/solution-1-check-each-square/Solution.java",
+      "pythonPath": "python/solution-1-check-each-square/solution.py"
+    },
+    {
+      "id": "solution-2-dp-border-extension",
+      "title": "DP border extension",
+      "tier": 2,
+      "strategy": "Let each DP cell store the largest all-one square side ending at that matrix cell.",
+      "timeComplexity": {
+        "class": "O(rows*cols)",
+        "explanation": "Each matrix cell is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(rows*cols)",
+        "explanation": "The DP table stores one side length per matrix position."
+      },
+      "javaPath": "java/solution-2-dp-border-extension/Solution.java",
+      "pythonPath": "python/solution-2-dp-border-extension/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-hold-cash-state",
+      "title": "Hold/cash dynamic state",
+      "tier": 1,
+      "strategy": "Track the best balance when holding a share and when holding cash after each day.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Each day updates the two states once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only the current hold and cash balances are stored." },
+      "javaPath": "java/solution-1-hold-cash-state/Solution.java",
+      "pythonPath": "python/solution-1-hold-cash-state/solution.py"
+    },
+    {
+      "id": "solution-2-sum-positive-deltas",
+      "title": "Sum positive daily gains",
+      "tier": 2,
+      "strategy": "Every upward adjacent price movement can be captured as part of some valid sequence of non-overlapping trades.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The algorithm scans adjacent day pairs once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only an accumulated profit counter is stored." },
+      "javaPath": "java/solution-2-sum-positive-deltas/Solution.java",
+      "pythonPath": "python/solution-2-sum-positive-deltas/solution.py"
+    }
+  ]
+}

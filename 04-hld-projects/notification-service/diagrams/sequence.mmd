@@ -1,0 +1,106 @@
+```mermaid
+sequenceDiagram
+    autonumber
+    
+    participant Client
+    participant API as Notification API
+    participant Pref as Preference Service
+    participant Template as Template Service
+    participant Renderer as Renderer
+    participant Cache as Redis Cache
+    participant Queue as Kafka Queue
+    participant Worker as Email Worker
+    participant Provider as SendGrid
+    participant DB as Cassandra
+    participant DLQ as Dead Letter Queue
+    
+    Note over Client,DLQ: Send Notification Flow
+    
+    Client->>API: POST /api/v1/notifications<br/>{userId, templateId, channel, variables}
+    
+    API->>API: Validate request format
+    
+    API->>Cache: Check idempotency key
+    
+    alt Already processed
+        Cache-->>API: Existing notification ID
+        API-->>Client: 200 OK (existing)
+    end
+    
+    API->>Pref: Get user preferences
+    Pref->>Cache: Check cache
+    
+    alt Cache hit
+        Cache-->>Pref: Preferences
+    else Cache miss
+        Pref->>DB: Query preferences
+        DB-->>Pref: Preferences
+        Pref->>Cache: Store in cache
+    end
+    
+    Pref-->>API: User preferences
+    
+    alt Channel disabled
+        API-->>Client: 200 OK (skipped - opted out)
+    end
+    
+    API->>Template: Get template
+    Template->>Cache: Check template cache
+    Cache-->>Template: Cached template
+    Template-->>API: Template content
+    
+    API->>Renderer: Render template with variables
+    Renderer-->>API: Rendered content
+    
+    API->>DB: INSERT notification (status: queued)
+    DB-->>API: Saved
+    
+    API->>Cache: SET idempotency key
+    
+    API->>Queue: Publish to priority queue
+    Queue-->>API: Acknowledged
+    
+    API-->>Client: 202 Accepted<br/>{notificationId, status: "queued"}
+    
+    Note over Queue,DLQ: Async Worker Processing
+    
+    Worker->>Queue: Poll messages
+    Queue-->>Worker: Notification message
+    
+    Worker->>Worker: Rate limit check
+    
+    Worker->>Provider: Send email via API
+    
+    alt Delivery Success
+        Provider-->>Worker: 200 OK {messageId}
+        Worker->>DB: UPDATE status = 'sent'
+        
+        Note over Provider,Worker: Webhook callback later
+        Provider-->>Worker: Webhook: delivered
+        Worker->>DB: UPDATE status = 'delivered'
+        
+    else Transient Failure (5xx, timeout)
+        Provider-->>Worker: Error
+        Worker->>Worker: Check attempt count
+        
+        alt Attempts < 6
+            Worker->>Queue: Requeue with delay<br/>(exponential backoff)
+            Worker->>DB: UPDATE attempt_count++
+        else Max attempts reached
+            Worker->>DLQ: Move to DLQ
+            Worker->>DB: UPDATE status = 'failed'
+        end
+        
+    else Permanent Failure (4xx)
+        Provider-->>Worker: 400 Bad Request
+        Worker->>DLQ: Move to DLQ
+        Worker->>DB: UPDATE status = 'failed'
+    end
+    
+    Note over Client,DLQ: Status Check Flow
+    
+    Client->>API: GET /notifications/{id}/status
+    API->>DB: Query notification
+    DB-->>API: Notification record
+    API-->>Client: {status, deliveredAt, attempts}
+```

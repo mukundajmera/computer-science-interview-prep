@@ -1,0 +1,10 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "vertical line becomes horizontal", "input": { "board": [[0, 1, 0], [0, 1, 0], [0, 1, 0]] }, "expected": null, "expectedMutations": { "board": [[0, 0, 0], [1, 1, 1], [0, 0, 0]] } },
+    { "name": "stable block", "input": { "board": [[1, 1], [1, 1]] }, "expected": null, "expectedMutations": { "board": [[1, 1], [1, 1]] } },
+    { "name": "lonely live cell dies", "input": { "board": [[0, 0, 0], [0, 1, 0], [0, 0, 0]] }, "expected": null, "expectedMutations": { "board": [[0, 0, 0], [0, 0, 0], [0, 0, 0]] } },
+    { "name": "birth at center", "input": { "board": [[1, 1, 0], [1, 0, 0], [0, 0, 0]] }, "expected": null, "expectedMutations": { "board": [[1, 1, 0], [1, 1, 0], [0, 0, 0]] } }
+  ]
+}

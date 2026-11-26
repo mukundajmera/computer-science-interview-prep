@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-enumerate-and-sort",
+      "title": "Enumerate and sort",
+      "tier": 1,
+      "strategy": "Generate every pair, sort by sum, then take the first k pairs.",
+      "timeComplexity": {
+        "class": "O(nm log(nm))",
+        "explanation": "All n times m pairs are sorted by sum."
+      },
+      "spaceComplexity": {
+        "class": "O(nm)",
+        "explanation": "Every candidate pair is stored before truncation."
+      },
+      "javaPath": "java/solution-1-enumerate-and-sort/Solution.java",
+      "pythonPath": "python/solution-1-enumerate-and-sort/solution.py"
+    },
+    {
+      "id": "solution-2-frontier-min-heap",
+      "title": "Frontier min-heap",
+      "tier": 2,
+      "strategy": "Seed the smallest pair from each nums1 prefix row, then advance one step in nums2 whenever a pair is popped.",
+      "timeComplexity": {
+        "class": "O(min(n,k) + k log min(n,k))",
+        "explanation": "At most min(n,k) rows are seeded and each emitted pair performs one heap pop and maybe one push."
+      },
+      "spaceComplexity": {
+        "class": "O(min(n,k))",
+        "explanation": "The heap stores one frontier pair per seeded nums1 index."
+      },
+      "javaPath": "java/solution-2-frontier-min-heap/Solution.java",
+      "pythonPath": "python/solution-2-frontier-min-heap/solution.py"
+    }
+  ]
+}

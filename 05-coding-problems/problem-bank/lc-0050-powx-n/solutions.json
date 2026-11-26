@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-iterative-binary-exponentiation",
+      "title": "Iterative binary exponentiation",
+      "tier": 1,
+      "strategy": "Scan exponent bits from least significant to most significant, squaring the base after every bit.",
+      "timeComplexity": {
+        "class": "O(log |n|)",
+        "explanation": "Every iteration halves the remaining exponent magnitude."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The loop keeps a constant number of numeric variables."
+      },
+      "javaPath": "java/solution-1-iterative-binary-exponentiation/Solution.java",
+      "pythonPath": "python/solution-1-iterative-binary-exponentiation/solution.py"
+    },
+    {
+      "id": "solution-2-recursive-binary-exponentiation",
+      "title": "Recursive binary exponentiation",
+      "tier": 2,
+      "strategy": "Recursively compute the half power and square it, multiplying by the base for odd exponents.",
+      "timeComplexity": {
+        "class": "O(log |n|)",
+        "explanation": "The exponent is divided by two at every recursive step."
+      },
+      "spaceComplexity": {
+        "class": "O(log |n|)",
+        "explanation": "The recursion stack has one frame per exponent halving."
+      },
+      "javaPath": "java/solution-2-recursive-binary-exponentiation/Solution.java",
+      "pythonPath": "python/solution-2-recursive-binary-exponentiation/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-range-and",
+      "title": "Linear range AND",
+      "tier": 1,
+      "strategy": "Accumulate the AND from left to right, stopping early if the result becomes zero.",
+      "timeComplexity": {
+        "class": "O(right-left+1)",
+        "explanation": "In the worst case every value in the inclusive range is visited."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the accumulator and loop counter are stored."
+      },
+      "javaPath": "java/solution-1-linear-range-and/Solution.java",
+      "pythonPath": "python/solution-1-linear-range-and/solution.py"
+    },
+    {
+      "id": "solution-2-common-prefix",
+      "title": "Common prefix",
+      "tier": 2,
+      "strategy": "Shift both ends right until they match, then restore the shared prefix.",
+      "timeComplexity": {
+        "class": "O(log right)",
+        "explanation": "Each shift removes one binary digit from both endpoints."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the endpoints and shift count are tracked."
+      },
+      "javaPath": "java/solution-2-common-prefix/Solution.java",
+      "pythonPath": "python/solution-2-common-prefix/solution.py"
+    }
+  ]
+}

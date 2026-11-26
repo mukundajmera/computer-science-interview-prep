@@ -1,0 +1,323 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "direct wins with one stop cap",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ],
+          [
+            2,
+            3,
+            100
+          ],
+          [
+            0,
+            3,
+            500
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 1
+      },
+      "expected": 500
+    },
+    {
+      "name": "two stops allow chain",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ],
+          [
+            2,
+            3,
+            100
+          ],
+          [
+            0,
+            3,
+            500
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 2
+      },
+      "expected": 300
+    },
+    {
+      "name": "unreachable destination",
+      "input": {
+        "n": 3,
+        "flights": [
+          [
+            0,
+            1,
+            50
+          ]
+        ],
+        "src": 0,
+        "dst": 2,
+        "k": 1
+      },
+      "expected": -1
+    },
+    {
+      "name": "cheaper route exceeds cap",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            10
+          ],
+          [
+            1,
+            2,
+            10
+          ],
+          [
+            2,
+            3,
+            10
+          ],
+          [
+            0,
+            3,
+            100
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 1
+      },
+      "expected": 100
+    },
+    {
+      "name": "zero stop direct only",
+      "input": {
+        "n": 3,
+        "flights": [
+          [
+            0,
+            1,
+            20
+          ],
+          [
+            1,
+            2,
+            20
+          ],
+          [
+            0,
+            2,
+            70
+          ]
+        ],
+        "src": 0,
+        "dst": 2,
+        "k": 0
+      },
+      "expected": 70
+    },
+    {
+      "name": "zero stop without direct route",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            50
+          ],
+          [
+            1,
+            3,
+            50
+          ],
+          [
+            0,
+            2,
+            120
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 0
+      },
+      "expected": -1
+    },
+    {
+      "name": "exactly one stop cheaper",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            50
+          ],
+          [
+            1,
+            3,
+            50
+          ],
+          [
+            0,
+            2,
+            120
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 1
+      },
+      "expected": 100
+    },
+    {
+      "name": "too many stops rejected",
+      "input": {
+        "n": 5,
+        "flights": [
+          [
+            0,
+            1,
+            10
+          ],
+          [
+            1,
+            2,
+            10
+          ],
+          [
+            2,
+            4,
+            10
+          ],
+          [
+            0,
+            3,
+            100
+          ],
+          [
+            3,
+            4,
+            1
+          ]
+        ],
+        "src": 0,
+        "dst": 4,
+        "k": 1
+      },
+      "expected": 101
+    },
+    {
+      "name": "two stops unlock cheapest",
+      "input": {
+        "n": 5,
+        "flights": [
+          [
+            0,
+            1,
+            10
+          ],
+          [
+            1,
+            2,
+            10
+          ],
+          [
+            2,
+            4,
+            10
+          ],
+          [
+            0,
+            3,
+            100
+          ],
+          [
+            3,
+            4,
+            1
+          ]
+        ],
+        "src": 0,
+        "dst": 4,
+        "k": 2
+      },
+      "expected": 30
+    },
+    {
+      "name": "cycle does not trap search",
+      "input": {
+        "n": 4,
+        "flights": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            1,
+            0,
+            5
+          ],
+          [
+            1,
+            2,
+            5
+          ],
+          [
+            2,
+            3,
+            5
+          ],
+          [
+            0,
+            3,
+            50
+          ]
+        ],
+        "src": 0,
+        "dst": 3,
+        "k": 2
+      },
+      "expected": 15
+    }
+  ]
+}

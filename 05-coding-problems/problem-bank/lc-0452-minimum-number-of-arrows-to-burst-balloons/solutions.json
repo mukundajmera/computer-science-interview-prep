@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-by-start-overlap-window",
+      "title": "Sort by start and track overlap",
+      "tier": 1,
+      "strategy": "Sort by start and maintain the current intersection end for balloons covered by the same arrow.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting dominates the single pass."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The scan stores constant state, while runtime sorting may allocate auxiliary memory."
+      },
+      "javaPath": "java/solution-1-sort-by-start-overlap-window/Solution.java",
+      "pythonPath": "python/solution-1-sort-by-start-overlap-window/solution.py"
+    },
+    {
+      "id": "solution-2-sort-by-end-greedy",
+      "title": "Sort by end greedy",
+      "tier": 2,
+      "strategy": "Shoot at the end of the first uncovered interval, then skip every interval containing that shot.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting by end dominates the linear scan."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The scan stores constant state, while runtime sorting may allocate auxiliary memory."
+      },
+      "javaPath": "java/solution-2-sort-by-end-greedy/Solution.java",
+      "pythonPath": "python/solution-2-sort-by-end-greedy/solution.py"
+    }
+  ]
+}

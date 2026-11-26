@@ -1,0 +1,48 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "matching repeated shape",
+      "input": {
+        "s": "abca",
+        "t": "zbxz"
+      },
+      "expected": true
+    },
+    {
+      "name": "target collision",
+      "input": {
+        "s": "ab",
+        "t": "aa"
+      },
+      "expected": false
+    },
+    {
+      "name": "same palindrome shape",
+      "input": {
+        "s": "abba",
+        "t": "cddc"
+      },
+      "expected": true
+    },
+    {
+      "name": "source repeat mismatch",
+      "input": {
+        "s": "abab",
+        "t": "xyxz"
+      },
+      "expected": false
+    },
+    {
+      "name": "unequal lengths",
+      "input": {
+        "s": "a",
+        "t": "zz"
+      },
+      "expected": false
+    }
+  ]
+}

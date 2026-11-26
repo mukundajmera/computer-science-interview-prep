@@ -1,0 +1,88 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "three pairs from two arrays",
+      "input": {
+        "nums1": [
+          1,
+          4
+        ],
+        "nums2": [
+          2,
+          6
+        ],
+        "k": 3
+      },
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          1,
+          6
+        ]
+      ]
+    },
+    {
+      "name": "single first array value",
+      "input": {
+        "nums1": [
+          3
+        ],
+        "nums2": [
+          1,
+          5,
+          9
+        ],
+        "k": 2
+      },
+      "expected": [
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          5
+        ]
+      ]
+    },
+    {
+      "name": "k larger than pair count",
+      "input": {
+        "nums1": [
+          2,
+          8,
+          14
+        ],
+        "nums2": [
+          3
+        ],
+        "k": 5
+      },
+      "expected": [
+        [
+          2,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          14,
+          3
+        ]
+      ]
+    }
+  ]
+}

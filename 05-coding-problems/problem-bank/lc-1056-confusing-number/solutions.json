@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-string-rotation",
+      "title": "String rotation",
+      "tier": 1,
+      "strategy": "Rotate the decimal string from right to left using a digit map.",
+      "timeComplexity": {
+        "class": "O(d)",
+        "explanation": "Every digit is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(d)",
+        "explanation": "The rotated string stores d digits."
+      },
+      "javaPath": "java/solution-1-string-rotation/Solution.java",
+      "pythonPath": "python/solution-1-string-rotation/solution.py"
+    },
+    {
+      "id": "solution-2-arithmetic-rotation",
+      "title": "Arithmetic rotation",
+      "tier": 2,
+      "strategy": "Build the rotated number arithmetically while stripping digits from right to left.",
+      "timeComplexity": {
+        "class": "O(d)",
+        "explanation": "Each decimal digit is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only numeric accumulators are stored."
+      },
+      "javaPath": "java/solution-2-arithmetic-rotation/Solution.java",
+      "pythonPath": "python/solution-2-arithmetic-rotation/solution.py"
+    }
+  ]
+}

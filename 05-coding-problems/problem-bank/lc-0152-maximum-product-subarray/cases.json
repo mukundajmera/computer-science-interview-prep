@@ -1,0 +1,86 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "negative pair boosts product",
+      "input": {
+        "nums": [
+          2,
+          3,
+          -2,
+          4
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "name": "zero splits ranges",
+      "input": {
+        "nums": [
+          -2,
+          0,
+          -1
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "three negatives",
+      "input": {
+        "nums": [
+          -2,
+          3,
+          -4
+        ]
+      },
+      "expected": 24
+    },
+    {
+      "name": "single negative",
+      "input": {
+        "nums": [
+          -5
+        ]
+      },
+      "expected": -5
+    },
+    {
+      "name": "positive after zero",
+      "input": {
+        "nums": [
+          0,
+          2
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "zero cuts odd negatives",
+      "input": {
+        "nums": [
+          -1,
+          -2,
+          -3,
+          0
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "name": "best segment after zero",
+      "input": {
+        "nums": [
+          -2,
+          -3,
+          0,
+          -2,
+          -40
+        ]
+      },
+      "expected": 80
+    }
+  ]
+}

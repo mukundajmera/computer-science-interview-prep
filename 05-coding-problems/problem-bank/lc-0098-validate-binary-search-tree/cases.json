@@ -1,0 +1,53 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "valid balanced tree",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          6,
+          10,
+          14
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "left subtree violates root bound",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          9,
+          10,
+          14
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "duplicate against ancestor bound",
+      "input": {
+        "root": [
+          5,
+          3,
+          7,
+          2,
+          5,
+          6,
+          8
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-manual-parser",
+      "title": "Manual parser with clamping",
+      "tier": 1,
+      "strategy": "Skip leading spaces, read an optional sign, accumulate digits, and clamp as soon as the 32-bit range is exceeded.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "At most the leading spaces, sign, and digit prefix are scanned."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only index, sign, and accumulated value are stored."
+      },
+      "javaPath": "java/solution-1-manual-parser/Solution.java",
+      "pythonPath": "python/solution-1-manual-parser/solution.py"
+    },
+    {
+      "id": "solution-2-state-machine",
+      "title": "State machine parser",
+      "tier": 2,
+      "strategy": "Model whitespace, sign, digit, and stop states explicitly while reusing the same overflow guard.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The parser advances through the string prefix once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The machine stores a constant number of state variables."
+      },
+      "javaPath": "java/solution-2-state-machine/Solution.java",
+      "pythonPath": "python/solution-2-state-machine/solution.py"
+    }
+  ]
+}

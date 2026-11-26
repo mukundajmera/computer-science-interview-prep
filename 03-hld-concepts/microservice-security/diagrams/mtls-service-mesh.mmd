@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant S as SPIRE Server
+    participant A as SPIRE Agent (Node)
+    participant E1 as Envoy Sidecar (Service A)
+    participant E2 as Envoy Sidecar (Service B)
+
+    note over S, A: Bootstrapping & Attestation
+    S->>A: Issues SVIDs (X.509 certs) to Agent
+    
+    note over A, E1: Dynamic Certificate Provisioning (SDS)
+    A->>E1: Pushes Service A SVID via Secret Discovery Service
+    A->>E2: Pushes Service B SVID via Secret Discovery Service
+    
+    note over E1, E2: mTLS Handshake
+    E1->>E2: TLS ClientHello
+    E2->>E1: TLS ServerHello, Certificate (Service B SVID), CertificateRequest
+    E1->>E2: Certificate (Service A SVID), ClientKeyExchange, CertificateVerify
+    E2->>E1: Finished
+    E1->>E2: Finished
+    
+    note over E1, E2: Secure Data Transfer (Encrypted & Authenticated)
+    E1->>E2: HTTP Request (Over mTLS)
+    note over E2: Ext_authz validates SPIFFE ID / JWT
+    E2->>E1: HTTP Response

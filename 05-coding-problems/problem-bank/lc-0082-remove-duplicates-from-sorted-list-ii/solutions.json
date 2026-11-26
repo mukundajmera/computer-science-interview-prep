@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-count-then-relink",
+      "title": "Count then relink",
+      "tier": 1,
+      "strategy": "Count each value first, then relink only nodes whose value count is one.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The list is scanned once for counts and once for relinking."
+      },
+      "spaceComplexity": {
+        "class": "O(u)",
+        "explanation": "The count map stores one entry per distinct value."
+      },
+      "javaPath": "java/solution-1-count-then-relink/Solution.java",
+      "pythonPath": "python/solution-1-count-then-relink/solution.py"
+    },
+    {
+      "id": "solution-2-sentinel-run-skip",
+      "title": "Sentinel run skip",
+      "tier": 2,
+      "strategy": "Use one pass with a sentinel and skip every run whose length is greater than one.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is visited as part of exactly one sorted run."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only pointer references are used beyond the list itself."
+      },
+      "javaPath": "java/solution-2-sentinel-run-skip/Solution.java",
+      "pythonPath": "python/solution-2-sentinel-run-skip/solution.py"
+    }
+  ]
+}

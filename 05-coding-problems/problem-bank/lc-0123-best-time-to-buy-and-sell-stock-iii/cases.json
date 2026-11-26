@@ -1,0 +1,26 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "two separated climbs",
+      "input": { "prices": [1, 5, 2, 8, 4, 9] },
+      "expected": 12
+    },
+    {
+      "name": "falling prices",
+      "input": { "prices": [7, 6, 4, 3, 1] },
+      "expected": 0
+    },
+    {
+      "name": "single climb",
+      "input": { "prices": [1, 2, 3, 4, 5] },
+      "expected": 4
+    },
+    {
+      "name": "repeated opportunities",
+      "input": { "prices": [5, 1, 5, 1, 5] },
+      "expected": 8
+    }
+  ]
+}

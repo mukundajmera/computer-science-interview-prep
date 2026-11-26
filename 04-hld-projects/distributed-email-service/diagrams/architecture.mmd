@@ -1,0 +1,55 @@
+flowchart TD
+    subgraph Client [Client Clients]
+        Web[WebMail / Mobile App]
+    end
+
+    subgraph Federation [External Networks]
+        ExtMTA[External Mail Servers<br/>Yahoo, Microsoft]
+    end
+
+    subgraph Edge [Edge & API]
+        LB[Load Balancer]
+        API[API Gateway]
+        Notif[Notification Service<br/>WebSockets]
+    end
+
+    subgraph Inbound [Inbound Pipeline]
+        SMTPIn[Inbound SMTP Workers]
+        Kafka[Kafka Event Queue]
+        SpamAV[Spam / AV Checkers]
+        MDA[Mail Delivery Agent<br/>MDA]
+    end
+
+    subgraph Outbound [Outbound Pipeline]
+        SMTPOut[Outbound SMTP Workers]
+    end
+
+    subgraph Storage [Data & Storage]
+        Cassandra[(Metadata DB<br/>Cassandra)]
+        S3[(Object Store<br/>S3)]
+        Search[(Search Index<br/>RocksDB/Lucene per User)]
+    end
+
+    %% Client flows
+    Web -->|HTTP REST| LB
+    LB --> API
+    Web <-->|WebSockets| Notif
+
+    %% Internal API flows
+    API -->|Read| Cassandra
+    API -->|Search| Search
+    API -->|Send Msg| Kafka
+
+    %% Inbound flow
+    ExtMTA -->|SMTP In| SMTPIn
+    SMTPIn -->|1. Store Raw| S3
+    SMTPIn -->|2. Enqueue| Kafka
+    Kafka -->|Poll| SpamAV
+    SpamAV --> MDA
+    MDA -->|Write Meta| Cassandra
+    MDA -->|Index text| Search
+    MDA -->|Notify| Notif
+
+    %% Outbound flow
+    Kafka -->|Send External| SMTPOut
+    SMTPOut -->|SMTP Out| ExtMTA

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-minimum",
+      "title": "Linear minimum scan",
+      "tier": 1,
+      "strategy": "Inspect every value and keep the smallest one seen.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "All n values may need to be checked."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the current best value is stored."
+      },
+      "javaPath": "java/solution-1-linear-minimum/Solution.java",
+      "pythonPath": "python/solution-1-linear-minimum/solution.py"
+    },
+    {
+      "id": "solution-2-binary-search-pivot",
+      "title": "Binary search pivot",
+      "tier": 2,
+      "strategy": "Use the right boundary as an anchor; if mid is larger, the minimum is to the right, otherwise it is at mid or left.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each step halves the candidate range."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only two boundaries and a midpoint are maintained."
+      },
+      "javaPath": "java/solution-2-binary-search-pivot/Solution.java",
+      "pythonPath": "python/solution-2-binary-search-pivot/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "mirrored full tree",
+      "input": {
+        "root": [
+          8,
+          4,
+          4,
+          2,
+          6,
+          6,
+          2
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "shape mismatch",
+      "input": {
+        "root": [
+          8,
+          4,
+          4,
+          null,
+          6,
+          null,
+          2
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "single node",
+      "input": {
+        "root": [
+          1
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

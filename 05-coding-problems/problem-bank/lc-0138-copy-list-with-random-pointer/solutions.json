@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-hash-map",
+      "title": "Hash map old nodes to clones",
+      "tier": 1,
+      "strategy": "Create one clone for every original node, store old-to-new mappings, then wire next and random pointers from the map.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Two linear passes visit each original node once to allocate clones and once to connect pointers."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The map stores one clone reference for every original node."
+      },
+      "javaPath": "java/solution-1-hash-map/Solution.java",
+      "pythonPath": "python/solution-1-hash-map/solution.py"
+    },
+    {
+      "id": "solution-2-weave-clones",
+      "title": "Weave clones into the original list",
+      "tier": 2,
+      "strategy": "Insert each clone directly after its original node, set clone random pointers through adjacent clone nodes, then detach the cloned list.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each pass walks the list once: weave, assign random pointers, and detach."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Aside from the cloned nodes that are required for the output, only a few pointer variables are used."
+      },
+      "javaPath": "java/solution-2-weave-clones/Solution.java",
+      "pythonPath": "python/solution-2-weave-clones/solution.py"
+    }
+  ]
+}

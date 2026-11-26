@@ -1,0 +1,46 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "object-one-of" },
+  "cases": [
+    {
+      "name": "duplicates removal and multi-value random",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "insert", "input": { "val": 10 }, "expected": true },
+        { "type": "call", "method": "insert", "input": { "val": 20 }, "expected": true },
+        { "type": "call", "method": "insert", "input": { "val": 10 }, "expected": false },
+        { "type": "call", "method": "getRandom", "input": {}, "expected": { "oneOf": [10, 20] } },
+        { "type": "call", "method": "remove", "input": { "val": 10 }, "expected": true },
+        { "type": "call", "method": "getRandom", "input": {}, "expected": 20 },
+        { "type": "call", "method": "remove", "input": { "val": 10 }, "expected": false },
+        { "type": "call", "method": "insert", "input": { "val": 30 }, "expected": true },
+        { "type": "call", "method": "getRandom", "input": {}, "expected": { "oneOf": [20, 30] } }
+      ]
+    },
+    {
+      "name": "negative values and absent removal",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "insert", "input": { "val": -5 }, "expected": true },
+        { "type": "call", "method": "insert", "input": { "val": 7 }, "expected": true },
+        { "type": "call", "method": "remove", "input": { "val": -5 }, "expected": true },
+        { "type": "call", "method": "insert", "input": { "val": 7 }, "expected": false },
+        { "type": "call", "method": "remove", "input": { "val": 99 }, "expected": false },
+        { "type": "call", "method": "getRandom", "input": {}, "expected": 7 }
+      ]
+    },
+    {
+      "name": "tail removal and reinsertion",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "insert", "input": { "val": 1 }, "expected": true },
+        { "type": "call", "method": "insert", "input": { "val": 2 }, "expected": true },
+        { "type": "call", "method": "remove", "input": { "val": 2 }, "expected": true },
+        { "type": "call", "method": "remove", "input": { "val": 2 }, "expected": false },
+        { "type": "call", "method": "getRandom", "input": {}, "expected": 1 },
+        { "type": "call", "method": "insert", "input": { "val": 2 }, "expected": true },
+        { "type": "call", "method": "getRandom", "input": {}, "expected": { "oneOf": [1, 2] } }
+      ]
+    }
+  ]
+}

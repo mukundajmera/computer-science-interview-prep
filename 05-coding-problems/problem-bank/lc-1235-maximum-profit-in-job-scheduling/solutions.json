@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-quadratic-dp",
+      "title": "Quadratic DP",
+      "tier": 1,
+      "strategy": "Sort by end time and scan all earlier compatible jobs for each current job.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each job can compare against every earlier job."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Sorted jobs and one DP array are stored."
+      },
+      "javaPath": "java/solution-1-quadratic-dp/Solution.java",
+      "pythonPath": "python/solution-1-quadratic-dp/solution.py"
+    },
+    {
+      "id": "solution-2-binary-search-dp",
+      "title": "Binary-search DP",
+      "tier": 2,
+      "strategy": "Sort by end time and binary-search the latest compatible end before taking each job.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting and one binary search per job dominate."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The sorted jobs, end-time array, and DP table are stored."
+      },
+      "javaPath": "java/solution-2-binary-search-dp/Solution.java",
+      "pythonPath": "python/solution-2-binary-search-dp/solution.py"
+    }
+  ]
+}

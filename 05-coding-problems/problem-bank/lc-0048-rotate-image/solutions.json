@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-layer-four-way-swaps",
+      "title": "Layer four-way swaps",
+      "tier": 1,
+      "strategy": "Rotate each square layer by moving four corresponding edge cells at a time.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every cell participates in a constant number of swaps."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only temporary scalar storage is used for each four-way swap."
+      },
+      "javaPath": "java/solution-1-layer-four-way-swaps/Solution.java",
+      "pythonPath": "python/solution-1-layer-four-way-swaps/solution.py"
+    },
+    {
+      "id": "solution-2-transpose-reverse-rows",
+      "title": "Transpose then reverse rows",
+      "tier": 2,
+      "strategy": "Transpose the matrix across its main diagonal, then reverse each row to complete a clockwise rotation.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "The transpose and row reversals each touch O(n^2) cells."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The swaps use only temporary scalar storage."
+      },
+      "javaPath": "java/solution-2-transpose-reverse-rows/Solution.java",
+      "pythonPath": "python/solution-2-transpose-reverse-rows/solution.py"
+    }
+  ]
+}

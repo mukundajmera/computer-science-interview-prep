@@ -1,0 +1,48 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "mirrored words",
+      "input": {
+        "pattern": "abba",
+        "s": "red blue blue red"
+      },
+      "expected": true
+    },
+    {
+      "name": "word collision",
+      "input": {
+        "pattern": "ab",
+        "s": "red red"
+      },
+      "expected": false
+    },
+    {
+      "name": "length mismatch",
+      "input": {
+        "pattern": "abc",
+        "s": "one two"
+      },
+      "expected": false
+    },
+    {
+      "name": "all same",
+      "input": {
+        "pattern": "aaaa",
+        "s": "sun sun sun sun"
+      },
+      "expected": true
+    },
+    {
+      "name": "repeated separator is not a word",
+      "input": {
+        "pattern": "ab",
+        "s": "red  blue"
+      },
+      "expected": false
+    }
+  ]
+}

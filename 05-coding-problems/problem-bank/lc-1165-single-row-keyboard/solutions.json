@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-index-search",
+      "title": "Index search",
+      "tier": 1,
+      "strategy": "Find each character's index in the keyboard string as it is typed.",
+      "timeComplexity": {
+        "class": "O(kw)",
+        "explanation": "Each of w word chars can scan k keyboard chars."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the current position is stored."
+      },
+      "javaPath": "java/solution-1-index-search/Solution.java",
+      "pythonPath": "python/solution-1-index-search/solution.py"
+    },
+    {
+      "id": "solution-2-position-map",
+      "title": "Position map",
+      "tier": 2,
+      "strategy": "Precompute character positions and sum absolute movement.",
+      "timeComplexity": {
+        "class": "O(k + w)",
+        "explanation": "Build positions once and scan the word once."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The position table stores one entry per keyboard character."
+      },
+      "javaPath": "java/solution-2-position-map/Solution.java",
+      "pythonPath": "python/solution-2-position-map/solution.py"
+    }
+  ]
+}

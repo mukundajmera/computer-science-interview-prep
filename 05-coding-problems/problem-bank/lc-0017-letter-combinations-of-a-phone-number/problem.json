@@ -1,0 +1,105 @@
+{
+  "id": "lc-0017-letter-combinations-of-a-phone-number",
+  "title": "Letter Combinations of a Phone Number",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "backtracking",
+    "string"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 69,
+      "group": "recursion",
+      "sourceUrl": "https://leetcode.com/problems/letter-combinations-of-a-phone-number"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 101,
+      "group": "Backtracking",
+      "sourceUrl": "https://leetcode.com/problems/letter-combinations-of-a-phone-number"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 520,
+      "group": "Backtracking",
+      "sourceUrl": "https://leetcode.com/problems/letter-combinations-of-a-phone-number"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "17",
+    "titleSlug": "letter-combinations-of-a-phone-number",
+    "url": "https://leetcode.com/problems/letter-combinations-of-a-phone-number",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "letterCombinations",
+      "returnType": "List<String>",
+      "parameters": [
+        {
+          "name": "digits",
+          "type": "String"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "letterCombinations",
+      "returnType": "List[str]",
+      "parameters": [
+        {
+          "name": "digits",
+          "type": "str"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

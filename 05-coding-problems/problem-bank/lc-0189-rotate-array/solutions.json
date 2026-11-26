@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-extra-rotated-copy",
+      "title": "Extra rotated copy",
+      "tier": 1,
+      "strategy": "Write each value into its rotated position in a temporary array, then copy the result back into the input array.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Each input element is written once into the temporary array and once back into the input." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The temporary rotated copy stores n integers." },
+      "javaPath": "java/solution-1-extra-rotated-copy/Solution.java",
+      "pythonPath": "python/solution-1-extra-rotated-copy/solution.py"
+    },
+    {
+      "id": "solution-2-reverse-three-sections",
+      "title": "Reverse three sections",
+      "tier": 2,
+      "strategy": "Reverse the whole array, reverse the rotated prefix, then reverse the remaining suffix to restore internal order.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The three reversals together swap each element a constant number of times." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "The rotation is performed in place with only two pointers." },
+      "javaPath": "java/solution-2-reverse-three-sections/Solution.java",
+      "pythonPath": "python/solution-2-reverse-three-sections/solution.py"
+    }
+  ]
+}

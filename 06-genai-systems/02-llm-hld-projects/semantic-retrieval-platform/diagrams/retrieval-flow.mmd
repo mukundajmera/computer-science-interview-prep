@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant Client
+    participant Gateway as API Gateway
+    participant Retrieval as Retrieval Service
+    participant Metadata as Metadata Store
+    participant Vector as Vector Index
+    participant Keyword as Keyword Index
+    participant Reranker
+
+    Client->>Gateway: POST /api/v1/retrieve
+    Gateway->>Retrieval: tenant, principal, query, filters
+    Retrieval->>Metadata: resolve principal ACL scope
+    Metadata-->>Retrieval: allowed corpus + metadata predicates
+    Retrieval->>Vector: ANN search with tenant and filters
+    Retrieval->>Keyword: lexical search with same filters
+    Vector-->>Retrieval: dense candidates
+    Keyword-->>Retrieval: sparse candidates
+    Retrieval->>Retrieval: blend, dedupe, validate ACL
+    alt rerank enabled and budget available
+        Retrieval->>Reranker: top candidates + query
+        Reranker-->>Retrieval: reranked candidates
+    end
+    Retrieval-->>Gateway: cited chunks, scores, trace id
+    Gateway-->>Client: retrieval response

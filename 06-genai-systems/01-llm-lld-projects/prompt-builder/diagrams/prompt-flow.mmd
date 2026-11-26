@@ -1,0 +1,23 @@
+sequenceDiagram
+    actor Client
+    participant PB as PromptBuilder
+    participant FSL as FewShotSelector
+    participant TP as TemplateProcessor
+    participant GS as GuardrailSanitizer
+    participant TB as TokenBudget
+
+    Client->>PB: Intake Query (User Input)
+    PB->>FSL: semantic few-shot lookup(query)
+    FSL-->>PB: Returns similar examples
+
+    PB->>TP: template assembly(query, examples)
+
+    TP->>GS: injection sanitization(raw payload)
+    GS-->>TP: Safe variables
+
+    TP-->>PB: Assembled un-truncated prompt
+
+    PB->>TB: token truncation(assembled prompt)
+    TB-->>PB: Truncated prompt (fits budget)
+
+    PB-->>Client: model payload output

@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-array-of-nodes",
+      "title": "Collect original nodes into two partitions",
+      "tier": 1,
+      "strategy": "Place each original node reference into a less-than or greater-or-equal array, then relink those same nodes in stable order.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The input is scanned once and every original node is appended once to the output chain." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The two temporary arrays store references to all n original nodes." },
+      "javaPath": "java/solution-1-array-of-nodes/Solution.java",
+      "pythonPath": "python/solution-1-array-of-nodes/solution.py"
+    },
+    {
+      "id": "solution-2-two-dummy-chains",
+      "title": "Two dummy chains",
+      "tier": 2,
+      "strategy": "Append each original node to either a less-than chain or a greater-or-equal chain, then join both chains.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Every node is visited once and appended to exactly one partition chain." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "The algorithm reuses original nodes and stores only dummy/tail pointers." },
+      "javaPath": "java/solution-2-two-dummy-chains/Solution.java",
+      "pythonPath": "python/solution-2-two-dummy-chains/solution.py"
+    }
+  ]
+}

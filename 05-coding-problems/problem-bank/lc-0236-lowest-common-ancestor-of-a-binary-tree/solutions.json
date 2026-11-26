@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-parent-map",
+      "title": "Parent map and ancestor set",
+      "tier": 1,
+      "strategy": "Traverse the tree to record every node's parent, walk from p to the root to mark ancestors, then walk upward from q until the first marked node is found.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The parent-building traversal can visit every node, and the two upward walks are bounded by the tree height."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The parent map and ancestor set can store references for every node."
+      },
+      "javaPath": "java/solution-1-parent-map/Solution.java",
+      "pythonPath": "python/solution-1-parent-map/solution.py"
+    },
+    {
+      "id": "solution-2-recursive-postorder",
+      "title": "Recursive postorder search",
+      "tier": 2,
+      "strategy": "Return the current node when it is one of the targets; otherwise search both subtrees and promote the node where both sides report a target.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is visited at most once in the recursive search."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack is proportional to tree height h, which can be n for a skewed tree."
+      },
+      "javaPath": "java/solution-2-recursive-postorder/Solution.java",
+      "pythonPath": "python/solution-2-recursive-postorder/solution.py"
+    }
+  ]
+}

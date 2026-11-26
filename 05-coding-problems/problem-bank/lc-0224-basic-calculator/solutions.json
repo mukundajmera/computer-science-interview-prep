@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sign-stack",
+      "title": "Iterative sign stack",
+      "tier": 1,
+      "strategy": "Track the current result and sign, pushing the outer result/sign when a parenthesized group begins.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each character is read once, and each parenthesis causes O(1) stack work."
+      },
+      "spaceComplexity": {
+        "class": "O(d)",
+        "explanation": "The stack stores two integers per active parenthesis depth d."
+      },
+      "javaPath": "java/solution-1-sign-stack/Solution.java",
+      "pythonPath": "python/solution-1-sign-stack/solution.py"
+    },
+    {
+      "id": "solution-2-recursive-parser",
+      "title": "Recursive expression parser",
+      "tier": 2,
+      "strategy": "Parse an expression until a closing parenthesis and recursively evaluate parenthesized groups.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The shared index advances through each character once."
+      },
+      "spaceComplexity": {
+        "class": "O(d)",
+        "explanation": "Recursive calls follow parenthesis nesting depth d."
+      },
+      "javaPath": "java/solution-2-recursive-parser/Solution.java",
+      "pythonPath": "python/solution-2-recursive-parser/solution.py"
+    }
+  ]
+}

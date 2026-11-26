@@ -1,0 +1,40 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "dot matches one middle character",
+      "input": {
+        "s": "abc",
+        "p": "a.c"
+      },
+      "expected": true
+    },
+    {
+      "name": "star consumes repeated run",
+      "input": {
+        "s": "abbbcd",
+        "p": "ab*cd"
+      },
+      "expected": true
+    },
+    {
+      "name": "pattern cannot skip leading text",
+      "input": {
+        "s": "abcd",
+        "p": "d*"
+      },
+      "expected": false
+    },
+    {
+      "name": "starred tokens match empty text",
+      "input": {
+        "s": "",
+        "p": "a*b*"
+      },
+      "expected": true
+    }
+  ]
+}

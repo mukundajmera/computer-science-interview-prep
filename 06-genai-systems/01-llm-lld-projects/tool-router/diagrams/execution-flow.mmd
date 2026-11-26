@@ -1,0 +1,36 @@
+sequenceDiagram
+    actor LLM as LLM / Agent
+    participant Router as Tool Router
+    participant Validator as Schema Validator & Repair Engine
+    participant Resolver as DAG Dependency Resolver
+    participant Pool as Execution Pool
+    participant Registry as Tool Registry Catalog
+    participant Aggregator as Result Aggregator
+
+    LLM->>Router: Submit Tool Calls
+    Router->>Validator: Validate Arguments
+
+    alt Validation Failed
+        Validator-->>Router: Validation Error
+        Router-->>LLM: Return Error Result
+    else Validation Succeeded
+        Validator-->>Router: Validated Arguments
+        Router->>Resolver: Build Execution Plan (DAG)
+        Resolver-->>Router: Dependency Plan
+
+        Router->>Pool: Execute Plan
+
+        loop Parallel Execution
+            Pool->>Registry: Lookup Tool
+            Registry-->>Pool: Tool Definition
+            Pool->>Pool: Execute Tool Handler
+
+            alt Execution Failed
+                Pool->>Pool: Retry logic (if configured)
+            end
+        end
+
+        Pool-->>Aggregator: Collect Results
+        Aggregator-->>Router: Synthesized Output
+        Router-->>LLM: Return Tool Results
+    end

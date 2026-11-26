@@ -1,0 +1,121 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two clear leaders",
+      "input": {
+        "words": [
+          "i",
+          "love",
+          "leetcode",
+          "i",
+          "love",
+          "coding"
+        ],
+        "k": 2
+      },
+      "expected": [
+        "i",
+        "love"
+      ]
+    },
+    {
+      "name": "frequency then lexical order",
+      "input": {
+        "words": [
+          "the",
+          "day",
+          "is",
+          "sunny",
+          "the",
+          "the",
+          "the",
+          "sunny",
+          "is",
+          "is"
+        ],
+        "k": 4
+      },
+      "expected": [
+        "the",
+        "is",
+        "sunny",
+        "day"
+      ]
+    },
+    {
+      "name": "all words tied",
+      "input": {
+        "words": [
+          "b",
+          "a",
+          "c"
+        ],
+        "k": 2
+      },
+      "expected": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "name": "bounded heap tie eviction",
+      "input": {
+        "words": [
+          "aa",
+          "ab",
+          "aa",
+          "ab",
+          "ac"
+        ],
+        "k": 2
+      },
+      "expected": [
+        "aa",
+        "ab"
+      ]
+    },
+    {
+      "name": "lexical inclusion at boundary",
+      "input": {
+        "words": [
+          "z",
+          "z",
+          "a",
+          "b",
+          "b",
+          "a",
+          "c"
+        ],
+        "k": 3
+      },
+      "expected": [
+        "a",
+        "b",
+        "z"
+      ]
+    },
+    {
+      "name": "singletons ordered after frequency ties",
+      "input": {
+        "words": [
+          "i",
+          "i",
+          "love",
+          "love",
+          "leetcode",
+          "coding"
+        ],
+        "k": 3
+      },
+      "expected": [
+        "i",
+        "love",
+        "coding"
+      ]
+    }
+  ]
+}

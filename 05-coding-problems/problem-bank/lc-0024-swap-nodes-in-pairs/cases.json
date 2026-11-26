@@ -1,0 +1,27 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "even length swaps every pair",
+      "input": { "head": [9, 4, 7, 2] },
+      "expected": [4, 9, 2, 7],
+      "linkedListContract": {
+        "result": { "from": "head", "nodeIndices": [1, 0, 3, 2] }
+      }
+    },
+    {
+      "name": "odd length leaves tail",
+      "input": { "head": [5, 1, 8] },
+      "expected": [1, 5, 8],
+      "linkedListContract": {
+        "result": { "from": "head", "nodeIndices": [1, 0, 2] }
+      }
+    },
+    {
+      "name": "empty chain",
+      "input": { "head": null },
+      "expected": null
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "adjacent groups",
+      "input": {
+        "s": "3[a]2[bc]"
+      },
+      "expected": "aaabcbc"
+    },
+    {
+      "name": "nested group",
+      "input": {
+        "s": "3[a2[c]]"
+      },
+      "expected": "accaccacc"
+    },
+    {
+      "name": "literal suffix",
+      "input": {
+        "s": "2[abc]3[cd]ef"
+      },
+      "expected": "abcabccdcdcdef"
+    },
+    {
+      "name": "multi digit repeat",
+      "input": {
+        "s": "10[a]"
+      },
+      "expected": "aaaaaaaaaa"
+    },
+    {
+      "name": "literal prefix and suffix",
+      "input": {
+        "s": "abc3[cd]xyz"
+      },
+      "expected": "abccdcdcdxyz"
+    },
+    {
+      "name": "nested multi digit repeat",
+      "input": {
+        "s": "2[a10[b]c]"
+      },
+      "expected": "abbbbbbbbbbcabbbbbbbbbbc"
+    },
+    {
+      "name": "multi digit around nested repeat",
+      "input": {
+        "s": "10[a2[b]]"
+      },
+      "expected": "abbabbabbabbabbabbabbabbabbabb"
+    }
+  ]
+}

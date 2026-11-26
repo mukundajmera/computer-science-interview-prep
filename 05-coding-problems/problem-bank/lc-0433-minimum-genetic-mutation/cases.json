@@ -1,0 +1,45 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "one mutation",
+      "input": {
+        "startGene": "AAAAAAAT",
+        "endGene": "AAAAAAAG",
+        "bank": [
+          "AAAAAAAG"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "four step path",
+      "input": {
+        "startGene": "AAAAAAAA",
+        "endGene": "CCCCAAAA",
+        "bank": [
+          "CAAAAAAA",
+          "CCAAAAAA",
+          "CCCAAAAA",
+          "CCCCAAAA"
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "no valid target path",
+      "input": {
+        "startGene": "AAAAAAAA",
+        "endGene": "AAAAAAAC",
+        "bank": [
+          "AAAAAAAG",
+          "AAAAAAGG"
+        ]
+      },
+      "expected": -1
+    }
+  ]
+}

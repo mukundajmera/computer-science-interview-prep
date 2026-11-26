@@ -1,0 +1,78 @@
+```mermaid
+flowchart TB
+    subgraph Clients
+        RA[Rider App]
+        DA[Driver App]
+    end
+
+    subgraph "API Gateway Layer"
+        LB[Load Balancer]
+        AG[API Gateway]
+        AUTH[Auth Service]
+    end
+
+    subgraph "Core Services"
+        RS[Ride Service]
+        MS[Matching Service]
+        LS[Location Service]
+        PS[Pricing Service]
+        NS[Notification Service]
+        PAY[Payment Service]
+    end
+
+    subgraph "Location Processing"
+        LI[Location Ingestion]
+        GI[Geo Index]
+        QT[QuadTree/S2]
+    end
+
+    subgraph "Data Layer"
+        subgraph "Primary Storage"
+            PG[(PostgreSQL)]
+            RD[(Redis Cluster)]
+        end
+        subgraph "Analytics"
+            KF[Kafka]
+            CH[(ClickHouse)]
+        end
+    end
+
+    subgraph "External Services"
+        MAPS[Maps API]
+        SMS[SMS Provider]
+        PUSH[Push Notifications]
+    end
+
+    RA --> LB
+    DA --> LB
+    LB --> AG
+    AG --> AUTH
+    AG --> RS
+    AG --> LS
+
+    RS --> MS
+    RS --> PS
+    RS --> PAY
+    RS --> NS
+
+    MS --> GI
+    MS --> QT
+
+    LS --> LI
+    LI --> GI
+    LI --> RD
+
+    DA --> LS
+
+    RS --> PG
+    MS --> RD
+    LS --> RD
+    PS --> RD
+
+    RS --> KF
+    KF --> CH
+
+    NS --> SMS
+    NS --> PUSH
+    MS --> MAPS
+```

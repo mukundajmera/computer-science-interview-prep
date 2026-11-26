@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-array-sort-rebuild",
+      "title": "Array sort rebuild",
+      "tier": 1,
+      "strategy": "Copy values into an array, sort them, and rebuild the list from the sorted values.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting the copied values dominates the traversal and rebuild work."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The value array and rebuilt nodes store n items."
+      },
+      "javaPath": "java/solution-1-array-sort-rebuild/Solution.java",
+      "pythonPath": "python/solution-1-array-sort-rebuild/solution.py"
+    },
+    {
+      "id": "solution-2-linked-list-merge-sort",
+      "title": "Linked-list merge sort",
+      "tier": 2,
+      "strategy": "Split the list with slow and fast pointers, recursively sort both halves, then merge nodes in order.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Each level merges all nodes and there are logarithmically many split levels."
+      },
+      "spaceComplexity": {
+        "class": "O(log n)",
+        "explanation": "The recursive call stack stores one frame per split level while nodes are relinked in place."
+      },
+      "javaPath": "java/solution-2-linked-list-merge-sort/Solution.java",
+      "pythonPath": "python/solution-2-linked-list-merge-sort/solution.py"
+    }
+  ]
+}

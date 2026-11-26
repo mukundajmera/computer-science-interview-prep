@@ -1,0 +1,106 @@
+{
+  "id": "lc-0113-path-sum-ii",
+  "title": "Path Sum II",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "backtracking",
+    "binary-tree",
+    "depth-first-search"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 99,
+      "group": "binary-tree",
+      "sourceUrl": "https://leetcode.com/problems/path-sum-ii"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "113",
+    "titleSlug": "path-sum-ii",
+    "url": "https://leetcode.com/problems/path-sum-ii",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "pathSum",
+      "returnType": "List<List<Integer>>",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "TreeNode"
+        },
+        {
+          "name": "targetSum",
+          "type": "int"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "pathSum",
+      "returnType": "List[List[int]]",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "Optional[TreeNode]"
+        },
+        {
+          "name": "targetSum",
+          "type": "int"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-copy-paths/Solution.java",
+      "python/solution-1-copy-paths/solution.py",
+      "java/solution-2-backtracking/Solution.java",
+      "python/solution-2-backtracking/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

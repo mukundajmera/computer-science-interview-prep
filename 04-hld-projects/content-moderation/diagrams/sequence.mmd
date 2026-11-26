@@ -1,0 +1,38 @@
+sequenceDiagram
+    autonumber
+    participant Client
+    participant API as Ingestion API
+    participant Stream as Event Stream
+    participant Orch as Moderation Orchestrator
+    participant TextML as Text Inference
+    participant VisionML as Vision Inference
+    participant Policy as Policy Rule Engine
+    participant Action as Action Executor
+    participant Review as Reviewer Queue
+
+    Client->>API: Submit Post (Text + Image)
+    API->>Stream: Publish Submission Event
+    API-->>Client: 202 Accepted
+    Stream->>Orch: Consume Submission Event
+
+    par ML Inference
+        Orch->>TextML: Analyze Text Content
+        TextML-->>Orch: Return Text Scores (Toxicity, Hate Speech)
+    and
+        Orch->>VisionML: Analyze Image Content
+        VisionML-->>Orch: Return Vision Scores (NSFW, Violence)
+    end
+
+    Orch->>Policy: Evaluate Scores against Policies
+
+    alt Score >= Auto-Action Threshold
+        Policy->>Action: Trigger Auto-Delete / Down-rank
+        Action-->>Policy: Action Executed
+    else Score >= Review Threshold
+        Policy->>Review: Enqueue for Human Review
+        Review-->>Policy: Queued
+    else Score < Review Threshold
+        Policy-->>Orch: Approved (No Action)
+    end
+
+    Orch->>Stream: Publish Decision Event

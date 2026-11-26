@@ -1,0 +1,52 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "single letter chain",
+      "input": {
+        "words": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "expected": "abc"
+    },
+    {
+      "name": "multi character unique chain",
+      "input": {
+        "words": [
+          "ab",
+          "ac",
+          "bc",
+          "bd"
+        ]
+      },
+      "expected": "abcd"
+    },
+    {
+      "name": "invalid prefix order",
+      "input": {
+        "words": [
+          "abc",
+          "ab"
+        ]
+      },
+      "expected": ""
+    },
+    {
+      "name": "cycle is impossible",
+      "input": {
+        "words": [
+          "a",
+          "b",
+          "a"
+        ]
+      },
+      "expected": ""
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+sequenceDiagram
+    participant User
+    participant Gateway
+    participant BidService
+    participant RedisLeaderboard
+    participant DB
+    participant WebSocketBroadcaster
+    participant AuctionTimer
+
+    User->>Gateway: POST /bids (auctionId, amount)
+    Gateway->>BidService: Validate and Forward
+    BidService->>RedisLeaderboard: Atomic Eval (Check current highest & update if >)
+    alt Bid is lower or equal
+        RedisLeaderboard-->>BidService: Reject (Bid too low)
+        BidService-->>Gateway: 400 Bad Request
+        Gateway-->>User: Bid Rejected
+    else Bid is higher
+        RedisLeaderboard-->>BidService: Accept (New Highest Bid)
+        BidService->>DB: Append Bid Record (Async/Sync)
+        DB-->>BidService: Ack
+        BidService->>WebSocketBroadcaster: Publish New Highest Bid
+        WebSocketBroadcaster-->>User: Broadcast to all connected clients
+        BidService-->>Gateway: 201 Created
+        Gateway-->>User: Bid Accepted
+    end
+
+    loop Background Timer
+        AuctionTimer->>RedisLeaderboard: Check Auction Close Time
+        alt Time expired
+            AuctionTimer->>BidService: Trigger Auction Close
+            BidService->>DB: Finalize Auction Status
+            DB-->>BidService: Ack
+            BidService->>WebSocketBroadcaster: Broadcast Auction Ended & Winner
+            WebSocketBroadcaster-->>User: Broadcast to all connected clients
+        end
+    end

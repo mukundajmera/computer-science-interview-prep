@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant P as Producer
+    participant L as Leader Broker
+    participant F as Follower Broker
+    participant C as Consumer
+
+    P->>L: Produce(msg1, msg2)
+    Note over L: Append to local log<br/>LEO advances
+    F->>L: FetchRequest(offset=N)
+    L-->>F: msg1, msg2
+    Note over F: Append to local log<br/>LEO advances
+    F->>L: FetchRequest(offset=N+2)
+    Note over L: Update HW barrier<br/>(msg1, msg2 committed)
+    L-->>P: Ack(Success)
+    
+    C->>L: FetchRequest(offset=N)
+    Note over L: Serve up to HW
+    L-->>C: msg1, msg2

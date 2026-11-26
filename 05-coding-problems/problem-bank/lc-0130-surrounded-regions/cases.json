@@ -1,0 +1,24 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "capture interior basin",
+      "input": { "board": [["X", "X", "X", "X", "X"], ["X", "O", "O", "X", "X"], ["X", "X", "O", "X", "O"], ["X", "O", "X", "X", "O"], ["X", "X", "X", "X", "X"]] },
+      "expected": null,
+      "expectedMutations": { "board": [["X", "X", "X", "X", "X"], ["X", "X", "X", "X", "X"], ["X", "X", "X", "X", "O"], ["X", "X", "X", "X", "O"], ["X", "X", "X", "X", "X"]] }
+    },
+    {
+      "name": "border connected remains",
+      "input": { "board": [["O", "X", "X"], ["O", "O", "X"], ["X", "X", "O"]] },
+      "expected": null,
+      "expectedMutations": { "board": [["O", "X", "X"], ["O", "O", "X"], ["X", "X", "O"]] }
+    },
+    {
+      "name": "single interior cell",
+      "input": { "board": [["X", "X", "X"], ["X", "O", "X"], ["X", "X", "X"]] },
+      "expected": null,
+      "expectedMutations": { "board": [["X", "X", "X"], ["X", "X", "X"], ["X", "X", "X"]] }
+    }
+  ]
+}

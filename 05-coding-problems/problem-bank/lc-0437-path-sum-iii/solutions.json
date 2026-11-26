@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-start-at-every-node",
+      "title": "Start at every node",
+      "tier": 1,
+      "strategy": "For each node, count target-sum paths that start there, then recurse into both children as new starts.",
+      "timeComplexity": {
+        "class": "O(nh)",
+        "explanation": "Each node can be included in counts for each ancestor on its path."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "Recursion depth follows tree height."
+      },
+      "javaPath": "java/solution-1-start-at-every-node/Solution.java",
+      "pythonPath": "python/solution-1-start-at-every-node/solution.py"
+    },
+    {
+      "id": "solution-2-prefix-sum-counts",
+      "title": "Prefix-sum counts",
+      "tier": 2,
+      "strategy": "Track prefix sums on the current root-to-node path and count prior prefixes that form the target.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node performs constant map work."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The prefix map contains sums on the current path."
+      },
+      "javaPath": "java/solution-2-prefix-sum-counts/Solution.java",
+      "pythonPath": "python/solution-2-prefix-sum-counts/solution.py"
+    }
+  ]
+}

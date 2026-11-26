@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-all-pairs",
+      "title": "Check all wall pairs",
+      "tier": 1,
+      "strategy": "Compute the contained area for every pair of positions.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every left index is paired with every later right index."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only loop indexes and the best area are stored."
+      },
+      "javaPath": "java/solution-1-all-pairs/Solution.java",
+      "pythonPath": "python/solution-1-all-pairs/solution.py"
+    },
+    {
+      "id": "solution-2-two-pointers",
+      "title": "Move the shorter wall inward",
+      "tier": 2,
+      "strategy": "Start at both ends and discard the shorter wall after each area check.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each pointer only moves inward, so each index is visited at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The algorithm keeps two pointers and a scalar best area."
+      },
+      "javaPath": "java/solution-2-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-two-pointers/solution.py"
+    }
+  ]
+}

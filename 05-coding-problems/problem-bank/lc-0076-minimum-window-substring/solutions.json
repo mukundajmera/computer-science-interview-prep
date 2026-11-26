@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-expand-each-start",
+      "title": "Expand from every start",
+      "tier": 1,
+      "strategy": "For each start index, extend right until all required counts are covered, then record the shortest candidate.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "A fresh rightward scan can run for each start position."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "Counters store up to k distinct required/window characters."
+      },
+      "javaPath": "java/solution-1-expand-each-start/Solution.java",
+      "pythonPath": "python/solution-1-expand-each-start/solution.py"
+    },
+    {
+      "id": "solution-2-sliding-window",
+      "title": "Sliding window with formed count",
+      "tier": 2,
+      "strategy": "Expand right to satisfy missing counts, then contract left while preserving validity to minimize the window.",
+      "timeComplexity": {
+        "class": "O(n + m)",
+        "explanation": "The source and target strings are scanned linearly with two pointers."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "Counters store distinct target and active window characters."
+      },
+      "javaPath": "java/solution-2-sliding-window/Solution.java",
+      "pythonPath": "python/solution-2-sliding-window/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+erDiagram
+    VELOCITY_METRIC {
+        string metric_key PK
+        int current_count
+        timestamp window_start
+    }
+
+    CHALLENGE_TOKEN {
+        string token_id PK
+        string account_id FK
+        string status
+        timestamp expires_at
+    }
+
+    DETECTION_RULE {
+        string rule_id PK
+        string condition
+        string action
+        float threshold
+        boolean is_active
+    }
+
+    INVESTIGATOR_LEDGER {
+        string log_id PK
+        string account_id FK
+        float risk_score
+        float confidence
+        string remediation_action
+        string policy_version
+        timestamp created_at
+    }
+
+    INVESTIGATOR_TASK {
+        string task_id PK
+        string log_id FK
+        string investigator_id
+        string status
+        string review_notes
+    }
+
+    VELOCITY_METRIC ||--o{ INVESTIGATOR_LEDGER : "contributes to"
+    DETECTION_RULE ||--o{ INVESTIGATOR_LEDGER : "triggers"
+    CHALLENGE_TOKEN }|--|| INVESTIGATOR_LEDGER : "issued from"
+    INVESTIGATOR_LEDGER ||--o| INVESTIGATOR_TASK : "generates"

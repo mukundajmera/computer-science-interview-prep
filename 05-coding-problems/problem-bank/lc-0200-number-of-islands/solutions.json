@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-visited-dfs",
+      "title": "DFS with visited matrix",
+      "tier": 1,
+      "strategy": "When unvisited land is found, count an island and DFS through all connected land while marking a visited matrix.",
+      "timeComplexity": { "class": "O(m*n)", "explanation": "Each grid cell is inspected, and each land cell is visited by DFS once." },
+      "spaceComplexity": { "class": "O(m*n)", "explanation": "The visited matrix and worst-case recursion stack can both scale with the number of cells." },
+      "javaPath": "java/solution-1-visited-dfs/Solution.java",
+      "pythonPath": "python/solution-1-visited-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-in-place-sink",
+      "title": "In-place island sinking",
+      "tier": 2,
+      "strategy": "Mutate discovered land cells to water while DFS explores each island.",
+      "timeComplexity": { "class": "O(m*n)", "explanation": "Every cell is scanned and each land cell is converted once." },
+      "spaceComplexity": { "class": "O(m*n)", "explanation": "No visited matrix is needed, but the DFS call stack can still contain many cells in a large island." },
+      "javaPath": "java/solution-2-in-place-sink/Solution.java",
+      "pythonPath": "python/solution-2-in-place-sink/solution.py"
+    }
+  ]
+}

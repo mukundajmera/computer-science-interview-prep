@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-unique-two-pointers",
+      "title": "Sort unique arrays and two pointers",
+      "tier": 1,
+      "strategy": "Sort both arrays, skip duplicates inside each sorted array, and collect values seen by both pointers.",
+      "timeComplexity": { "class": "O(n log n + m log m)", "explanation": "Sorting both arrays dominates the linear two-pointer pass." },
+      "spaceComplexity": { "class": "O(n + m)", "explanation": "The implementation sorts copied arrays so the inputs are not mutated, and the result stores up to the number of unique shared values." },
+      "javaPath": "java/solution-1-sort-unique-two-pointers/Solution.java",
+      "pythonPath": "python/solution-1-sort-unique-two-pointers/solution.py"
+    },
+    {
+      "id": "solution-2-hash-sets-sorted-output",
+      "title": "Hash sets then sorted output",
+      "tier": 2,
+      "strategy": "Build sets for both arrays, intersect them, and sort the unique shared values for deterministic output.",
+      "timeComplexity": { "class": "O(n + m + u log u)", "explanation": "Building sets is linear in both arrays, and sorting u shared values provides deterministic output for exact tests." },
+      "spaceComplexity": { "class": "O(n + m)", "explanation": "The sets can store all unique values from both arrays." },
+      "javaPath": "java/solution-2-hash-sets-sorted-output/Solution.java",
+      "pythonPath": "python/solution-2-hash-sets-sorted-output/solution.py"
+    }
+  ]
+}

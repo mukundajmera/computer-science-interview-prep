@@ -1,0 +1,34 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-selection-sort",
+      "title": "In-place selection sort",
+      "tier": 1,
+      "strategy": "Repeatedly select the smallest value from the unsorted suffix and swap it into place.",
+      "timeComplexity": { "class": "O(n^2)", "explanation": "Each index scans the remaining suffix to find the next smallest color." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Selection sort uses only loop indexes and a temporary swap variable." },
+      "javaPath": "java/solution-1-selection-sort/Solution.java",
+      "pythonPath": "python/solution-1-selection-sort/solution.py"
+    },
+    {
+      "id": "solution-2-counting-overwrite",
+      "title": "Count and overwrite",
+      "tier": 2,
+      "strategy": "Count the three color values, then overwrite the array with the right number of each color.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The array is scanned once for counts and written once from those counts." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only three counters are stored regardless of input length." },
+      "javaPath": "java/solution-2-counting-overwrite/Solution.java",
+      "pythonPath": "python/solution-2-counting-overwrite/solution.py"
+    },
+    {
+      "id": "solution-3-dutch-national-flag",
+      "title": "Dutch national flag partition",
+      "tier": 3,
+      "strategy": "Maintain low, mid, and high regions so zeroes move left, twos move right, and ones stay in the middle.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The mid pointer advances or the high pointer retreats on every step, so each item is handled a constant number of times." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "The algorithm uses three pointers and swaps in place." },
+      "javaPath": "java/solution-3-dutch-national-flag/Solution.java",
+      "pythonPath": "python/solution-3-dutch-national-flag/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "lc-0215-kth-largest-element-in-an-array",
+  "title": "Kth Largest Element in an Array",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "Heap",
+    "Heap / Priority Queue",
+    "heap"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 122,
+      "group": "heap",
+      "sourceUrl": "https://leetcode.com/problems/kth-largest-element-in-an-array"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 121,
+      "group": "Heap",
+      "sourceUrl": "https://leetcode.com/problems/kth-largest-element-in-an-array"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 483,
+      "group": "Heap / Priority Queue",
+      "sourceUrl": "https://leetcode.com/problems/kth-largest-element-in-an-array"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "215",
+    "titleSlug": "kth-largest-element-in-an-array",
+    "url": "https://leetcode.com/problems/kth-largest-element-in-an-array",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "findKthLargest",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "int[]"
+        },
+        {
+          "name": "k",
+          "type": "int"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "findKthLargest",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "List[int]"
+        },
+        {
+          "name": "k",
+          "type": "int"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

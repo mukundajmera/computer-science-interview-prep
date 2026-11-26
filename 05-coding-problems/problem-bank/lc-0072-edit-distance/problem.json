@@ -1,0 +1,107 @@
+{
+  "id": "lc-0072-edit-distance",
+  "title": "Edit Distance",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "dynamic-programming",
+    "string"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "leetcode-top-150",
+      "order": 147,
+      "group": "Multidimensional DP",
+      "sourceUrl": "https://leetcode.com/problems/edit-distance"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 732,
+      "group": "2-D Dynamic Programming",
+      "sourceUrl": "https://leetcode.com/problems/edit-distance"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "72",
+    "titleSlug": "edit-distance",
+    "url": "https://leetcode.com/problems/edit-distance",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "minDistance",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "word1",
+          "type": "String"
+        },
+        {
+          "name": "word2",
+          "type": "String"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "minDistance",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "word1",
+          "type": "str"
+        },
+        {
+          "name": "word2",
+          "type": "str"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

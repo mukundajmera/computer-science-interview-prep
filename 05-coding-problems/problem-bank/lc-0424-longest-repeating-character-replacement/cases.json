@@ -1,0 +1,64 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "alternating can all match",
+      "input": {
+        "s": "ABAB",
+        "k": 2
+      },
+      "expected": 4
+    },
+    {
+      "name": "classic shrinking window",
+      "input": {
+        "s": "AABABBA",
+        "k": 1
+      },
+      "expected": 4
+    },
+    {
+      "name": "already repeated",
+      "input": {
+        "s": "AAAA",
+        "k": 0
+      },
+      "expected": 4
+    },
+    {
+      "name": "one replacement only",
+      "input": {
+        "s": "ABCDE",
+        "k": 1
+      },
+      "expected": 2
+    },
+    {
+      "name": "whole string after replacements",
+      "input": {
+        "s": "BAAAB",
+        "k": 2
+      },
+      "expected": 5
+    },
+    {
+      "name": "mixed string no replacements",
+      "input": {
+        "s": "ABAA",
+        "k": 0
+      },
+      "expected": 2
+    },
+    {
+      "name": "longer run no replacements",
+      "input": {
+        "s": "ABBBAC",
+        "k": 0
+      },
+      "expected": 3
+    }
+  ]
+}

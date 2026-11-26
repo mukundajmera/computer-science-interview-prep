@@ -1,0 +1,21 @@
+```mermaid
+flowchart TD
+    Client[Client App] --> API[API Gateway / Auth]
+    API --> RetSvc[Retrieval Service]
+    API --> IngSvc[Ingestion Service]
+    
+    subgraph Retrieval Path
+    RetSvc --> Embed[Embedding API]
+    RetSvc --> VectorDB[(Vector DB / ANN Index)]
+    RetSvc --> Rerank[Cross-Encoder Reranker]
+    end
+    
+    subgraph Ingestion Path
+    IngSvc --> Kafka[Kafka Queue]
+    Kafka --> ChunkWrk[Chunking Workers]
+    ChunkWrk --> EmbedWrk[Embedding Workers]
+    EmbedWrk --> IndexWrk[Index Writer]
+    IndexWrk --> VectorDB
+    IndexWrk --> MetaDB[(Metadata DB - Postgres)]
+    end
+```

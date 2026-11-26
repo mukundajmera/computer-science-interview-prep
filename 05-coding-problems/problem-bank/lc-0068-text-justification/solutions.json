@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-greedy-line-builder",
+      "title": "Greedy line builder",
+      "tier": 1,
+      "strategy": "Greedily pack each line, then distribute spaces according to whether it is a final line, one-word line, or fully justified line.",
+      "timeComplexity": {
+        "class": "O(total characters)",
+        "explanation": "Each word is packed once and each output character is written once."
+      },
+      "spaceComplexity": {
+        "class": "O(total characters)",
+        "explanation": "The returned lines contain the justified text."
+      },
+      "javaPath": "java/solution-1-greedy-line-builder/Solution.java",
+      "pythonPath": "python/solution-1-greedy-line-builder/solution.py"
+    }
+  ]
+}

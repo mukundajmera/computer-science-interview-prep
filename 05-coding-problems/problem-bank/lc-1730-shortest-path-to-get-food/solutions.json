@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-backtracking-search",
+      "title": "Backtracking search",
+      "tier": 1,
+      "strategy": "Explore simple paths from the start and keep the shortest path to food.",
+      "timeComplexity": {
+        "class": "O(4^(mn))",
+        "explanation": "A path can branch to four neighbors until cells are exhausted."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The recursion stack and visited grid can cover every cell."
+      },
+      "javaPath": "java/solution-1-backtracking-search/Solution.java",
+      "pythonPath": "python/solution-1-backtracking-search/solution.py"
+    },
+    {
+      "id": "solution-2-breadth-first-search",
+      "title": "Breadth-first search",
+      "tier": 2,
+      "strategy": "Run BFS from the start so the first food cell reached is shortest.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each grid cell is enqueued at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The queue and visited set can store every open cell."
+      },
+      "javaPath": "java/solution-2-breadth-first-search/Solution.java",
+      "pythonPath": "python/solution-2-breadth-first-search/solution.py"
+    }
+  ]
+}

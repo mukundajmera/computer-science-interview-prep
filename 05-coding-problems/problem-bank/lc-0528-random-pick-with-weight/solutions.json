@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-expanded-bag",
+      "title": "Expanded bag",
+      "tier": 1,
+      "strategy": "Materialize each index weight times and choose a random slot.",
+      "timeComplexity": {
+        "class": "O(W)",
+        "explanation": "Construction expands total weight W; each pick is O(1)."
+      },
+      "spaceComplexity": {
+        "class": "O(W)",
+        "explanation": "The bag stores one entry per unit of weight."
+      },
+      "javaPath": "java/solution-1-expanded-bag/Solution.java",
+      "pythonPath": "python/solution-1-expanded-bag/solution.py"
+    },
+    {
+      "id": "solution-2-prefix-binary-search",
+      "title": "Prefix binary search",
+      "tier": 2,
+      "strategy": "Store cumulative weights and binary-search the sampled point.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each pick performs one binary search over n prefixes."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Prefix sums store one value per index."
+      },
+      "javaPath": "java/solution-2-prefix-binary-search/Solution.java",
+      "pythonPath": "python/solution-2-prefix-binary-search/solution.py"
+    }
+  ]
+}

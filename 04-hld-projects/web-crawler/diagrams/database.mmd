@@ -1,0 +1,43 @@
+erDiagram
+    HostProfiles ||--o{ FrontierQueues : "owns"
+    HostProfiles ||--o| RobotsCache : "has"
+    FrontierQueues ||--o{ CrawlDocuments : "fetches"
+    CrawlDocuments ||--o{ ExtractedLinks : "contains"
+
+    HostProfiles {
+        string host_id PK
+        string domain_name
+        int max_fetch_rate
+        timestamp last_crawl_time
+    }
+
+    FrontierQueues {
+        string queue_id PK
+        string host_id FK
+        string priority
+        timestamp next_fetch_time
+        string url
+    }
+
+    CrawlDocuments {
+        string doc_id PK
+        string queue_id FK
+        string url
+        string content_hash
+        timestamp fetch_time
+        int status_code
+    }
+
+    ExtractedLinks {
+        string link_id PK
+        string doc_id FK
+        string source_url
+        string target_url
+        boolean is_processed
+    }
+
+    RobotsCache {
+        string host_id PK, FK
+        string rules_payload
+        timestamp expiration_time
+    }

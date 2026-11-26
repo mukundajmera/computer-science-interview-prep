@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-inorder-values",
+      "title": "Sort inorder values",
+      "tier": 1,
+      "strategy": "Collect nodes and sorted values, then write sorted values back in inorder order.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting n values dominates traversal."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Nodes and values are stored."
+      },
+      "javaPath": "java/solution-1-sort-inorder-values/Solution.java",
+      "pythonPath": "python/solution-1-sort-inorder-values/solution.py"
+    },
+    {
+      "id": "solution-2-detect-inversions",
+      "title": "Detect inorder inversions",
+      "tier": 2,
+      "strategy": "Track the previous inorder node and swap the two values that violate sorted order.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The tree is traversed once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack stores a path of height h."
+      },
+      "javaPath": "java/solution-2-detect-inversions/Solution.java",
+      "pythonPath": "python/solution-2-detect-inversions/solution.py"
+    }
+  ]
+}

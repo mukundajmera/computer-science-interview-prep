@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-normalize-reverse",
+      "title": "Normalize and reverse",
+      "tier": 1,
+      "strategy": "Create a lowercase alphanumeric copy, then compare it with its reverse.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The input is scanned to normalize and the normalized sequence is compared once." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The normalized character sequence can contain most of the input." },
+      "javaPath": "java/solution-1-normalize-reverse/Solution.java",
+      "pythonPath": "python/solution-1-normalize-reverse/solution.py"
+    },
+    {
+      "id": "solution-2-two-pointers",
+      "title": "Skipping two pointers",
+      "tier": 2,
+      "strategy": "Move inward, skipping ignored characters and comparing normalized endpoints.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The left and right pointers move across the string once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only pointer indices and temporary characters are stored." },
+      "javaPath": "java/solution-2-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-two-pointers/solution.py"
+    }
+  ]
+}

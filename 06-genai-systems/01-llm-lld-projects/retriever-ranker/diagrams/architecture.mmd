@@ -1,0 +1,30 @@
+flowchart TD
+    Query[User Query] --> QP[Query Processor]
+
+    subgraph RetrievalLayer [Retrieval Layer]
+        QP --> |Embedding| Dense[Dense Vector Retriever]
+        QP --> |Tokens| Sparse[Sparse BM25 Retriever]
+    end
+
+    subgraph FusionLayer [Fusion Layer]
+        Dense --> |Cosine Similarity Scores| Alpha[Dynamic Alpha Balancer]
+        Sparse --> |TF-IDF / BM25 Scores| Alpha
+    end
+
+    subgraph RankingLayer [Ranking Layer]
+        Alpha --> |Combined Candidates| Ranker[RRF / Cross-encoder Ranker]
+        Ranker --> |Re-scored Candidates| TopK[Top-K Selection]
+    end
+
+    TopK --> Final[Final Ranked Results]
+
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef input fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef processor fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
+    classDef retriever fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+    classDef ranker fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
+
+    class Query,Final input;
+    class QP,Alpha,TopK processor;
+    class Dense,Sparse retriever;
+    class Ranker ranker;

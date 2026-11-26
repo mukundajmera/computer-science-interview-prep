@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-route-bfs",
+      "title": "Route BFS",
+      "tier": 1,
+      "strategy": "Build stop-to-route membership, then BFS by route levels from every route serving the source stop.",
+      "timeComplexity": {
+        "class": "O(RS)",
+        "explanation": "Every route-stop membership is processed at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(RS)",
+        "explanation": "The stop map stores route membership for every listed stop."
+      },
+      "javaPath": "java/solution-1-route-bfs/Solution.java",
+      "pythonPath": "python/solution-1-route-bfs/solution.py"
+    },
+    {
+      "id": "solution-2-stop-bfs",
+      "title": "Stop BFS",
+      "tier": 2,
+      "strategy": "BFS over reachable stops while marking each route as boarded the first time it is expanded.",
+      "timeComplexity": {
+        "class": "O(RS)",
+        "explanation": "Each route is expanded once and contributes its stops once."
+      },
+      "spaceComplexity": {
+        "class": "O(RS)",
+        "explanation": "The stop map, queues, and visited sets are linear in route-stop entries."
+      },
+      "javaPath": "java/solution-2-stop-bfs/Solution.java",
+      "pythonPath": "python/solution-2-stop-bfs/solution.py"
+    }
+  ]
+}

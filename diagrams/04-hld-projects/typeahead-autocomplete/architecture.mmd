@@ -1,0 +1,8 @@
+graph TD
+    A[Client] --> B[Load Balancer]
+    B --> C[Autocomplete API Service]
+    C --> D[Sharded Trie Cache]
+    A --> E[Search API]
+    E --> F[Analytics Kafka]
+    F --> G[Offline Trie Builder]
+    G --> D

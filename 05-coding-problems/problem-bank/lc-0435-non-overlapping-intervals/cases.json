@@ -1,0 +1,112 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "remove one middle overlap",
+      "input": {
+        "intervals": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "all same interval",
+      "input": {
+        "intervals": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "touching endpoints allowed",
+      "input": {
+        "intervals": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "negative intervals",
+      "input": {
+        "intervals": [
+          [
+            -3,
+            -1
+          ],
+          [
+            -2,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "choose shorter interval for future",
+      "input": {
+        "intervals": [
+          [
+            1,
+            100
+          ],
+          [
+            11,
+            22
+          ],
+          [
+            1,
+            11
+          ],
+          [
+            2,
+            12
+          ]
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

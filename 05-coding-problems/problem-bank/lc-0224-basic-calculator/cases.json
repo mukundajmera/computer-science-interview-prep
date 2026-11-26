@@ -1,0 +1,29 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "nested subtraction flips sign",
+      "input": {
+        "s": "7-(2-(3+1))"
+      },
+      "expected": 9
+    },
+    {
+      "name": "spaced groups",
+      "input": {
+        "s": "18 + (4 - 6) - (3 - 2)"
+      },
+      "expected": 15
+    },
+    {
+      "name": "subtraction around inner negative",
+      "input": {
+        "s": "40-(12+(3-5))"
+      },
+      "expected": 30
+    }
+  ]
+}

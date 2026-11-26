@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-scan",
+      "title": "Sort and scan",
+      "tier": 1,
+      "strategy": "Sort the values, skip duplicates, and count adjacent consecutive runs.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting dominates the linear scan."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Both implementations create a sorted copy of the input values."
+      },
+      "javaPath": "java/solution-1-sort-scan/Solution.java",
+      "pythonPath": "python/solution-1-sort-scan/solution.py"
+    },
+    {
+      "id": "solution-2-sequence-starts",
+      "title": "Hash set sequence starts",
+      "tier": 2,
+      "strategy": "Only expand numbers that have no predecessor in the set.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each distinct value participates in at most one forward expansion."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The set stores all distinct input values."
+      },
+      "javaPath": "java/solution-2-sequence-starts/Solution.java",
+      "pythonPath": "python/solution-2-sequence-starts/solution.py"
+    }
+  ]
+}

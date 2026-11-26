@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-set-backtracking",
+      "title": "Set backtracking",
+      "tier": 1,
+      "strategy": "Place queens row by row while tracking occupied columns and diagonals in sets.",
+      "timeComplexity": {
+        "class": "O(n!)",
+        "explanation": "Backtracking tries permutations of columns pruned by diagonal conflicts."
+      },
+      "spaceComplexity": {
+        "class": "O(n^2)",
+        "explanation": "The board plus tracking sets are stored."
+      },
+      "javaPath": "java/solution-1-set-backtracking/Solution.java",
+      "pythonPath": "python/solution-1-set-backtracking/solution.py"
+    },
+    {
+      "id": "solution-2-bitmask-backtracking",
+      "title": "Bitmask backtracking",
+      "tier": 2,
+      "strategy": "Track available columns and diagonals with bit masks while building board rows.",
+      "timeComplexity": {
+        "class": "O(n!)",
+        "explanation": "The same search tree is explored with lower constant-factor checks."
+      },
+      "spaceComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Result boards dominate output storage; recursion uses O(n)."
+      },
+      "javaPath": "java/solution-2-bitmask-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-bitmask-backtracking/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+sequenceDiagram
+    participant Client
+    participant Pipeline as Ingestion Pipeline
+    participant Chunker as Document Chunker
+    participant Extractor as Metadata Extractor
+    participant Embedder as Embedding Service
+    participant Index as Vector Index
+
+    Client->>Pipeline: Document intake
+    activate Pipeline
+
+    Pipeline->>Chunker: text splitting
+    activate Chunker
+    Chunker-->>Pipeline: raw chunks
+    deactivate Chunker
+
+    Pipeline->>Extractor: metadata enrichment
+    activate Extractor
+    Extractor-->>Pipeline: enriched chunks
+    deactivate Extractor
+
+    loop For each enriched chunk
+        Pipeline->>Embedder: embedding generation
+        activate Embedder
+        Embedder-->>Pipeline: vector embeddings
+        deactivate Embedder
+
+        Pipeline->>Index: vector index insert
+        activate Index
+        Index-->>Pipeline: acknowledgment
+        deactivate Index
+    end
+
+    Pipeline-->>Client: ingestion complete
+    deactivate Pipeline

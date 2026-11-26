@@ -1,0 +1,23 @@
+flowchart TB
+    subgraph IngestionPath["Ingestion Path"]
+        direction TB
+        Source[Document Source] --> Parser[Document Parser]
+        Parser --> |"PDF/HTML/MD → text"| Chunker[Recursive Chunker]
+        Chunker --> |"512 tokens, 64 overlap"| Embedder[Embedding Service]
+        Embedder --> |"text-embedding-3-small"| VDB[(Vector DB)]
+        Chunker --> |"Store chunk text"| PG[(PostgreSQL)]
+    end
+
+    subgraph QueryPath["Query Path"]
+        direction TB
+        Query[User Query] --> QEmbed[Embed Query]
+        QEmbed --> VSearch[Vector Search - Top 20]
+        Query --> BM25[BM25 Search - Top 20]
+        VSearch --> RRF[Reciprocal Rank Fusion]
+        BM25 --> RRF
+        RRF --> |"Top 30 candidates"| Rerank[Cross-Encoder Reranker]
+        Rerank --> |"Top 5 chunks"| ACL[Access Control Filter]
+        ACL --> Prompt[Prompt Builder]
+        Prompt --> |"System + Chunks + History + Query"| LLM[LLM Generation]
+        LLM --> |"Streaming tokens"| Response[Cited Answer]
+    end

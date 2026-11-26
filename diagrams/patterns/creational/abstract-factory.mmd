@@ -1,0 +1,66 @@
+%% Abstract Factory Pattern Class Diagram
+%% Creates families of related objects without specifying concrete classes
+
+classDiagram
+    class AbstractFactory {
+        <<interface>>
+        +createProductA() AbstractProductA
+        +createProductB() AbstractProductB
+    }
+    
+    class ConcreteFactory1 {
+        +createProductA() AbstractProductA
+        +createProductB() AbstractProductB
+    }
+    
+    class ConcreteFactory2 {
+        +createProductA() AbstractProductA
+        +createProductB() AbstractProductB
+    }
+    
+    class AbstractProductA {
+        <<interface>>
+        +operationA() void
+    }
+    
+    class AbstractProductB {
+        <<interface>>
+        +operationB() void
+    }
+    
+    class ProductA1 {
+        +operationA() void
+    }
+    
+    class ProductA2 {
+        +operationA() void
+    }
+    
+    class ProductB1 {
+        +operationB() void
+    }
+    
+    class ProductB2 {
+        +operationB() void
+    }
+    
+    class Client {
+        -factory AbstractFactory
+        +Client(AbstractFactory)
+    }
+    
+    AbstractFactory <|.. ConcreteFactory1
+    AbstractFactory <|.. ConcreteFactory2
+    AbstractProductA <|.. ProductA1
+    AbstractProductA <|.. ProductA2
+    AbstractProductB <|.. ProductB1
+    AbstractProductB <|.. ProductB2
+    
+    ConcreteFactory1 ..> ProductA1 : creates
+    ConcreteFactory1 ..> ProductB1 : creates
+    ConcreteFactory2 ..> ProductA2 : creates
+    ConcreteFactory2 ..> ProductB2 : creates
+    
+    Client --> AbstractFactory
+    Client --> AbstractProductA
+    Client --> AbstractProductB

@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dummy-head-insertion",
+      "title": "Dummy head insertion",
+      "tier": 1,
+      "strategy": "Build a sorted list starting with a dummy node, inserting each element from the original list into its correct sorted position.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "In worst and average cases, finding insertion points takes linear time for each of the n nodes."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Sorts nodes in place with only pointer rewiring."
+      },
+      "javaPath": "java/solution-1-dummy-head-insertion/Solution.java",
+      "pythonPath": "python/solution-1-dummy-head-insertion/solution.py"
+    }
+  ]
+}

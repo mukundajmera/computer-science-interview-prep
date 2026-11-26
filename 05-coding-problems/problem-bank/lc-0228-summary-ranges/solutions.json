@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-run-scan",
+      "title": "Run boundary scan",
+      "tier": 1,
+      "strategy": "Track the start of the current run and emit it whenever the next value is not consecutive.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The array is scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Apart from the returned strings, only run indexes are stored."
+      },
+      "javaPath": "java/solution-1-run-scan/Solution.java",
+      "pythonPath": "python/solution-1-run-scan/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant C as Client
+    participant G as API Gateway
+    participant R as Redis (Central)
+
+    Note over G: Window = 1 Min<br/>Limit = 100
+    
+    C->>G: Request (User A)
+    G->>R: Fetch Current & Prev Counters
+    R-->>G: Prev=80, Curr=20
+    
+    Note over G: Calculate Time %<br/>Elapsed = 15s (25%)
+    
+    Note over G: Estimate Rate<br/>(80 * (1 - 0.25)) + 20<br/>= (80 * 0.75) + 20<br/>= 60 + 20 = 80
+    
+    alt Estimate < Limit (80 < 100)
+        G->>R: Increment Current Window (Lua)
+        R-->>G: OK
+        G-->>C: 200 OK (Allowed)
+    else Estimate >= Limit
+        G-->>C: 429 Too Many Requests
+    end

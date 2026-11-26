@@ -1,0 +1,60 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "third value in balanced tree",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          6,
+          10,
+          14
+        ],
+        "k": 3
+      },
+      "expected": 6
+    },
+    {
+      "name": "first value",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          6,
+          10,
+          14
+        ],
+        "k": 1
+      },
+      "expected": 2
+    },
+    {
+      "name": "rank inside internal subtree",
+      "input": {
+        "root": [
+          20,
+          10,
+          30,
+          5,
+          15,
+          25,
+          40,
+          null,
+          null,
+          13,
+          17
+        ],
+        "k": 5
+      },
+      "expected": 17
+    }
+  ]
+}

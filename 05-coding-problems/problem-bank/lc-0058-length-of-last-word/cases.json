@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "two words", "input": { "s": "alpha beta" }, "expected": 4 },
+    { "name": "trailing spaces", "input": { "s": "trail   " }, "expected": 5 },
+    { "name": "single word", "input": { "s": "solitary" }, "expected": 8 },
+    { "name": "many internal spaces", "input": { "s": "north   south east" }, "expected": 4 },
+    { "name": "long final word", "input": { "s": "short extraordinary" }, "expected": 13 }
+  ]
+}

@@ -1,0 +1,39 @@
+%% Bridge Pattern Class Diagram
+%% Separates abstraction from implementation so both can vary independently
+
+classDiagram
+    class Abstraction {
+        #implementor Implementor
+        +Abstraction(Implementor)
+        +operation() void
+    }
+    
+    class RefinedAbstraction {
+        +operation() void
+        +extendedOperation() void
+    }
+    
+    class Implementor {
+        <<interface>>
+        +operationImpl() void
+    }
+    
+    class ConcreteImplementorA {
+        +operationImpl() void
+    }
+    
+    class ConcreteImplementorB {
+        +operationImpl() void
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Abstraction <|-- RefinedAbstraction
+    Abstraction --> Implementor : has
+    Implementor <|.. ConcreteImplementorA
+    Implementor <|.. ConcreteImplementorB
+    Client --> Abstraction
+    
+    note for Abstraction "Abstraction hierarchy and\nImplementor hierarchy can\nvary independently."

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bfs-coordinate-conversion",
+      "title": "BFS coordinate conversion",
+      "tier": 1,
+      "strategy": "Run BFS over square numbers and convert each candidate destination to board coordinates on demand.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "At most n^2 squares are visited, with up to six edges checked per square."
+      },
+      "spaceComplexity": {
+        "class": "O(n^2)",
+        "explanation": "The visited set and queue can store all board squares."
+      },
+      "javaPath": "java/solution-1-bfs-coordinate-conversion/Solution.java",
+      "pythonPath": "python/solution-1-bfs-coordinate-conversion/solution.py"
+    },
+    {
+      "id": "solution-2-precomputed-destinations",
+      "title": "Precomputed destinations",
+      "tier": 2,
+      "strategy": "Flatten the board into destination squares first, then run BFS over that one-dimensional graph.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Flattening and BFS each touch the board-sized square set."
+      },
+      "spaceComplexity": {
+        "class": "O(n^2)",
+        "explanation": "The destination array, visited array, and queue are board-sized."
+      },
+      "javaPath": "java/solution-2-precomputed-destinations/Solution.java",
+      "pythonPath": "python/solution-2-precomputed-destinations/solution.py"
+    }
+  ]
+}

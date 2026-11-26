@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-descending",
+      "title": "Sort and count qualifying papers",
+      "tier": 1,
+      "strategy": "Sort citation counts descending and increase h while the next paper has enough citations for its rank.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting dominates the scan."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The algorithm stores only counters directly, but runtime sorting may allocate auxiliary memory, so the shared Java/Python bound is kept conservative."
+      },
+      "javaPath": "java/solution-1-sort-descending/Solution.java",
+      "pythonPath": "python/solution-1-sort-descending/solution.py"
+    },
+    {
+      "id": "solution-2-counting-buckets",
+      "title": "Counting buckets by capped citation count",
+      "tier": 2,
+      "strategy": "Bucket citation counts by min(count, n), then scan possible h values downward while accumulating papers with enough citations.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The bucket fill and descending scan each take linear time."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The bucket array has n plus one counters."
+      },
+      "javaPath": "java/solution-2-counting-buckets/Solution.java",
+      "pythonPath": "python/solution-2-counting-buckets/solution.py"
+    }
+  ]
+}

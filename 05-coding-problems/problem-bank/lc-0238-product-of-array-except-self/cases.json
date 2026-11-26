@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "three positives", "input": { "nums": [2, 3, 5] }, "expected": [15, 10, 6] },
+    { "name": "single zero", "input": { "nums": [4, 0, 2] }, "expected": [0, 8, 0] },
+    { "name": "two zeroes", "input": { "nums": [0, 4, 0] }, "expected": [0, 0, 0] },
+    { "name": "negative values", "input": { "nums": [-2, 3, -4] }, "expected": [-12, 8, -6] },
+    { "name": "single value", "input": { "nums": [7] }, "expected": [1] }
+  ]
+}

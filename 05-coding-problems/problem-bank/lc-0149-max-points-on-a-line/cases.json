@@ -1,0 +1,72 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "diagonal majority",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "name": "vertical line",
+      "input": {
+        "points": [
+          [
+            4,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "name": "only two points",
+      "input": {
+        "points": [
+          [
+            -1,
+            2
+          ],
+          [
+            5,
+            8
+          ]
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

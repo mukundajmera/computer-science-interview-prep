@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "tens subtractive pair",
+      "input": {
+        "s": "XLII"
+      },
+      "expected": 42
+    },
+    {
+      "name": "hundreds and tens subtractive pairs",
+      "input": {
+        "s": "CDXLIV"
+      },
+      "expected": 444
+    },
+    {
+      "name": "modern year",
+      "input": {
+        "s": "MMXXVI"
+      },
+      "expected": 2026
+    },
+    {
+      "name": "single subtractive pair",
+      "input": {
+        "s": "IX"
+      },
+      "expected": 9
+    },
+    {
+      "name": "ninety",
+      "input": {
+        "s": "XC"
+      },
+      "expected": 90
+    }
+  ]
+}

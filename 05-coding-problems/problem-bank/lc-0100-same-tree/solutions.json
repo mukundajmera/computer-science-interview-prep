@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-pair-compare",
+      "title": "Recursive pair compare",
+      "tier": 1,
+      "strategy": "Compare the current pair, then recursively compare left and right child pairs.",
+      "timeComplexity": {
+        "class": "O(min(n, m))",
+        "explanation": "Traversal stops at the first mismatch and otherwise visits paired nodes once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack is bounded by the shorter matching prefix height h."
+      },
+      "javaPath": "java/solution-1-recursive-pair-compare/Solution.java",
+      "pythonPath": "python/solution-1-recursive-pair-compare/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-pair-stack",
+      "title": "Iterative pair stack",
+      "tier": 2,
+      "strategy": "Push corresponding child pairs and reject any value or null-shape mismatch.",
+      "timeComplexity": {
+        "class": "O(min(n, m))",
+        "explanation": "Each compared node pair is popped at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The stack follows pending paired nodes and can grow with tree height h."
+      },
+      "javaPath": "java/solution-2-iterative-pair-stack/Solution.java",
+      "pythonPath": "python/solution-2-iterative-pair-stack/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two values balanced",
+      "input": {
+        "nums": [
+          0,
+          1
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "best length two inside three",
+      "input": {
+        "nums": [
+          0,
+          1,
+          0
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "long middle segment",
+      "input": {
+        "nums": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "name": "no balanced segment",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "whole array balanced",
+      "input": {
+        "nums": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "name": "earliest balance must be retained",
+      "input": {
+        "nums": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "expected": 6
+    }
+  ]
+}

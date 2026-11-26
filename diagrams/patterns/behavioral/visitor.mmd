@@ -1,0 +1,55 @@
+%% Visitor Pattern Class Diagram
+%% Represents operation to perform on elements without changing their classes
+
+classDiagram
+    class Visitor {
+        <<interface>>
+        +visitElementA(ElementA) void
+        +visitElementB(ElementB) void
+    }
+    
+    class ConcreteVisitor1 {
+        +visitElementA(ElementA) void
+        +visitElementB(ElementB) void
+    }
+    
+    class ConcreteVisitor2 {
+        +visitElementA(ElementA) void
+        +visitElementB(ElementB) void
+    }
+    
+    class Element {
+        <<interface>>
+        +accept(Visitor) void
+    }
+    
+    class ElementA {
+        +accept(Visitor) void
+        +operationA() String
+    }
+    
+    class ElementB {
+        +accept(Visitor) void
+        +operationB() String
+    }
+    
+    class ObjectStructure {
+        -elements List~Element~
+        +attach(Element) void
+        +detach(Element) void
+        +accept(Visitor) void
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Visitor <|.. ConcreteVisitor1
+    Visitor <|.. ConcreteVisitor2
+    Element <|.. ElementA
+    Element <|.. ElementB
+    ObjectStructure --> Element : contains
+    ElementA ..> Visitor : accept calls visitElementA
+    ElementB ..> Visitor : accept calls visitElementB
+    Client --> ObjectStructure
+    Client --> Visitor : creates

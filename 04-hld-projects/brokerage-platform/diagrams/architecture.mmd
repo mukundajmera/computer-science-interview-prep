@@ -1,0 +1,10 @@
+flowchart LR
+    Client --> Gateway
+    Gateway --> QuoteFanout
+    Gateway --> OrderService
+    QuoteFanout --> WebsocketHubs
+    OrderService --> ExchangeAdapter
+    ExchangeAdapter --> Exchange
+    OrderService --> OrderDB
+    OrderService --> EventLog
+    EventLog --> Reconciler

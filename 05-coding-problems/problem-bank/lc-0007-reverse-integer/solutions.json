@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-string-reversal",
+      "title": "String reversal",
+      "tier": 1,
+      "strategy": "Reverse the decimal text after separating the sign, then clamp to 32-bit range.",
+      "timeComplexity": {
+        "class": "O(d)",
+        "explanation": "The d decimal digits are copied and reversed."
+      },
+      "spaceComplexity": {
+        "class": "O(d)",
+        "explanation": "Digit strings are stored."
+      },
+      "javaPath": "java/solution-1-string-reversal/Solution.java",
+      "pythonPath": "python/solution-1-string-reversal/solution.py"
+    },
+    {
+      "id": "solution-2-pop-and-push-digits",
+      "title": "Pop and push digits",
+      "tier": 2,
+      "strategy": "Build the reversed number one digit at a time while checking 32-bit overflow before each push.",
+      "timeComplexity": {
+        "class": "O(d)",
+        "explanation": "Each decimal digit is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only numeric accumulators are stored."
+      },
+      "javaPath": "java/solution-2-pop-and-push-digits/Solution.java",
+      "pythonPath": "python/solution-2-pop-and-push-digits/solution.py"
+    }
+  ]
+}

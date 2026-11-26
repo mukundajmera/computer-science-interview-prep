@@ -1,0 +1,15 @@
+```mermaid
+graph LR
+    User[User] -->|Low Latency| Edge[Edge PoP]
+    
+    subgraph Edge Location
+        Edge --> WebRTC[WebRTC Node]
+        Edge --> VAD[VAD Service]
+    end
+    
+    WebRTC -->|Dedicated WAN| Core[Core Region]
+    
+    subgraph Core Cloud
+        Core --> AI[ASR / LLM / TTS Cluster]
+    end
+```

@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-shrink-prefix",
+      "title": "Shrink candidate prefix",
+      "tier": 1,
+      "strategy": "Start with the first string and trim it until every string starts with it.",
+      "timeComplexity": { "class": "O(s)", "explanation": "Across all trimming and prefix checks, characters from the input strings are compared against the candidate prefix." },
+      "spaceComplexity": { "class": "O(p)", "explanation": "The candidate prefix can be as long as the shortest string." },
+      "javaPath": "java/solution-1-shrink-prefix/Solution.java",
+      "pythonPath": "python/solution-1-shrink-prefix/solution.py"
+    },
+    {
+      "id": "solution-2-column-scan",
+      "title": "Column-wise scan",
+      "tier": 2,
+      "strategy": "Compare the same character position across all strings and stop at the first mismatch.",
+      "timeComplexity": { "class": "O(s)", "explanation": "At most the common-prefix portion of each string is inspected, bounded by total input characters s." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only indexes are stored aside from the returned substring." },
+      "javaPath": "java/solution-2-column-scan/Solution.java",
+      "pythonPath": "python/solution-2-column-scan/solution.py"
+    }
+  ]
+}

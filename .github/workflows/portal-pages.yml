@@ -1,0 +1,81 @@
+name: Portal Pages
+
+env:
+  # The private repo currently has no GitHub Pages site. Build and test on every event,
+  # but publish only after an owner explicitly opts in via this repository variable.
+  SHOULD_DEPLOY: ${{ vars.ENABLE_GITHUB_PAGES_DEPLOYMENT == 'true' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) }}
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build static portal
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: apps/portal/package-lock.json
+
+      - name: Install portal dependencies
+        run: npm --prefix apps/portal ci
+
+      - name: Run portal tests
+        run: npm --prefix apps/portal run test
+
+      - name: Run portal lint
+        run: npm --prefix apps/portal run lint
+
+      - name: Build portal static export
+        run: GITHUB_PAGES=true npm --prefix apps/portal run build
+
+      - name: Check portal static export
+        run: npm --prefix apps/portal run check:export
+
+      - name: Upload static portal artifact
+        if: env.SHOULD_DEPLOY == 'true'
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: apps/portal/out
+
+  deploy:
+    name: Deploy static portal
+    if: vars.ENABLE_GITHUB_PAGES_DEPLOYMENT == 'true' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

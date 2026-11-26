@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bfs-level-sums",
+      "title": "BFS level sums",
+      "tier": 1,
+      "strategy": "Process one queue level at a time, summing that level and dividing by its size.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each tree node is enqueued, dequeued, and added once."
+      },
+      "spaceComplexity": {
+        "class": "O(w)",
+        "explanation": "The queue can hold the widest level of the tree."
+      },
+      "javaPath": "java/solution-1-bfs-level-sums/Solution.java",
+      "pythonPath": "python/solution-1-bfs-level-sums/solution.py"
+    },
+    {
+      "id": "solution-2-dfs-depth-sums",
+      "title": "DFS depth sums",
+      "tier": 2,
+      "strategy": "Traverse depth-first while accumulating sum and count arrays indexed by depth.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is visited exactly once."
+      },
+      "spaceComplexity": {
+        "class": "O(h + d)",
+        "explanation": "The call stack uses tree height h, while sum/count arrays store d depth buckets."
+      },
+      "javaPath": "java/solution-2-dfs-depth-sums/Solution.java",
+      "pythonPath": "python/solution-2-dfs-depth-sums/solution.py"
+    }
+  ]
+}

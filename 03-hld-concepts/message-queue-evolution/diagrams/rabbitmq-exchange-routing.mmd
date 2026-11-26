@@ -1,0 +1,14 @@
+graph TD
+    P1[Producer 1] -->|Topic: order.created| EX(Topic Exchange)
+    P2[Producer 2] -->|Topic: user.signup| EX
+    
+    EX -->|Binding: order.*| Q1[Orders Queue]
+    EX -->|Binding: *.signup| Q2[Signup Queue]
+    EX -->|Binding: #| Q3[Audit Queue]
+    
+    Q1 --> C1[Order Processor]
+    Q2 --> C2[Email Sender]
+    Q3 --> C3[Data Lake Ingest]
+
+    classDef broker fill:#f9f,stroke:#333,stroke-width:2px;
+    class EX,Q1,Q2,Q3 broker;

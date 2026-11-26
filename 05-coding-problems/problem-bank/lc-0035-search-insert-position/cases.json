@@ -1,0 +1,60 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "target present",
+      "input": {
+        "nums": [
+          2,
+          5,
+          9,
+          14
+        ],
+        "target": 9
+      },
+      "expected": 2
+    },
+    {
+      "name": "insert between values",
+      "input": {
+        "nums": [
+          2,
+          5,
+          9,
+          14
+        ],
+        "target": 7
+      },
+      "expected": 2
+    },
+    {
+      "name": "insert after all values",
+      "input": {
+        "nums": [
+          2,
+          5,
+          9,
+          14
+        ],
+        "target": 20
+      },
+      "expected": 4
+    },
+    {
+      "name": "insert before all values",
+      "input": {
+        "nums": [
+          2,
+          5,
+          9,
+          14
+        ],
+        "target": -1
+      },
+      "expected": 0
+    }
+  ]
+}

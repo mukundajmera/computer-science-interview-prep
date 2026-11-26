@@ -1,0 +1,32 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "replace then insert",
+      "input": {
+        "word1": "maps",
+        "word2": "maple"
+      },
+      "expected": 2
+    },
+    {
+      "name": "insert and replace",
+      "input": {
+        "word1": "abc",
+        "word2": "yabd"
+      },
+      "expected": 2
+    },
+    {
+      "name": "empty source word",
+      "input": {
+        "word1": "",
+        "word2": "code"
+      },
+      "expected": 4
+    }
+  ]
+}

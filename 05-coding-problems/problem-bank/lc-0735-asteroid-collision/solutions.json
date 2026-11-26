@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-repeated-adjacent-simulation",
+      "title": "Repeated adjacent simulation",
+      "tier": 1,
+      "strategy": "Repeatedly scan adjacent pairs and resolve the first wave of collisions until no pair can collide.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "A chain of collisions can require repeated passes over the survivor list."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "A working survivor list is rebuilt per pass."
+      },
+      "javaPath": "java/solution-1-repeated-adjacent-simulation/Solution.java",
+      "pythonPath": "python/solution-1-repeated-adjacent-simulation/solution.py"
+    },
+    {
+      "id": "solution-2-stack-simulation",
+      "title": "Stack simulation",
+      "tier": 2,
+      "strategy": "Keep stable left-side survivors in a stack and resolve each incoming negative asteroid against positive stack tops.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each asteroid is pushed once and popped at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The survivor stack can hold every asteroid."
+      },
+      "javaPath": "java/solution-2-stack-simulation/Solution.java",
+      "pythonPath": "python/solution-2-stack-simulation/solution.py"
+    }
+  ]
+}

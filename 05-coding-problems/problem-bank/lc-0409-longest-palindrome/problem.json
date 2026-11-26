@@ -1,0 +1,104 @@
+{
+  "id": "lc-0409-longest-palindrome",
+  "title": "Longest Palindrome",
+  "difficulty": "easy",
+  "status": "verified",
+  "patterns": [
+    "greedy",
+    "hash-table",
+    "string"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-frequency-counts/Solution.java",
+      "python/solution-1-frequency-counts/solution.py",
+      "java/solution-2-toggle-odd-set/Solution.java",
+      "python/solution-2-toggle-odd-set/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 30,
+      "group": "string",
+      "sourceUrl": "https://leetcode.com/problems/longest-palindrome"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 79,
+      "group": "Arrays & Hashing",
+      "sourceUrl": "https://leetcode.com/problems/longest-palindrome"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "409",
+    "titleSlug": "longest-palindrome",
+    "url": "https://leetcode.com/problems/longest-palindrome",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "longestPalindrome",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "s",
+          "type": "String"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "longestPalindrome",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "s",
+          "type": "str"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

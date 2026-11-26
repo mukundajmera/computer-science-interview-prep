@@ -1,0 +1,44 @@
+erDiagram
+    Jobs {
+        string job_id PK
+        string tenant_id
+        string status
+        datetime created_at
+    }
+    Schedules {
+        string schedule_id PK
+        string job_id FK
+        string schedule_expr
+        datetime next_fire_at
+    }
+    ExecutionRuns {
+        string run_id PK
+        string job_id FK
+        datetime scheduled_at
+        string state
+        int attempt
+    }
+    WorkerNodes {
+        string worker_id PK
+        string status
+        datetime last_seen
+    }
+    Locks {
+        string lock_id PK
+        string run_id FK
+        string worker_id FK
+        datetime lease_until
+    }
+    Heartbeats {
+        string heartbeat_id PK
+        string worker_id FK
+        string run_id FK
+        datetime timestamp
+    }
+
+    Jobs ||--o{ Schedules : "has"
+    Jobs ||--o{ ExecutionRuns : "generates"
+    ExecutionRuns ||--o| Locks : "secured_by"
+    WorkerNodes ||--o{ Locks : "holds"
+    WorkerNodes ||--o{ Heartbeats : "emits"
+    ExecutionRuns ||--o{ Heartbeats : "receives"

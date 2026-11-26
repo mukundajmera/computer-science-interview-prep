@@ -1,0 +1,103 @@
+```mermaid
+flowchart TB
+    subgraph Clients["Client Layer"]
+        Web[Web Browser]
+        Mobile[Mobile App]
+        APIClient[API Client]
+    end
+    
+    subgraph Edge["Edge Layer"]
+        CDN[CDN<br/>CloudFlare/CloudFront]
+        DNS[DNS<br/>Route53]
+    end
+    
+    subgraph Gateway["API Gateway"]
+        LB[Load Balancer<br/>ALB/NLB]
+        RateLimiter[Rate Limiter<br/>Token Bucket]
+        Auth[Auth Service<br/>Optional]
+    end
+    
+    subgraph Application["Application Layer"]
+        API1[API Server 1]
+        API2[API Server 2]
+        API3[API Server 3]
+        APIN[API Server N]
+        
+        KGS[Key Generation<br/>Service]
+        KeyPool[(Key Pool<br/>Database)]
+    end
+    
+    subgraph Caching["Cache Layer"]
+        RedisCluster[Redis Cluster]
+        LocalCache[Local Cache<br/>In-Memory]
+    end
+    
+    subgraph Storage["Storage Layer"]
+        subgraph Primary["Primary Region"]
+            DB1[(Shard 1<br/>Primary)]
+            DB1R[(Shard 1<br/>Replica)]
+            DB2[(Shard 2<br/>Primary)]
+            DB2R[(Shard 2<br/>Replica)]
+        end
+    end
+    
+    subgraph Analytics["Analytics Pipeline"]
+        Kafka[Apache Kafka]
+        StreamProcessor[Spark Streaming]
+        ClicksDB[(Clicks Database<br/>ClickHouse)]
+    end
+    
+    subgraph Monitoring["Observability"]
+        Metrics[Prometheus/<br/>CloudWatch]
+        Logs[ELK Stack]
+        Traces[Jaeger/X-Ray]
+    end
+    
+    %% Client to Edge
+    Web --> CDN
+    Mobile --> CDN
+    APIClient --> CDN
+    
+    %% Edge to Gateway
+    CDN --> DNS
+    DNS --> LB
+    
+    %% Gateway to App
+    LB --> RateLimiter
+    RateLimiter --> API1
+    RateLimiter --> API2
+    RateLimiter --> API3
+    RateLimiter --> APIN
+    
+    %% App to Services
+    API1 --> LocalCache
+    API1 --> RedisCluster
+    API1 --> DB1
+    API1 --> KGS
+    API1 --> Kafka
+    
+    API2 --> LocalCache
+    API2 --> RedisCluster
+    API2 --> DB2
+    
+    KGS --> KeyPool
+    
+    %% Database replication
+    DB1 --> DB1R
+    DB2 --> DB2R
+    
+    %% Analytics flow
+    Kafka --> StreamProcessor
+    StreamProcessor --> ClicksDB
+    
+    %% Monitoring
+    API1 -.-> Metrics
+    API1 -.-> Logs
+    API1 -.-> Traces
+    
+    style CDN fill:#e1f5fe
+    style RedisCluster fill:#fff3e0
+    style DB1 fill:#e8f5e9
+    style DB2 fill:#e8f5e9
+    style Kafka fill:#fce4ec
+```

@@ -1,0 +1,16 @@
+graph TD
+    subgraph Traditional["Conventional Userspace Path"]
+        Disk1[Disk] -->|DMA Copy| PageCache1[OS Page Cache]
+        PageCache1 -->|CPU Copy| AppBuffer[Application Buffer]
+        AppBuffer -->|CPU Copy| SocketBuffer[Socket Buffer]
+        SocketBuffer -->|DMA Copy| NIC1[NIC]
+    end
+
+    subgraph ZeroCopy["Possible sendfile Path"]
+        Disk2[Disk] -->|DMA Copy| PageCache2[OS Page Cache]
+        PageCache2 -.->|Descriptors Only| SocketBuffer2[Socket Buffer]
+        PageCache2 -->|Hardware/Kernel Dependent DMA| NIC2[NIC]
+        SocketBuffer2 -.->|Protocol Engine| NIC2
+        Conditions["Conditions: sendfile bypasses user-space copies if kernel/NIC supports gather operations and TLS is off"]
+        PageCache2 -.-> Conditions
+    end

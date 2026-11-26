@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-count-and-sort",
+      "title": "Count and sort",
+      "tier": 1,
+      "strategy": "Count each word, then sort unique words by descending frequency and ascending word.",
+      "timeComplexity": {
+        "class": "O(n + u log u)",
+        "explanation": "Counting scans n words and sorting orders u unique words."
+      },
+      "spaceComplexity": {
+        "class": "O(u)",
+        "explanation": "The frequency map and unique-word list store u entries."
+      },
+      "javaPath": "java/solution-1-count-and-sort/Solution.java",
+      "pythonPath": "python/solution-1-count-and-sort/solution.py"
+    },
+    {
+      "id": "solution-2-size-k-min-heap",
+      "title": "Size-k min heap",
+      "tier": 2,
+      "strategy": "Keep only the best k words in a heap whose root is the currently worst retained candidate.",
+      "timeComplexity": {
+        "class": "O(n + u log k)",
+        "explanation": "Counting scans all words and each unique word performs a heap operation bounded by k."
+      },
+      "spaceComplexity": {
+        "class": "O(u + k)",
+        "explanation": "The frequency map stores u words and the heap stores k candidates."
+      },
+      "javaPath": "java/solution-2-size-k-min-heap/Solution.java",
+      "pythonPath": "python/solution-2-size-k-min-heap/solution.py"
+    }
+  ]
+}

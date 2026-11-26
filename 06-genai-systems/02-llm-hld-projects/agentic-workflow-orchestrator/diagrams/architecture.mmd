@@ -1,0 +1,73 @@
+flowchart TB
+    subgraph Clients
+        WebApp[Web App]
+        APIClient[API Client]
+        SlackBot[Slack Bot]
+    end
+
+    subgraph Gateway["API Gateway"]
+        LB[Load Balancer]
+        Auth[Auth + Rate Limiter]
+    end
+
+    subgraph TaskMgmt["Task Management"]
+        TaskAPI[Task API]
+        TaskQueue[(Durable Task Queue)]
+    end
+
+    subgraph Agent["Agent Engine"]
+        Planner[Planner - LLM]
+        Executor[Step Executor]
+        ToolRouter[Tool Router]
+        ErrHandler[Error Handler]
+        ApprovalMgr[Approval Manager]
+    end
+
+    subgraph LLM["LLM Layer"]
+        LLMGw[LLM Gateway]
+        GPT4o[GPT-4o]
+        GPT4oMini[GPT-4o-mini]
+    end
+
+    subgraph ToolLayer["Tool Gateway"]
+        ToolGw[Tool Gateway]
+        Calendar[Calendar API]
+        Email[Email API]
+        Slack[Slack API]
+        Jira[Jira API]
+    end
+
+    subgraph Storage["Storage"]
+        PG[(PostgreSQL)]
+        Redis[(Redis)]
+        S3[(S3)]
+    end
+
+    WebApp --> LB
+    APIClient --> LB
+    SlackBot --> LB
+    LB --> Auth
+    Auth --> TaskAPI
+
+    TaskAPI --> TaskQueue
+    TaskQueue --> Planner
+    Planner --> LLMGw
+    LLMGw --> GPT4o
+    LLMGw --> GPT4oMini
+
+    Planner --> Executor
+    Executor --> ToolRouter
+    Executor --> ApprovalMgr
+    Executor --> ErrHandler
+    ErrHandler --> Planner
+
+    ToolRouter --> ToolGw
+    ToolGw --> Calendar
+    ToolGw --> Email
+    ToolGw --> Slack
+    ToolGw --> Jira
+
+    TaskAPI --> PG
+    Executor --> PG
+    Executor --> Redis
+    ApprovalMgr --> PG

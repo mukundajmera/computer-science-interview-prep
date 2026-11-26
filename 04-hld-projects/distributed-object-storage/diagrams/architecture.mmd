@@ -1,0 +1,23 @@
+graph TD
+    Client[Client Applications] -->|HTTP PUT/GET| API[API Gateway]
+    
+    API -->|Auth & Rate Limit| Router[Storage Router]
+    
+    subgraph Control Plane
+        Router -->|1. Lookup/Commit Metadata| MetaService[Metadata Service]
+        MetaService -->|Read/Write| MetaDB[(Cassandra\nMetadata DB)]
+    end
+    
+    subgraph Data Plane
+        Router -->|2. Stream Data / Erasure Code| CS1[Chunk Server 1]
+        Router --> CS2[Chunk Server 2]
+        Router --> CS3[Chunk Server 3]
+        Router -.-> CSN[Chunk Server N]
+    end
+    
+    subgraph Background Services
+        Repair[Placement & Repair Service] -->|Monitor & Rebuild| CS1
+        Repair --> CS2
+        Repair --> CS3
+        GC[Garbage Collector] -->|Compact Containers| CS1
+    end

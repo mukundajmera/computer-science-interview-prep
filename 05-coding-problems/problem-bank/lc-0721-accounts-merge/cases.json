@@ -1,0 +1,107 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list-of-lists"
+  },
+  "cases": [
+    {
+      "name": "transitive merge and isolated account",
+      "input": {
+        "accounts": [
+          [
+            "Mira",
+            "m1@mail",
+            "m2@mail"
+          ],
+          [
+            "Mira",
+            "m2@mail",
+            "m3@mail"
+          ],
+          [
+            "Mira",
+            "solo@mail"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "Mira",
+          "m1@mail",
+          "m2@mail",
+          "m3@mail"
+        ],
+        [
+          "Mira",
+          "solo@mail"
+        ]
+      ]
+    },
+    {
+      "name": "same name disconnected",
+      "input": {
+        "accounts": [
+          [
+            "Nia",
+            "n1@mail"
+          ],
+          [
+            "Nia",
+            "n2@mail"
+          ],
+          [
+            "Omar",
+            "o1@mail",
+            "o2@mail"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "Nia",
+          "n1@mail"
+        ],
+        [
+          "Nia",
+          "n2@mail"
+        ],
+        [
+          "Omar",
+          "o1@mail",
+          "o2@mail"
+        ]
+      ]
+    },
+    {
+      "name": "bridge account arrives late",
+      "input": {
+        "accounts": [
+          [
+            "Kai",
+            "a@mail",
+            "b@mail"
+          ],
+          [
+            "Kai",
+            "c@mail",
+            "d@mail"
+          ],
+          [
+            "Kai",
+            "b@mail",
+            "c@mail"
+          ]
+        ]
+      },
+      "expected": [
+        [
+          "Kai",
+          "a@mail",
+          "b@mail",
+          "c@mail",
+          "d@mail"
+        ]
+      ]
+    }
+  ]
+}

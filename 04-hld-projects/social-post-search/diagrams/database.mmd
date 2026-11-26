@@ -1,0 +1,49 @@
+erDiagram
+    Posts {
+        string post_id PK
+        string author_id FK
+        string content
+        datetime created_at
+        int like_count
+        int comment_count
+        int share_count
+    }
+
+    Authors {
+        string author_id PK
+        string username
+        string display_name
+        int follower_count
+    }
+
+    PostTokens {
+        string token_id PK
+        string post_id FK
+        string token_value
+        int position
+    }
+
+    PostingLists {
+        string token_id PK
+        string posting_data
+        datetime last_updated
+    }
+
+    Hashtags {
+        string hashtag_id PK
+        string hashtag_value
+        int post_count
+    }
+
+    SearchAuditLogs {
+        string log_id PK
+        string user_id
+        string query
+        datetime timestamp
+        int results_count
+        float latency_ms
+    }
+
+    Authors ||--o{ Posts : "creates"
+    Posts ||--o{ PostTokens : "contains"
+    Posts }o--o{ Hashtags : "tagged with"

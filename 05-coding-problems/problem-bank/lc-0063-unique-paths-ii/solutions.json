@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dp-table",
+      "title": "2D DP table",
+      "tier": 1,
+      "strategy": "Store the path count for every cell while zeroing blocked cells.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Every grid cell is evaluated once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "A separate table stores one count per cell."
+      },
+      "javaPath": "java/solution-1-dp-table/Solution.java",
+      "pythonPath": "python/solution-1-dp-table/solution.py"
+    },
+    {
+      "id": "solution-2-one-dimensional-dp",
+      "title": "1D rolling DP",
+      "tier": 2,
+      "strategy": "Reuse a single row of path counts while scanning the grid left to right.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each cell updates one column count once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The rolling array stores one path count per column."
+      },
+      "javaPath": "java/solution-2-one-dimensional-dp/Solution.java",
+      "pythonPath": "python/solution-2-one-dimensional-dp/solution.py"
+    }
+  ]
+}

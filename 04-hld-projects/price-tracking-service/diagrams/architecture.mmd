@@ -1,0 +1,34 @@
+flowchart TD
+    Clients([Clients]) --> APIGateway[API Gateway]
+    
+    APIGateway --> ProductAlertAPI[Product/Alert API]
+    ProductAlertAPI --> ProductDB[(Product DB)]
+    ProductAlertAPI --> AlertDB[(Alert DB)]
+    ProductAlertAPI --> CurrentPriceCache[(Current Price Cache)]
+    ProductAlertAPI --> PriceEventLogTSDB[(Price Event Log / TSDB)]
+
+    CrawlScheduler[Crawl Scheduler] --> FrontierQueue[Frontier Queue]
+    CrawlScheduler --> MerchantBudget[(Merchant Budget)]
+    FrontierQueue --> FetchRenderWorkers[Fetch/Render Workers]
+    FetchRenderWorkers --> ParserNormalizer[Parser/Normalizer]
+    FetchRenderWorkers --> CrawlDLQ[Crawl DLQ]
+    ParserNormalizer --> CrawlDLQ
+    CrawlDLQ --> RawArtifacts[(Raw Crawl Artifacts)]
+
+    ParserNormalizer --> PriceIngestionAPI[Price Ingestion API]
+
+    PriceIngestionAPI --> PriceEventLogTSDB
+    PriceIngestionAPI --> PriceObservedTopic([PriceObserved Topic])
+    PriceIngestionAPI --> OfferChangedTopic([OfferChanged Topic])
+
+    PriceObservedTopic --> AlertEvaluator[Alert Evaluator]
+    OfferChangedTopic --> CurrentOfferProjector[Current Offer Projector]
+
+    CurrentOfferProjector --> CurrentPriceCache
+    CurrentOfferProjector --> ProductDB
+
+    AlertEvaluator --> AlertDB
+    AlertEvaluator --> AlertMatchedTopic([AlertMatched Topic])
+    
+    AlertMatchedTopic --> NotificationWorkers[Notification Workers]
+    NotificationWorkers --> AlertDB

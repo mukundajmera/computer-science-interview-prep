@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-brute-force-doubled-window",
+      "title": "Brute force doubled window",
+      "tier": 1,
+      "strategy": "Try every start in a doubled array while limiting each window to at most n elements.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "There are n starts and each start extends up to n positions."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only counters and the best sum are tracked."
+      },
+      "javaPath": "java/solution-1-brute-force-doubled-window/Solution.java",
+      "pythonPath": "python/solution-1-brute-force-doubled-window/solution.py"
+    },
+    {
+      "id": "solution-2-kadane-max-min",
+      "title": "Kadane max/min",
+      "tier": 2,
+      "strategy": "Compute the best non-wrapping subarray and the best wrapping subarray as total sum minus minimum subarray.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each value updates constant-time Kadane states once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only running sums and extrema are stored."
+      },
+      "javaPath": "java/solution-2-kadane-max-min/Solution.java",
+      "pythonPath": "python/solution-2-kadane-max-min/solution.py"
+    }
+  ]
+}

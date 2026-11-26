@@ -1,0 +1,11 @@
+
+public enum OrderState {
+    CREATED,
+    RESERVATION,
+    ACCEPTED,
+    PREPARING,
+    OUT_FOR_DELIVERY,
+    DELIVERED,
+    PAYMENT,
+    COURIER_DISPATCH
+}

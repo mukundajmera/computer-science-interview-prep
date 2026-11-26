@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-nested-scan",
+      "title": "Nested scan",
+      "tier": 1,
+      "strategy": "For every position, scan all values to its right to find the replacement.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each position may scan the suffix after it."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "A new result array is returned."
+      },
+      "javaPath": "java/solution-1-nested-scan/Solution.java",
+      "pythonPath": "python/solution-1-nested-scan/solution.py"
+    },
+    {
+      "id": "solution-2-right-suffix-maximum",
+      "title": "Right suffix maximum",
+      "tier": 2,
+      "strategy": "Scan from right to left, writing the best value seen so far before incorporating the current value.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each element is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The returned array stores n replacements."
+      },
+      "javaPath": "java/solution-2-right-suffix-maximum/Solution.java",
+      "pythonPath": "python/solution-2-right-suffix-maximum/solution.py"
+    }
+  ]
+}

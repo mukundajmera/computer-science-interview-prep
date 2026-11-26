@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-repeated-removal",
+      "title": "Repeated pair removal",
+      "tier": 1,
+      "strategy": "Repeatedly delete adjacent valid pairs until no more pairs can be removed.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each removal pass scans the string and may remove only a small number of pairs."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Each replacement creates intermediate strings proportional to the current length."
+      },
+      "javaPath": "java/solution-1-repeated-removal/Solution.java",
+      "pythonPath": "python/solution-1-repeated-removal/solution.py"
+    },
+    {
+      "id": "solution-2-stack",
+      "title": "Opening bracket stack",
+      "tier": 2,
+      "strategy": "Push opening brackets and require each closer to match the most recent opener.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every character is pushed, popped, or checked once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "In the worst case all characters are opening brackets and remain on the stack."
+      },
+      "javaPath": "java/solution-2-stack/Solution.java",
+      "pythonPath": "python/solution-2-stack/solution.py"
+    }
+  ]
+}

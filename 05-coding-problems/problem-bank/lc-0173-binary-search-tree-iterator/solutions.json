@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-flattened-inorder",
+      "title": "Flattened inorder list",
+      "tier": 1,
+      "strategy": "Traverse the tree once at construction time and store all values in sorted order.",
+      "timeComplexity": {
+        "class": "O(n) init, O(1) next/hasNext",
+        "explanation": "The constructor visits every node once. Each later operation reads or advances an array index."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "All node values are stored in an inorder list."
+      },
+      "javaPath": "java/solution-1-flattened-inorder/Solution.java",
+      "pythonPath": "python/solution-1-flattened-inorder/solution.py"
+    },
+    {
+      "id": "solution-2-controlled-stack",
+      "title": "Controlled inorder stack",
+      "tier": 2,
+      "strategy": "Keep only the path to the next smallest node, pushing left descendants lazily after each pop.",
+      "timeComplexity": {
+        "class": "O(1) amortized next, O(1) hasNext",
+        "explanation": "Each tree node is pushed and popped once across the full iteration, so total next work is O(n) for n calls."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The stack stores at most one root-to-leaf path, where h is tree height."
+      },
+      "javaPath": "java/solution-2-controlled-stack/Solution.java",
+      "pythonPath": "python/solution-2-controlled-stack/solution.py"
+    }
+  ]
+}

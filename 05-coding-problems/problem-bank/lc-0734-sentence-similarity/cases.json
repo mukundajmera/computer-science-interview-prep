@@ -1,0 +1,74 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "direct similarities",
+      "input": {
+        "sentence1": [
+          "great",
+          "acting",
+          "skills"
+        ],
+        "sentence2": [
+          "fine",
+          "drama",
+          "talent"
+        ],
+        "similarPairs": [
+          [
+            "great",
+            "fine"
+          ],
+          [
+            "acting",
+            "drama"
+          ],
+          [
+            "skills",
+            "talent"
+          ]
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "not transitive",
+      "input": {
+        "sentence1": [
+          "great"
+        ],
+        "sentence2": [
+          "good"
+        ],
+        "similarPairs": [
+          [
+            "great",
+            "fine"
+          ],
+          [
+            "fine",
+            "good"
+          ]
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "length mismatch",
+      "input": {
+        "sentence1": [
+          "a"
+        ],
+        "sentence2": [
+          "a",
+          "b"
+        ],
+        "similarPairs": []
+      },
+      "expected": false
+    }
+  ]
+}

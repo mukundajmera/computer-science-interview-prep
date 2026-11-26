@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "matching tall ends", "input": { "height": [4, 3, 2, 1, 4] }, "expected": 16 },
+    { "name": "inner peak with far right", "input": { "height": [2, 3, 10, 5, 7, 8, 9] }, "expected": 36 },
+    { "name": "small valley", "input": { "height": [1, 2, 1] }, "expected": 2 },
+    { "name": "single line", "input": { "height": [5] }, "expected": 0 },
+    { "name": "symmetric pair", "input": { "height": [6, 1, 6] }, "expected": 12 }
+  ]
+}

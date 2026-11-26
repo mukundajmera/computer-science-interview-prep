@@ -1,0 +1,20 @@
+```mermaid
+graph TD
+    Client[Client App] -->|WebRTC| Gateway[WebRTC Gateway]
+    Gateway --> VAD[VAD / Endpointing]
+    VAD --> Orchestrator[Voice Orchestrator]
+    
+    subgraph Cascaded Pipeline
+        Orchestrator --> ASR[Streaming ASR]
+        ASR --> LLM[Streaming LLM]
+        LLM --> TTS[Streaming TTS]
+    end
+    
+    subgraph Speech-to-Speech
+        Orchestrator -.-> S2S[Speech-to-Speech Model]
+    end
+    
+    TTS --> Gateway
+    S2S -.-> Gateway
+    Gateway -->|WebRTC Audio| Client
+```

@@ -1,0 +1,52 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-check-every-substring",
+      "title": "Check every substring",
+      "tier": 1,
+      "strategy": "Try candidate substrings from longest to shortest and return the first palindrome.",
+      "timeComplexity": {
+        "class": "O(n^3)",
+        "explanation": "There are O(n^2) substrings and each palindrome check can scan O(n) characters."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only loop indices are stored besides the returned substring."
+      },
+      "javaPath": "java/solution-1-check-every-substring/Solution.java",
+      "pythonPath": "python/solution-1-check-every-substring/solution.py"
+    },
+    {
+      "id": "solution-2-expand-centers",
+      "title": "Expand from each center",
+      "tier": 2,
+      "strategy": "Treat every character and every gap as a center, expand while mirrored characters match, and keep the best range.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each center can expand across a linear span in the worst case."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the current and best boundaries are tracked."
+      },
+      "javaPath": "java/solution-2-expand-centers/Solution.java",
+      "pythonPath": "python/solution-2-expand-centers/solution.py"
+    },
+    {
+      "id": "solution-3-manacher",
+      "title": "Manacher radius reuse",
+      "tier": 3,
+      "strategy": "Transform the string with separators and reuse mirrored palindrome radii inside the current right boundary.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The moving right boundary advances at most linearly over the transformed string."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "One radius value is stored per transformed-string position."
+      },
+      "javaPath": "java/solution-3-manacher/Solution.java",
+      "pythonPath": "python/solution-3-manacher/solution.py"
+    }
+  ]
+}

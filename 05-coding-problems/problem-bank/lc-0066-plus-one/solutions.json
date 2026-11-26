@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-copy-then-carry",
+      "title": "Copy then carry",
+      "tier": 1,
+      "strategy": "Copy the digits into a new buffer and perform grade-school carry propagation from right to left.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Copying and carry propagation each touch at most n digits." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The output buffer stores a copy of the input digits before returning the incremented number." },
+      "javaPath": "java/solution-1-copy-then-carry/Solution.java",
+      "pythonPath": "python/solution-1-copy-then-carry/solution.py"
+    },
+    {
+      "id": "solution-2-mutate-from-end",
+      "title": "Mutate from the end",
+      "tier": 2,
+      "strategy": "Walk from the last digit leftward, changing trailing nines to zero and returning as soon as a digit can be incremented.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The worst case scans all digits when every position carries." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "The input array is reused; only the all-nine overflow case needs a new returned array of length n + 1." },
+      "javaPath": "java/solution-2-mutate-from-end/Solution.java",
+      "pythonPath": "python/solution-2-mutate-from-end/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-square-and-sort",
+      "title": "Square and sort",
+      "tier": 1,
+      "strategy": "Square every value, then sort the squared values.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting the squared values dominates."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The output array stores n squared values."
+      },
+      "javaPath": "java/solution-1-square-and-sort/Solution.java",
+      "pythonPath": "python/solution-1-square-and-sort/solution.py"
+    },
+    {
+      "id": "solution-2-two-pointers",
+      "title": "Two pointers",
+      "tier": 2,
+      "strategy": "Compare absolute values at both ends and fill the answer from right to left.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each value is placed exactly once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The result array stores n values."
+      },
+      "javaPath": "java/solution-2-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-two-pointers/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-pairwise-assign",
+      "title": "Pairwise assign",
+      "tier": 1,
+      "strategy": "Compare each ungrouped string with later strings using cyclic differences.",
+      "timeComplexity": {
+        "class": "O(n^2 L)",
+        "explanation": "Pairs can compare up to L characters."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Visited flags and output groups are stored."
+      },
+      "javaPath": "java/solution-1-pairwise-assign/Solution.java",
+      "pythonPath": "python/solution-1-pairwise-assign/solution.py"
+    },
+    {
+      "id": "solution-2-normalized-key",
+      "title": "Normalized key",
+      "tier": 2,
+      "strategy": "Build a canonical key from character offsets relative to the first char.",
+      "timeComplexity": {
+        "class": "O(nL)",
+        "explanation": "Each string contributes one key built from its characters."
+      },
+      "spaceComplexity": {
+        "class": "O(nL)",
+        "explanation": "Keys and output groups store the input strings."
+      },
+      "javaPath": "java/solution-2-normalized-key/Solution.java",
+      "pythonPath": "python/solution-2-normalized-key/solution.py"
+    }
+  ]
+}

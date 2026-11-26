@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-scan",
+      "title": "Linear scan",
+      "tier": 1,
+      "strategy": "Check each position until the target is found.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The scan may inspect all n values when the target is absent or near the end."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only a loop index is stored."
+      },
+      "javaPath": "java/solution-1-linear-scan/Solution.java",
+      "pythonPath": "python/solution-1-linear-scan/solution.py"
+    },
+    {
+      "id": "solution-2-rotated-binary-search",
+      "title": "Rotated binary search",
+      "tier": 2,
+      "strategy": "Use the sorted half around the midpoint to decide which side can still contain the target.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each comparison removes about half of the remaining search range."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The search uses only two boundaries and a midpoint."
+      },
+      "javaPath": "java/solution-2-rotated-binary-search/Solution.java",
+      "pythonPath": "python/solution-2-rotated-binary-search/solution.py"
+    }
+  ]
+}

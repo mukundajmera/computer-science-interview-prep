@@ -1,0 +1,38 @@
+graph TD
+    User["User Client"]
+    DNS["GeoDNS / Anycast BGP"]
+    
+    subgraph "US Region"
+        GatewayUS["API Gateway (US)"]
+        DB_US[("Multi-Master DB (US)")]
+        CDC_US["CDC / Repl Engine (US)"]
+    end
+    
+    subgraph "EU Region"
+        GatewayEU["API Gateway (EU)"]
+        DB_EU[("Multi-Master DB (EU)")]
+        CDC_EU["CDC / Repl Engine (EU)"]
+    end
+    
+    subgraph "APAC Region"
+        GatewayAPAC["API Gateway (APAC)"]
+        DB_APAC[("Multi-Master DB (APAC)")]
+        CDC_APAC["CDC / Repl Engine (APAC)"]
+    end
+
+    User --> DNS
+    DNS --> GatewayUS
+    DNS --> GatewayEU
+    DNS --> GatewayAPAC
+
+    GatewayUS --> DB_US
+    GatewayEU --> DB_EU
+    GatewayAPAC --> DB_APAC
+
+    DB_US --> CDC_US
+    DB_EU --> CDC_EU
+    DB_APAC --> CDC_APAC
+
+    CDC_US <-->|"Async Replication (HLC)"| CDC_EU
+    CDC_US <-->|"Async Replication (HLC)"| CDC_APAC
+    CDC_EU <-->|"Async Replication (HLC)"| CDC_APAC

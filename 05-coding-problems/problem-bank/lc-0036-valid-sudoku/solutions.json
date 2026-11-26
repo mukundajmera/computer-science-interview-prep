@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-three-set-scans",
+      "title": "Separate row, column, and box scans",
+      "tier": 1,
+      "strategy": "Check each row, each column, and each 3x3 box independently with a small seen set.",
+      "timeComplexity": { "class": "O(1)", "explanation": "The board size is fixed at 9x9, so the number of inspected cells is bounded; generalized to n cells, the work is linear in the cell count." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Each seen set stores at most nine digits and is discarded after each unit scan." },
+      "javaPath": "java/solution-1-three-set-scans/Solution.java",
+      "pythonPath": "python/solution-1-three-set-scans/solution.py"
+    },
+    {
+      "id": "solution-2-single-pass-bitmasks",
+      "title": "Single pass bitmasks",
+      "tier": 2,
+      "strategy": "Scan the board once and store used digits in row, column, and box bitmasks.",
+      "timeComplexity": { "class": "O(1)", "explanation": "The fixed-size board has 81 cells, so runtime is bounded; generalized to n cells, each cell is processed once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "There are 27 integer masks regardless of the number of filled cells." },
+      "javaPath": "java/solution-2-single-pass-bitmasks/Solution.java",
+      "pythonPath": "python/solution-2-single-pass-bitmasks/solution.py"
+    }
+  ]
+}

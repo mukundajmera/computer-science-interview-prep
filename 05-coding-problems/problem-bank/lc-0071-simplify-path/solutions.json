@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-stack-components",
+      "title": "Stack path components",
+      "tier": 1,
+      "strategy": "Split the path and push directory names while popping for parent markers.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Splitting and processing components scans the path length."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The stack can contain path components proportional to the path length."
+      },
+      "javaPath": "java/solution-1-stack-components/Solution.java",
+      "pythonPath": "python/solution-1-stack-components/solution.py"
+    }
+  ]
+}

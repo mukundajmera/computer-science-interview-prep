@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-descent",
+      "title": "Recursive descent",
+      "tier": 1,
+      "strategy": "Parse a segment until its closing bracket, recursively expanding nested bracketed groups.",
+      "timeComplexity": {
+        "class": "O(n + r)",
+        "explanation": "The parser reads n encoded characters and appends r decoded characters."
+      },
+      "spaceComplexity": {
+        "class": "O(d + r)",
+        "explanation": "Recursion depth d and output builders store nested work and decoded text."
+      },
+      "javaPath": "java/solution-1-recursive-descent/Solution.java",
+      "pythonPath": "python/solution-1-recursive-descent/solution.py"
+    },
+    {
+      "id": "solution-2-explicit-stack",
+      "title": "Explicit stack",
+      "tier": 2,
+      "strategy": "Push the previous builder and repeat count at each opening bracket, then expand at each closing bracket.",
+      "timeComplexity": {
+        "class": "O(n + r)",
+        "explanation": "Each encoded character is processed once and each decoded character is appended once."
+      },
+      "spaceComplexity": {
+        "class": "O(d + r)",
+        "explanation": "Stacks store nested builders/counts and the decoded output."
+      },
+      "javaPath": "java/solution-2-explicit-stack/Solution.java",
+      "pythonPath": "python/solution-2-explicit-stack/solution.py"
+    }
+  ]
+}

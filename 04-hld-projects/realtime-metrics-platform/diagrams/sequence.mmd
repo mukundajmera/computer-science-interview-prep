@@ -1,0 +1,19 @@
+sequenceDiagram
+    autonumber
+    actor Agent as Metric Agent
+    participant IG as Ingestion Gateway
+    participant Kafka as Kafka
+    participant Flink as Flink Stream Processor
+    participant TSDB as Druid/TSDB Storage
+    participant QS as Query Service
+    actor Dash as Dashboard User
+
+    Agent->>IG: Flush metric payload
+    IG->>Kafka: Publish to metrics topic
+    Kafka->>Flink: Consume metrics stream
+    Flink->>Flink: Apply sliding window rollup
+    Flink->>TSDB: Write aggregated metrics
+    Dash->>QS: Request dashboard data
+    QS->>TSDB: Query time-series data
+    TSDB-->>QS: Return data points
+    QS-->>Dash: Render dashboard

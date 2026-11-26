@@ -1,0 +1,41 @@
+%% State Pattern Class Diagram
+%% Allows object to alter behavior when internal state changes
+
+classDiagram
+    class Context {
+        -state State
+        +Context(State)
+        +setState(State) void
+        +request() void
+    }
+    
+    class State {
+        <<interface>>
+        +handle(Context) void
+    }
+    
+    class ConcreteStateA {
+        +handle(Context) void
+    }
+    
+    class ConcreteStateB {
+        +handle(Context) void
+    }
+    
+    class ConcreteStateC {
+        +handle(Context) void
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Context --> State : has current
+    State <|.. ConcreteStateA
+    State <|.. ConcreteStateB
+    State <|.. ConcreteStateC
+    ConcreteStateA ..> Context : may transition
+    ConcreteStateB ..> Context : may transition
+    ConcreteStateC ..> Context : may transition
+    
+    note for Context "Delegates state-specific\nbehavior to current State.\nState objects can trigger\ntransitions."

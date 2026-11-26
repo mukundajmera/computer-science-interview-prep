@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-simulate-each-shift",
+      "title": "Simulate each shift",
+      "tier": 1,
+      "strategy": "Apply every shift by slicing the current string.",
+      "timeComplexity": {
+        "class": "O(qn)",
+        "explanation": "Each of q shifts can copy n chars."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Slicing creates new strings."
+      },
+      "javaPath": "java/solution-1-simulate-each-shift/Solution.java",
+      "pythonPath": "python/solution-1-simulate-each-shift/solution.py"
+    },
+    {
+      "id": "solution-2-net-shift",
+      "title": "Net shift",
+      "tier": 2,
+      "strategy": "Combine all shifts into one right rotation modulo n.",
+      "timeComplexity": {
+        "class": "O(q + n)",
+        "explanation": "Compute net shift then slice once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The returned string is a new string."
+      },
+      "javaPath": "java/solution-2-net-shift/Solution.java",
+      "pythonPath": "python/solution-2-net-shift/solution.py"
+    }
+  ]
+}

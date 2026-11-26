@@ -1,0 +1,17 @@
+flowchart TB
+    C[Clients and Operators] --> API[Scheduler API]
+    API --> SS[Scheduler Service]
+
+    SS --> JD[(Job Store)]
+    SS --> RE[(Run and Event Store)]
+    SS --> LS[(Lease Store)]
+
+    T[Schedule Scanner] --> SS
+    SS --> DQ[(Dispatch Queue)]
+    DQ --> WP[Worker Pool]
+    WP --> HA[Handler Adapters]
+
+    WP --> RE
+    WP --> LS
+    WP --> DL[(Dead Letter Store)]
+    RE --> OD[Operational Dashboards]

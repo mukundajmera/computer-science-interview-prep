@@ -1,0 +1,32 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "short aligned range",
+      "input": {
+        "left": 12,
+        "right": 15
+      },
+      "expected": 12
+    },
+    {
+      "name": "wider aligned range",
+      "input": {
+        "left": 24,
+        "right": 31
+      },
+      "expected": 24
+    },
+    {
+      "name": "single value range",
+      "input": {
+        "left": 10,
+        "right": 10
+      },
+      "expected": 10
+    }
+  ]
+}

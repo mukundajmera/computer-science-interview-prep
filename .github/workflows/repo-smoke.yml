@@ -1,0 +1,93 @@
+name: Repo Smoke
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validation:
+    name: Stable validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: apps/portal/package-lock.json
+
+      - name: Set up Java
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install Python test dependency
+        run: python -m pip install pytest
+
+      - name: Install portal dependencies
+        run: npm --prefix apps/portal ci
+
+      - name: Run repository smoke checks
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/check_repo_smoke.py
+
+      - name: Run full Markdown link check
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/check_markdown_links.py
+
+      - name: Run full content inventory check
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/check_content_inventory.py
+
+      - name: Run portal tests
+        run: npm --prefix apps/portal run test
+
+      - name: Build portal
+        run: npm --prefix apps/portal run build
+
+      - name: Check portal static export
+        run: npm --prefix apps/portal run check:export
+
+      - name: Compile Java smoke target
+        run: |
+          mkdir -p /tmp/sdip-java-ci
+          javac -d /tmp/sdip-java-ci 02-lld-projects/parking-lot/java/v1-basic/*.java
+
+  optional-tooling:
+    name: Optional tooling probes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Java
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Probe Java/JUnit smoke gate
+        continue-on-error: true
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/check_repo_smoke.py --only check_java_smoke
+
+      - name: Probe Mermaid CLI gate
+        continue-on-error: true
+        run: PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/check_repo_smoke.py --only check_mermaid

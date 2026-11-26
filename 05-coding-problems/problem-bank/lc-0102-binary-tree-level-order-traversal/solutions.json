@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bfs-level-size",
+      "title": "BFS level size",
+      "tier": 1,
+      "strategy": "Use queue length at the start of each level to collect one row at a time.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is removed from the queue once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The output stores all node values and the queue can hold a level of nodes."
+      },
+      "javaPath": "java/solution-1-bfs-level-size/Solution.java",
+      "pythonPath": "python/solution-1-bfs-level-size/solution.py"
+    },
+    {
+      "id": "solution-2-dfs-depth-buckets",
+      "title": "DFS depth buckets",
+      "tier": 2,
+      "strategy": "Append a new bucket when first reaching a depth, then fill it with preorder traversal.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The output stores all values and recursion can add height-sized stack usage."
+      },
+      "javaPath": "java/solution-2-dfs-depth-buckets/Solution.java",
+      "pythonPath": "python/solution-2-dfs-depth-buckets/solution.py"
+    }
+  ]
+}

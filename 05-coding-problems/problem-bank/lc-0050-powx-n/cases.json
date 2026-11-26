@@ -1,0 +1,31 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "float-tolerance", "tolerance": 0.000000001 },
+  "cases": [
+    {
+      "name": "fractional base positive exponent",
+      "input": { "x": 2.5, "n": 3 },
+      "expected": 15.625
+    },
+    {
+      "name": "negative exponent",
+      "input": { "x": 2.0, "n": -3 },
+      "expected": 0.125
+    },
+    {
+      "name": "negative base odd exponent",
+      "input": { "x": -2.0, "n": 5 },
+      "expected": -32.0
+    },
+    {
+      "name": "zero exponent",
+      "input": { "x": 7.25, "n": 0 },
+      "expected": 1.0
+    },
+    {
+      "name": "minimum integer exponent sign edge",
+      "input": { "x": -1.0, "n": -2147483648 },
+      "expected": 1.0
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+```mermaid
+sequenceDiagram
+    autonumber
+    
+    participant Client as Client
+    participant CDN as CDN
+    participant LB as Load Balancer
+    participant API as API Server
+    participant Cache as Redis Cache
+    participant KGS as Key Gen Service
+    participant DB as Database
+    participant Queue as Kafka
+    
+    Note over Client,Queue: URL Creation Flow
+    
+    Client->>LB: POST /api/v1/urls<br/>{longUrl: "https://..."}
+    LB->>API: Forward request
+    
+    API->>API: Validate URL format
+    
+    alt Invalid URL
+        API-->>Client: 400 Bad Request
+    end
+    
+    alt Custom alias requested
+        API->>DB: Check if alias exists
+        DB-->>API: Result
+        alt Alias exists
+            API-->>Client: 409 Conflict
+        end
+    else Auto-generate code
+        API->>KGS: Request short code
+        KGS->>KGS: Get code from pool
+        KGS-->>API: "abc1234"
+    end
+    
+    API->>DB: INSERT urls (short_code, long_url, ...)
+    DB-->>API: Success
+    
+    API->>Cache: SET abc1234 "https://..." EX 86400
+    Cache-->>API: OK
+    
+    API-->>LB: 201 Created
+    LB-->>Client: {shortUrl: "short.ly/abc1234"}
+    
+    Note over Client,Queue: URL Redirect Flow
+    
+    Client->>CDN: GET /abc1234
+    
+    alt CDN Cache Hit
+        CDN-->>Client: 301 Redirect to long_url
+    else CDN Cache Miss
+        CDN->>LB: Forward request
+        LB->>API: GET /abc1234
+        
+        API->>Cache: GET abc1234
+        
+        alt Cache Hit
+            Cache-->>API: "https://long-url.com/..."
+        else Cache Miss
+            API->>DB: SELECT * FROM urls WHERE short_code = 'abc1234'
+            DB-->>API: URL record
+            
+            alt URL not found
+                API-->>Client: 404 Not Found
+            else URL expired
+                API-->>Client: 410 Gone
+            else URL found
+                API->>Cache: SET abc1234 "..." EX 86400
+                Cache-->>API: OK
+            end
+        end
+        
+        API->>Queue: Emit click event (async)
+        Note right of Queue: Non-blocking
+        
+        API-->>LB: 301 Redirect
+        LB-->>CDN: 301 Redirect
+        CDN->>CDN: Cache response
+        CDN-->>Client: 301 Redirect to long_url
+    end
+    
+    Client->>Client: Browser follows redirect
+    
+    Note over Client,Queue: Analytics Aggregation (Background)
+    
+    Queue->>Queue: Batch click events
+    Queue->>DB: UPDATE click_count
+```

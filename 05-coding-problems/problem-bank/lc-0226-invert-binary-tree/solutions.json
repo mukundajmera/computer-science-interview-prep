@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-swap",
+      "title": "Recursive child swap",
+      "tier": 1,
+      "strategy": "Swap each node's children and recursively invert the subtrees.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack grows with tree height h."
+      },
+      "javaPath": "java/solution-1-recursive-swap/Solution.java",
+      "pythonPath": "python/solution-1-recursive-swap/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-stack-swap",
+      "title": "Iterative stack swap",
+      "tier": 2,
+      "strategy": "Use an explicit stack to visit nodes and swap children in place.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every non-null node is popped once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The stack stores pending nodes and can grow with tree height on skewed trees."
+      },
+      "javaPath": "java/solution-2-iterative-stack-swap/Solution.java",
+      "pythonPath": "python/solution-2-iterative-stack-swap/solution.py"
+    }
+  ]
+}

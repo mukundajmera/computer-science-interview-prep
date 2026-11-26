@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-memoized-prefix-search",
+      "title": "Memoized prefix search",
+      "tier": 1,
+      "strategy": "Try dictionary words at each suffix start and memoize whether the remaining suffix can be segmented.",
+      "timeComplexity": {
+        "class": "O(n*w*l)",
+        "explanation": "There are n start positions; each may try w distinct dictionary words, and each prefix comparison can inspect up to l characters."
+      },
+      "spaceComplexity": {
+        "class": "O(n + w)",
+        "explanation": "Memo and recursion depth are bounded by string positions, and the distinct dictionary word list stores w entries."
+      },
+      "javaPath": "java/solution-1-memoized-prefix-search/Solution.java",
+      "pythonPath": "python/solution-1-memoized-prefix-search/solution.py"
+    },
+    {
+      "id": "solution-2-bottom-up-dp",
+      "title": "Bottom-up DP",
+      "tier": 2,
+      "strategy": "Let dp[i] mean the prefix ending before i can be segmented, then scan split points for each end.",
+      "timeComplexity": {
+        "class": "O(n*w*l)",
+        "explanation": "Each reachable start position can try w distinct dictionary words, and each prefix comparison can inspect up to l characters."
+      },
+      "spaceComplexity": {
+        "class": "O(n + w)",
+        "explanation": "One boolean reachability state is stored for every prefix length, plus the distinct dictionary word list."
+      },
+      "javaPath": "java/solution-2-bottom-up-dp/Solution.java",
+      "pythonPath": "python/solution-2-bottom-up-dp/solution.py"
+    }
+  ]
+}

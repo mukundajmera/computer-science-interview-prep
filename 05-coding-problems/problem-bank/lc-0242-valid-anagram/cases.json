@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "same letters different order", "input": { "s": "binary", "t": "brainy" }, "expected": true },
+    { "name": "different lengths", "input": { "s": "coding", "t": "codingg" }, "expected": false },
+    { "name": "same length different counts", "input": { "s": "mentor", "t": "remote" }, "expected": false },
+    { "name": "empty strings", "input": { "s": "", "t": "" }, "expected": true },
+    { "name": "repeated character counts", "input": { "s": "aabbcc", "t": "abcabc" }, "expected": true }
+  ]
+}

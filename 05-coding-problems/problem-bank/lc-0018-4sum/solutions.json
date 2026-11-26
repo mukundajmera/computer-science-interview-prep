@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-four-loop-set",
+      "title": "Four loops with dedupe set",
+      "tier": 1,
+      "strategy": "Sort values, inspect every index quadruple, and insert matching value rows into a set.",
+      "timeComplexity": {
+        "class": "O(n^4)",
+        "explanation": "Four nested loops enumerate all index quadruples."
+      },
+      "spaceComplexity": {
+        "class": "O(a)",
+        "explanation": "`a` unique answer rows are stored in the dedupe set and result list."
+      },
+      "javaPath": "java/solution-1-four-loop-set/Solution.java",
+      "pythonPath": "python/solution-1-four-loop-set/solution.py"
+    },
+    {
+      "id": "solution-2-sorted-two-pointer",
+      "title": "Sorted two-pointer sweep",
+      "tier": 2,
+      "strategy": "Sort the array, fix two positions, then move a low/high pair while skipping duplicate values.",
+      "timeComplexity": {
+        "class": "O(n^3)",
+        "explanation": "Two fixed loops and one linear two-pointer sweep dominate."
+      },
+      "spaceComplexity": {
+        "class": "O(a)",
+        "explanation": "Ignoring output, the sorted in-place array uses constant auxiliary space; answers store `a` rows."
+      },
+      "javaPath": "java/solution-2-sorted-two-pointer/Solution.java",
+      "pythonPath": "python/solution-2-sorted-two-pointer/solution.py"
+    }
+  ]
+}

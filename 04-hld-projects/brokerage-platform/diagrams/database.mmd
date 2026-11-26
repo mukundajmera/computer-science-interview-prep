@@ -1,0 +1,16 @@
+erDiagram
+    ORDER ||--o{ ORDER_EVENT : emits
+    ORDER {
+        string order_id PK
+        string user_id
+        string symbol
+        string state
+        string idempotency_key
+    }
+    ORDER_EVENT {
+        string event_id PK
+        string order_id FK
+        string event_type
+        string source
+        datetime created_at
+    }

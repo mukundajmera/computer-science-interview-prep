@@ -1,0 +1,15 @@
+flowchart TD
+    A[Start Verification Step: target_evaluations++] --> B{For each token i in K}
+    B -->|Next i| C[Calculate acc_prob = min 1, pt/pd]
+    C --> D{random <= acc_prob?}
+    D -->|Yes| E[Append draft_tokens i]
+    E --> E2[accepted_tokens_count++]
+    E2 --> B
+    D -->|No| F[Append resample_token_id]
+    F --> F2[accepted_tokens_count++]
+    F2 --> H[kv_cache_length += len accepted]
+    H --> Z[Return accepted, kv_cache_length]
+    B -->|All K Accepted| I[Append fallback_token_id]
+    I --> I2[accepted_tokens_count++]
+    I2 --> J[kv_cache_length += len accepted]
+    J --> Z

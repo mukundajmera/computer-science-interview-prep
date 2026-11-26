@@ -1,0 +1,8 @@
+graph TD;
+  A[Query] --> B[Retriever];
+  B --> C[Context];
+  C --> D[Generator];
+  D --> E[Answer];
+  C -. Context Relevance .-> F[Evaluator];
+  E -. Answer Relevance .-> F;
+  E -. Faithfulness to Context .-> F;

@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "middle span wins", "input": { "nums": [3, -2, 5, -1] }, "expected": 6 },
+    { "name": "all negative", "input": { "nums": [-4, -2, -7] }, "expected": -2 },
+    { "name": "alternating positives", "input": { "nums": [2, -1, 2, -1, 2] }, "expected": 4 },
+    { "name": "all zeros", "input": { "nums": [0, 0, 0] }, "expected": 0 },
+    { "name": "restart after large loss", "input": { "nums": [8, -10, 6, 7] }, "expected": 13 }
+  ]
+}

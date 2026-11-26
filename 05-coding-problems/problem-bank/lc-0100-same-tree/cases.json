@@ -1,0 +1,64 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "same compact trees",
+      "input": {
+        "p": [
+          4,
+          2,
+          7
+        ],
+        "q": [
+          4,
+          2,
+          7
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "different branch placement",
+      "input": {
+        "p": [
+          4,
+          2,
+          null
+        ],
+        "q": [
+          4,
+          null,
+          2
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "both empty",
+      "input": {
+        "p": [],
+        "q": []
+      },
+      "expected": true
+    },
+    {
+      "name": "different leaf value",
+      "input": {
+        "p": [
+          6,
+          3,
+          8
+        ],
+        "q": [
+          6,
+          3,
+          9
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

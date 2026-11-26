@@ -1,0 +1,100 @@
+{
+  "id": "lc-0138-copy-list-with-random-pointer",
+  "title": "Copy List with Random Pointer",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "linked-list",
+    "hash-map"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-hash-map/Solution.java",
+      "java/solution-2-weave-clones/Solution.java",
+      "python/solution-1-hash-map/solution.py",
+      "python/solution-2-weave-clones/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "leetcode-top-150",
+      "order": 60,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/copy-list-with-random-pointer"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 362,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/copy-list-with-random-pointer"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "138",
+    "titleSlug": "copy-list-with-random-pointer",
+    "url": "https://leetcode.com/problems/copy-list-with-random-pointer",
+    "paidOnly": false
+  },
+  "signature": {
+    "customTypes": {
+      "Node": "random-list"
+    },
+    "java": {
+      "className": "Solution",
+      "methodName": "copyRandomList",
+      "returnType": "Node",
+      "parameters": [
+        { "name": "head", "type": "Node" }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "copyRandomList",
+      "returnType": "Optional[Node]",
+      "parameters": [
+        { "name": "head", "type": "Optional[Node]" }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

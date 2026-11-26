@@ -1,0 +1,102 @@
+{
+  "id": "lc-0007-reverse-integer",
+  "title": "Reverse Integer",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "math"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 145,
+      "group": "math",
+      "sourceUrl": "https://leetcode.com/problems/reverse-integer"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 926,
+      "group": "Bit Manipulation",
+      "sourceUrl": "https://leetcode.com/problems/reverse-integer"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "7",
+    "titleSlug": "reverse-integer",
+    "url": "https://leetcode.com/problems/reverse-integer",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "reverse",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "int"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "reverse",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "int"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-string-reversal/Solution.java",
+      "python/solution-1-string-reversal/solution.py",
+      "java/solution-2-pop-and-push-digits/Solution.java",
+      "python/solution-2-pop-and-push-digits/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

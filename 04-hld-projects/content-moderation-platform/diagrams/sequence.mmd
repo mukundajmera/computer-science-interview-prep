@@ -1,0 +1,26 @@
+sequenceDiagram
+    actor User
+    participant Gateway as Moderation Gateway
+    participant Inference as Inference Service
+    participant Calibrator as Decision Calibrator
+    participant Enforcement as Enforcement Worker
+    participant Queue as Review Queue
+    participant Reviewer
+    participant Audit as Audit Ledger
+
+    User->>Gateway: Submit UGC Event
+    Gateway->>Inference: Request multi-model evaluation
+    Inference-->>Gateway: Return risk scores & features
+    Gateway->>Calibrator: Forward scores for policy mapping
+
+    alt High Confidence (Auto Action)
+        Calibrator->>Enforcement: Automated Decision (e.g. remove, demote, allow)
+        Enforcement-->>User: Apply enforcement (Serving side effect)
+        Enforcement->>Audit: Log Automated Action
+    else Uncertain / Low Confidence (Escalation)
+        Calibrator->>Queue: Enqueue for human review
+        Queue->>Reviewer: Assign task based on SLA
+        Reviewer->>Enforcement: Submit Manual Decision
+        Enforcement-->>User: Apply enforcement (Serving side effect)
+        Enforcement->>Audit: Log Manual Action
+    end

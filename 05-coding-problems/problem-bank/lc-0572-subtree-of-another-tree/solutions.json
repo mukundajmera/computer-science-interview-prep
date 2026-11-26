@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-serialize-with-null-markers",
+      "title": "Serialize with null markers",
+      "tier": 1,
+      "strategy": "Serialize both trees with null markers and search for the subtree serialization.",
+      "timeComplexity": {
+        "class": "O(n+m)",
+        "explanation": "Each tree is serialized once and substring search is linear for these built strings."
+      },
+      "spaceComplexity": {
+        "class": "O(n+m)",
+        "explanation": "Both serializations are stored."
+      },
+      "javaPath": "java/solution-1-serialize-with-null-markers/Solution.java",
+      "pythonPath": "python/solution-1-serialize-with-null-markers/solution.py"
+    },
+    {
+      "id": "solution-2-dfs-tree-match",
+      "title": "DFS tree match",
+      "tier": 2,
+      "strategy": "At every root candidate, recursively compare both trees for exact structure and values.",
+      "timeComplexity": {
+        "class": "O(nm)",
+        "explanation": "In the worst case many candidate roots compare much of the subtree."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "Recursive traversal depth follows tree height."
+      },
+      "javaPath": "java/solution-2-dfs-tree-match/Solution.java",
+      "pythonPath": "python/solution-2-dfs-tree-match/solution.py"
+    }
+  ]
+}

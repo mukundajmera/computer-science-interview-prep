@@ -1,0 +1,61 @@
+erDiagram
+    Customers ||--o{ PaymentIntents : "initiates"
+    Merchants ||--o{ PaymentIntents : "receives"
+    PaymentIntents ||--o{ Charges : "has"
+    Charges ||--o{ Refunds : "has"
+    PaymentIntents ||--o{ LedgerEntries : "generates"
+    SettlementBatches ||--o{ LedgerEntries : "includes"
+    Merchants ||--o{ SettlementBatches : "settles via"
+
+    Customers {
+        string id PK
+        string email
+        string name
+        datetime created_at
+    }
+    Merchants {
+        string id PK
+        string name
+        string account_details
+        datetime created_at
+    }
+    PaymentIntents {
+        string id PK
+        string merchant_id FK
+        string customer_id FK
+        int amount_minor
+        string currency
+        string status
+        datetime created_at
+    }
+    Charges {
+        string id PK
+        string payment_intent_id FK
+        string psp_reference
+        int amount_minor
+        string status
+        datetime created_at
+    }
+    Refunds {
+        string id PK
+        string charge_id FK
+        int amount_minor
+        string status
+        datetime created_at
+    }
+    LedgerEntries {
+        string id PK
+        string payment_intent_id FK
+        string settlement_batch_id FK
+        int amount
+        string type
+        datetime created_at
+    }
+    SettlementBatches {
+        string id PK
+        string merchant_id FK
+        int total_amount
+        string currency
+        string status
+        datetime created_at
+    }

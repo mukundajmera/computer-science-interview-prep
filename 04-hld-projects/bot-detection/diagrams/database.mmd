@@ -1,0 +1,47 @@
+erDiagram
+    ACCOUNT ||--o{ BEHAVIOR_SIGNAL : generates
+    ACCOUNT ||--o| ACCOUNT_RISK_STATE : has
+    ACCOUNT ||--o{ ACTION_EVENT : receives
+    ACCOUNT ||--o{ INVESTIGATOR_LABEL : gets
+
+    ACCOUNT {
+        string account_id PK
+        string created_at
+    }
+
+    BEHAVIOR_SIGNAL {
+        string signal_id PK
+        string account_id FK
+        string signal_type
+        string signal_value
+        timestamp event_time
+    }
+
+    ACCOUNT_RISK_STATE {
+        string account_id PK, FK
+        float score
+        float confidence
+        string state
+        string policy_version
+        string model_version
+        timestamp updated_at
+    }
+
+    ACTION_EVENT {
+        string action_id PK
+        string account_id FK
+        string action
+        string reason_code
+        timestamp issued_at
+        string policy_version
+        string model_version
+        string rollback_ref
+    }
+
+    INVESTIGATOR_LABEL {
+        string label_id PK
+        string account_id FK
+        string label
+        float quality
+        timestamp created_at
+    }

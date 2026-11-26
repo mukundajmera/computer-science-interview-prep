@@ -1,0 +1,8 @@
+graph TD;
+  A[Document] --> B[LLM Extractor];
+  B --> C((Node: Alice));
+  B --> D((Node: Acme));
+  C -- Works At --> D;
+  E[Query] --> F[Sub-graph Retrieval];
+  F --> C;
+  F --> D;

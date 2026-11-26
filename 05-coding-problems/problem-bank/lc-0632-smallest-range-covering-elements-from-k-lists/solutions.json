@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-flatten-sliding-window",
+      "title": "Flatten sliding window",
+      "tier": 1,
+      "strategy": "Flatten values with their list id, sort them, and shrink a window covering every list.",
+      "timeComplexity": {
+        "class": "O(N log N)",
+        "explanation": "All N values are sorted before the window pass."
+      },
+      "spaceComplexity": {
+        "class": "O(N)",
+        "explanation": "The flattened array and frequency map are stored."
+      },
+      "javaPath": "java/solution-1-flatten-sliding-window/Solution.java",
+      "pythonPath": "python/solution-1-flatten-sliding-window/solution.py"
+    },
+    {
+      "id": "solution-2-min-heap",
+      "title": "Min heap",
+      "tier": 2,
+      "strategy": "Keep one pointer per list in a min-heap and track the current maximum.",
+      "timeComplexity": {
+        "class": "O(N log k)",
+        "explanation": "Each value is pushed and popped at most once from a heap of k lists."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The heap stores one active value per list."
+      },
+      "javaPath": "java/solution-2-min-heap/Solution.java",
+      "pythonPath": "python/solution-2-min-heap/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "lc-0422-valid-word-square",
+  "title": "Valid Word Square",
+  "difficulty": "easy",
+  "status": "verified",
+  "patterns": [
+    "matrix",
+    "string"
+  ],
+  "collections": [
+    {
+      "id": "neetcode-all",
+      "order": 9,
+      "group": "Arrays & Hashing",
+      "sourceUrl": "https://leetcode.com/problems/valid-word-square"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "422",
+    "titleSlug": "valid-word-square",
+    "url": "https://leetcode.com/problems/valid-word-square"
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "validWordSquare",
+      "returnType": "boolean",
+      "parameters": [
+        {
+          "name": "words",
+          "type": "List<String>"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "validWordSquare",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "words",
+          "type": "List[str]"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-build-columns/Solution.java",
+      "python/solution-1-build-columns/solution.py",
+      "java/solution-2-direct-symmetry-check/Solution.java",
+      "python/solution-2-direct-symmetry-check/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

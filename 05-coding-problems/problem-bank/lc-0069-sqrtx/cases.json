@@ -1,0 +1,29 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "non-perfect square",
+      "input": {
+        "x": 15
+      },
+      "expected": 3
+    },
+    {
+      "name": "unit value",
+      "input": {
+        "x": 1
+      },
+      "expected": 1
+    },
+    {
+      "name": "large exact square",
+      "input": {
+        "x": 2147395600
+      },
+      "expected": 46340
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "mixed differences",
+      "input": {
+        "s": "hello"
+      },
+      "expected": 13
+    },
+    {
+      "name": "single character",
+      "input": {
+        "s": "z"
+      },
+      "expected": 0
+    },
+    {
+      "name": "same characters",
+      "input": {
+        "s": "aaaa"
+      },
+      "expected": 0
+    }
+  ]
+}

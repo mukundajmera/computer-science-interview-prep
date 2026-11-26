@@ -1,0 +1,92 @@
+{
+  "id": "lc-0114-flatten-binary-tree-to-linked-list",
+  "title": "Flatten Binary Tree to Linked List",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "tree",
+    "depth-first-search",
+    "linked-list"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-preorder-buffer/Solution.java",
+      "java/solution-2-rewire-in-place/Solution.java",
+      "python/solution-1-preorder-buffer/solution.py",
+      "python/solution-2-rewire-in-place/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "leetcode-top-150",
+      "order": 75,
+      "group": "Binary Tree General",
+      "sourceUrl": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "114",
+    "titleSlug": "flatten-binary-tree-to-linked-list",
+    "url": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "flatten",
+      "returnType": "void",
+      "parameters": [
+        { "name": "root", "type": "TreeNode" }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "flatten",
+      "returnType": "None",
+      "parameters": [
+        { "name": "root", "type": "Optional[TreeNode]" }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-search",
+      "title": "Recursive include/skip search",
+      "tier": 1,
+      "strategy": "At each text character, either use it if it matches the current target character or skip it.",
+      "timeComplexity": { "class": "O(2^m)", "explanation": "In the worst matching-heavy case, the recursion can branch over many text positions." },
+      "spaceComplexity": { "class": "O(m)", "explanation": "Recursive calls can grow with the text length." },
+      "javaPath": "java/solution-1-recursive-search/Solution.java",
+      "pythonPath": "python/solution-1-recursive-search/solution.py"
+    },
+    {
+      "id": "solution-2-two-pointers",
+      "title": "Two pointers",
+      "tier": 2,
+      "strategy": "Advance the candidate pointer only when the current text character matches.",
+      "timeComplexity": { "class": "O(n + m)", "explanation": "Each string is scanned left to right at most once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only two indices are stored." },
+      "javaPath": "java/solution-2-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-two-pointers/solution.py"
+    }
+  ]
+}

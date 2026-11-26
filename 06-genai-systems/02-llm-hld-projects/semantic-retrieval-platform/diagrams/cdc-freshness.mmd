@@ -1,0 +1,9 @@
+```mermaid
+flowchart LR
+    Source[Upstream CMS/DB] --> Debezium[Debezium CDC]
+    Debezium --> KafkaTopic[Raw Doc Topic]
+    KafkaTopic --> IngestSvc[Ingestion Service]
+    IngestSvc --> Chunk[Chunker]
+    Chunk --> Embed[Embedder]
+    Embed --> VectorDB[(Vector DB)]
+```

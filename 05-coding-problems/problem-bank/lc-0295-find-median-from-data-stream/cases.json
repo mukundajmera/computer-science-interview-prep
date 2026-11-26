@@ -1,0 +1,41 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "float-tolerance", "tolerance": 0.000001 },
+  "cases": [
+    {
+      "name": "odd and even stream medians",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "addNum", "input": { "num": 8 }, "expected": null },
+        { "type": "call", "method": "findMedian", "input": {}, "expected": 8.0 },
+        { "type": "call", "method": "addNum", "input": { "num": 2 }, "expected": null },
+        { "type": "call", "method": "findMedian", "input": {}, "expected": 5.0 },
+        { "type": "call", "method": "addNum", "input": { "num": 10 }, "expected": null },
+        { "type": "call", "method": "findMedian", "input": {}, "expected": 8.0 },
+        { "type": "call", "method": "addNum", "input": { "num": 4 }, "expected": null },
+        { "type": "call", "method": "findMedian", "input": {}, "expected": 6.0 }
+      ]
+    },
+    {
+      "name": "duplicates and negative values",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "addNum", "input": { "num": -3 }, "expected": null },
+        { "type": "call", "method": "addNum", "input": { "num": -3 }, "expected": null },
+        { "type": "call", "method": "addNum", "input": { "num": 6 }, "expected": null },
+        { "type": "call", "method": "findMedian", "input": {}, "expected": -3.0 },
+        { "type": "call", "method": "addNum", "input": { "num": 12 }, "expected": null },
+        { "type": "call", "method": "findMedian", "input": {}, "expected": 1.5 }
+      ]
+    },
+    {
+      "name": "large values avoid integer overflow",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "addNum", "input": { "num": 2147483640 }, "expected": null },
+        { "type": "call", "method": "addNum", "input": { "num": 2147483646 }, "expected": null },
+        { "type": "call", "method": "findMedian", "input": {}, "expected": 2147483643.0 }
+      ]
+    }
+  ]
+}

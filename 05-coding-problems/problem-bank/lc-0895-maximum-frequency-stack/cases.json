@@ -1,0 +1,130 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "frequency then recency",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "push",
+          "input": {
+            "val": 1
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "push",
+          "input": {
+            "val": 2
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "push",
+          "input": {
+            "val": 1
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "push",
+          "input": {
+            "val": 2
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "push",
+          "input": {
+            "val": 2
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "pop",
+          "input": {},
+          "expected": 2
+        },
+        {
+          "type": "call",
+          "method": "pop",
+          "input": {},
+          "expected": 2
+        },
+        {
+          "type": "call",
+          "method": "pop",
+          "input": {},
+          "expected": 1
+        }
+      ]
+    },
+    {
+      "name": "recency tie after decrement",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "push",
+          "input": {
+            "val": 4
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "push",
+          "input": {
+            "val": 5
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "push",
+          "input": {
+            "val": 4
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "push",
+          "input": {
+            "val": 5
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "pop",
+          "input": {},
+          "expected": 5
+        },
+        {
+          "type": "call",
+          "method": "pop",
+          "input": {},
+          "expected": 4
+        }
+      ]
+    }
+  ]
+}

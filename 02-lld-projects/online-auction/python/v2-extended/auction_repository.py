@@ -1,0 +1,6 @@
+from typing import Optional, Protocol
+
+
+class AuctionRepository(Protocol):
+    def save(self, auction_id: str, payload: str) -> None: ...
+    def find(self, auction_id: str) -> Optional[str]: ...

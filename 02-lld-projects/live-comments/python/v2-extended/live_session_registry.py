@@ -1,0 +1,6 @@
+from typing import Protocol
+
+
+class LiveSessionRegistry(Protocol):
+    def register(self, stream_id: str, session_id: str, user_id: str) -> None: ...
+    def unregister(self, stream_id: str, session_id: str) -> None: ...

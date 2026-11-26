@@ -1,0 +1,44 @@
+flowchart TD
+    Client[Client Application]
+
+    subgraph Phase 1: Dual-Write
+        DW_API[API Gateway]
+        SourceDB1[(Source DB\nAuthoritative)]
+        TargetDB1[(Target DB\nBest-Effort)]
+        DW_API -- "1. Write (Sync)" --> SourceDB1
+        DW_API -- "2. Write (Async)" --> TargetDB1
+    end
+
+    subgraph Phase 2: Backfill
+        BackfillWorker[Backfill Worker]
+        SourceDB2[(Source DB)]
+        TargetDB2[(Target DB)]
+        BackfillWorker -- "Read Chunks" --> SourceDB2
+        BackfillWorker -- "Write (LWW)" --> TargetDB2
+    end
+
+    subgraph Phase 4: Shadow Reads
+        SR_API[API Gateway]
+        SourceDB4[(Source DB\nAuthoritative)]
+        TargetDB4[(Target DB\nShadow)]
+        Comparator[Result Comparator]
+        
+        Client -- "Read Request" --> SR_API
+        SR_API -- "1. Read" --> SourceDB4
+        SR_API -- "2. Read" --> TargetDB4
+        SourceDB4 -- "Result A" --> Comparator
+        TargetDB4 -- "Result B" --> Comparator
+        Comparator -- "Match / Mismatch" --> Metrics[Metrics Dashboard]
+        Comparator -- "Return Result A" --> Client
+    end
+
+    subgraph Phase 5: Cutover
+        CO_API[API Gateway]
+        SourceDB5[(Source DB\nBest-Effort)]
+        TargetDB5[(Target DB\nAuthoritative)]
+        
+        Client -- "Read/Write" --> CO_API
+        CO_API -- "1. Write (Sync)" --> TargetDB5
+        CO_API -- "2. Write (Async)" --> SourceDB5
+        CO_API -- "Read" --> TargetDB5
+    end

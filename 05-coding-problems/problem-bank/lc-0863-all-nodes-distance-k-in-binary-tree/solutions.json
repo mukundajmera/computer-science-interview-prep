@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-parent-map-bfs",
+      "title": "Parent map BFS",
+      "tier": 1,
+      "strategy": "Record parent pointers, then BFS from the target over left, right, and parent edges.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is visited a constant number of times."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Parent map, queue, and visited set can store every node."
+      },
+      "javaPath": "java/solution-1-parent-map-bfs/Solution.java",
+      "pythonPath": "python/solution-1-parent-map-bfs/solution.py"
+    },
+    {
+      "id": "solution-2-distance-dfs",
+      "title": "Distance DFS",
+      "tier": 2,
+      "strategy": "Recursively find target distance from each ancestor and collect downward nodes from the opposite branch at the remaining distance.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node participates in at most a constant amount of traversal."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack is tree height, excluding the output list."
+      },
+      "javaPath": "java/solution-2-distance-dfs/Solution.java",
+      "pythonPath": "python/solution-2-distance-dfs/solution.py"
+    }
+  ]
+}

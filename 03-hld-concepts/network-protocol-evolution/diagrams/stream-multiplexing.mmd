@@ -1,0 +1,38 @@
+sequenceDiagram
+    participant C as Client
+    participant Net as Network
+    participant S as Server
+    
+    Note over C, S: HTTP/2 over TCP (HoL Blocking)
+    C->>Net: Send TCP Pkt 1 (Stream A)
+    C->>Net: Send TCP Pkt 2 (Stream B)
+    C->>Net: Send TCP Pkt 3 (Stream A) [DROPPED]
+    C->>Net: Send TCP Pkt 4 (Stream B)
+    
+    Net->>S: Deliver Pkt 1 (Stream A)
+    Net->>S: Deliver Pkt 2 (Stream B)
+    Note over S: Pkt 3 Missing! TCP buffers Pkt 4
+    Net--xS: Pkt 3 Dropped
+    Net->>S: Deliver Pkt 4 (Stream B)
+    Note over S: Stream B is BLOCKED waiting for Pkt 3 retransmission
+    
+    C->>Net: Retransmit Pkt 3
+    Net->>S: Deliver Pkt 3
+    Note over S: Pkt 3 & 4 processed together
+    
+    
+    Note over C, S: HTTP/3 over QUIC (Independent Streams)
+    C->>Net: Send UDP Pkt 1 (Stream A)
+    C->>Net: Send UDP Pkt 2 (Stream B)
+    C->>Net: Send UDP Pkt 3 (Stream A) [DROPPED]
+    C->>Net: Send UDP Pkt 4 (Stream B)
+    
+    Net->>S: Deliver Pkt 1 (Stream A)
+    Net->>S: Deliver Pkt 2 (Stream B)
+    Net--xS: Pkt 3 Dropped
+    Net->>S: Deliver Pkt 4 (Stream B)
+    Note over S: Stream B processes Pkt 4 immediately! Zero HoL.
+    Note over S: Stream A waits for Pkt 3 retransmission
+    
+    C->>Net: Retransmit Pkt 3
+    Net->>S: Deliver Pkt 3

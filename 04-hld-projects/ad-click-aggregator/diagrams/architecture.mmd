@@ -1,0 +1,16 @@
+flowchart TB
+    P[Click Producers] --> API[Ingestion API]
+    API --> DS[Dedup Service]
+    DS --> DI[(Dedup Index)]
+    DS --> EL[(Immutable Event Log)]
+
+    EL --> SA[Stream Aggregator]
+    SA --> AS[(Aggregate Store)]
+    SA --> LC[Late Event Corrector]
+
+    LC --> CL[(Correction Log)]
+    LC --> AS
+
+    AS --> QA[Query API]
+    CL --> QA
+    QA --> DB[Dashboards and Reports]

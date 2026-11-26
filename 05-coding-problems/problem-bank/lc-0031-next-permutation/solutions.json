@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-suffix-pivot",
+      "title": "Suffix pivot swap and reverse",
+      "tier": 1,
+      "strategy": "Find the rightmost increasing pivot, swap it with the smallest larger value in the descending suffix, then reverse the suffix.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The pivot search, successor search, and suffix reversal are each linear."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "All work is done in-place."
+      },
+      "javaPath": "java/solution-1-suffix-pivot/Solution.java",
+      "pythonPath": "python/solution-1-suffix-pivot/solution.py"
+    }
+  ]
+}

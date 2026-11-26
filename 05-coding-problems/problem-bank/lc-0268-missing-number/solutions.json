@@ -1,0 +1,52 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-and-scan",
+      "title": "Sort and scan",
+      "tier": 1,
+      "strategy": "Sort the values and return the first index whose value does not match it.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting dominates the scan."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The implementations sort the driver-isolated input in place."
+      },
+      "javaPath": "java/solution-1-sort-and-scan/Solution.java",
+      "pythonPath": "python/solution-1-sort-and-scan/solution.py"
+    },
+    {
+      "id": "solution-2-gauss-sum",
+      "title": "Gauss sum",
+      "tier": 2,
+      "strategy": "Subtract the actual sum from the expected arithmetic-series sum.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The array is scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only sums are stored."
+      },
+      "javaPath": "java/solution-2-gauss-sum/Solution.java",
+      "pythonPath": "python/solution-2-gauss-sum/solution.py"
+    },
+    {
+      "id": "solution-3-xor",
+      "title": "XOR",
+      "tier": 3,
+      "strategy": "XOR all indices and values, then include n to cancel every present value.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every index and value is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only one accumulator is stored."
+      },
+      "javaPath": "java/solution-3-xor/Solution.java",
+      "pythonPath": "python/solution-3-xor/solution.py"
+    }
+  ]
+}

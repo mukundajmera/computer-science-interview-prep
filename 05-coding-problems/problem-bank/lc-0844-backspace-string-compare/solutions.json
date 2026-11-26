@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-build-final-strings",
+      "title": "Build final strings",
+      "tier": 1,
+      "strategy": "Simulate typing into a stack-like builder for each input, then compare the final strings.",
+      "timeComplexity": {
+        "class": "O(n+m)",
+        "explanation": "Each character from both strings is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(n+m)",
+        "explanation": "The built strings can store all non-erased characters."
+      },
+      "javaPath": "java/solution-1-build-final-strings/Solution.java",
+      "pythonPath": "python/solution-1-build-final-strings/solution.py"
+    },
+    {
+      "id": "solution-2-reverse-two-pointers",
+      "title": "Reverse two pointers",
+      "tier": 2,
+      "strategy": "Walk both strings from right to left, skipping deleted characters without materializing the final text.",
+      "timeComplexity": {
+        "class": "O(n+m)",
+        "explanation": "Each character is visited at most once while skipping backspaces."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only two pointers and skip counters are stored."
+      },
+      "javaPath": "java/solution-2-reverse-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-reverse-two-pointers/solution.py"
+    }
+  ]
+}

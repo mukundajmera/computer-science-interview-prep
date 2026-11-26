@@ -1,0 +1,10 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "small majority", "input": { "nums": [6, 1, 6, 6, 2] }, "expected": 6 },
+    { "name": "interrupted majority", "input": { "nums": [4, 4, 7, 4, 8, 4, 4] }, "expected": 4 },
+    { "name": "single element", "input": { "nums": [9] }, "expected": 9 },
+    { "name": "negative majority", "input": { "nums": [-1, 4, -1, -1, 2] }, "expected": -1 }
+  ]
+}

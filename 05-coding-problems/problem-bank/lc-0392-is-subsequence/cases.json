@@ -1,0 +1,10 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "ordered match", "input": { "s": "lamp", "t": "la-m-p" }, "expected": true },
+    { "name": "order mismatch", "input": { "s": "stone", "t": "sotne" }, "expected": false },
+    { "name": "empty candidate", "input": { "s": "", "t": "orbit" }, "expected": true },
+    { "name": "same string", "input": { "s": "ace", "t": "ace" }, "expected": true }
+  ]
+}

@@ -1,0 +1,52 @@
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Client
+    participant API
+    participant FileService
+    participant BlockService
+    participant MetaDB
+    participant S3
+    participant CDN
+    
+    Note over Client,CDN: Chunked File Upload
+    
+    Client->>API: POST /files/upload-init<br/>{filename, size, hash}
+    API->>FileService: Initialize upload
+    FileService->>MetaDB: Create pending file record
+    FileService->>FileService: Calculate chunks (4MB each)
+    FileService-->>Client: {uploadId, chunks: [{url, index}]}
+    
+    par Upload chunks in parallel
+        Client->>S3: PUT /chunk/0 (pre-signed URL)
+        S3-->>Client: 200 OK
+    and
+        Client->>S3: PUT /chunk/1
+        S3-->>Client: 200 OK
+    and
+        Client->>S3: PUT /chunk/N
+        S3-->>Client: 200 OK
+    end
+    
+    Client->>API: POST /files/{uploadId}/complete
+    API->>BlockService: Verify & assemble chunks
+    BlockService->>S3: Verify all chunks present
+    BlockService->>BlockService: Calculate final hash
+    BlockService->>S3: Assemble file
+    BlockService->>MetaDB: Store block references
+    BlockService-->>API: File assembled
+    API->>MetaDB: Update file status = ready
+    API-->>Client: {fileId, size, hash}
+    
+    Note over Client,CDN: File Download
+    
+    Client->>API: GET /files/{fileId}/download
+    API->>FileService: Get file metadata
+    FileService->>MetaDB: Query file
+    MetaDB-->>FileService: File record
+    FileService->>FileService: Generate signed CDN URL
+    FileService-->>Client: 302 Redirect to CDN
+    Client->>CDN: GET file content
+    CDN->>S3: Fetch from origin (cache miss)
+    CDN-->>Client: Stream file content
+```

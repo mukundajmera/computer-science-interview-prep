@@ -1,0 +1,104 @@
+{
+  "id": "lc-0632-smallest-range-covering-elements-from-k-lists",
+  "title": "Smallest Range Covering Elements from K Lists",
+  "difficulty": "hard",
+  "status": "verified",
+  "patterns": [
+    "Sliding Window",
+    "heap",
+    "two-pointers"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 169,
+      "group": "heap",
+      "sourceUrl": "https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 258,
+      "group": "Sliding Window",
+      "sourceUrl": "https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "632",
+    "titleSlug": "smallest-range-covering-elements-from-k-lists",
+    "url": "https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "smallestRange",
+      "returnType": "int[]",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "List<List<Integer>>"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "smallestRange",
+      "returnType": "List[int]",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "List[List[int]]"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-flatten-sliding-window/Solution.java",
+      "python/solution-1-flatten-sliding-window/solution.py",
+      "java/solution-2-min-heap/Solution.java",
+      "python/solution-2-min-heap/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+flowchart LR
+    C[Content Event] --> G[Moderation Gateway]
+    G --> F[Feature Fetch]
+    F --> I[Inference Service]
+    I --> K[Decision Calibrator]
+    K --> E[Enforcement Service]
+    K --> RQ[Review Queue]
+    RQ --> RC[Reviewer Console]
+    E --> S[Serving Surfaces]
+    E --> A[(Audit Store)]
+    RC --> A
+    A --> M[Eval + Drift Monitor]
+
+    subgraph Sync Path
+    G
+    F
+    I
+    K
+    end
+
+    subgraph Async Enforcement
+    E
+    S
+    end

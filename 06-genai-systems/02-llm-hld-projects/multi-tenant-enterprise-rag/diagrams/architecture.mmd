@@ -1,0 +1,23 @@
+graph TD
+    subgraph Trust_Boundaries [Trust Boundaries: Tenant / User Authorization]
+        subgraph Ingestion
+            A["CDC Connectors"] --> B["Chunking & ACL Tagging<br/>(Ingestion Trust Boundary)"]
+            B --> C["Embedding Model"]
+            C --> D[("Vector Database")]
+        end
+        subgraph Cache
+            E["User Query"] --> F["Tenant-Isolated Query Cache<br/>(Cache Trust Boundary)"]
+        end
+        subgraph Retrieval
+            F -- "Cache Miss" --> H["Single-Stage In-Engine ACL Filter<br/>(Retrieval Trust Boundary)"]
+            H --> G["Hybrid Search (Dense + BM25)"]
+            G --> I["Reciprocal Rank Fusion"]
+        end
+        subgraph Reranking
+            I --> J["Cross-Encoder Reranking<br/>(Reranking Trust Boundary)"]
+        end
+        subgraph Response
+            F -- "Cache Hit" --> K["Output Tenant Check<br/>(Response Trust Boundary)"]
+            J --> K
+        end
+    end

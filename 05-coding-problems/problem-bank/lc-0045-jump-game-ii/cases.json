@@ -1,0 +1,71 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "first jump reaches middle range",
+      "input": {
+        "nums": [
+          3,
+          2,
+          1,
+          1,
+          4
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "large first jump then finish",
+      "input": {
+        "nums": [
+          4,
+          1,
+          1,
+          1,
+          1,
+          6
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "single index",
+      "input": {
+        "nums": [
+          0
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "must choose longer second reach",
+      "input": {
+        "nums": [
+          2,
+          4,
+          1,
+          1,
+          1,
+          3,
+          1
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "name": "steady one-step path",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "expected": 3
+    }
+  ]
+}

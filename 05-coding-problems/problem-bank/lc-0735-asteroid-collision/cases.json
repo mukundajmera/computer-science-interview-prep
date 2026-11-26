@@ -1,0 +1,104 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "small asteroid destroyed",
+      "input": {
+        "asteroids": [
+          5,
+          10,
+          -5
+        ]
+      },
+      "expected": [
+        5,
+        10
+      ]
+    },
+    {
+      "name": "equal asteroids destroy both",
+      "input": {
+        "asteroids": [
+          8,
+          -8
+        ]
+      },
+      "expected": []
+    },
+    {
+      "name": "chain collision",
+      "input": {
+        "asteroids": [
+          10,
+          2,
+          -5
+        ]
+      },
+      "expected": [
+        10
+      ]
+    },
+    {
+      "name": "no opposing collisions",
+      "input": {
+        "asteroids": [
+          -2,
+          -1,
+          1,
+          2
+        ]
+      },
+      "expected": [
+        -2,
+        -1,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "incoming negative survives all",
+      "input": {
+        "asteroids": [
+          1,
+          -2,
+          -2,
+          -2
+        ]
+      },
+      "expected": [
+        -2,
+        -2,
+        -2
+      ]
+    },
+    {
+      "name": "late large negative clears stack",
+      "input": {
+        "asteroids": [
+          3,
+          5,
+          -2,
+          -6
+        ]
+      },
+      "expected": [
+        -6
+      ]
+    },
+    {
+      "name": "equal magnitude after chain",
+      "input": {
+        "asteroids": [
+          10,
+          2,
+          -2,
+          -10
+        ]
+      },
+      "expected": []
+    }
+  ]
+}

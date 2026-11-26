@@ -1,0 +1,138 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "turning path through low cell",
+      "input": {
+        "matrix": [
+          [
+            9,
+            9,
+            4
+          ],
+          [
+            6,
+            6,
+            8
+          ],
+          [
+            2,
+            1,
+            1
+          ]
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "path bends right then down",
+      "input": {
+        "matrix": [
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            3,
+            2,
+            6
+          ],
+          [
+            2,
+            2,
+            1
+          ]
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "single cell",
+      "input": {
+        "matrix": [
+          [
+            1
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "plateau only",
+      "input": {
+        "matrix": [
+          [
+            7,
+            7
+          ],
+          [
+            7,
+            7
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "single increasing row",
+      "input": {
+        "matrix": [
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "single decreasing column can climb upward",
+      "input": {
+        "matrix": [
+          [
+            4
+          ],
+          [
+            3
+          ],
+          [
+            2
+          ],
+          [
+            1
+          ]
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "snake uses all cells",
+      "input": {
+        "matrix": [
+          [
+            10,
+            9,
+            8
+          ],
+          [
+            11,
+            12,
+            7
+          ],
+          [
+            14,
+            13,
+            6
+          ]
+        ]
+      },
+      "expected": 9
+    }
+  ]
+}

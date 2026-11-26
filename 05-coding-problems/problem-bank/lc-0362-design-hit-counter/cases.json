@@ -1,0 +1,118 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "empty query",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "getHits",
+          "input": {
+            "timestamp": 10
+          },
+          "expected": 0
+        }
+      ]
+    },
+    {
+      "name": "duplicate hits and boundary",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "hit",
+          "input": {
+            "timestamp": 1
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "hit",
+          "input": {
+            "timestamp": 1
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "hit",
+          "input": {
+            "timestamp": 300
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "getHits",
+          "input": {
+            "timestamp": 300
+          },
+          "expected": 3
+        },
+        {
+          "type": "call",
+          "method": "getHits",
+          "input": {
+            "timestamp": 301
+          },
+          "expected": 1
+        }
+      ]
+    },
+    {
+      "name": "interleaved hits expire",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "hit",
+          "input": {
+            "timestamp": 20
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "hit",
+          "input": {
+            "timestamp": 40
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "getHits",
+          "input": {
+            "timestamp": 319
+          },
+          "expected": 2
+        },
+        {
+          "type": "call",
+          "method": "getHits",
+          "input": {
+            "timestamp": 340
+          },
+          "expected": 0
+        }
+      ]
+    }
+  ]
+}

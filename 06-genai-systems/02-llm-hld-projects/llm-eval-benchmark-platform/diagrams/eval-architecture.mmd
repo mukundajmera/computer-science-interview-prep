@@ -1,0 +1,60 @@
+graph TD
+    subgraph Clients
+        CI[CI/CD Pipeline]
+        Prod[Production App]
+        Admin[Data Scientist / Admin UI]
+    end
+
+    subgraph API & Routing
+        Gateway[API Gateway]
+        IngestQ[Kafka / Message Queue]
+    end
+
+    subgraph Core Platform Services
+        TestReg[Golden Test Set Registry]
+        EvalOrch[Evaluation Orchestrator]
+        TournEng[Tournament Engine ELO]
+        SynthGen[Synthetic Test Generator]
+    end
+
+    subgraph Evaluation Workers
+        Worker1[LLM-as-Judge Worker]
+        Worker2[RAG Triad Worker]
+        Worker3[Red-Team Worker]
+    end
+
+    subgraph Storage
+        MetaDB[(Relational DB: Metrics & Config)]
+        VectorDB[(Vector DB: Semantic Search)]
+        BlobStore[(Object Store: Artifacts)]
+    end
+
+    subgraph External Models
+        TargetLLM[Target / Candidate Models]
+        JudgeLLM[Judge Models e.g. GPT-4]
+    end
+
+    CI --> Gateway
+    Admin --> Gateway
+    Prod -- Async Logs --> IngestQ
+
+    Gateway --> EvalOrch
+    Gateway --> TestReg
+    IngestQ --> EvalOrch
+
+    WorkerQ[Worker Queue]
+    EvalOrch --> WorkerQ
+    WorkerQ --> Worker1
+    WorkerQ --> Worker2
+    WorkerQ --> Worker3
+    TournEng --> EvalOrch
+    SynthGen --> TestReg
+
+    Worker1 --> JudgeLLM
+    Worker2 --> JudgeLLM
+    Worker3 --> TargetLLM
+
+    Worker1 --> MetaDB
+    Worker2 --> MetaDB
+    TestReg --> MetaDB
+    TestReg --> VectorDB

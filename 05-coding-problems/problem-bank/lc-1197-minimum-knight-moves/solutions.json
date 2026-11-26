@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bounded-bfs",
+      "title": "Bounded BFS",
+      "tier": 1,
+      "strategy": "Run ordinary BFS from the origin inside a conservative box around the target.",
+      "timeComplexity": {
+        "class": "O(r^2)",
+        "explanation": "The searched square grows with r = max(|x|, |y|)."
+      },
+      "spaceComplexity": {
+        "class": "O(r^2)",
+        "explanation": "The queue and visited set can contain every bounded square."
+      },
+      "javaPath": "java/solution-1-bounded-bfs/Solution.java",
+      "pythonPath": "python/solution-1-bounded-bfs/solution.py"
+    },
+    {
+      "id": "solution-2-symmetric-bfs",
+      "title": "Symmetric BFS",
+      "tier": 2,
+      "strategy": "Reflect the target into the first quadrant and prune states outside the small useful negative border.",
+      "timeComplexity": {
+        "class": "O((|x| + 5)(|y| + 5))",
+        "explanation": "After reflection, BFS stays inside the target rectangle plus a constant negative/positive margin."
+      },
+      "spaceComplexity": {
+        "class": "O((|x| + 5)(|y| + 5))",
+        "explanation": "Visited states stay within the pruned rectangle around the reflected target."
+      },
+      "javaPath": "java/solution-2-symmetric-bfs/Solution.java",
+      "pythonPath": "python/solution-2-symmetric-bfs/solution.py"
+    }
+  ]
+}

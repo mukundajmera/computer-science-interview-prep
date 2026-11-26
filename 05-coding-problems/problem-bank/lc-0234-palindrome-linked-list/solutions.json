@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-copy-values",
+      "title": "Copy values and compare ends",
+      "tier": 1,
+      "strategy": "Copy every node value into an array, then compare symmetric positions from the outside inward.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The algorithm scans the list once and then compares each array position at most once." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The copied value array stores every node value." },
+      "javaPath": "java/solution-1-copy-values/Solution.java",
+      "pythonPath": "python/solution-1-copy-values/solution.py"
+    },
+    {
+      "id": "solution-2-reverse-second-half",
+      "title": "Reverse the second half in place",
+      "tier": 2,
+      "strategy": "Find the midpoint, reverse the second half, compare it against the first half, then reverse that half again to restore the original list shape.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Finding the midpoint, reversing half the list, comparing halves, and restoring the half are all linear in total." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "The algorithm stores only traversal and reversal pointers while reusing list nodes." },
+      "javaPath": "java/solution-2-reverse-second-half/Solution.java",
+      "pythonPath": "python/solution-2-reverse-second-half/solution.py"
+    }
+  ]
+}

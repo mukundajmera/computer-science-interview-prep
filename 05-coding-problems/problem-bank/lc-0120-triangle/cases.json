@@ -1,0 +1,21 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "mixed small triangle",
+      "input": { "triangle": [[5], [1, 6], [4, 2, 7]] },
+      "expected": 8
+    },
+    {
+      "name": "includes negative values",
+      "input": { "triangle": [[2], [3, -4], [6, -5, 1], [4, 2, -2, 3]] },
+      "expected": -9
+    },
+    {
+      "name": "single row",
+      "input": { "triangle": [[-3]] },
+      "expected": -3
+    }
+  ]
+}

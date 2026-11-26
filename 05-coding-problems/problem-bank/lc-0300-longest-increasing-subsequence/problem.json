@@ -1,0 +1,106 @@
+{
+  "id": "lc-0300-longest-increasing-subsequence",
+  "title": "Longest Increasing Subsequence",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "array",
+    "dynamic-programming",
+    "binary-search"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 95,
+      "group": "dynamic-programming",
+      "sourceUrl": "https://leetcode.com/problems/longest-increasing-subsequence"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 141,
+      "group": "1D DP",
+      "sourceUrl": "https://leetcode.com/problems/longest-increasing-subsequence"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 671,
+      "group": "1-D Dynamic Programming",
+      "sourceUrl": "https://leetcode.com/problems/longest-increasing-subsequence"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "300",
+    "titleSlug": "longest-increasing-subsequence",
+    "url": "https://leetcode.com/problems/longest-increasing-subsequence",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "lengthOfLIS",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "int[]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "lengthOfLIS",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "List[int]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

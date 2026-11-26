@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dynamic-programming",
+      "title": "Dynamic programming over predecessors",
+      "tier": 1,
+      "strategy": "For each destination index, scan earlier indices that can reach it and keep the smallest predecessor jump count.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every pair of earlier index and destination may be checked in the nested loops."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The DP array stores the minimum jump count for every index."
+      },
+      "javaPath": "java/solution-1-dynamic-programming/Solution.java",
+      "pythonPath": "python/solution-1-dynamic-programming/solution.py"
+    },
+    {
+      "id": "solution-2-greedy-ranges",
+      "title": "Greedy jump ranges",
+      "tier": 2,
+      "strategy": "Treat each jump as covering a range, track the farthest next range, and increment the answer when the current range ends.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each index before the target is visited once while extending the next reachable range."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only range boundaries and the jump count are stored."
+      },
+      "javaPath": "java/solution-2-greedy-ranges/Solution.java",
+      "pythonPath": "python/solution-2-greedy-ranges/solution.py"
+    }
+  ]
+}

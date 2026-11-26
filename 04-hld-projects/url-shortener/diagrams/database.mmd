@@ -1,0 +1,52 @@
+```mermaid
+erDiagram
+    URLS {
+        string short_code PK "Primary Key - 7 char base62"
+        string long_url "Original URL - up to 2048 chars"
+        timestamp created_at "Creation timestamp"
+        timestamp expires_at "Expiration time (nullable)"
+        string user_id FK "Owner user ID (nullable)"
+        bigint click_count "Total clicks"
+        boolean is_custom "Custom alias flag"
+        json metadata "Extensible metadata"
+    }
+    
+    USERS {
+        string user_id PK "UUID"
+        string email "User email"
+        string api_key_hash "Hashed API access key"
+        timestamp created_at "Registration time"
+        int url_limit "Max URLs allowed"
+        string tier "free/pro/enterprise"
+    }
+    
+    KEY_POOL {
+        string short_code PK "Pre-generated code"
+        boolean is_used "Usage status"
+        timestamp assigned_at "When assigned (nullable)"
+        string assigned_to "Server ID (nullable)"
+    }
+    
+    CLICKS {
+        string click_id PK "UUID"
+        string short_code FK "URL reference"
+        timestamp clicked_at "Click timestamp"
+        string user_agent "Browser info"
+        string referrer "Source URL"
+        string country "Geo location"
+        string ip_hash "Anonymized IP"
+    }
+    
+    ANALYTICS_DAILY {
+        string short_code PK "URL reference"
+        date date PK "Aggregation date"
+        bigint click_count "Daily clicks"
+        json top_referrers "Top 10 referrers"
+        json top_countries "Top 10 countries"
+    }
+    
+    %% Relationships
+    USERS ||--o{ URLS : "creates"
+    URLS ||--o{ CLICKS : "receives"
+    URLS ||--|| ANALYTICS_DAILY : "aggregates to"
+```

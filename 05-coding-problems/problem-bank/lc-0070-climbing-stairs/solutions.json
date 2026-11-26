@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-branching",
+      "title": "Recursive branching",
+      "tier": 1,
+      "strategy": "Count ways by recursively choosing one-step and two-step moves.",
+      "timeComplexity": {
+        "class": "O(2^n)",
+        "explanation": "The recursion recomputes many smaller stair counts through two branches."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The deepest recursive call stack has one frame per remaining step."
+      },
+      "javaPath": "java/solution-1-recursive-branching/Solution.java",
+      "pythonPath": "python/solution-1-recursive-branching/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-dp",
+      "title": "Iterative two-state DP",
+      "tier": 2,
+      "strategy": "Build the Fibonacci-style recurrence while keeping only the last two values.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each stair count from 3 through n is computed once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the previous two counts and the current count are stored."
+      },
+      "javaPath": "java/solution-2-iterative-dp/Solution.java",
+      "pythonPath": "python/solution-2-iterative-dp/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-build-differences",
+      "title": "Build differences",
+      "tier": 1,
+      "strategy": "Build a list of adjacent absolute differences and sum it.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "There are n - 1 adjacent differences."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The difference list stores n - 1 integers."
+      },
+      "javaPath": "java/solution-1-build-differences/Solution.java",
+      "pythonPath": "python/solution-1-build-differences/solution.py"
+    },
+    {
+      "id": "solution-2-running-sum",
+      "title": "Running sum",
+      "tier": 2,
+      "strategy": "Accumulate adjacent absolute differences directly.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The string is scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the total is stored."
+      },
+      "javaPath": "java/solution-2-running-sum/Solution.java",
+      "pythonPath": "python/solution-2-running-sum/solution.py"
+    }
+  ]
+}

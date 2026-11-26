@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-plain-dfs",
+      "title": "Plain DFS",
+      "tier": 1,
+      "strategy": "Start a DFS from every cell and recursively explore higher-valued neighbors without caching.",
+      "timeComplexity": {
+        "class": "O(mn * 4^(mn))",
+        "explanation": "Without caching, branching increasing paths can be re-enumerated from many starts."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The recursion depth can include every cell in the longest path."
+      },
+      "javaPath": "java/solution-1-plain-dfs/Solution.java",
+      "pythonPath": "python/solution-1-plain-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-memoized-dfs",
+      "title": "Memoized DFS",
+      "tier": 2,
+      "strategy": "Cache the best increasing path length starting from each cell.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each cell's outgoing edges are evaluated once after memoization."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The memo table and recursion stack are bounded by the number of cells."
+      },
+      "javaPath": "java/solution-2-memoized-dfs/Solution.java",
+      "pythonPath": "python/solution-2-memoized-dfs/solution.py"
+    }
+  ]
+}

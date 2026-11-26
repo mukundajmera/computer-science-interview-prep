@@ -1,0 +1,54 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "division then addition",
+      "input": {
+        "tokens": [
+          "6",
+          "2",
+          "/",
+          "3",
+          "+"
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "name": "subtract then multiply",
+      "input": {
+        "tokens": [
+          "7",
+          "3",
+          "-",
+          "2",
+          "*"
+        ]
+      },
+      "expected": 8
+    },
+    {
+      "name": "negative truncating division",
+      "input": {
+        "tokens": [
+          "5",
+          "-2",
+          "/"
+        ]
+      },
+      "expected": -2
+    },
+    {
+      "name": "single operand",
+      "input": {
+        "tokens": [
+          "42"
+        ]
+      },
+      "expected": 42
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+%% Adapter Pattern Class Diagram
+%% Converts interface of a class into another interface clients expect
+
+classDiagram
+    class Target {
+        <<interface>>
+        +request() void
+    }
+    
+    class Adapter {
+        -adaptee Adaptee
+        +Adapter(Adaptee)
+        +request() void
+    }
+    
+    class Adaptee {
+        +specificRequest() void
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Target <|.. Adapter
+    Adapter --> Adaptee : wraps
+    Client --> Target : uses
+    
+    note for Adapter "Translates Target interface\nto Adaptee interface.\nrequest() calls\nspecificRequest()"

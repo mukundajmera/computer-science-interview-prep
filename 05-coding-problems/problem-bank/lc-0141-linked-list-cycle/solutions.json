@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-visited-set",
+      "title": "Track visited node identities",
+      "tier": 1,
+      "strategy": "Walk through next pointers while storing each node object already seen. Reaching a seen object proves a loop; reaching null proves the chain terminates.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "At most n distinct nodes are inspected before the walk either terminates or revisits a node."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The identity set can hold every reachable node in an acyclic list."
+      },
+      "javaPath": "java/solution-1-visited-set/Solution.java",
+      "pythonPath": "python/solution-1-visited-set/solution.py"
+    },
+    {
+      "id": "solution-2-floyd-cycle-finding",
+      "title": "Floyd fast and slow pointers",
+      "tier": 2,
+      "strategy": "Move one pointer by one hop and another by two hops. If a loop exists, the faster pointer eventually lands on the slower pointer inside the loop.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The fast pointer can advance only a linear number of hops before either hitting null or meeting the slow pointer."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only two moving references are maintained regardless of list length."
+      },
+      "javaPath": "java/solution-2-floyd-cycle-finding/Solution.java",
+      "pythonPath": "python/solution-2-floyd-cycle-finding/solution.py"
+    }
+  ]
+}

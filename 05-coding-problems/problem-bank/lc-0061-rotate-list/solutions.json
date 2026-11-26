@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-length-and-split",
+      "title": "Length count and split",
+      "tier": 1,
+      "strategy": "Count length and remember the tail, find the node before the rotated suffix, split there, and attach the old tail to the old head.",
+      "timeComplexity": { "class": "O(n)", "explanation": "One scan counts nodes and a second bounded walk finds the split point, so total work is linear." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only counters and a few pointers are stored while original nodes are relinked." },
+      "javaPath": "java/solution-1-length-and-split/Solution.java",
+      "pythonPath": "python/solution-1-length-and-split/solution.py"
+    },
+    {
+      "id": "solution-2-circular-break",
+      "title": "Circular list then break",
+      "tier": 2,
+      "strategy": "Compute length and tail, temporarily connect tail to head, then break the circle at the new tail.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The algorithm scans once to find length and tail, then walks to the new tail." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only a few pointers and counters are stored while the original nodes are reused." },
+      "javaPath": "java/solution-2-circular-break/Solution.java",
+      "pythonPath": "python/solution-2-circular-break/solution.py"
+    }
+  ]
+}

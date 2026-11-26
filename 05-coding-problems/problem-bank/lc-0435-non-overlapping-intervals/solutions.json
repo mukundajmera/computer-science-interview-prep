@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-longest-compatible-dp",
+      "title": "Longest compatible DP",
+      "tier": 1,
+      "strategy": "Sort intervals and compute the largest non-overlapping subset ending at each interval.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every interval can be compared with every earlier interval."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The DP table stores one value per interval."
+      },
+      "javaPath": "java/solution-1-longest-compatible-dp/Solution.java",
+      "pythonPath": "python/solution-1-longest-compatible-dp/solution.py"
+    },
+    {
+      "id": "solution-2-greedy-earliest-end",
+      "title": "Greedy earliest end",
+      "tier": 2,
+      "strategy": "Sort by end time and keep every interval that starts after or at the last kept end.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting dominates the linear selection pass."
+      },
+      "spaceComplexity": {
+        "class": "O(log n)",
+        "explanation": "Sorting may use recursion or temporary stack space."
+      },
+      "javaPath": "java/solution-2-greedy-earliest-end/Solution.java",
+      "pythonPath": "python/solution-2-greedy-earliest-end/solution.py"
+    }
+  ]
+}

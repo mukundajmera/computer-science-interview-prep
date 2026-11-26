@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-nested-search",
+      "title": "Nested search",
+      "tier": 1,
+      "strategy": "For each element, scan the array for x + 1.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each element may scan all values."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only counters are stored."
+      },
+      "javaPath": "java/solution-1-nested-search/Solution.java",
+      "pythonPath": "python/solution-1-nested-search/solution.py"
+    },
+    {
+      "id": "solution-2-presence-set",
+      "title": "Presence set",
+      "tier": 2,
+      "strategy": "Build a set of values and count elements whose successor is present.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Build and query the set in linear time."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The set stores distinct values."
+      },
+      "javaPath": "java/solution-2-presence-set/Solution.java",
+      "pythonPath": "python/solution-2-presence-set/solution.py"
+    }
+  ]
+}

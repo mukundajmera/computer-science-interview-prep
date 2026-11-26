@@ -1,0 +1,34 @@
+sequenceDiagram
+    participant Client
+    participant Spanner Node A (Leader)
+    participant Spanner Replica B
+    participant TrueTime API
+
+    Client->>Spanner Node A (Leader): Begin Transaction T1 (Write X=1)
+    Spanner Node A (Leader)->>Spanner Node A (Leader): Acquire Locks
+    Spanner Node A (Leader)->>TrueTime API: TT.now()
+    TrueTime API-->>Spanner Node A (Leader): [earliest=100, latest=105] (epsilon=5ms)
+    
+    Note over Spanner Node A (Leader): Set Commit Timestamp<br/>s = latest = 105
+    
+    Spanner Node A (Leader)->>Spanner Replica B: Paxos Propose (s=105, X=1)
+    Spanner Replica B-->>Spanner Node A (Leader): Paxos Accept
+    
+    Note over Spanner Node A (Leader): Commit Wait Phase<br/>Wait until TT.now().earliest > s (105)
+    
+    loop Wait Loop
+        Spanner Node A (Leader)->>TrueTime API: TT.now()
+        TrueTime API-->>Spanner Node A (Leader): [earliest=104, latest=109]
+        Note over Spanner Node A (Leader): 104 is NOT > 105. Keep waiting.
+    end
+
+    loop Wait Loop
+        Spanner Node A (Leader)->>TrueTime API: TT.now()
+        TrueTime API-->>Spanner Node A (Leader): [earliest=106, latest=111]
+        Note over Spanner Node A (Leader): 106 IS > 105. Done waiting.
+    end
+    
+    Spanner Node A (Leader)->>Spanner Node A (Leader): Apply Commit & Release Locks
+    Spanner Node A (Leader)-->>Client: Commit Successful (T1)
+
+    Note over Client, Spanner Node A (Leader): Any new transaction T2 starting now<br/>will get TT.now().earliest >= 106 > 105.<br/>Strict global ordering guaranteed!

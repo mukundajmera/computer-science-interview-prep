@@ -1,0 +1,32 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "partial prefix matched",
+      "input": {
+        "s": "coaching",
+        "t": "coding"
+      },
+      "expected": 4
+    },
+    {
+      "name": "already subsequence",
+      "input": {
+        "s": "abcde",
+        "t": "ace"
+      },
+      "expected": 0
+    },
+    {
+      "name": "no characters matched",
+      "input": {
+        "s": "abc",
+        "t": "zzz"
+      },
+      "expected": 3
+    }
+  ]
+}

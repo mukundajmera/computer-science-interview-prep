@@ -1,0 +1,139 @@
+{
+  "id": "lc-0362-design-hit-counter",
+  "title": "Design Hit Counter",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "Arrays & Hashing",
+    "queue",
+    "design"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 133,
+      "group": "queue",
+      "sourceUrl": "https://leetcode.com/problems/design-hit-counter"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 157,
+      "group": "Arrays & Hashing",
+      "sourceUrl": "https://leetcode.com/problems/design-hit-counter"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "362",
+    "titleSlug": "design-hit-counter",
+    "url": "https://leetcode.com/problems/design-hit-counter",
+    "paidOnly": true
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "kind": "object",
+    "java": {
+      "className": "HitCounter",
+      "constructor": {
+        "parameters": []
+      },
+      "methods": [
+        {
+          "name": "hit",
+          "returnType": "void",
+          "parameters": [
+            {
+              "name": "timestamp",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "getHits",
+          "returnType": "int",
+          "parameters": [
+            {
+              "name": "timestamp",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    "python": {
+      "className": "HitCounter",
+      "constructor": {
+        "parameters": []
+      },
+      "methods": [
+        {
+          "name": "hit",
+          "returnType": "None",
+          "parameters": [
+            {
+              "name": "timestamp",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "getHits",
+          "returnType": "int",
+          "parameters": [
+            {
+              "name": "timestamp",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-timestamp-queue/Solution.java",
+      "python/solution-1-timestamp-queue/solution.py",
+      "java/solution-2-rolling-buckets/Solution.java",
+      "python/solution-2-rolling-buckets/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

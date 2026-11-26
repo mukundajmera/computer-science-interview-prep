@@ -1,0 +1,105 @@
+{
+  "id": "lc-0295-find-median-from-data-stream",
+  "title": "Find Median from Data Stream",
+  "difficulty": "hard",
+  "status": "verified",
+  "patterns": [
+    "design",
+    "heap",
+    "ordered-list"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-sorted-array-list/Solution.java",
+      "java/solution-2-two-heaps/Solution.java",
+      "python/solution-1-sorted-list/solution.py",
+      "python/solution-2-two-heaps/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 45,
+      "group": "heap",
+      "sourceUrl": "https://leetcode.com/problems/find-median-from-data-stream"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 124,
+      "group": "Heap",
+      "sourceUrl": "https://leetcode.com/problems/find-median-from-data-stream"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 500,
+      "group": "Heap / Priority Queue",
+      "sourceUrl": "https://leetcode.com/problems/find-median-from-data-stream"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "295",
+    "titleSlug": "find-median-from-data-stream",
+    "url": "https://leetcode.com/problems/find-median-from-data-stream",
+    "paidOnly": false
+  },
+  "signature": {
+    "kind": "object",
+    "java": {
+      "className": "MedianFinder",
+      "constructor": { "parameters": [] },
+      "methods": [
+        { "name": "addNum", "returnType": "void", "parameters": [{ "name": "num", "type": "int" }] },
+        { "name": "findMedian", "returnType": "double", "parameters": [] }
+      ]
+    },
+    "python": {
+      "className": "MedianFinder",
+      "constructor": { "parameters": [] },
+      "methods": [
+        { "name": "addNum", "returnType": "None", "parameters": [{ "name": "num", "type": "int" }] },
+        { "name": "findMedian", "returnType": "float", "parameters": [] }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

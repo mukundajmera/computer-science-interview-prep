@@ -1,0 +1,78 @@
+graph TD
+    %% Spanner TrueTime Architecture
+
+    subgraph ClientLayer [Client Applications]
+        C1[Client 1]
+        C2[Client 2]
+    end
+
+    subgraph DataCenter1 [Data Center A - US East]
+        TT1[TrueTime Master<br>GPS + Atomic]
+        
+        subgraph ZoneA [Zone A]
+            Z1M[Zone Master]
+            L1[Location Proxy]
+            S1_1[Spanserver 1<br>Paxos Leader Shard X]
+            S1_2[Spanserver 2<br>Paxos Follower Shard Y]
+        end
+    end
+
+    subgraph DataCenter2 [Data Center B - US West]
+        TT2[TrueTime Master<br>GPS + Atomic]
+        
+        subgraph ZoneB [Zone B]
+            Z2M[Zone Master]
+            L2[Location Proxy]
+            S2_1[Spanserver 3<br>Paxos Follower Shard X]
+            S2_2[Spanserver 4<br>Paxos Leader Shard Y]
+        end
+    end
+
+    subgraph DataCenter3 [Data Center C - Europe]
+        TT3[TrueTime Master<br>GPS + Atomic]
+        
+        subgraph ZoneC [Zone C]
+            Z3M[Zone Master]
+            L3[Location Proxy]
+            S3_1[Spanserver 5<br>Paxos Follower Shard X]
+            S3_2[Spanserver 6<br>Paxos Follower Shard Y]
+        end
+    end
+
+    C1 -->|Read/Write| L1
+    C2 -->|Read/Write| L2
+    
+    L1 --> S1_1
+    L1 --> S1_2
+    
+    L2 --> S2_1
+    L2 --> S2_2
+
+    %% Paxos Replication
+    S1_1 -.->|Paxos Replicate Shard X| S2_1
+    S1_1 -.->|Paxos Replicate Shard X| S3_1
+
+    S2_2 -.->|Paxos Replicate Shard Y| S1_2
+    S2_2 -.->|Paxos Replicate Shard Y| S3_2
+
+    %% TrueTime syncing
+    TT1 -.->|Sync Time| Z1M
+    TT2 -.->|Sync Time| Z2M
+    TT3 -.->|Sync Time| Z3M
+    
+    Z1M -.->|Time API| S1_1
+    Z1M -.->|Time API| S1_2
+    Z2M -.->|Time API| S2_1
+    Z2M -.->|Time API| S2_2
+    Z3M -.->|Time API| S3_1
+    Z3M -.->|Time API| S3_2
+
+    classDef trueTime fill:#f9d0c4,stroke:#333,stroke-width:2px;
+    classDef paxosLeader fill:#d4edda,stroke:#28a745,stroke-width:2px;
+    classDef paxosFollower fill:#e2e3e5,stroke:#383d41,stroke-width:1px;
+    classDef client fill:#cce5ff,stroke:#004085,stroke-width:1px;
+    
+    class TT1,TT2,TT3 trueTime;
+    class S1_1,S2_2 paxosLeader;
+    class S1_2,S2_1,S3_1,S3_2 paxosFollower;
+    class C1,C2 client;

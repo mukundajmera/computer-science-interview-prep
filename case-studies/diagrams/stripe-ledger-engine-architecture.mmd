@@ -1,0 +1,52 @@
+%% Stripe Ledger Engine Architecture Diagram
+graph TD
+    %% Define styles
+    classDef client fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef api fill:#d4edda,stroke:#28a745,stroke-width:2px;
+    classDef core fill:#cce5ff,stroke:#007bff,stroke-width:2px;
+    classDef db fill:#fff3cd,stroke:#ffc107,stroke-width:2px;
+    classDef event fill:#f8d7da,stroke:#dc3545,stroke-width:2px;
+
+    %% Client and Edge
+    Client["API Client (Payment Gateway, Mobile, etc.)"]:::client
+    API_GW["API Gateway & Load Balancer"]:::api
+    
+    %% Core Ledger Services
+    Ledger_API["Ledger API Service"]:::core
+    Idempotency_Store[("Idempotency Store (Redis/RDBMS)")]:::db
+    Ledger_Engine["Core Ledger Engine"]:::core
+    Reconciliation_Service["Reconciliation Engine"]:::core
+    Rollup_Worker["Balance Rollup Worker"]:::core
+
+    %% Databases
+    Event_Log[("Append-Only Event Log (PostgreSQL/Spanner)")]:::db
+    Balance_Snapshot[("Balance Snapshots")]:::db
+    Bank_Files[("External Bank Files")]:::db
+
+    %% Event Bus and Downstream
+    Kafka{{"Event Bus (Kafka)"}}:::event
+    Analytics["Analytics & Reporting"]:::client
+    Notifications["Notifications Service"]:::client
+
+    %% Connections
+    Client -->|HTTPS Request w/ Idempotency-Key| API_GW
+    API_GW --> Ledger_API
+    
+    Ledger_API -->|1. Check & Lock Key| Idempotency_Store
+    Ledger_API -->|2. Validate & Submit| Ledger_Engine
+    
+    Ledger_Engine -->|3. Append Transaction Event| Event_Log
+    Ledger_Engine -->|4. OCC Check & Publish| Kafka
+    
+    Rollup_Worker -->|Poll Events| Event_Log
+    Rollup_Worker -->|Materialize Balance| Balance_Snapshot
+    
+    Ledger_API -->|Read Fast Balance| Balance_Snapshot
+    Ledger_API -->|Read Recent Events| Event_Log
+    
+    Kafka --> Analytics
+    Kafka --> Notifications
+    
+    Bank_Files -->|Ingest| Reconciliation_Service
+    Event_Log -->|Read Internal Log| Reconciliation_Service
+    Reconciliation_Service -.->|Alert on Discrepancy| Operations["Ops Team"]

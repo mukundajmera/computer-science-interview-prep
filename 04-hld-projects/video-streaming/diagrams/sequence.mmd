@@ -1,0 +1,66 @@
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant API as API Gateway
+    participant US as Upload Service
+    participant S3 as Object Storage
+    participant Q as Transcoding Queue
+    participant TW as Transcoding Worker
+    participant MS as Metadata Service
+    participant DB as PostgreSQL
+
+    Note over U, DB: Video Upload Flow
+
+    U->>API: POST /videos/upload/init
+    API->>US: Initialize upload
+    US->>DB: Create video record (status: uploading)
+    US->>S3: Create multipart upload
+    US-->>U: upload_id, presigned chunk URLs
+
+    loop Upload chunks in parallel
+        U->>S3: PUT chunk with presigned URL
+        S3-->>U: ETag confirmation
+    end
+
+    U->>API: POST /videos/upload/complete
+    API->>US: Complete upload
+    US->>S3: Complete multipart upload
+    US->>DB: Update status: processing
+    US->>Q: Enqueue transcoding job
+    US-->>U: video_id, status: processing
+
+    Note over Q, S3: Transcoding Pipeline
+
+    Q->>TW: Dequeue transcoding job
+    TW->>S3: Download raw video
+    
+    par Parallel Transcoding
+        TW->>TW: Transcode to 144p
+        TW->>TW: Transcode to 360p
+        TW->>TW: Transcode to 720p
+        TW->>TW: Transcode to 1080p
+    end
+    
+    TW->>S3: Upload all quality versions
+    TW->>TW: Generate thumbnails
+    TW->>S3: Upload thumbnails
+    TW->>MS: Update video metadata
+    MS->>DB: Update status: ready, add quality URLs
+
+    Note over U, S3: Video Streaming Flow
+
+    U->>API: GET /videos/{id}/manifest.m3u8
+    API->>MS: Get video qualities
+    MS->>DB: Query video_qualities
+    MS-->>API: Quality URLs
+    API-->>U: HLS manifest
+
+    loop Streaming segments
+        U->>S3: GET segment via CDN
+        Note right of S3: CDN caches segments
+        S3-->>U: Video segment
+    end
+
+    U->>API: POST /analytics/event (async)
+    API->>Q: Queue analytics event
+```

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-set-snapshot",
+      "title": "Hash set with snapshot sampling",
+      "tier": 1,
+      "strategy": "Track membership in a set and convert it to an indexed snapshot when random access is requested.",
+      "timeComplexity": {
+        "class": "O(1) insert/remove, O(n) getRandom",
+        "explanation": "Set updates are average constant time, but getRandom builds an array view of all current members before sampling."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The set stores every active value, and getRandom may allocate a temporary snapshot."
+      },
+      "javaPath": "java/solution-1-set-snapshot/Solution.java",
+      "pythonPath": "python/solution-1-set-snapshot/solution.py"
+    },
+    {
+      "id": "solution-2-indexed-array",
+      "title": "Indexed array plus value positions",
+      "tier": 2,
+      "strategy": "Store values in an array and map each value to its index, swapping the removed value with the last item before popping.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "insert, remove, and getRandom all use average constant-time hash map and array operations."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The array and index map each store every active value once."
+      },
+      "javaPath": "java/solution-2-indexed-array/Solution.java",
+      "pythonPath": "python/solution-2-indexed-array/solution.py"
+    }
+  ]
+}

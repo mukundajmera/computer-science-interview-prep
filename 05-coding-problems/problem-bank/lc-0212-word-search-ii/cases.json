@@ -1,0 +1,74 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list"
+  },
+  "cases": [
+    {
+      "name": "grid lines and turns",
+      "input": {
+        "board": [
+          [
+            "a",
+            "b",
+            "c"
+          ],
+          [
+            "d",
+            "e",
+            "f"
+          ],
+          [
+            "g",
+            "h",
+            "i"
+          ]
+        ],
+        "words": [
+          "abe",
+          "cfi",
+          "beh",
+          "adg",
+          "aei",
+          "abc",
+          "gh",
+          "zzz"
+        ]
+      },
+      "expected": [
+        "abe",
+        "cfi",
+        "beh",
+        "adg",
+        "abc",
+        "gh"
+      ]
+    },
+    {
+      "name": "small board limited adjacency",
+      "input": {
+        "board": [
+          [
+            "o",
+            "a"
+          ],
+          [
+            "t",
+            "h"
+          ]
+        ],
+        "words": [
+          "oa",
+          "oh",
+          "ath",
+          "hat",
+          "to"
+        ]
+      },
+      "expected": [
+        "oa",
+        "to"
+      ]
+    }
+  ]
+}

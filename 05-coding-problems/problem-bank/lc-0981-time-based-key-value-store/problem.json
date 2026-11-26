@@ -1,0 +1,163 @@
+{
+  "id": "lc-0981-time-based-key-value-store",
+  "title": "Time Based Key-Value Store",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "hash-table",
+    "binary-search",
+    "design"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 41,
+      "group": "binary-search",
+      "sourceUrl": "https://leetcode.com/problems/time-based-key-value-store"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 325,
+      "group": "Binary Search",
+      "sourceUrl": "https://leetcode.com/problems/time-based-key-value-store"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "981",
+    "titleSlug": "time-based-key-value-store",
+    "url": "https://leetcode.com/problems/time-based-key-value-store",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "kind": "object",
+    "java": {
+      "className": "TimeMap",
+      "constructor": {
+        "parameters": []
+      },
+      "methods": [
+        {
+          "name": "set",
+          "returnType": "void",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "String"
+            },
+            {
+              "name": "value",
+              "type": "String"
+            },
+            {
+              "name": "timestamp",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "get",
+          "returnType": "String",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "String"
+            },
+            {
+              "name": "timestamp",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    },
+    "python": {
+      "className": "TimeMap",
+      "constructor": {
+        "parameters": []
+      },
+      "methods": [
+        {
+          "name": "set",
+          "returnType": "None",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "str"
+            },
+            {
+              "name": "value",
+              "type": "str"
+            },
+            {
+              "name": "timestamp",
+              "type": "int"
+            }
+          ]
+        },
+        {
+          "name": "get",
+          "returnType": "str",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "str"
+            },
+            {
+              "name": "timestamp",
+              "type": "int"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-linear-history-scan/Solution.java",
+      "python/solution-1-linear-history-scan/solution.py",
+      "java/solution-2-binary-search-history/Solution.java",
+      "python/solution-2-binary-search-history/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

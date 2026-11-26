@@ -1,0 +1,12 @@
+flowchart LR
+    ES[Event Sources] --> IN[Signal Ingestion]
+    IN --> FS[Real-time Feature Service]
+    FS --> RE[Risk Engine]
+    RE --> PE[Policy Engine]
+    PE --> AX[Action Executor]
+    AX --> RS[(Risk State Store)]
+    PE --> AP[Appeal Queue]
+    AP --> IR[Investigator Review]
+    IR --> LB[(Trusted Label Store)]
+    LB --> TR[Training and Calibration Jobs]
+    TR --> RE

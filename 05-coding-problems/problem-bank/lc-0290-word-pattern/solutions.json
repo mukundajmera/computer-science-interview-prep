@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-two-maps",
+      "title": "Two directional maps",
+      "tier": 1,
+      "strategy": "Map pattern characters to words and words back to characters, rejecting conflicts.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each pattern position and word token is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The split words and maps can grow with the number of tokens."
+      },
+      "javaPath": "java/solution-1-two-maps/Solution.java",
+      "pythonPath": "python/solution-1-two-maps/solution.py"
+    }
+  ]
+}

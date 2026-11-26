@@ -1,0 +1,114 @@
+{
+  "id": "lc-0383-ransom-note",
+  "title": "Ransom Note",
+  "difficulty": "easy",
+  "status": "verified",
+  "patterns": [
+    "hash-map",
+    "string",
+    "counting"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 19,
+      "group": "hash-table",
+      "sourceUrl": "https://leetcode.com/problems/ransom-note"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 39,
+      "group": "Hashmap",
+      "sourceUrl": "https://leetcode.com/problems/ransom-note"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 70,
+      "group": "Arrays & Hashing",
+      "sourceUrl": "https://leetcode.com/problems/ransom-note"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "383",
+    "titleSlug": "ransom-note",
+    "url": "https://leetcode.com/problems/ransom-note",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "canConstruct",
+      "returnType": "boolean",
+      "parameters": [
+        {
+          "name": "ransomNote",
+          "type": "String"
+        },
+        {
+          "name": "magazine",
+          "type": "String"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "canConstruct",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "ransomNote",
+          "type": "str"
+        },
+        {
+          "name": "magazine",
+          "type": "str"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

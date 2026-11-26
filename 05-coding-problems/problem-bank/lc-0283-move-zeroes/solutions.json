@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-extra-buffer",
+      "title": "Extra buffer for non-zero values",
+      "tier": 1,
+      "strategy": "Collect non-zero values, write them back first, then fill the remaining positions with zeroes.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The input is scanned once and the output positions are written once." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The temporary list can store every value if the array has no zeroes." },
+      "javaPath": "java/solution-1-extra-buffer/Solution.java",
+      "pythonPath": "python/solution-1-extra-buffer/solution.py"
+    },
+    {
+      "id": "solution-2-write-pointer",
+      "title": "In-place non-zero write pointer",
+      "tier": 2,
+      "strategy": "Move non-zero values forward with a write pointer, then overwrite the rest with zeroes.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Each value is read once and each array slot is written at most once after compaction." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only the write index is needed beyond the input array." },
+      "javaPath": "java/solution-2-write-pointer/Solution.java",
+      "pythonPath": "python/solution-2-write-pointer/solution.py"
+    }
+  ]
+}

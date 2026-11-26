@@ -1,0 +1,105 @@
+{
+  "id": "lc-0091-decode-ways",
+  "title": "Decode Ways",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "dynamic-programming",
+    "string"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 143,
+      "group": "dynamic-programming",
+      "sourceUrl": "https://leetcode.com/problems/decode-ways"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 667,
+      "group": "1-D Dynamic Programming",
+      "sourceUrl": "https://leetcode.com/problems/decode-ways"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "91",
+    "titleSlug": "decode-ways",
+    "url": "https://leetcode.com/problems/decode-ways",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "numDecodings",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "s",
+          "type": "String"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "numDecodings",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "s",
+          "type": "str"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-memoized-recursion/Solution.java",
+      "python/solution-1-memoized-recursion/solution.py",
+      "java/solution-2-bottom-up-dp/Solution.java",
+      "python/solution-2-bottom-up-dp/solution.py",
+      "java/solution-3-constant-space-dp/Solution.java",
+      "python/solution-3-constant-space-dp/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

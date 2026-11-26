@@ -1,0 +1,35 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "rotate by less than length",
+      "input": { "head": [8, 3, 5, 1, 9], "k": 2 },
+      "expected": [1, 9, 8, 3, 5],
+      "linkedListContract": {
+        "result": { "from": "head", "nodeIndices": [3, 4, 0, 1, 2] }
+      }
+    },
+    {
+      "name": "rotate by multiple plus offset",
+      "input": { "head": [4, 6, 7], "k": 7 },
+      "expected": [7, 4, 6],
+      "linkedListContract": {
+        "result": { "from": "head", "nodeIndices": [2, 0, 1] }
+      }
+    },
+    {
+      "name": "full rotation keeps original order",
+      "input": { "head": [11, 22, 33], "k": 3 },
+      "expected": [11, 22, 33],
+      "linkedListContract": {
+        "result": { "from": "head", "nodeIndices": [0, 1, 2] }
+      }
+    },
+    {
+      "name": "empty chain",
+      "input": { "head": null, "k": 5 },
+      "expected": null
+    }
+  ]
+}

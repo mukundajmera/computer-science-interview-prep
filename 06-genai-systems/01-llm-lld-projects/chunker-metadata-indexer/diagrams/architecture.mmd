@@ -1,0 +1,36 @@
+flowchart TD
+    subgraph IngestionPipeline [Ingestion Pipeline]
+        DocIntake[Document Intake]
+        DocChunker[Document Chunker]
+        DocIntake --> DocChunker
+    end
+
+    subgraph StrategyRegistry [Chunker Strategy Registry]
+        CS[Chunking Strategy]
+        FSC[Fixed Size Chunker]
+        SenC[Sentence Chunker]
+        ParC[Paragraph Chunker]
+
+        FSC -.->|implements| CS
+        SenC -.->|implements| CS
+        ParC -.->|implements| CS
+    end
+
+    DocChunker -->|delegates to| CS
+
+    subgraph Metadata [Metadata Extractor]
+        ME[Metadata Extractor Component]
+    end
+
+    CS -->|returns raw chunks| ME
+
+    subgraph IndexerTiers [Hierarchical Indexer Tiers]
+        IB[Index Backend]
+        IMI[In-Memory Vector Index]
+        Persistent[Persistent Index Tier]
+
+        IMI -.->|implements| IB
+        Persistent -.->|implements| IB
+    end
+
+    ME -->|enriched chunks| IB

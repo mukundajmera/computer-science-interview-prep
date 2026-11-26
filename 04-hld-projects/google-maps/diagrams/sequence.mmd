@@ -1,0 +1,57 @@
+sequenceDiagram
+    actor Client as Mobile Client
+    participant CDN as Global CDN
+    participant S3 as Amazon S3
+    participant Gateway as API Gateway
+    participant RouteService as Route Service
+    participant Kafka as Apache Kafka
+    participant Flink as Stream Processing (Flink)
+    participant Redis as Redis (Active Sessions)
+    participant RerouteService as Reroute Service
+
+    %% Map Tiles
+    rect rgb(240, 248, 255)
+        Note over Client, S3: 1. Map Tile Loading
+        Client->>CDN: GET /api/v1/tiles/{z}/{x}/{y}.pbf
+        alt Cache Miss
+            CDN->>S3: Fetch Precomputed Vector Tile
+            S3-->>CDN: Return Tile
+            CDN-->>Client: Return Tile + Cache locally
+        else Cache Hit
+            CDN-->>Client: Return Tile
+        end
+    end
+
+    %% Routing
+    rect rgb(245, 245, 245)
+        Note over Client, Redis: 2. Initial Route Calculation
+        Client->>Gateway: POST /api/v1/routes (A -> B)
+        Gateway->>RouteService: Route Query
+        RouteService->>RouteService: Graph Search (Contraction Hierarchies)
+        RouteService->>Redis: Store Active Navigation Session (TTL)
+        RouteService-->>Gateway: Return Session ID, ETA, Route Path
+        Gateway-->>Client: Display Nav Instructions
+    end
+
+    %% Telemetry and Live Traffic
+    rect rgb(255, 245, 230)
+        Note over Client, RerouteService: 3. Telemetry Sync & Traffic
+        loop Every 15 seconds
+            Client->>Gateway: POST /api/v1/telemetry (GPS Batch)
+            Gateway->>Kafka: Enqueue Batch
+            Kafka-->>Flink: Consume Stream
+            Flink->>Flink: Map Matching & Calculate Speed
+            Flink->>Flink: Update Live Traffic Graph Cache
+            
+            %% Dynamic Rerouting Check
+            Flink->>RerouteService: Trigger Congestion Alert (if segment slows down)
+            RerouteService->>Redis: Check affected Active Sessions
+            
+            alt Route degraded significantly
+                RerouteService->>RouteService: Recalculate alternative path
+                RouteService-->>RerouteService: New Path & ETA
+                RerouteService-->>Gateway: Push Reroute Update (WebSocket/SSE)
+                Gateway-->>Client: Update UI with New Path & ETA
+            end
+        end
+    end

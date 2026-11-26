@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant B as Builder
+    participant M as Manager
+    participant C as Client
+    C->>M: autocomplete("a")
+    M-->>C: ["apple"]
+    B->>M: buildSnapshot(newData)
+    B->>M: swapSnapshot()
+    C->>M: autocomplete("a")
+    M-->>C: ["apricot", "apple"]

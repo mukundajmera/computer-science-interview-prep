@@ -1,0 +1,106 @@
+{
+  "id": "lc-0036-valid-sudoku",
+  "title": "Valid Sudoku",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "matrix",
+    "hash-set",
+    "bitmask"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 83,
+      "group": "matrix",
+      "sourceUrl": "https://leetcode.com/problems/valid-sudoku"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 34,
+      "group": "Matrix",
+      "sourceUrl": "https://leetcode.com/problems/valid-sudoku"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 104,
+      "group": "Arrays & Hashing",
+      "sourceUrl": "https://leetcode.com/problems/valid-sudoku"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "36",
+    "titleSlug": "valid-sudoku",
+    "url": "https://leetcode.com/problems/valid-sudoku",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "isValidSudoku",
+      "returnType": "boolean",
+      "parameters": [
+        {
+          "name": "board",
+          "type": "char[][]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "isValidSudoku",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "board",
+          "type": "List[List[str]]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-running-sum-brute-force",
+      "title": "Running-sum brute force",
+      "tier": 1,
+      "strategy": "Start at each index and extend right while maintaining the current interval sum.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every start/end pair can be inspected."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only counters and the current sum are stored."
+      },
+      "javaPath": "java/solution-1-running-sum-brute-force/Solution.java",
+      "pythonPath": "python/solution-1-running-sum-brute-force/solution.py"
+    },
+    {
+      "id": "solution-2-prefix-counts",
+      "title": "Prefix counts",
+      "tier": 2,
+      "strategy": "Store how many prior prefix sums would pair with the current prefix to produce k.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each number performs one map lookup and update."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The prefix-count map can store one entry per index."
+      },
+      "javaPath": "java/solution-2-prefix-counts/Solution.java",
+      "pythonPath": "python/solution-2-prefix-counts/solution.py"
+    }
+  ]
+}

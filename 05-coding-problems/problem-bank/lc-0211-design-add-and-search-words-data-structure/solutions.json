@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-length-buckets",
+      "title": "Length buckets with wildcard scan",
+      "tier": 1,
+      "strategy": "Group inserted words by length and compare a query only with candidates of the same length.",
+      "timeComplexity": {
+        "class": "O(k * L)",
+        "explanation": "A search may compare k same-length words, each across L characters."
+      },
+      "spaceComplexity": {
+        "class": "O(T)",
+        "explanation": "All inserted words are stored in length buckets."
+      },
+      "javaPath": "java/solution-1-length-buckets/Solution.java",
+      "pythonPath": "python/solution-1-length-buckets/solution.py"
+    },
+    {
+      "id": "solution-2-trie-backtracking",
+      "title": "Trie wildcard backtracking",
+      "tier": 2,
+      "strategy": "Store words in a trie and recursively branch over child nodes only when the query character is a dot.",
+      "timeComplexity": {
+        "class": "O(26^w * L)",
+        "explanation": "In the worst case w wildcard positions can branch across many children while scanning L characters."
+      },
+      "spaceComplexity": {
+        "class": "O(T)",
+        "explanation": "The trie stores the distinct inserted prefix paths."
+      },
+      "javaPath": "java/solution-2-trie-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-trie-backtracking/solution.py"
+    }
+  ]
+}

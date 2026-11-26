@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-memoized-dfs",
+      "title": "Memoized DFS suffix decomposition",
+      "tier": 1,
+      "strategy": "Match dictionary prefixes at the current index and recursively combine with memoized sentences formed from remaining suffixes.",
+      "timeComplexity": {
+        "class": "O(2^n)",
+        "explanation": "In worst cases such as strings with repeating characters, the number of sentence combinations grows exponentially with string length."
+      },
+      "spaceComplexity": {
+        "class": "O(2^n)",
+        "explanation": "Memoization cache stores all sentence combinations for distinct suffixes."
+      },
+      "javaPath": "java/solution-1-memoized-dfs/Solution.java",
+      "pythonPath": "python/solution-1-memoized-dfs/solution.py"
+    }
+  ]
+}

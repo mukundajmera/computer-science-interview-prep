@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-expanded-string",
+      "title": "Expanded string",
+      "tier": 1,
+      "strategy": "Expand the compressed input into a full character array and iterate it.",
+      "timeComplexity": {
+        "class": "O(N)",
+        "explanation": "Construction expands all N output characters; each next is O(1)."
+      },
+      "spaceComplexity": {
+        "class": "O(N)",
+        "explanation": "The expanded sequence is stored."
+      },
+      "javaPath": "java/solution-1-expanded-string/Solution.java",
+      "pythonPath": "python/solution-1-expanded-string/solution.py"
+    },
+    {
+      "id": "solution-2-run-parser",
+      "title": "Run parser",
+      "tier": 2,
+      "strategy": "Parse one run at a time and decrement its remaining count lazily.",
+      "timeComplexity": {
+        "class": "O(L)",
+        "explanation": "Construction scans the compressed string once; next is amortized O(1)."
+      },
+      "spaceComplexity": {
+        "class": "O(R)",
+        "explanation": "Runs are stored as character/count pairs."
+      },
+      "javaPath": "java/solution-2-run-parser/Solution.java",
+      "pythonPath": "python/solution-2-run-parser/solution.py"
+    }
+  ]
+}

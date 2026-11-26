@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-buffer-nodes",
+      "title": "Buffer nodes",
+      "tier": 1,
+      "strategy": "Store node references, choose from front/back alternately, then relink.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is read and linked once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The node list stores every node reference."
+      },
+      "javaPath": "java/solution-1-buffer-nodes/Solution.java",
+      "pythonPath": "python/solution-1-buffer-nodes/solution.py"
+    },
+    {
+      "id": "solution-2-split-reverse-merge",
+      "title": "Split reverse merge",
+      "tier": 2,
+      "strategy": "Find the middle, reverse the second half, and weave both halves together.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The list is scanned a constant number of times."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only pointer variables are used."
+      },
+      "javaPath": "java/solution-2-split-reverse-merge/Solution.java",
+      "pythonPath": "python/solution-2-split-reverse-merge/solution.py"
+    }
+  ]
+}

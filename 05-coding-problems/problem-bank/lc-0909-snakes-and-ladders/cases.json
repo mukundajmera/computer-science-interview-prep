@@ -1,0 +1,70 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "small plain board",
+      "input": {
+        "board": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "early ladder to finish",
+      "input": {
+        "board": [
+          [
+            -1,
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1,
+            -1
+          ],
+          [
+            -1,
+            9,
+            -1
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "snakes block progress",
+      "input": {
+        "board": [
+          [
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            -1,
+            1,
+            1
+          ]
+        ]
+      },
+      "expected": -1
+    }
+  ]
+}

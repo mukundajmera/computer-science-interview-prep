@@ -1,0 +1,44 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "four-level left branch",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          6,
+          null,
+          14,
+          1
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "empty tree",
+      "input": {
+        "root": []
+      },
+      "expected": 0
+    },
+    {
+      "name": "right leaning chain",
+      "input": {
+        "root": [
+          5,
+          null,
+          9,
+          null,
+          10
+        ]
+      },
+      "expected": 3
+    }
+  ]
+}

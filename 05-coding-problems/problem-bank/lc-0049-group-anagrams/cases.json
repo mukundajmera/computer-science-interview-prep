@@ -1,0 +1,21 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "unordered-list-of-lists" },
+  "cases": [
+    {
+      "name": "three independent families",
+      "input": { "strs": ["arc", "car", "rat", "tar", "star"] },
+      "expected": [["arc", "car"], ["rat", "tar"], ["star"]]
+    },
+    {
+      "name": "same length pairs with different letters",
+      "input": { "strs": ["loos", "solo", "pool", "loop"] },
+      "expected": [["loos", "solo"], ["loop", "pool"]]
+    },
+    {
+      "name": "singletons and repeated spelling",
+      "input": { "strs": ["dusty", "study", "note", "tone", "note"] },
+      "expected": [["dusty", "study"], ["note", "note", "tone"]]
+    }
+  ]
+}

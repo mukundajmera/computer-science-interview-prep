@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bfs-from-each-one",
+      "title": "BFS from each one",
+      "tier": 1,
+      "strategy": "For each one-cell, run BFS until the nearest zero is found.",
+      "timeComplexity": {
+        "class": "O((mn)^2)",
+        "explanation": "Each of mn cells can trigger a BFS over the whole matrix."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each BFS can use a visited matrix and queue over the grid."
+      },
+      "javaPath": "java/solution-1-bfs-from-each-one/Solution.java",
+      "pythonPath": "python/solution-1-bfs-from-each-one/solution.py"
+    },
+    {
+      "id": "solution-2-multi-source-bfs",
+      "title": "Multi-source BFS",
+      "tier": 2,
+      "strategy": "Start BFS from every zero at once so first arrival gives each one-cell its nearest zero distance.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Every matrix cell is enqueued at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The output matrix and queue can cover the full grid."
+      },
+      "javaPath": "java/solution-2-multi-source-bfs/Solution.java",
+      "pythonPath": "python/solution-2-multi-source-bfs/solution.py"
+    }
+  ]
+}

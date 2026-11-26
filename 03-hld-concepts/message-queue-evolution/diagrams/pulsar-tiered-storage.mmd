@@ -1,0 +1,30 @@
+graph TD
+    subgraph Compute Layer
+        B1[Stateless Broker 1]
+        B2[Stateless Broker 2]
+    end
+
+    Producer --> B1
+    Consumer --> B2
+    B1 <-->|Segment 4| S1
+    B2 <-->|Segment 4| S2
+
+    subgraph Storage Layer (BookKeeper)
+        S1[(Bookie 1)]
+        S2[(Bookie 2)]
+        S3[(Bookie 3)]
+    end
+
+    S1 -->|Cold Segments 1,2| TS[(Amazon S3 / GCS)]
+    S2 -->|Cold Segments 1,2| TS
+    S3 -->|Cold Segments 1,2| TS
+
+    Consumer -.->|Requests Old Data| B2
+    B2 -.->|Fetches via API| TS
+
+    classDef stateless fill:#ccf,stroke:#333,stroke-width:2px;
+    classDef storage fill:#ffc,stroke:#333,stroke-width:2px;
+    classDef tiered fill:#cfc,stroke:#333,stroke-width:2px;
+    class B1,B2 stateless;
+    class S1,S2,S3 storage;
+    class TS tiered;

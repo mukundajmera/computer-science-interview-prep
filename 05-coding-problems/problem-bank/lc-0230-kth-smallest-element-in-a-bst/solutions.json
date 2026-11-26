@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-iterative-inorder-stop",
+      "title": "Iterative inorder early stop",
+      "tier": 1,
+      "strategy": "Walk the BST in ascending order with a stack and return when the kth node is popped.",
+      "timeComplexity": {
+        "class": "O(h + k)",
+        "explanation": "The traversal descends at most h nodes before visiting the first value, then stops after k pops."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The explicit stack stores the current search path."
+      },
+      "javaPath": "java/solution-1-iterative-inorder-stop/Solution.java",
+      "pythonPath": "python/solution-1-iterative-inorder-stop/solution.py"
+    },
+    {
+      "id": "solution-2-recursive-inorder-stop",
+      "title": "Recursive inorder counter",
+      "tier": 2,
+      "strategy": "Use inorder recursion while carrying a remaining-count field and short-circuit after the answer is found.",
+      "timeComplexity": {
+        "class": "O(h + k)",
+        "explanation": "Only nodes needed to reach the kth value are visited, plus the initial descent."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack follows tree height h."
+      },
+      "javaPath": "java/solution-2-recursive-inorder-stop/Solution.java",
+      "pythonPath": "python/solution-2-recursive-inorder-stop/solution.py"
+    }
+  ]
+}

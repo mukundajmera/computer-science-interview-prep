@@ -1,0 +1,36 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "current and parent markers",
+      "input": {
+        "path": "/alpha/./beta/../gamma/"
+      },
+      "expected": "/alpha/gamma"
+    },
+    {
+      "name": "parent above root",
+      "input": {
+        "path": "/../../x/y"
+      },
+      "expected": "/x/y"
+    },
+    {
+      "name": "many separators",
+      "input": {
+        "path": "/a//b////c/d//././/.."
+      },
+      "expected": "/a/b/c"
+    },
+    {
+      "name": "root only",
+      "input": {
+        "path": "/zeta/.."
+      },
+      "expected": "/"
+    }
+  ]
+}

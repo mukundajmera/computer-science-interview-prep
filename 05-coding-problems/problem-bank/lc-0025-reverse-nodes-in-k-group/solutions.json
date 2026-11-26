@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-stack-per-group",
+      "title": "Stack per group",
+      "tier": 1,
+      "strategy": "Collect k existing nodes, pop them to reverse links, and connect the reversed block to the next group.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is pushed and popped at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The stack stores one complete group of k nodes."
+      },
+      "javaPath": "java/solution-1-stack-per-group/Solution.java",
+      "pythonPath": "python/solution-1-stack-per-group/solution.py"
+    },
+    {
+      "id": "solution-2-in-place-reversal",
+      "title": "In-place group reversal",
+      "tier": 2,
+      "strategy": "Find the kth node of each group and reverse pointers inside the group boundary.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node participates in a constant number of pointer operations."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only a few node references are maintained."
+      },
+      "javaPath": "java/solution-2-in-place-reversal/Solution.java",
+      "pythonPath": "python/solution-2-in-place-reversal/solution.py"
+    }
+  ]
+}

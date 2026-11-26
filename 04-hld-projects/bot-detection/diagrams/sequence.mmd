@@ -1,0 +1,63 @@
+sequenceDiagram
+    autonumber
+
+    actor U as User/App
+    participant API as Bot Detection API
+    participant IN as Signal Ingestion
+    participant FS as Feature Service
+    participant RE as Online Risk Engine
+    participant PE as Policy Engine
+    participant AX as Action Executor
+    participant DB as Risk/Action Database
+
+    box rgb(240, 240, 240) Offline Training & Review
+    participant IR as Investigator/Appeals
+    participant ML as ML Training Pipeline
+    participant EV as Evaluation & Approval Gate
+    end
+
+    %% Online Flow
+    U->>API: Account Action (POST /api/v1/bot-detection/evaluate-account)
+    API->>IN: Ingest Event
+    IN->>FS: Update Aggregates
+    API->>RE: Request Score
+    RE->>FS: Fetch Features
+    FS-->>RE: Return Features
+    RE->>RE: Compute Score & Confidence (model_version)
+    RE->>PE: Evaluate Policy
+
+    alt Action Required (limit/challenge/demote/suspend)
+        PE->>AX: Apply Graduated Action
+        alt Action Application Success
+            AX->>DB: Record ACTION_EVENT & ACCOUNT_RISK_STATE (versioned & rollback_ref)
+            AX-->>PE: Enforcement Confirmed
+            PE-->>API: Action Decision (Success)
+            API-->>U: Return Remediation/Challenge Response
+        else Action Application Failure
+            AX-->>PE: Enforcement Failed
+            PE-->>API: Action Decision (Failed)
+            API-->>U: Return Degraded/Retry Response
+        end
+    else No Action
+        PE->>DB: Update ACCOUNT_RISK_STATE
+        PE-->>API: OK
+        API-->>U: Return Success
+    end
+
+    %% Offline Labeling & Appeal Flow
+    U->>API: Submit Appeal (POST /api/v1/bot-detection/appeals)
+    API->>IR: Route to Appeal Queue
+    IR->>API: Investigator Review & Label (POST /api/v1/bot-detection/investigator-labels)
+    API->>DB: Validate & Persist INVESTIGATOR_LABEL
+
+    %% Training & Deployment Gate Flow
+    DB-->>ML: Extract Trusted Labels
+    ML->>ML: Retrain Model & Calibrate
+    ML->>EV: Submit Candidate Model
+    EV->>EV: Validate Precision Floors & Drift
+
+    alt Approved
+        EV->>RE: Deploy Model (Controlled Rollout)
+    else Rejected
+        EV-->>ML: Reject Candidate
+    end

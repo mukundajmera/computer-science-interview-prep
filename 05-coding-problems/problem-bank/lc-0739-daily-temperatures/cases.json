@@ -1,0 +1,129 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "mixed warmer waits",
+      "input": {
+        "temperatures": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ]
+      },
+      "expected": [
+        1,
+        1,
+        4,
+        2,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "strictly decreasing",
+      "input": {
+        "temperatures": [
+          90,
+          80,
+          70
+        ]
+      },
+      "expected": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "equal temperatures wait for warmer",
+      "input": {
+        "temperatures": [
+          70,
+          70,
+          71
+        ]
+      },
+      "expected": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "single day",
+      "input": {
+        "temperatures": [
+          65
+        ]
+      },
+      "expected": [
+        0
+      ]
+    },
+    {
+      "name": "late warmer for many days",
+      "input": {
+        "temperatures": [
+          60,
+          61,
+          60,
+          59,
+          62
+        ]
+      },
+      "expected": [
+        1,
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "plateau before warmer day",
+      "input": {
+        "temperatures": [
+          70,
+          70,
+          70,
+          71
+        ]
+      },
+      "expected": [
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "equal after warmer trap",
+      "input": {
+        "temperatures": [
+          70,
+          71,
+          71,
+          70,
+          72
+        ]
+      },
+      "expected": [
+        1,
+        3,
+        2,
+        1,
+        0
+      ]
+    }
+  ]
+}

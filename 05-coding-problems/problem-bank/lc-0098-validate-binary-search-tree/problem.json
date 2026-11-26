@@ -1,0 +1,106 @@
+{
+  "id": "lc-0098-validate-binary-search-tree",
+  "title": "Validate Binary Search Tree",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "tree",
+    "binary-search-tree",
+    "depth-first-search"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 33,
+      "group": "binary-search-tree",
+      "sourceUrl": "https://leetcode.com/problems/validate-binary-search-tree"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 88,
+      "group": "Binary Search Tree",
+      "sourceUrl": "https://leetcode.com/problems/validate-binary-search-tree"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 441,
+      "group": "Trees",
+      "sourceUrl": "https://leetcode.com/problems/validate-binary-search-tree"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "98",
+    "titleSlug": "validate-binary-search-tree",
+    "url": "https://leetcode.com/problems/validate-binary-search-tree",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "isValidBST",
+      "returnType": "boolean",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "TreeNode"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "isValidBST",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "Optional[TreeNode]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

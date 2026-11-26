@@ -1,0 +1,15 @@
+flowchart TB
+    A[Agents and SDKs] --> IG[Ingestion Gateway]
+    IG --> CG[Cardinality Guard]
+    CG --> TW[TSDB Writer]
+
+    TW --> HS[(Hot Time-Series Store)]
+    HS --> QE[Query Engine]
+    QE --> UI[Dashboards and APIs]
+
+    HS --> RC[Rollup and Compaction Jobs]
+    RC --> WS[(Warm and Cold Stores)]
+    WS --> QE
+
+    IG --> AE[Alert Evaluator]
+    AE --> NR[Notification Router]

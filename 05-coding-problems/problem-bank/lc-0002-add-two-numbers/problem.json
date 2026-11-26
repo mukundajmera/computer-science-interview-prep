@@ -1,0 +1,114 @@
+{
+  "id": "lc-0002-add-two-numbers",
+  "title": "Add Two Numbers",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "linked-list",
+    "math",
+    "carry"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 114,
+      "group": "linked-list",
+      "sourceUrl": "https://leetcode.com/problems/add-two-numbers"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 58,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/add-two-numbers"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 365,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/add-two-numbers"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "2",
+    "titleSlug": "add-two-numbers",
+    "url": "https://leetcode.com/problems/add-two-numbers",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "addTwoNumbers",
+      "returnType": "ListNode",
+      "parameters": [
+        {
+          "name": "l1",
+          "type": "ListNode"
+        },
+        {
+          "name": "l2",
+          "type": "ListNode"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "addTwoNumbers",
+      "returnType": "Optional[ListNode]",
+      "parameters": [
+        {
+          "name": "l1",
+          "type": "Optional[ListNode]"
+        },
+        {
+          "name": "l2",
+          "type": "Optional[ListNode]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

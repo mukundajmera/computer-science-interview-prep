@@ -1,0 +1,13 @@
+```mermaid
+sequenceDiagram
+    participant Client
+    participant RetSvc as Retrieval Service
+    participant VectorDB as Vector DB (Single-Stage)
+    
+    Client->>RetSvc: POST /retrieve {query, user_groups}
+    RetSvc->>RetSvc: Embed query string
+    RetSvc->>VectorDB: ANN Search (query_vector, k=10) + Filter: group IN user_groups
+    Note over VectorDB: HNSW traversal ignores nodes<br/>failing the ACL filter but<br/>continues graph expansion.
+    VectorDB-->>RetSvc: Returns exact top 10 allowed chunks
+    RetSvc-->>Client: Ranked chunks with citations
+```

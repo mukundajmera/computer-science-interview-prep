@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-seen-set",
+      "title": "Seen set",
+      "tier": 1,
+      "strategy": "Store all positive values and scan upward from one until a missing value appears.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Building the set and scanning candidate values are linear in the array length."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The set can store every input value."
+      },
+      "javaPath": "java/solution-1-seen-set/Solution.java",
+      "pythonPath": "python/solution-1-seen-set/solution.py"
+    },
+    {
+      "id": "solution-2-index-placement",
+      "title": "Index placement",
+      "tier": 2,
+      "strategy": "Repeatedly swap each value v into index v - 1 when v is within the useful range.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every successful swap places at least one value into its final slot."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The input array is rearranged in place by the driver-isolated call."
+      },
+      "javaPath": "java/solution-2-index-placement/Solution.java",
+      "pythonPath": "python/solution-2-index-placement/solution.py"
+    }
+  ]
+}

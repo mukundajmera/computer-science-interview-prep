@@ -1,0 +1,28 @@
+graph TD
+    subgraph Root
+        R[Root Node: Keys 10, 20]
+    end
+    
+    subgraph Before_Split
+        N1[Node 1: Keys 5, 8]
+        N2[Node 2: Keys 12, 15, 18, 19]
+        N3[Node 3: Keys 25, 30]
+    end
+    
+    R --> N1
+    R --> N2
+    R --> N3
+    
+    subgraph After_Split_Insertion_17
+        N2A[Node 2A: Keys 12, 15]
+        N2B[Node 2B: Keys 17, 18, 19]
+    end
+    
+    subgraph New_Root
+        NR[Root Node: Keys 10, 17, 20]
+    end
+    
+    NR --> N1
+    NR --> N2A
+    NR --> N2B
+    NR --> N3

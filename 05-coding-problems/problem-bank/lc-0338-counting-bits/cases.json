@@ -1,0 +1,93 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "zero only",
+      "input": {
+        "n": 0
+      },
+      "expected": [
+        0
+      ]
+    },
+    {
+      "name": "small range",
+      "input": {
+        "n": 2
+      },
+      "expected": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "five values",
+      "input": {
+        "n": 5
+      },
+      "expected": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "power boundary",
+      "input": {
+        "n": 16
+      },
+      "expected": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        2,
+        3,
+        1,
+        2,
+        2,
+        3,
+        2,
+        3,
+        3,
+        4,
+        1
+      ]
+    },
+    {
+      "name": "just after power boundary",
+      "input": {
+        "n": 17
+      },
+      "expected": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        2,
+        3,
+        1,
+        2,
+        2,
+        3,
+        2,
+        3,
+        3,
+        4,
+        1,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant U as User / Browser
+    participant C as SPA Client
+    participant AS as Auth Server
+    participant RS as Resource Server (API)
+
+    U->>C: Clicks Login
+    note over C: Generates random "code_verifier"
+    note over C: Hashes to "code_challenge" (SHA256+Base64url)
+    C->>AS: Authorization Request (client_id, code_challenge, code_challenge_method=S256)
+    
+    AS-->>U: Prompts for Credentials
+    U->>AS: Enters Credentials
+    
+    AS->>C: Returns Authorization Code
+    
+    C->>AS: Token Request (Authorization Code, code_verifier)
+    note over AS: Hashes received "code_verifier"
+    note over AS: Compares hash with stored "code_challenge"
+    
+    AS->>C: Returns Access Token & ID Token
+    
+    C->>RS: API Request (Authorization: Bearer <Access Token>)
+    RS->>RS: Validates JWT signature (RS256 via JWKS) and claims
+    RS->>C: API Response

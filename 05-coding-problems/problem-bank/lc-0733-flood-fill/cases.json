@@ -1,0 +1,110 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "fills upper-left component",
+      "input": {
+        "image": [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "sr": 0,
+        "sc": 0,
+        "color": 2
+      },
+      "expected": [
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "same color is a no-op",
+      "input": {
+        "image": [
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "sr": 0,
+        "sc": 1,
+        "color": 3
+      },
+      "expected": [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "fills right-side component",
+      "input": {
+        "image": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "sr": 1,
+        "sc": 1,
+        "color": 5
+      },
+      "expected": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          5
+        ]
+      ]
+    }
+  ]
+}

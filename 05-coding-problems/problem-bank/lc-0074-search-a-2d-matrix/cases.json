@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "present in middle row", "input": { "matrix": [[2, 4, 8], [12, 16, 20], [25, 30, 40]], "target": 16 }, "expected": true },
+    { "name": "missing between rows", "input": { "matrix": [[2, 4, 8], [12, 16, 20], [25, 30, 40]], "target": 15 }, "expected": false },
+    { "name": "single cell present", "input": { "matrix": [[9]], "target": 9 }, "expected": true },
+    { "name": "single cell absent", "input": { "matrix": [[9]], "target": 4 }, "expected": false },
+    { "name": "last cell", "input": { "matrix": [[1, 5], [9, 13], [17, 21]], "target": 21 }, "expected": true }
+  ]
+}

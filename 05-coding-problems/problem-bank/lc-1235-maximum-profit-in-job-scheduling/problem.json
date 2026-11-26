@@ -1,0 +1,120 @@
+{
+  "id": "lc-1235-maximum-profit-in-job-scheduling",
+  "title": "Maximum Profit in Job Scheduling",
+  "difficulty": "hard",
+  "status": "verified",
+  "patterns": [
+    "1-D Dynamic Programming",
+    "binary-search",
+    "interval-scheduling"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 61,
+      "group": "binary-search",
+      "sourceUrl": "https://leetcode.com/problems/maximum-profit-in-job-scheduling"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 705,
+      "group": "1-D Dynamic Programming",
+      "sourceUrl": "https://leetcode.com/problems/maximum-profit-in-job-scheduling"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "1235",
+    "titleSlug": "maximum-profit-in-job-scheduling",
+    "url": "https://leetcode.com/problems/maximum-profit-in-job-scheduling",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "jobScheduling",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "startTime",
+          "type": "int[]"
+        },
+        {
+          "name": "endTime",
+          "type": "int[]"
+        },
+        {
+          "name": "profit",
+          "type": "int[]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "jobScheduling",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "startTime",
+          "type": "List[int]"
+        },
+        {
+          "name": "endTime",
+          "type": "List[int]"
+        },
+        {
+          "name": "profit",
+          "type": "List[int]"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-quadratic-dp/Solution.java",
+      "python/solution-1-quadratic-dp/solution.py",
+      "java/solution-2-binary-search-dp/Solution.java",
+      "python/solution-2-binary-search-dp/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

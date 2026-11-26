@@ -1,0 +1,28 @@
+graph TD
+    subgraph ClientLayer["Caller Application"]
+        ClientApp["Client Application / Agent"]
+    end
+
+    subgraph OrchestratorComponent["LLM Request Orchestrator"]
+        Orchestrator["Request Orchestrator"]
+        IdempotencyStore["Idempotency Cache & Store"]
+        RetryManager["Exponential Backoff & Jitter Manager"]
+        CircuitBreaker["Circuit Breaker (Closed / Half-Open / Open)"]
+        MetricsCollector["Latency & Error Metrics Observer"]
+    end
+
+    subgraph Providers["Model Provider Endpoints"]
+        PrimaryProvider["Primary Provider (e.g. OpenAI / Claude)"]
+        FallbackProvider["Fallback Provider (e.g. Self-hosted / Local)"]
+    end
+
+    ClientApp -->|Submit LLMRequest| Orchestrator
+    Orchestrator --> IdempotencyStore
+    Orchestrator --> CircuitBreaker
+    CircuitBreaker --> RetryManager
+    RetryManager --> PrimaryProvider
+    RetryManager -.->|On Terminal Failure / Open Circuit| FallbackProvider
+    PrimaryProvider --> MetricsCollector
+    FallbackProvider --> MetricsCollector
+    MetricsCollector --> Orchestrator
+    Orchestrator -->|Return LLMResponse| ClientApp

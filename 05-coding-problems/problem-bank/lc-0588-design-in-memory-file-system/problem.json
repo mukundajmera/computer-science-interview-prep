@@ -1,0 +1,186 @@
+{
+  "id": "lc-0588-design-in-memory-file-system",
+  "title": "Design In-Memory File System",
+  "difficulty": "hard",
+  "status": "verified",
+  "patterns": [
+    "trie",
+    "design"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 125,
+      "group": "trie",
+      "sourceUrl": "https://leetcode.com/problems/design-in-memory-file-system"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 553,
+      "group": "Tries",
+      "sourceUrl": "https://leetcode.com/problems/design-in-memory-file-system"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "588",
+    "titleSlug": "design-in-memory-file-system",
+    "url": "https://leetcode.com/problems/design-in-memory-file-system",
+    "paidOnly": true
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "kind": "object",
+    "java": {
+      "className": "FileSystem",
+      "constructor": {
+        "parameters": []
+      },
+      "methods": [
+        {
+          "name": "ls",
+          "returnType": "List<String>",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "mkdir",
+          "returnType": "void",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "addContentToFile",
+          "returnType": "void",
+          "parameters": [
+            {
+              "name": "filePath",
+              "type": "String"
+            },
+            {
+              "name": "content",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "readContentFromFile",
+          "returnType": "String",
+          "parameters": [
+            {
+              "name": "filePath",
+              "type": "String"
+            }
+          ]
+        }
+      ]
+    },
+    "python": {
+      "className": "FileSystem",
+      "constructor": {
+        "parameters": []
+      },
+      "methods": [
+        {
+          "name": "ls",
+          "returnType": "List[str]",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "str"
+            }
+          ]
+        },
+        {
+          "name": "mkdir",
+          "returnType": "None",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "str"
+            }
+          ]
+        },
+        {
+          "name": "addContentToFile",
+          "returnType": "None",
+          "parameters": [
+            {
+              "name": "filePath",
+              "type": "str"
+            },
+            {
+              "name": "content",
+              "type": "str"
+            }
+          ]
+        },
+        {
+          "name": "readContentFromFile",
+          "returnType": "str",
+          "parameters": [
+            {
+              "name": "filePath",
+              "type": "str"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-path-map/Solution.java",
+      "python/solution-1-path-map/solution.py",
+      "java/solution-2-trie-nodes/Solution.java",
+      "python/solution-2-trie-nodes/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

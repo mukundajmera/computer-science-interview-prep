@@ -1,0 +1,7 @@
+graph TD;
+  A[Input] --> B[Pre-trained W];
+  A --> C[LoRA A];
+  C --> D[LoRA B];
+  B --> E[Add];
+  D --> E;
+  E --> F[Output];

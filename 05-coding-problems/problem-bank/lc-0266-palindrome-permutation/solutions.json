@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-frequency-count",
+      "title": "Frequency count",
+      "tier": 1,
+      "strategy": "Count every character and then count odd frequencies.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The string is scanned and the count map is scanned."
+      },
+      "spaceComplexity": {
+        "class": "O(u)",
+        "explanation": "The map stores u distinct chars."
+      },
+      "javaPath": "java/solution-1-frequency-count/Solution.java",
+      "pythonPath": "python/solution-1-frequency-count/solution.py"
+    },
+    {
+      "id": "solution-2-toggle-odd-set",
+      "title": "Toggle odd set",
+      "tier": 2,
+      "strategy": "Toggle each character in a set of odd-count characters.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each character toggles set membership once."
+      },
+      "spaceComplexity": {
+        "class": "O(u)",
+        "explanation": "The set stores odd-count characters."
+      },
+      "javaPath": "java/solution-2-toggle-odd-set/Solution.java",
+      "pythonPath": "python/solution-2-toggle-odd-set/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-lookahead-subtraction",
+      "title": "Lookahead subtraction scan",
+      "tier": 1,
+      "strategy": "Scan left to right and subtract a symbol when the next symbol has a larger value.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every Roman symbol is evaluated once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The symbol-value table has constant size."
+      },
+      "javaPath": "java/solution-1-lookahead-subtraction/Solution.java",
+      "pythonPath": "python/solution-1-lookahead-subtraction/solution.py"
+    },
+    {
+      "id": "solution-2-scan-from-right",
+      "title": "Scan from right with max seen value",
+      "tier": 2,
+      "strategy": "Move from right to left, subtracting values that are smaller than the largest value already seen to the right.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The string is scanned once from right to left."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the running maximum symbol value and total are stored."
+      },
+      "javaPath": "java/solution-2-scan-from-right/Solution.java",
+      "pythonPath": "python/solution-2-scan-from-right/solution.py"
+    }
+  ]
+}

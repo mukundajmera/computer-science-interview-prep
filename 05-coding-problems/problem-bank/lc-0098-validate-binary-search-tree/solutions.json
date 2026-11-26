@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-bounds",
+      "title": "Recursive ancestor bounds",
+      "tier": 1,
+      "strategy": "Pass an exclusive lower and upper bound into each subtree.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is checked once until a violation is found."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack follows tree height h."
+      },
+      "javaPath": "java/solution-1-recursive-bounds/Solution.java",
+      "pythonPath": "python/solution-1-recursive-bounds/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-bounds",
+      "title": "Iterative bound frames",
+      "tier": 2,
+      "strategy": "Store each node with the valid value interval it must satisfy.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is popped from the stack once unless validation fails early."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The stack stores active branches; in the worst skewed case this can be O(n)."
+      },
+      "javaPath": "java/solution-2-iterative-bounds/Solution.java",
+      "pythonPath": "python/solution-2-iterative-bounds/solution.py"
+    }
+  ]
+}

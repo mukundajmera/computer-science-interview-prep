@@ -1,0 +1,81 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two rotten sources meet in middle",
+      "input": {
+        "grid": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "no fresh oranges",
+      "input": {
+        "grid": [
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "isolated fresh oranges remain",
+      "input": {
+        "grid": [
+          [
+            2,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            2
+          ]
+        ]
+      },
+      "expected": -1
+    },
+    {
+      "name": "fresh orange without source",
+      "input": {
+        "grid": [
+          [
+            1
+          ]
+        ]
+      },
+      "expected": -1
+    }
+  ]
+}

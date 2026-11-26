@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-repeated-scan",
+      "title": "Repeated scan",
+      "tier": 1,
+      "strategy": "For each project slot, scan all unused projects and pick the affordable project with maximum profit.",
+      "timeComplexity": {
+        "class": "O(kn)",
+        "explanation": "Each of up to k selections scans all n projects."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "A used marker tracks projects that have already been selected."
+      },
+      "javaPath": "java/solution-1-repeated-scan/Solution.java",
+      "pythonPath": "python/solution-1-repeated-scan/solution.py"
+    },
+    {
+      "id": "solution-2-capital-sort-profit-heap",
+      "title": "Capital sort profit heap",
+      "tier": 2,
+      "strategy": "Sort projects by required capital and push newly affordable profits into a max-heap.",
+      "timeComplexity": {
+        "class": "O(n log n + k log n)",
+        "explanation": "Sorting costs n log n and each project enters the heap once; each selection pops one profit."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The sorted project list and heap can store n projects."
+      },
+      "javaPath": "java/solution-2-capital-sort-profit-heap/Solution.java",
+      "pythonPath": "python/solution-2-capital-sort-profit-heap/solution.py"
+    }
+  ]
+}

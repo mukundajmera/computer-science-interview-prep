@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-swap",
+      "title": "Recursive pair rewiring",
+      "tier": 1,
+      "strategy": "Swap the first two original nodes, recursively solve the rest of the list, and attach the pair tail to that result.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Each recursive call consumes one adjacent pair, so every node is visited and rewired at most once." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The recursion stack holds one frame per swapped pair in the worst case." },
+      "javaPath": "java/solution-1-recursive-swap/Solution.java",
+      "pythonPath": "python/solution-1-recursive-swap/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-rewire",
+      "title": "Iterative pair rewiring",
+      "tier": 2,
+      "strategy": "Use a dummy node and rewire each adjacent pair in place while preserving the next segment.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Every node participates in at most one pair swap and is visited once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only a dummy node and a few pointers are stored while the original nodes are reused." },
+      "javaPath": "java/solution-2-iterative-rewire/Solution.java",
+      "pythonPath": "python/solution-2-iterative-rewire/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-string-check",
+      "title": "String check",
+      "tier": 1,
+      "strategy": "Convert the number to decimal text and compare characters from both ends.",
+      "timeComplexity": {
+        "class": "O(d)",
+        "explanation": "The d decimal digits are read at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(d)",
+        "explanation": "The decimal string stores all digits."
+      },
+      "javaPath": "java/solution-1-string-check/Solution.java",
+      "pythonPath": "python/solution-1-string-check/solution.py"
+    },
+    {
+      "id": "solution-2-reverse-half",
+      "title": "Reverse half the digits",
+      "tier": 2,
+      "strategy": "Reverse the lower half of the digits and compare it with the remaining upper half.",
+      "timeComplexity": {
+        "class": "O(d)",
+        "explanation": "Only about half of the d digits are moved into the reversed half."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only numeric accumulators are stored."
+      },
+      "javaPath": "java/solution-2-reverse-half/Solution.java",
+      "pythonPath": "python/solution-2-reverse-half/solution.py"
+    }
+  ]
+}

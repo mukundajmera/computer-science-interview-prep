@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dfs-colors",
+      "title": "DFS colors",
+      "tier": 1,
+      "strategy": "Build precedence edges and use color-marked DFS to detect cycles and produce postorder.",
+      "timeComplexity": {
+        "class": "O(C + E)",
+        "explanation": "Each character and edge is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(C + E)",
+        "explanation": "The graph, color map, and output stack are stored."
+      },
+      "javaPath": "java/solution-1-dfs-colors/Solution.java",
+      "pythonPath": "python/solution-1-dfs-colors/solution.py"
+    },
+    {
+      "id": "solution-2-kahn-topological-sort",
+      "title": "Kahn topological sort",
+      "tier": 2,
+      "strategy": "Track indegrees and repeatedly remove the lowest available zero-indegree character.",
+      "timeComplexity": {
+        "class": "O(C log C + E)",
+        "explanation": "Priority-queue operations keep deterministic output among zero-indegree characters."
+      },
+      "spaceComplexity": {
+        "class": "O(C + E)",
+        "explanation": "The graph, indegrees, and heap store characters and edges."
+      },
+      "javaPath": "java/solution-2-kahn-topological-sort/Solution.java",
+      "pythonPath": "python/solution-2-kahn-topological-sort/solution.py"
+    }
+  ]
+}

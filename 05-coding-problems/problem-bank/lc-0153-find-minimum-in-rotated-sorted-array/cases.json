@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "pivot in middle",
+      "input": {
+        "nums": [
+          18,
+          22,
+          3,
+          7,
+          11,
+          15
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "name": "not rotated",
+      "input": {
+        "nums": [
+          6,
+          8,
+          10,
+          12
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "name": "single value",
+      "input": {
+        "nums": [
+          42
+        ]
+      },
+      "expected": 42
+    }
+  ]
+}

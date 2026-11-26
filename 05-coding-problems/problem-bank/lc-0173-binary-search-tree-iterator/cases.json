@@ -1,0 +1,40 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "balanced tree partial walk",
+      "operations": [
+        { "type": "constructor", "input": { "root": [8, 4, 12, 2, 6, 10, 14] }, "expected": null },
+        { "type": "call", "method": "hasNext", "input": {}, "expected": true },
+        { "type": "call", "method": "next", "input": {}, "expected": 2 },
+        { "type": "call", "method": "next", "input": {}, "expected": 4 },
+        { "type": "call", "method": "hasNext", "input": {}, "expected": true },
+        { "type": "call", "method": "next", "input": {}, "expected": 6 },
+        { "type": "call", "method": "next", "input": {}, "expected": 8 },
+        { "type": "call", "method": "next", "input": {}, "expected": 10 },
+        { "type": "call", "method": "next", "input": {}, "expected": 12 },
+        { "type": "call", "method": "next", "input": {}, "expected": 14 },
+        { "type": "call", "method": "hasNext", "input": {}, "expected": false }
+      ]
+    },
+    {
+      "name": "right leaning tree drains fully",
+      "operations": [
+        { "type": "constructor", "input": { "root": [5, null, 7, null, 9] }, "expected": null },
+        { "type": "call", "method": "next", "input": {}, "expected": 5 },
+        { "type": "call", "method": "hasNext", "input": {}, "expected": true },
+        { "type": "call", "method": "next", "input": {}, "expected": 7 },
+        { "type": "call", "method": "next", "input": {}, "expected": 9 },
+        { "type": "call", "method": "hasNext", "input": {}, "expected": false }
+      ]
+    },
+    {
+      "name": "empty tree has no next value",
+      "operations": [
+        { "type": "constructor", "input": { "root": null }, "expected": null },
+        { "type": "call", "method": "hasNext", "input": {}, "expected": false }
+      ]
+    }
+  ]
+}

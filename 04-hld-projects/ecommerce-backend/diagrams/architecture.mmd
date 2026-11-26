@@ -1,0 +1,101 @@
+```mermaid
+flowchart TB
+    subgraph Clients
+        WEB[Web App]
+        MOB[Mobile Apps]
+    end
+
+    subgraph "Edge Layer"
+        CDN[CDN - Static Assets]
+        LB[Load Balancer]
+    end
+
+    subgraph "API Gateway"
+        GW[API Gateway]
+        AUTH[Auth Service]
+        RL[Rate Limiter]
+    end
+
+    subgraph "Application Services"
+        PS[Product Service]
+        CS[Cart Service]
+        OS[Order Service]
+        IS[Inventory Service]
+        PAY[Payment Service]
+        US[User Service]
+        SEARCH[Search Service]
+    end
+
+    subgraph "Async Processing"
+        KF[Kafka]
+        OW[Order Workers]
+        IW[Inventory Workers]
+        NW[Notification Workers]
+        IDX[Search Indexer]
+    end
+
+    subgraph "Data Layer"
+        subgraph "Primary Storage"
+            PG[(PostgreSQL Cluster)]
+            RD[(Redis Cluster)]
+        end
+        subgraph "Search Layer"
+            ES[(Elasticsearch)]
+        end
+        subgraph "Analytics"
+            CH[(ClickHouse)]
+        end
+    end
+
+    subgraph "External Services"
+        PAYMENT[Payment Providers]
+        SMS[SMS Gateway]
+        EMAIL[Email Service]
+    end
+
+    WEB --> CDN
+    MOB --> CDN
+    CDN --> LB
+    LB --> GW
+
+    GW --> AUTH
+    GW --> RL
+
+    GW --> PS
+    GW --> CS
+    GW --> OS
+    GW --> US
+    GW --> SEARCH
+
+    PS --> PG
+    PS --> RD
+    PS --> KF
+
+    CS --> RD
+    CS --> PG
+
+    SEARCH --> ES
+
+    OS --> IS
+    OS --> PAY
+    OS --> KF
+    OS --> PG
+
+    IS --> PG
+    IS --> RD
+
+    PAY --> PAYMENT
+
+    KF --> OW
+    KF --> IW
+    KF --> NW
+    KF --> IDX
+
+    OW --> PG
+    IDX --> ES
+    NW --> SMS
+    NW --> EMAIL
+
+    IW --> PG
+    IW --> RD
+```

@@ -1,0 +1,84 @@
+flowchart TB
+    Client((Client App))
+
+    subgraph "Region A (Primary)"
+        API_A[Web Tier / API Gateway]
+        
+        subgraph "Follower Cache Tier (L1)"
+            F1_A[Follower Cache 1]
+            F2_A[Follower Cache 2]
+        end
+        
+        subgraph "Leader Cache Tier (L2)"
+            L1_A["Leader Cache (Shard 1-5)"]
+            L2_A["Leader Cache (Shard 6-10)"]
+        end
+        
+        subgraph "Database Tier (Master)"
+            DB1_A[(MySQL Shard 1-5)]
+            DB2_A[(MySQL Shard 6-10)]
+        end
+        
+        Wormhole_A[[Invalidation Bus / Wormhole]]
+    end
+
+    subgraph "Region B (Replica)"
+        API_B[Web Tier / API Gateway]
+        
+        subgraph "Follower Cache Tier B (L1)"
+            F1_B[Follower Cache 1]
+        end
+        
+        subgraph "Leader Cache Tier B (L2)"
+            L1_B[Leader Cache]
+        end
+        
+        subgraph "Database Tier B (Read Replica)"
+            DB1_B[(MySQL Shard Replica)]
+        end
+        
+        Wormhole_B[[Invalidation Bus / Wormhole]]
+    end
+
+    %% Client Routing
+    Client --> API_A
+    Client --> API_B
+
+    %% Region A Flow
+    API_A -->|Read / Write| F1_A
+    API_A -->|Read / Write| F2_A
+    
+    F1_A -->|Cache Miss / Write| L1_A
+    F1_A -->|Cache Miss / Write| L2_A
+    F2_A -->|Cache Miss / Write| L1_A
+    F2_A -->|Cache Miss / Write| L2_A
+    
+    L1_A -->|Read Miss / Write Commit| DB1_A
+    L2_A -->|Read Miss / Write Commit| DB2_A
+
+    %% Region A Invalidation
+    DB1_A -.->|Binlog Tail| Wormhole_A
+    DB2_A -.->|Binlog Tail| Wormhole_A
+    Wormhole_A -.->|Async Cache Invalidation| F1_A
+    Wormhole_A -.->|Async Cache Invalidation| F2_A
+
+    %% Region B Flow
+    API_B -->|Read / Write| F1_B
+    F1_B -->|Cache Miss / Write| L1_B
+    L1_B -->|Read Miss| DB1_B
+    
+    %% Cross-Region Replication & Writes
+    DB1_A ==>|Async Master-Slave Replication| DB1_B
+    L1_B ==>|Cross-Region Write Forwarding| DB1_A
+
+    %% Region B Invalidation
+    DB1_B -.->|Binlog Tail| Wormhole_B
+    Wormhole_B -.->|Async Cache Invalidation| F1_B
+
+    classDef cache fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef db fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef bus fill:#ff9,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+    
+    class F1_A,F2_A,L1_A,L2_A,F1_B,L1_B cache;
+    class DB1_A,DB2_A,DB1_B db;
+    class Wormhole_A,Wormhole_B bus;

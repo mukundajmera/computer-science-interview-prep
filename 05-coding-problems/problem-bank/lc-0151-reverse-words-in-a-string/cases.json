@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "many spaces around words",
+      "input": {
+        "s": "  data   structures  matter "
+      },
+      "expected": "matter structures data"
+    },
+    {
+      "name": "single word",
+      "input": {
+        "s": "practice"
+      },
+      "expected": "practice"
+    },
+    {
+      "name": "leading spaces only",
+      "input": {
+        "s": "   algorithms win"
+      },
+      "expected": "win algorithms"
+    },
+    {
+      "name": "trailing spaces only",
+      "input": {
+        "s": "read code carefully   "
+      },
+      "expected": "carefully code read"
+    },
+    {
+      "name": "compact words",
+      "input": {
+        "s": "one two three four"
+      },
+      "expected": "four three two one"
+    }
+  ]
+}

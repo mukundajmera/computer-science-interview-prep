@@ -1,0 +1,42 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "perfect three levels",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          6,
+          10,
+          14
+        ]
+      },
+      "expected": 7
+    },
+    {
+      "name": "last level partially filled",
+      "input": {
+        "root": [
+          5,
+          3,
+          8,
+          1
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "empty tree",
+      "input": {
+        "root": []
+      },
+      "expected": 0
+    }
+  ]
+}

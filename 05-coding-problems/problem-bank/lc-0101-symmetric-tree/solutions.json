@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-mirror",
+      "title": "Recursive mirror check",
+      "tier": 1,
+      "strategy": "Compare paired mirror nodes and recurse into outside and inside children.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node participates in at most one mirror comparison."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack is bounded by tree height h."
+      },
+      "javaPath": "java/solution-1-recursive-mirror/Solution.java",
+      "pythonPath": "python/solution-1-recursive-mirror/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-mirror-queue",
+      "title": "Iterative mirror queue",
+      "tier": 2,
+      "strategy": "Process mirror node pairs from a queue and enqueue outside and inside pairs.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node pair is checked once."
+      },
+      "spaceComplexity": {
+        "class": "O(w)",
+        "explanation": "The queue can store a level of mirror pairs."
+      },
+      "javaPath": "java/solution-2-iterative-mirror-queue/Solution.java",
+      "pythonPath": "python/solution-2-iterative-mirror-queue/solution.py"
+    }
+  ]
+}

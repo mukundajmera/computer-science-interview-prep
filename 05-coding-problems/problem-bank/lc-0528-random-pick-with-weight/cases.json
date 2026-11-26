@@ -1,0 +1,72 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "object-one-of"
+  },
+  "cases": [
+    {
+      "name": "single weight always picks zero",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {
+            "w": [
+              7
+            ]
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "pickIndex",
+          "input": {},
+          "expected": {
+            "oneOf": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "positive weights pick an existing index",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {
+            "w": [
+              1,
+              3,
+              2
+            ]
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "pickIndex",
+          "input": {},
+          "expected": {
+            "oneOf": [
+              0,
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "type": "call",
+          "method": "pickIndex",
+          "input": {},
+          "expected": {
+            "oneOf": [
+              0,
+              1,
+              2
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "exact after sorting",
+      "input": {
+        "nums": [
+          -2,
+          4,
+          1,
+          -1
+        ],
+        "target": 3
+      },
+      "expected": 3
+    },
+    {
+      "name": "exact with mixed signs",
+      "input": {
+        "nums": [
+          5,
+          -3,
+          2,
+          9
+        ],
+        "target": 4
+      },
+      "expected": 4
+    },
+    {
+      "name": "target far below all sums",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          0
+        ],
+        "target": -100
+      },
+      "expected": 2
+    },
+    {
+      "name": "negative and positive exact",
+      "input": {
+        "nums": [
+          -5,
+          -2,
+          -1,
+          1,
+          4
+        ],
+        "target": 0
+      },
+      "expected": 0
+    },
+    {
+      "name": "exact target in larger values",
+      "input": {
+        "nums": [
+          2,
+          3,
+          8,
+          9,
+          10
+        ],
+        "target": 20
+      },
+      "expected": 20
+    },
+    {
+      "name": "target far above all sums",
+      "input": {
+        "nums": [
+          -4,
+          -1,
+          1,
+          2
+        ],
+        "target": 100
+      },
+      "expected": 2
+    },
+    {
+      "name": "closest non exact no target match",
+      "input": {
+        "nums": [
+          2,
+          4,
+          8,
+          16
+        ],
+        "target": 13
+      },
+      "expected": 14
+    }
+  ]
+}

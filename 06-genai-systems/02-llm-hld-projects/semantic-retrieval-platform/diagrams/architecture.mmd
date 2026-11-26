@@ -1,0 +1,36 @@
+flowchart LR
+    Client[Client Apps]
+    Gateway[API Gateway\nAuth + Rate Limits]
+    Retrieval[Retrieval Service]
+    ACL[ACL Filter\nTenant + Principal Scope]
+    Embed[Query Embedding]
+    Hybrid[Hybrid Candidate Fetch\nVector + Keyword]
+    Rerank[Optional Reranker]
+    Response[Cited Chunk Response]
+
+    Ingest[Ingestion API]
+    Parser[Parse + Chunk Workers]
+    EmbedWorkers[Embedding Workers]
+    Writer[Index Writer]
+    Vector[(Vector Index)]
+    Metadata[(Metadata DB)]
+    Objects[(Object Storage)]
+
+    Client --> Gateway
+    Gateway --> Retrieval
+    Retrieval --> ACL
+    ACL --> Embed
+    Embed --> Hybrid
+    Hybrid --> Rerank
+    Rerank --> Response
+    Hybrid --> Response
+
+    Gateway --> Ingest
+    Ingest --> Parser
+    Parser --> Objects
+    Parser --> EmbedWorkers
+    EmbedWorkers --> Writer
+    Writer --> Vector
+    Writer --> Metadata
+    Hybrid --> Vector
+    ACL --> Metadata

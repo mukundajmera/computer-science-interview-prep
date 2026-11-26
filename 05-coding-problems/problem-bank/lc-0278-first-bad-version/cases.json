@@ -1,0 +1,32 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "middle boundary",
+      "input": {
+        "n": 9,
+        "firstBad": 4
+      },
+      "expected": 4
+    },
+    {
+      "name": "first version bad",
+      "input": {
+        "n": 5,
+        "firstBad": 1
+      },
+      "expected": 1
+    },
+    {
+      "name": "last version bad",
+      "input": {
+        "n": 12,
+        "firstBad": 12
+      },
+      "expected": 12
+    }
+  ]
+}

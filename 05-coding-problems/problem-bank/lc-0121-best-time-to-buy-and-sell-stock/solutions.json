@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-brute-force",
+      "title": "Brute force pair scan",
+      "tier": 1,
+      "strategy": "Try every buy day and every later sell day.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "For each index, the algorithm scans all later indices, creating a quadratic number of buy/sell comparisons."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only loop counters and the best profit are stored regardless of input length."
+      },
+      "javaPath": "java/solution-1-brute-force/Solution.java",
+      "pythonPath": "python/solution-1-brute-force/solution.py"
+    },
+    {
+      "id": "solution-2-min-price",
+      "title": "One-pass minimum price",
+      "tier": 2,
+      "strategy": "Keep the cheapest price seen before the current day and update the best sale profit.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each price is visited once and contributes constant work."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The running minimum and best profit are scalar values."
+      },
+      "javaPath": "java/solution-2-min-price/Solution.java",
+      "pythonPath": "python/solution-2-min-price/solution.py"
+    }
+  ]
+}

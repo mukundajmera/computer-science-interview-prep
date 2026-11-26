@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-middle",
+      "title": "Recursive middle split",
+      "tier": 1,
+      "strategy": "Choose the middle value as root and recursively build left and right halves.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every input value becomes exactly one tree node."
+      },
+      "spaceComplexity": {
+        "class": "O(log n)",
+        "explanation": "The constructed tree is balanced, so recursion depth is logarithmic."
+      },
+      "javaPath": "java/solution-1-recursive-middle/Solution.java",
+      "pythonPath": "python/solution-1-recursive-middle/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-segments",
+      "title": "Iterative segment queue",
+      "tier": 2,
+      "strategy": "Create root nodes for array segments in queue order and attach each child segment to its parent.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each value is turned into one node and each segment is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The queue can hold pending child segments across a level."
+      },
+      "javaPath": "java/solution-2-iterative-segments/Solution.java",
+      "pythonPath": "python/solution-2-iterative-segments/solution.py"
+    }
+  ]
+}

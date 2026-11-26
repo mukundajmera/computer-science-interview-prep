@@ -1,0 +1,122 @@
+{
+  "id": "lc-0658-find-k-closest-elements",
+  "title": "Find K Closest Elements",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "binary-search",
+    "sliding-window",
+    "sorting"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 106,
+      "group": "heap",
+      "sourceUrl": "https://leetcode.com/problems/find-k-closest-elements"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 238,
+      "group": "Sliding Window",
+      "sourceUrl": "https://leetcode.com/problems/find-k-closest-elements"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "658",
+    "titleSlug": "find-k-closest-elements",
+    "url": "https://leetcode.com/problems/find-k-closest-elements",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "findClosestElements",
+      "returnType": "List<Integer>",
+      "parameters": [
+        {
+          "name": "arr",
+          "type": "int[]"
+        },
+        {
+          "name": "k",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "int"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "findClosestElements",
+      "returnType": "List[int]",
+      "parameters": [
+        {
+          "name": "arr",
+          "type": "List[int]"
+        },
+        {
+          "name": "k",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "int"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-sort-by-distance/Solution.java",
+      "python/solution-1-sort-by-distance/solution.py",
+      "java/solution-2-shrink-window/Solution.java",
+      "python/solution-2-shrink-window/solution.py",
+      "java/solution-3-binary-search-window/Solution.java",
+      "python/solution-3-binary-search-window/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

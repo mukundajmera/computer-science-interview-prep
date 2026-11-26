@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "three root-to-leaf values",
+      "input": {
+        "root": [
+          4,
+          1,
+          9,
+          0,
+          2
+        ]
+      },
+      "expected": 871
+    },
+    {
+      "name": "single zero digit",
+      "input": {
+        "root": [
+          0
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "right child under left branch",
+      "input": {
+        "root": [
+          7,
+          3,
+          null,
+          null,
+          5
+        ]
+      },
+      "expected": 735
+    }
+  ]
+}

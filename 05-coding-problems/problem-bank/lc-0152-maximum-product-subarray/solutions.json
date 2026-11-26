@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-all-subarrays",
+      "title": "All subarray products",
+      "tier": 1,
+      "strategy": "Start at each index, extend right, and track the running product.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "There are O(n^2) contiguous subarrays."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only running and best products are stored."
+      },
+      "javaPath": "java/solution-1-all-subarrays/Solution.java",
+      "pythonPath": "python/solution-1-all-subarrays/solution.py"
+    },
+    {
+      "id": "solution-2-running-max-and-min",
+      "title": "Running max and min products",
+      "tier": 2,
+      "strategy": "Track both the maximum and minimum product ending here because a negative value can swap them.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each number updates two scalar states once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only current max, current min, and best product are stored."
+      },
+      "javaPath": "java/solution-2-running-max-and-min/Solution.java",
+      "pythonPath": "python/solution-2-running-max-and-min/solution.py"
+    }
+  ]
+}

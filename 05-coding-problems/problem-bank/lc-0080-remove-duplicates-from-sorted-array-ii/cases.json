@@ -1,0 +1,129 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "three groups with extra duplicates",
+      "input": {
+        "nums": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3
+        ]
+      },
+      "expected": 7,
+      "expectedMutations": {
+        "nums": {
+          "prefix": [
+            0,
+            0,
+            1,
+            1,
+            2,
+            2,
+            3
+          ],
+          "lengthFrom": "return"
+        }
+      }
+    },
+    {
+      "name": "all same value",
+      "input": {
+        "nums": [
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "expected": 2,
+      "expectedMutations": {
+        "nums": {
+          "prefix": [
+            5,
+            5
+          ],
+          "lengthFrom": "return"
+        }
+      }
+    },
+    {
+      "name": "already valid pairs",
+      "input": {
+        "nums": [
+          -2,
+          -2,
+          0,
+          0,
+          3,
+          3
+        ]
+      },
+      "expected": 6,
+      "expectedMutations": {
+        "nums": {
+          "prefix": [
+            -2,
+            -2,
+            0,
+            0,
+            3,
+            3
+          ],
+          "lengthFrom": "return"
+        }
+      }
+    },
+    {
+      "name": "single value",
+      "input": {
+        "nums": [
+          8
+        ]
+      },
+      "expected": 1,
+      "expectedMutations": {
+        "nums": {
+          "prefix": [
+            8
+          ],
+          "lengthFrom": "return"
+        }
+      }
+    },
+    {
+      "name": "long first run",
+      "input": {
+        "nums": [
+          -4,
+          -4,
+          -4,
+          -4,
+          -1,
+          2
+        ]
+      },
+      "expected": 4,
+      "expectedMutations": {
+        "nums": {
+          "prefix": [
+            -4,
+            -4,
+            -1,
+            2
+          ],
+          "lengthFrom": "return"
+        }
+      }
+    }
+  ]
+}

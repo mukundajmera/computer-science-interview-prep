@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-append-sort-merge",
+      "title": "Append, sort, and merge",
+      "tier": 1,
+      "strategy": "Append the new interval to the list, sort everything, then merge as a normal interval set.",
+      "timeComplexity": { "class": "O(n log n)", "explanation": "Sorting n + 1 intervals dominates the linear merge pass." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The combined and merged interval lists can both scale with the number of intervals." },
+      "javaPath": "java/solution-1-append-sort-merge/Solution.java",
+      "pythonPath": "python/solution-1-append-sort-merge/solution.py"
+    },
+    {
+      "id": "solution-2-linear-insert",
+      "title": "Linear insert and merge",
+      "tier": 2,
+      "strategy": "Copy intervals before the new one, merge overlaps into it, then append the rest.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The sorted input intervals are traversed once." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The output list can contain every original interval plus the inserted interval." },
+      "javaPath": "java/solution-2-linear-insert/Solution.java",
+      "pythonPath": "python/solution-2-linear-insert/solution.py"
+    }
+  ]
+}

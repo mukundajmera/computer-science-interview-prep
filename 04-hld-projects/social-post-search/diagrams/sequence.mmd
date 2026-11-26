@@ -1,0 +1,24 @@
+sequenceDiagram
+    actor Client
+    participant AppGateway as API Gateway
+    participant Ingestion as Ingestion & Tokenization
+    participant InvertedIndex as Inverted Index
+    participant SearchAPI as Search API
+    participant Ranker as Relevance Ranker
+
+    %% Post publishing and indexing flow
+    Client->>AppGateway: Post publish
+    AppGateway-->>Client: Success response
+    AppGateway->>Ingestion: Send post data
+    Ingestion->>Ingestion: Tokenization
+    Ingestion->>InvertedIndex: Inverted index ingestion
+
+    %% Search flow
+    Client->>SearchAPI: Search query
+    SearchAPI->>SearchAPI: Query parsing
+    SearchAPI->>InvertedIndex: Fetch posting lists
+    InvertedIndex-->>SearchAPI: Early termination retrieval
+    SearchAPI->>Ranker: Send candidate posts
+    Ranker->>Ranker: Relevance ranker
+    Ranker-->>SearchAPI: Sorted post candidates
+    SearchAPI-->>Client: Search results

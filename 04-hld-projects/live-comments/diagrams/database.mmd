@@ -1,0 +1,50 @@
+erDiagram
+    Users {
+        uuid id PK
+        string username
+        string avatar_url
+        timestamp created_at
+    }
+
+    LiveStreams {
+        uuid id PK
+        uuid creator_id FK
+        string title
+        string status
+        timestamp started_at
+        timestamp ended_at
+    }
+
+    Comments {
+        uuid id PK
+        uuid stream_id FK
+        uuid user_id FK
+        string content
+        timestamp created_at
+        boolean is_pinned
+    }
+
+    Reactions {
+        uuid id PK
+        uuid comment_id FK
+        uuid user_id FK
+        string reaction_type
+        timestamp created_at
+    }
+
+    ModerationFlags {
+        uuid id PK
+        uuid comment_id FK
+        uuid reporter_id FK
+        string reason
+        string status
+        timestamp created_at
+    }
+
+    Users ||--o{ LiveStreams : creates
+    Users ||--o{ Comments : posts
+    Users ||--o{ Reactions : adds
+    Users ||--o{ ModerationFlags : reports
+    LiveStreams ||--o{ Comments : contains
+    Comments ||--o{ Reactions : has
+    Comments ||--o{ ModerationFlags : receives

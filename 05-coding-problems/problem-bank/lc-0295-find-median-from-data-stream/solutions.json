@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sorted-array-list",
+      "title": "Sorted dynamic array",
+      "tier": 1,
+      "strategy": "Insert each new number into its sorted position and read the middle value or average from the sorted sequence.",
+      "timeComplexity": {
+        "class": "O(n) addNum, O(1) findMedian",
+        "explanation": "Binary search finds the insertion index, but shifting array elements costs O(n). Median lookup reads one or two middle indices."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "All stream values are retained in sorted order."
+      },
+      "javaPath": "java/solution-1-sorted-array-list/Solution.java",
+      "pythonPath": "python/solution-1-sorted-list/solution.py"
+    },
+    {
+      "id": "solution-2-two-heaps",
+      "title": "Two balanced heaps",
+      "tier": 2,
+      "strategy": "Keep the smaller half in a max heap and the larger half in a min heap, rebalancing sizes after each insert.",
+      "timeComplexity": {
+        "class": "O(log n) addNum, O(1) findMedian",
+        "explanation": "Each insertion performs a constant number of heap pushes/pops. Median lookup reads heap tops."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The two heaps together store every value added to the stream."
+      },
+      "javaPath": "java/solution-2-two-heaps/Solution.java",
+      "pythonPath": "python/solution-2-two-heaps/solution.py"
+    }
+  ]
+}

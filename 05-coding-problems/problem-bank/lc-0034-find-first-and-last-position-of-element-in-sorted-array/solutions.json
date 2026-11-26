@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-boundaries",
+      "title": "Linear boundary scan",
+      "tier": 1,
+      "strategy": "Scan the array and record the first and last matching positions.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every value may be inspected when the target appears late or is absent."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only two index variables are maintained."
+      },
+      "javaPath": "java/solution-1-linear-boundaries/Solution.java",
+      "pythonPath": "python/solution-1-linear-boundaries/solution.py"
+    },
+    {
+      "id": "solution-2-dual-lower-bound",
+      "title": "Lower and upper-bound searches",
+      "tier": 2,
+      "strategy": "Find the first index not less than target and the first index greater than target without relying on target arithmetic.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each lower-bound search halves the range, and two such searches are run."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The search uses a constant number of counters."
+      },
+      "javaPath": "java/solution-2-dual-lower-bound/Solution.java",
+      "pythonPath": "python/solution-2-dual-lower-bound/solution.py"
+    }
+  ]
+}

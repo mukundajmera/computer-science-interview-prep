@@ -1,0 +1,41 @@
+sequenceDiagram
+    actor U as User
+    participant Q as Virtual Waiting Room
+    participant ILS as Inventory Locking Service
+    participant R as Redis TTL Hold Store
+    participant BS as Booking Service
+    participant PG as Payment Gateway
+    participant TIW as Ticket Issuance Worker
+
+    U->>Q: Join Queue for Event
+    Q-->>U: Wait in Queue
+    Q->>U: Admission Token Granted
+
+    U->>ILS: Request Seat Hold (with Token)
+    ILS->>R: Attempt Atomic Lock on Seats with TTL
+    alt Lock Failed (Seats Taken)
+        R-->>ILS: Lock Denied
+        ILS-->>U: Error: Seats Unavailable
+    else Lock Succeeded
+        R-->>ILS: Lock Acquired (TTL = 15m)
+        ILS-->>U: Hold Granted
+
+        U->>BS: Initialize Checkout / Payment Intent
+        BS->>PG: Create Payment Intent
+        PG-->>BS: Payment ID & URL
+        BS-->>U: Redirect to Payment
+
+        U->>PG: Provide Payment Details
+        alt Payment Timed Out (TTL Expired)
+            R->>R: TTL Expiry Event
+            R-->>ILS: Release Hold
+        else Payment Succeeded within TTL
+            PG->>BS: Payment Gateway Webhook (Confirmed)
+            BS->>R: Validate Hold Active
+            R-->>BS: Hold Valid
+            BS->>ILS: Commit Seats (Permanent)
+            ILS-->>BS: Seats Committed
+            BS->>TIW: Enqueue Ticket Issuance
+            TIW-->>U: Send Ticket Confirmation / Barcode
+        end
+    end

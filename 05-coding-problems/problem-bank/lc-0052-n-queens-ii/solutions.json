@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-set-backtracking",
+      "title": "Set backtracking",
+      "tier": 1,
+      "strategy": "Track occupied columns and diagonals in sets while placing one queen per row.",
+      "timeComplexity": {
+        "class": "O(n!)",
+        "explanation": "The search branches through permutations of columns, pruned by diagonal conflicts."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The recursion stack and conflict sets store one row or diagonal entry per placed queen."
+      },
+      "javaPath": "java/solution-1-set-backtracking/Solution.java",
+      "pythonPath": "python/solution-1-set-backtracking/solution.py"
+    },
+    {
+      "id": "solution-2-bitmask-backtracking",
+      "title": "Bitmask backtracking",
+      "tier": 2,
+      "strategy": "Use bitmasks for occupied columns and diagonals and choose available low bits row by row.",
+      "timeComplexity": {
+        "class": "O(n!)",
+        "explanation": "The algorithm still explores valid queen placements but prunes conflicts with constant-time bit operations."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The recursion stack has one frame per row."
+      },
+      "javaPath": "java/solution-2-bitmask-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-bitmask-backtracking/solution.py"
+    }
+  ]
+}

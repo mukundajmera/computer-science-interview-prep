@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-copy-board",
+      "title": "Copy board then update",
+      "tier": 1,
+      "strategy": "Read neighbor states from a snapshot of the original board and write the next state into the input board.",
+      "timeComplexity": { "class": "O(m*n)", "explanation": "Every cell counts up to eight neighbors once." },
+      "spaceComplexity": { "class": "O(m*n)", "explanation": "The snapshot stores every original cell so updates do not affect later neighbor counts." },
+      "javaPath": "java/solution-1-copy-board/Solution.java",
+      "pythonPath": "python/solution-1-copy-board/solution.py"
+    },
+    {
+      "id": "solution-2-state-encoding",
+      "title": "In-place state encoding",
+      "tier": 2,
+      "strategy": "Store transitional states in the board so the original and next values can be decoded during a final pass.",
+      "timeComplexity": { "class": "O(m*n)", "explanation": "Each cell is processed once to encode the next state and once to normalize the encoded state." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only loop indexes and neighbor counters are stored outside the board." },
+      "javaPath": "java/solution-2-state-encoding/Solution.java",
+      "pythonPath": "python/solution-2-state-encoding/solution.py"
+    }
+  ]
+}

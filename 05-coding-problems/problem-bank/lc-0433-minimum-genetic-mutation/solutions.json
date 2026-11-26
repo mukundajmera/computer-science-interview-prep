@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bfs-bank-scan",
+      "title": "BFS bank scan",
+      "tier": 1,
+      "strategy": "Run BFS and test each unused bank gene as the next mutation candidate.",
+      "timeComplexity": {
+        "class": "O(B^2 L)",
+        "explanation": "For up to B bank genes, each BFS layer may compare against unused genes of length L."
+      },
+      "spaceComplexity": {
+        "class": "O(B)",
+        "explanation": "The queue and visited set can hold bank genes."
+      },
+      "javaPath": "java/solution-1-bfs-bank-scan/Solution.java",
+      "pythonPath": "python/solution-1-bfs-bank-scan/solution.py"
+    },
+    {
+      "id": "solution-2-generated-neighbor-bfs",
+      "title": "Generated-neighbor BFS",
+      "tier": 2,
+      "strategy": "Generate all one-character mutations from each gene and keep only mutations present in the bank.",
+      "timeComplexity": {
+        "class": "O(BL)",
+        "explanation": "Each reachable bank gene generates a constant alphabet of L positions."
+      },
+      "spaceComplexity": {
+        "class": "O(B)",
+        "explanation": "The bank set, visited removals, and queue are linear in the number of bank genes."
+      },
+      "javaPath": "java/solution-2-generated-neighbor-bfs/Solution.java",
+      "pythonPath": "python/solution-2-generated-neighbor-bfs/solution.py"
+    }
+  ]
+}

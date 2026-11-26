@@ -1,0 +1,36 @@
+%% Flyweight Pattern Class Diagram
+%% Shares common state to support large numbers of fine-grained objects
+
+classDiagram
+    class Flyweight {
+        <<interface>>
+        +operation(extrinsicState) void
+    }
+    
+    class ConcreteFlyweight {
+        -intrinsicState String
+        +operation(extrinsicState) void
+    }
+    
+    class UnsharedConcreteFlyweight {
+        -allState String
+        +operation(extrinsicState) void
+    }
+    
+    class FlyweightFactory {
+        -flyweights Map~String, Flyweight~
+        +getFlyweight(key) Flyweight
+        +listFlyweights() void
+    }
+    
+    class Client {
+        -extrinsicState String
+    }
+    
+    Flyweight <|.. ConcreteFlyweight
+    Flyweight <|.. UnsharedConcreteFlyweight
+    FlyweightFactory --> Flyweight : creates/manages
+    Client --> FlyweightFactory : requests flyweight
+    Client --> Flyweight : uses with extrinsic state
+    
+    note for ConcreteFlyweight "Intrinsic state: shared,\nimmutable data stored\nin the flyweight object.\n\nExtrinsic state: context-\nspecific data passed by client."

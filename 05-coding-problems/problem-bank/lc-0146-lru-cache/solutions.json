@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-timestamped-scan",
+      "title": "Timestamped map with eviction scan",
+      "tier": 1,
+      "strategy": "Track value and latest access time per key, scanning all keys only when capacity eviction is required.",
+      "timeComplexity": {
+        "class": "O(n) put, O(1) get",
+        "explanation": "get does a hash lookup and timestamp update. put is O(1) unless it must evict, where it scans up to n cached entries to find the oldest timestamp."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The map stores at most capacity entries, each with a value and timestamp."
+      },
+      "javaPath": "java/solution-1-timestamped-scan/Solution.java",
+      "pythonPath": "python/solution-1-timestamped-scan/solution.py"
+    },
+    {
+      "id": "solution-2-linked-hash-map",
+      "title": "Hash map plus recency order",
+      "tier": 2,
+      "strategy": "Maintain keys in access order so reads and writes move a key to the most-recent position and eviction removes the oldest key.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "Hash lookup, recency movement, insertion, update, and oldest-key removal all use constant-time linked map operations."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The cache stores at most capacity key-value pairs and one recency node per entry."
+      },
+      "javaPath": "java/solution-2-linked-hash-map/Solution.java",
+      "pythonPath": "python/solution-2-ordered-dict/solution.py"
+    }
+  ]
+}

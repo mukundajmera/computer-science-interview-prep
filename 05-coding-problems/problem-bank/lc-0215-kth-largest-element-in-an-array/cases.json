@@ -1,0 +1,47 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "second largest mixed",
+      "input": {
+        "nums": [
+          12,
+          4,
+          7,
+          7,
+          19
+        ],
+        "k": 2
+      },
+      "expected": 12
+    },
+    {
+      "name": "all equal",
+      "input": {
+        "nums": [
+          5,
+          5,
+          5
+        ],
+        "k": 1
+      },
+      "expected": 5
+    },
+    {
+      "name": "third largest with negative",
+      "input": {
+        "nums": [
+          -2,
+          8,
+          0,
+          3
+        ],
+        "k": 3
+      },
+      "expected": 0
+    }
+  ]
+}

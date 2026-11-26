@@ -1,0 +1,37 @@
+sequenceDiagram
+    participant Runner as Evaluation Runner
+    participant TS as Test Suite
+    participant Adapter as Model Adapter
+    participant Pipeline as Metrics Pipeline
+    participant Rep as Scorecard Reporter
+    participant Baseline as Baseline Report DB
+    participant Alert as Drift Alert
+
+    Runner->>TS: load batch test cases
+    TS-->>Runner: Test Cases
+
+    par Parallel Execution
+        Runner->>Adapter: generate(prompt_1)
+        Adapter-->>Runner: output_1
+    and
+        Runner->>Adapter: generate(prompt_2)
+        Adapter-->>Runner: output_2
+    end
+
+    rect rgb(200, 220, 240)
+        Note right of Runner: Scoring Pass
+        Runner->>Pipeline: score(expected, actual)
+        Pipeline-->>Runner: scores
+    end
+
+    Runner->>Rep: aggregate scores
+    Rep-->>Runner: current_report
+
+    Runner->>Baseline: get baseline_report
+    Baseline-->>Runner: baseline_report
+
+    Runner->>Runner: compare_reports(baseline, current)
+
+    alt is_regression
+        Runner->>Alert: emit drift alert
+    end

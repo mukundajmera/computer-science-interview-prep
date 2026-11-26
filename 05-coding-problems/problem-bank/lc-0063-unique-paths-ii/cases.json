@@ -1,0 +1,142 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "center obstacle in wide grid",
+      "input": {
+        "obstacleGrid": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "blocked start",
+      "input": {
+        "obstacleGrid": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "single corridor around obstacle",
+      "input": {
+        "obstacleGrid": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "blocked destination",
+      "input": {
+        "obstacleGrid": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "single open cell",
+      "input": {
+        "obstacleGrid": [
+          [
+            0
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "single blocked cell",
+      "input": {
+        "obstacleGrid": [
+          [
+            1
+          ]
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "single row obstacle stops suffix",
+      "input": {
+        "obstacleGrid": [
+          [
+            0,
+            0,
+            1,
+            0
+          ]
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "single column obstacle stops suffix",
+      "input": {
+        "obstacleGrid": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "id": "lc-0139-word-break",
+  "title": "Word Break",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "1-D Dynamic Programming",
+    "1D DP",
+    "trie"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-memoized-prefix-search/Solution.java",
+      "java/solution-2-bottom-up-dp/Solution.java",
+      "python/solution-1-memoized-prefix-search/solution.py",
+      "python/solution-2-bottom-up-dp/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 52,
+      "group": "trie",
+      "sourceUrl": "https://leetcode.com/problems/word-break"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 139,
+      "group": "1D DP",
+      "sourceUrl": "https://leetcode.com/problems/word-break"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 670,
+      "group": "1-D Dynamic Programming",
+      "sourceUrl": "https://leetcode.com/problems/word-break"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "139",
+    "titleSlug": "word-break",
+    "url": "https://leetcode.com/problems/word-break",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "wordBreak",
+      "returnType": "boolean",
+      "parameters": [
+        { "name": "s", "type": "String" },
+        { "name": "wordDict", "type": "List<String>" }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "wordBreak",
+      "returnType": "bool",
+      "parameters": [
+        { "name": "s", "type": "str" },
+        { "name": "wordDict", "type": "List[str]" }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

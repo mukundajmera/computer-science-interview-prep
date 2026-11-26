@@ -1,0 +1,81 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "float-tolerance",
+    "tolerance": 1e-06
+  },
+  "cases": [
+    {
+      "name": "fills then slides",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {
+            "size": 3
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {
+            "val": 1
+          },
+          "expected": 1.0
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {
+            "val": 10
+          },
+          "expected": 5.5
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {
+            "val": 3
+          },
+          "expected": 4.666666666666667
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {
+            "val": 5
+          },
+          "expected": 6.0
+        }
+      ]
+    },
+    {
+      "name": "window size one",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {
+            "size": 1
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {
+            "val": 4
+          },
+          "expected": 4.0
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {
+            "val": 9
+          },
+          "expected": 9.0
+        }
+      ]
+    }
+  ]
+}

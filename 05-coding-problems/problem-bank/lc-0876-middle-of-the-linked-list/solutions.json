@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-count-length",
+      "title": "Count length then walk to the middle",
+      "tier": 1,
+      "strategy": "First count the nodes, then walk length / 2 steps from the head and return that original node.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The list is scanned once to count nodes and a second partial scan walks to the middle, which remains linear overall." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only counters and traversal pointers are stored while the original chain is reused." },
+      "javaPath": "java/solution-1-count-length/Solution.java",
+      "pythonPath": "python/solution-1-count-length/solution.py"
+    },
+    {
+      "id": "solution-2-slow-fast-pointers",
+      "title": "Slow and fast pointers",
+      "tier": 2,
+      "strategy": "Advance one pointer one step and another pointer two steps so the slow pointer lands on the required middle.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The fast pointer traverses the list once, and the slow pointer advances at most half as many times." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only two traversal pointers are stored while reusing the original chain." },
+      "javaPath": "java/solution-2-slow-fast-pointers/Solution.java",
+      "pythonPath": "python/solution-2-slow-fast-pointers/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-collect-sort-build",
+      "title": "Collect, sort, and rebuild",
+      "tier": 1,
+      "strategy": "Read all node values, sort them, and build a new sorted output chain.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Collecting values is O(n), sorting all values dominates at O(n log n), and rebuilding the output chain is O(n)."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The values array and rebuilt output list store all n values."
+      },
+      "javaPath": "java/solution-1-collect-sort-build/Solution.java",
+      "pythonPath": "python/solution-1-collect-sort-build/solution.py"
+    },
+    {
+      "id": "solution-2-min-heap",
+      "title": "Min heap of current list heads",
+      "tier": 2,
+      "strategy": "Keep the smallest current node from each non-empty list in a heap, repeatedly appending the minimum and pushing its successor.",
+      "timeComplexity": {
+        "class": "O(n log k)",
+        "explanation": "Each of n nodes is pushed and popped at most once, and the heap holds at most k list heads."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The heap stores at most one active node per input list, excluding the returned chain."
+      },
+      "javaPath": "java/solution-2-min-heap/Solution.java",
+      "pythonPath": "python/solution-2-min-heap/solution.py"
+    }
+  ]
+}

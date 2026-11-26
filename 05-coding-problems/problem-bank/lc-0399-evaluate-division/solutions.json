@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-graph-dfs",
+      "title": "Weighted graph DFS per query",
+      "tier": 1,
+      "strategy": "Build a bidirectional weighted graph and search a path for each query, multiplying edge ratios along the path.",
+      "timeComplexity": {
+        "class": "O(q * (v + e))",
+        "explanation": "Each query can visit every variable and ratio edge in its connected component."
+      },
+      "spaceComplexity": {
+        "class": "O(v + e)",
+        "explanation": "The adjacency map stores two directed weighted edges for every equation plus a visited set during search."
+      },
+      "javaPath": "java/solution-1-graph-dfs/Solution.java",
+      "pythonPath": "python/solution-1-graph-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-weighted-union-find",
+      "title": "Weighted union find",
+      "tier": 2,
+      "strategy": "Maintain connected components with each variable's ratio to its parent, so queries compare ratios to a shared root.",
+      "timeComplexity": {
+        "class": "O((e + q) * alpha(v))",
+        "explanation": "Union and find operations are inverse-Ackermann amortized with path compression."
+      },
+      "spaceComplexity": {
+        "class": "O(v)",
+        "explanation": "Parent and weight maps store one entry per distinct variable."
+      },
+      "javaPath": "java/solution-2-weighted-union-find/Solution.java",
+      "pythonPath": "python/solution-2-weighted-union-find/solution.py"
+    }
+  ]
+}

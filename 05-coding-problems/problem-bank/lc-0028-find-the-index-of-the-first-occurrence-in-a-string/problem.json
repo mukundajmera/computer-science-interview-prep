@@ -1,0 +1,107 @@
+{
+  "id": "lc-0028-find-the-index-of-the-first-occurrence-in-a-string",
+  "title": "Find the Index of the First Occurrence in a String",
+  "difficulty": "easy",
+  "status": "verified",
+  "patterns": [
+    "Array / String",
+    "Arrays & Hashing"
+  ],
+  "collections": [
+    {
+      "id": "leetcode-top-150",
+      "order": 23,
+      "group": "Array / String",
+      "sourceUrl": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 121,
+      "group": "Arrays & Hashing",
+      "sourceUrl": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string"
+    }
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "leetcode": {
+    "frontendId": "28",
+    "titleSlug": "find-the-index-of-the-first-occurrence-in-a-string",
+    "url": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "strStr",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "haystack",
+          "type": "String"
+        },
+        {
+          "name": "needle",
+          "type": "String"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "strStr",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "haystack",
+          "type": "str"
+        },
+        {
+          "name": "needle",
+          "type": "str"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

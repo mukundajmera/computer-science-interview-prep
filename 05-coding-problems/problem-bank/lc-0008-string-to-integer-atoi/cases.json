@@ -1,0 +1,85 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "leading spaces and negative sign",
+      "input": {
+        "s": "   -42 words"
+      },
+      "expected": -42
+    },
+    {
+      "name": "positive overflow clamps",
+      "input": {
+        "s": "91283472332"
+      },
+      "expected": 2147483647
+    },
+    {
+      "name": "negative overflow clamps",
+      "input": {
+        "s": "   -91283472332"
+      },
+      "expected": -2147483648
+    },
+    {
+      "name": "sign without digits",
+      "input": {
+        "s": "+ 12"
+      },
+      "expected": 0
+    },
+    {
+      "name": "stops before letters",
+      "input": {
+        "s": "4193 with words"
+      },
+      "expected": 4193
+    },
+    {
+      "name": "leading words stop parsing",
+      "input": {
+        "s": "words 987"
+      },
+      "expected": 0
+    },
+    {
+      "name": "exact positive boundary",
+      "input": {
+        "s": "2147483647"
+      },
+      "expected": 2147483647
+    },
+    {
+      "name": "exact negative boundary",
+      "input": {
+        "s": "-2147483648"
+      },
+      "expected": -2147483648
+    },
+    {
+      "name": "embedded sign after zeroes stops",
+      "input": {
+        "s": "00000-42a1234"
+      },
+      "expected": 0
+    },
+    {
+      "name": "plus sign with digits",
+      "input": {
+        "s": "+1"
+      },
+      "expected": 1
+    },
+    {
+      "name": "conflicting signs stop parsing",
+      "input": {
+        "s": "-+12"
+      },
+      "expected": 0
+    }
+  ]
+}

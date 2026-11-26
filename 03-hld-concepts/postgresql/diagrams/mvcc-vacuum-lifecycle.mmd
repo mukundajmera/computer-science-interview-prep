@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant Tx1 as Transaction 100
+    participant Heap as PostgreSQL Heap (Pages)
+    participant Tx2 as Transaction 101
+    participant Vacuum as AutoVacuum Worker
+
+    Tx1->>Heap: INSERT Tuple A<br/>(xmin=100, xmax=0)
+    Note over Heap: Tuple A is LIVE for Tx >= 100
+    
+    Tx2->>Heap: UPDATE Tuple A -> Tuple A'<br/>(xmin=101, xmax=0)
+    Note over Heap: Tuple A updated:<br/>xmin=100, xmax=101 (DEAD to Tx >= 101)<br/>Tuple A' created:<br/>xmin=101, xmax=0 (LIVE for Tx >= 101)
+    
+    Tx1->>Tx1: COMMIT (tx 100 finishes)
+    Tx2->>Tx2: COMMIT (tx 101 finishes)
+    
+    Note over Heap: Tuple A is now globally dead<br/>No active transaction < 101 exists
+    
+    Vacuum->>Heap: Scan pages for dead tuples
+    Vacuum->>Heap: Remove Tuple A (Mark space as reusable)
+    Note over Heap: Space reclaimed via FSM (Free Space Map)
+    Vacuum->>Vacuum: Update Visibility Map & Statistics
+
+%% Reconciled canonical diagram for MVCC Vacuum Lifecycle

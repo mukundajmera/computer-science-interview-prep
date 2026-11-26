@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "repeat at ends", "input": { "nums": [4, 1, 9, 4] }, "expected": true },
+    { "name": "all distinct", "input": { "nums": [11, 2, 8, 4] }, "expected": false },
+    { "name": "negative duplicate", "input": { "nums": [-1, 0, 6, -1] }, "expected": true },
+    { "name": "single value", "input": { "nums": [5] }, "expected": false },
+    { "name": "adjacent duplicate", "input": { "nums": [8, 8, 3] }, "expected": true }
+  ]
+}

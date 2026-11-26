@@ -1,0 +1,53 @@
+erDiagram
+    SUBMISSIONS {
+        string submission_id PK
+        string user_id
+        string content_type
+        string content_url
+        datetime created_at
+        string status
+    }
+
+    SCAN_RESULTS {
+        string scan_id PK
+        string submission_id FK
+        string model_name
+        string model_version
+        float score
+        string label
+        datetime scanned_at
+    }
+
+    MODERATION_DECISIONS {
+        string decision_id PK
+        string submission_id FK
+        string policy_id
+        string action_taken
+        boolean is_auto_decision
+        datetime decided_at
+    }
+
+    REVIEW_TASKS {
+        string task_id PK
+        string submission_id FK
+        string reviewer_id
+        string status
+        string review_notes
+        datetime assigned_at
+        datetime resolved_at
+    }
+
+    AUDIT_LEDGER {
+        string audit_id PK
+        string reference_id
+        string reference_type
+        string action
+        string actor_id
+        datetime timestamp
+    }
+
+    SUBMISSIONS ||--o{ SCAN_RESULTS : "analyzed by"
+    SUBMISSIONS ||--o| MODERATION_DECISIONS : "results in"
+    SUBMISSIONS ||--o| REVIEW_TASKS : "queued for"
+    MODERATION_DECISIONS ||--o{ AUDIT_LEDGER : "logged in"
+    REVIEW_TASKS ||--o{ AUDIT_LEDGER : "logged in"

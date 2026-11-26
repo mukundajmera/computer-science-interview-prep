@@ -1,0 +1,30 @@
+graph TD
+    subgraph ClientConnections["Client Connections"]
+        C1[Client 1]
+        C2[Client 2]
+        C3[Client 3]
+    end
+
+    subgraph IOWorkers["Multi-threaded I/O Workers (Redis 6: I/O offload, Redis 8: revised I/O threading)"]
+        IO1[I/O Thread 1<br/>Read/Write Socket]
+        IO2[I/O Thread 2<br/>Read/Write Socket]
+        IO3[I/O Thread 3<br/>Read/Write Socket]
+    end
+
+    subgraph EventLoop["Main Event Loop (Single Threaded)"]
+        Parser[Command Parser]
+        Executor[Command Executor<br/>O1/OLogN Execution]
+        Responder[Response Builder]
+    end
+
+    C1 <-->|Network| IO1
+    C2 <-->|Network| IO2
+    C3 <-->|Network| IO3
+
+    IO1 -->|Parsed Request| Executor
+    IO2 -->|Parsed Request| Executor
+    IO3 -->|Parsed Request| Executor
+
+    Executor -->|Response Data| IO1
+    Executor -->|Response Data| IO2
+    Executor -->|Response Data| IO3

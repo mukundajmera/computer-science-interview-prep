@@ -1,0 +1,80 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two short matches",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1
+        ],
+        "k": 2
+      },
+      "expected": 2
+    },
+    {
+      "name": "prefix and singleton matches",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ],
+        "k": 3
+      },
+      "expected": 2
+    },
+    {
+      "name": "zero target with negative",
+      "input": {
+        "nums": [
+          1,
+          -1,
+          0
+        ],
+        "k": 0
+      },
+      "expected": 3
+    },
+    {
+      "name": "all zeroes",
+      "input": {
+        "nums": [
+          0,
+          0,
+          0
+        ],
+        "k": 0
+      },
+      "expected": 6
+    },
+    {
+      "name": "negative target mix",
+      "input": {
+        "nums": [
+          -1,
+          -1,
+          1
+        ],
+        "k": 0
+      },
+      "expected": 1
+    },
+    {
+      "name": "negative target multiple matches",
+      "input": {
+        "nums": [
+          -1,
+          -1,
+          1
+        ],
+        "k": -1
+      },
+      "expected": 3
+    }
+  ]
+}

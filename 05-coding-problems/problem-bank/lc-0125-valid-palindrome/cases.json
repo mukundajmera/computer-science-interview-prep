@@ -1,0 +1,10 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "punctuation and case ignored", "input": { "s": "Level-X-level!" }, "expected": true },
+    { "name": "cleaned text differs", "input": { "s": "system design" }, "expected": false },
+    { "name": "no alphanumeric characters", "input": { "s": "., " }, "expected": true },
+    { "name": "digit and letter differ", "input": { "s": "0P" }, "expected": false }
+  ]
+}

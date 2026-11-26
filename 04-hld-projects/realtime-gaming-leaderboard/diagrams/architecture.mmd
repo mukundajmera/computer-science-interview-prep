@@ -1,0 +1,21 @@
+flowchart TD
+    Client["Gaming Client"] -->|Score updates & Rank queries| API["API Gateway / LB"]
+    
+    API --> ScoreService["Score Service"]
+    API --> RankService["Rank Lookup Service"]
+
+    ScoreService -->|Write async to log| Kafka["Kafka Event Stream\n(Durability)"]
+    ScoreService -->|ZINCRBY composite score| RedisPrimary["Redis (Primary)\nSorted Set\n(leaderboard:tournament_id)"]
+    
+    Kafka -->|Consume events| DBWorker["DB Persist Worker"]
+    DBWorker -->|Batch Write| MySQL[("MySQL\n(Source of Truth)")]
+    
+    RankService -->|ZREVRANK, ZREVRANGE| RedisPrimary
+    RedisPrimary -->|Replicate| RedisReplica["Redis (Replica)"]
+    RankService -->|Fallback / Read Scale| RedisReplica
+    
+    subgraph Data Stores
+        RedisPrimary
+        RedisReplica
+        MySQL
+    end

@@ -1,0 +1,21 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "triangle cycle",
+      "input": { "node": [[2, 3], [1, 3], [1, 2]] },
+      "expected": [[2, 3], [1, 3], [1, 2]]
+    },
+    {
+      "name": "line with branch back edges",
+      "input": { "node": [[2], [1, 3, 4], [2, 4], [2, 3]] },
+      "expected": [[2], [1, 3, 4], [2, 4], [2, 3]]
+    },
+    {
+      "name": "empty graph",
+      "input": { "node": [] },
+      "expected": []
+    }
+  ]
+}

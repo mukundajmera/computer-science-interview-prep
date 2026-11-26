@@ -1,0 +1,141 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "center target",
+      "input": {
+        "arr": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "k": 4,
+        "x": 3
+      },
+      "expected": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "target below range",
+      "input": {
+        "arr": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "k": 4,
+        "x": -1
+      },
+      "expected": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "target near right edge",
+      "input": {
+        "arr": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "k": 4,
+        "x": 4
+      },
+      "expected": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "duplicates at target",
+      "input": {
+        "arr": [
+          1,
+          2,
+          2,
+          2,
+          3,
+          4
+        ],
+        "k": 3,
+        "x": 2
+      },
+      "expected": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "tie prefers smaller values",
+      "input": {
+        "arr": [
+          1,
+          3
+        ],
+        "k": 1,
+        "x": 2
+      },
+      "expected": [
+        1
+      ]
+    },
+    {
+      "name": "k equals array length above range",
+      "input": {
+        "arr": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "k": 5,
+        "x": 100
+      },
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "target above range",
+      "input": {
+        "arr": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "k": 2,
+        "x": 6
+      },
+      "expected": [
+        4,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-fixed-bit-scan",
+      "title": "Fixed bit scan",
+      "tier": 1,
+      "strategy": "Inspect each of the 32 bit positions and add the low bit before shifting.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "Exactly 32 positions are inspected for a fixed-width integer."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the running count and shifted value are stored."
+      },
+      "javaPath": "java/solution-1-fixed-bit-scan/Solution.java",
+      "pythonPath": "python/solution-1-fixed-bit-scan/solution.py"
+    },
+    {
+      "id": "solution-2-clear-lowest-set-bit",
+      "title": "Clear lowest set bit",
+      "tier": 2,
+      "strategy": "Repeatedly remove the lowest set bit, counting only the one bits that actually exist.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "At most 32 set bits can be removed from a fixed-width integer."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The method stores only the count and current word."
+      },
+      "javaPath": "java/solution-2-clear-lowest-set-bit/Solution.java",
+      "pythonPath": "python/solution-2-clear-lowest-set-bit/solution.py"
+    }
+  ]
+}

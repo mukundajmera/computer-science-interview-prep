@@ -1,0 +1,18 @@
+flowchart TD
+    Ingress[Prompt Ingress] --> PrePrompt[Pre-prompt Sanitization]
+    PrePrompt --> RegexFilters[Regex Fast Filters]
+    RegexFilters --> SemanticClass[Semantic Classification]
+    SemanticClass --> ScoreCalib[Multi-threshold Score Calibration]
+    ScoreCalib --> ActionRouter[Action Router]
+
+    ActionRouter --> |ALLOW| AllowAction[Allow Content]
+    ActionRouter --> |FLAG| FlagAction[Flag for Review]
+    ActionRouter --> |BLOCK| BlockAction[Block Content]
+
+    subgraph Pipeline [Multi-stage Safety Filtering Pipeline]
+        PrePrompt
+        RegexFilters
+        SemanticClass
+        ScoreCalib
+        ActionRouter
+    end

@@ -1,0 +1,6 @@
+graph LR;
+  A[Agent LLM] --> B{Need Info?};
+  B -- Yes --> C[Search Tool];
+  C --> D[Observation];
+  D --> A;
+  B -- No --> E[Final Answer];

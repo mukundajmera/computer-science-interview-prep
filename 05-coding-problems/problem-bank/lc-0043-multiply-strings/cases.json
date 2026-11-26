@@ -1,0 +1,32 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two by two digits",
+      "input": {
+        "num1": "12",
+        "num2": "34"
+      },
+      "expected": "408"
+    },
+    {
+      "name": "zero operand",
+      "input": {
+        "num1": "0",
+        "num2": "99999"
+      },
+      "expected": "0"
+    },
+    {
+      "name": "carries across all digits",
+      "input": {
+        "num1": "999",
+        "num2": "999"
+      },
+      "expected": "998001"
+    }
+  ]
+}

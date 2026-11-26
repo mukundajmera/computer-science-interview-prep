@@ -1,0 +1,78 @@
+```mermaid
+flowchart TB
+    subgraph Clients["Client Layer"]
+        WebApp[Web Application]
+        MobileApp[Mobile Apps]
+        API[API Clients]
+    end
+    
+    subgraph Gateway["API Gateway"]
+        LB[Load Balancer]
+        RateLimit[Rate Limiter]
+        Auth[Auth Service]
+    end
+    
+    subgraph WriteServices["Write Path Services"]
+        PostService[Post Service]
+        MediaService[Media Service]
+    end
+    
+    subgraph ReadServices["Read Path Services"]
+        FeedService[Feed Service]
+        FeedRanker[Feed Ranker]
+    end
+    
+    subgraph CoreServices["Core Services"]
+        FollowService[Follow Service]
+        UserService[User Service]
+    end
+    
+    subgraph AsyncLayer["Async Processing - Kafka"]
+        PostTopic[Post Events Topic]
+        FollowTopic[Follow Events Topic]
+        FanoutWorkers[Fanout Workers]
+    end
+    
+    subgraph CacheLayer["Cache Layer - Redis"]
+        FeedCache[(Feed Cache<br/>Sorted Sets)]
+        PostCache[(Post Cache<br/>Hash)]
+        FollowCache[(Follow Cache<br/>Sets)]
+    end
+    
+    subgraph StorageLayer["Storage Layer"]
+        PostDB[(Posts DB<br/>Cassandra)]
+        GraphDB[(Social Graph<br/>Cassandra)]
+        UserDB[(Users DB<br/>PostgreSQL)]
+    end
+    
+    WebApp --> LB
+    MobileApp --> LB
+    API --> LB
+    
+    LB --> RateLimit --> Auth
+    
+    Auth --> PostService
+    Auth --> FeedService
+    Auth --> FollowService
+    
+    PostService --> PostDB
+    PostService --> PostCache
+    PostService --> PostTopic
+    
+    PostTopic --> FanoutWorkers
+    FanoutWorkers --> FeedCache
+    
+    FeedService --> FeedCache
+    FeedService --> PostCache
+    FeedService --> FeedRanker
+    FeedRanker --> PostDB
+    
+    FollowService --> GraphDB
+    FollowService --> FollowCache
+    FollowService --> FollowTopic
+    
+    style FeedCache fill:#ff9f43
+    style PostCache fill:#ff9f43
+    style PostDB fill:#54a0ff
+    style GraphDB fill:#54a0ff
+```

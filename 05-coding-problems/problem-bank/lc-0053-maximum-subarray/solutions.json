@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-all-subarrays",
+      "title": "All subarray sums",
+      "tier": 1,
+      "strategy": "Start at every index and extend right while tracking the running sum.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "There are quadratically many start/end pairs."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only running and best sums are stored."
+      },
+      "javaPath": "java/solution-1-all-subarrays/Solution.java",
+      "pythonPath": "python/solution-1-all-subarrays/solution.py"
+    },
+    {
+      "id": "solution-2-kadane",
+      "title": "Kadane running best",
+      "tier": 2,
+      "strategy": "At each index, keep the best subarray ending at that index and the global best.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each value contributes one constant-time transition."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The dynamic state compresses to two scalar sums."
+      },
+      "javaPath": "java/solution-2-kadane/Solution.java",
+      "pythonPath": "python/solution-2-kadane/solution.py"
+    }
+  ]
+}

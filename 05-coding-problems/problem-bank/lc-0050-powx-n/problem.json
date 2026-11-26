@@ -1,0 +1,106 @@
+{
+  "id": "lc-0050-powx-n",
+  "title": "Pow(x, n)",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "math",
+    "recursion",
+    "binary-exponentiation"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-iterative-binary-exponentiation/Solution.java",
+      "java/solution-2-recursive-binary-exponentiation/Solution.java",
+      "python/solution-1-iterative-binary-exponentiation/solution.py",
+      "python/solution-2-recursive-binary-exponentiation/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 135,
+      "group": "math",
+      "sourceUrl": "https://leetcode.com/problems/powx-n"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 135,
+      "group": "Math",
+      "sourceUrl": "https://leetcode.com/problems/powx-n"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 883,
+      "group": "Math & Geometry",
+      "sourceUrl": "https://leetcode.com/problems/powx-n"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "50",
+    "titleSlug": "powx-n",
+    "url": "https://leetcode.com/problems/powx-n",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "myPow",
+      "returnType": "double",
+      "parameters": [
+        { "name": "x", "type": "double" },
+        { "name": "n", "type": "int" }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "myPow",
+      "returnType": "float",
+      "parameters": [
+        { "name": "x", "type": "float" },
+        { "name": "n", "type": "int" }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

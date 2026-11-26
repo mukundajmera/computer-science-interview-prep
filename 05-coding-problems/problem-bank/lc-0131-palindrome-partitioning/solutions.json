@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-backtracking-with-memo",
+      "title": "Backtracking with palindrome verification",
+      "tier": 1,
+      "strategy": "Explore all substring splits recursively, appending only when the current prefix is a palindrome.",
+      "timeComplexity": {
+        "class": "O(n * 2^n)",
+        "explanation": "There are 2^(n-1) potential substring split boundaries, and validating substrings takes O(n)."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Recursion stack depth and path accumulator are bounded by string length n."
+      },
+      "javaPath": "java/solution-1-backtracking-with-memo/Solution.java",
+      "pythonPath": "python/solution-1-backtracking-with-memo/solution.py"
+    }
+  ]
+}

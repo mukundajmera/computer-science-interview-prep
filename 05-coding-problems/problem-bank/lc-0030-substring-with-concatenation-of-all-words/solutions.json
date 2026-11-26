@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-check-every-start",
+      "title": "Check every possible start",
+      "tier": 1,
+      "strategy": "For each starting index, consume word-sized chunks and compare their counts with the required counts.",
+      "timeComplexity": {
+        "class": "O(n * m * w)",
+        "explanation": "There are O(n) starts, each can inspect m words of length w."
+      },
+      "spaceComplexity": {
+        "class": "O(m)",
+        "explanation": "The seen counter can hold up to the number of words."
+      },
+      "javaPath": "java/solution-1-check-every-start/Solution.java",
+      "pythonPath": "python/solution-1-check-every-start/solution.py"
+    },
+    {
+      "id": "solution-2-offset-sliding-window",
+      "title": "Word-length offset sliding window",
+      "tier": 2,
+      "strategy": "Run a counted sliding window for each word-length offset, shrinking from the left when a word is overused or absent.",
+      "timeComplexity": {
+        "class": "O(n * w + r log r)",
+        "explanation": "Each offset scans the string in word-sized steps, substring extraction costs up to word length, and r reported indices are sorted for deterministic ascending output."
+      },
+      "spaceComplexity": {
+        "class": "O(m)",
+        "explanation": "Counters store required and current word frequencies."
+      },
+      "javaPath": "java/solution-2-offset-sliding-window/Solution.java",
+      "pythonPath": "python/solution-2-offset-sliding-window/solution.py"
+    }
+  ]
+}

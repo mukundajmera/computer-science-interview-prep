@@ -1,0 +1,28 @@
+flowchart TD
+    classDef input fill:#d4edda,stroke:#28a745,stroke-width:2px;
+    classDef process fill:#cce5ff,stroke:#007bff,stroke-width:2px;
+    classDef output fill:#f8d7da,stroke:#dc3545,stroke-width:2px;
+
+    subgraph Inputs [Input Sources]
+        direction TB
+        SPT[System Prompt Template]:::input
+        FES[Few-shot Example Selector]:::input
+        UserQuery[User Query / Variables]:::input
+    end
+
+    subgraph Pipeline [Prompt Builder Pipeline]
+        direction TB
+        DVI[Dynamic Variable Interpolation]:::process
+        GS[Guardrail Sanitizer]:::process
+        TBV[Token Budget Validator]:::process
+    end
+
+    SPT --> DVI
+    FES --> DVI
+    UserQuery --> DVI
+
+    DVI --> GS
+    GS --> TBV
+
+    Output[Final Model Payload]:::output
+    TBV --> Output

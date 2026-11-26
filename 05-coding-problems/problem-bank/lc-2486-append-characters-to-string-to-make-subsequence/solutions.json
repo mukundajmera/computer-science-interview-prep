@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-repeated-find",
+      "title": "Repeated find",
+      "tier": 1,
+      "strategy": "For each target character, search forward in the source from the current source position.",
+      "timeComplexity": {
+        "class": "O(|s||t|)",
+        "explanation": "Each target step may scan a source suffix."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only two positions are stored."
+      },
+      "javaPath": "java/solution-1-repeated-find/Solution.java",
+      "pythonPath": "python/solution-1-repeated-find/solution.py"
+    },
+    {
+      "id": "solution-2-two-pointer",
+      "title": "Two pointer",
+      "tier": 2,
+      "strategy": "Scan the source once and advance the target pointer whenever characters match.",
+      "timeComplexity": {
+        "class": "O(|s| + |t|)",
+        "explanation": "Each pointer moves forward only."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only pointer counters are stored."
+      },
+      "javaPath": "java/solution-2-two-pointer/Solution.java",
+      "pythonPath": "python/solution-2-two-pointer/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-history-scan",
+      "title": "History scan",
+      "tier": 1,
+      "strategy": "Keep printed events and scan backward for a recent matching message.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "A call may scan all prior printed events."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Printed events are retained."
+      },
+      "javaPath": "java/solution-1-history-scan/Solution.java",
+      "pythonPath": "python/solution-1-history-scan/solution.py"
+    },
+    {
+      "id": "solution-2-next-allowed-map",
+      "title": "Next allowed map",
+      "tier": 2,
+      "strategy": "Map each message to the earliest timestamp where it can print again.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "Each call does constant map work."
+      },
+      "spaceComplexity": {
+        "class": "O(m)",
+        "explanation": "The map stores one entry per message."
+      },
+      "javaPath": "java/solution-2-next-allowed-map/Solution.java",
+      "pythonPath": "python/solution-2-next-allowed-map/solution.py"
+    }
+  ]
+}

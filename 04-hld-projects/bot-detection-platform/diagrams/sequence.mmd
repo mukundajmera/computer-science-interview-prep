@@ -1,0 +1,30 @@
+sequenceDiagram
+    actor User
+    participant Gateway
+    participant FeatureStore
+    participant ScoringEngine
+    participant AuditStream
+
+    User->>Gateway: POST /api/v1/action
+    Gateway->>ScoringEngine: Evaluate Risk (account_id, context)
+
+    par Fetch Features
+        ScoringEngine->>FeatureStore: Get velocity & history features
+        FeatureStore-->>ScoringEngine: Feature vectors
+    end
+
+    ScoringEngine->>ScoringEngine: Supervised Scorer + Anomaly Lane
+    ScoringEngine->>ScoringEngine: Decision Calibrator
+
+    alt High Risk
+        ScoringEngine-->>Gateway: Action: Deny
+        Gateway-->>User: 403 Forbidden
+    else Medium Risk
+        ScoringEngine-->>Gateway: Action: Challenge
+        Gateway-->>User: 401 Unauthorized + CAPTCHA token
+    else Low Risk
+        ScoringEngine-->>Gateway: Action: Allow
+        Gateway-->>User: 200 OK
+    end
+
+    ScoringEngine-)AuditStream: Async Log Decision (score, action, reasons)

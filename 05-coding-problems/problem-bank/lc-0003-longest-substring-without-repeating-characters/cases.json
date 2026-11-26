@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "repeat after long prefix", "input": { "s": "cadence" }, "expected": 5 },
+    { "name": "adjacent repeat", "input": { "s": "moon" }, "expected": 2 },
+    { "name": "empty string", "input": { "s": "" }, "expected": 0 },
+    { "name": "best window after first repeat", "input": { "s": "abcaefgh" }, "expected": 7 },
+    { "name": "late duplicate", "input": { "s": "swiss" }, "expected": 3 }
+  ]
+}

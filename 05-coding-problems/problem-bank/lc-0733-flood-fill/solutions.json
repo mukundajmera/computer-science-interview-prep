@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-iterative-dfs",
+      "title": "Iterative DFS",
+      "tier": 1,
+      "strategy": "Depth-first search from the start cell with an explicit stack, repainting only matching-color neighbors.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each cell in the connected component is visited at most once, bounded by the whole grid."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The explicit stack can contain a path through the entire grid in the worst case."
+      },
+      "javaPath": "java/solution-1-iterative-dfs/Solution.java",
+      "pythonPath": "python/solution-1-iterative-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-bfs",
+      "title": "Iterative BFS",
+      "tier": 2,
+      "strategy": "Use a queue to expand the component layer by layer and avoid recursion-depth risk.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each cell can be enqueued and recolored once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The queue can hold a large frontier in the grid."
+      },
+      "javaPath": "java/solution-2-iterative-bfs/Solution.java",
+      "pythonPath": "python/solution-2-iterative-bfs/solution.py"
+    }
+  ]
+}

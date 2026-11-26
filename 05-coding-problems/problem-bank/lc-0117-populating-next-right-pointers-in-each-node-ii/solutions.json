@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-level-order-queue",
+      "title": "Level-order queue linking",
+      "tier": 1,
+      "strategy": "Traverse one level at a time with a queue, wire each node to the next node in that same level, and enqueue children for the next level.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is enqueued, dequeued, and linked a constant number of times."
+      },
+      "spaceComplexity": {
+        "class": "O(w)",
+        "explanation": "The queue can hold one tree level at once, where w is the maximum width of the tree."
+      },
+      "javaPath": "java/solution-1-level-order-queue/Solution.java",
+      "pythonPath": "python/solution-1-level-order-queue/solution.py"
+    },
+    {
+      "id": "solution-2-constant-space-chains",
+      "title": "Constant-space next-chain traversal",
+      "tier": 2,
+      "strategy": "Use the current level's already-established next chain to build the next level's chain with a dummy tail pointer.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is visited once as part of a current level, and each child is appended once to the next-level chain."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The algorithm keeps only a few node pointers regardless of tree size; it mutates the existing next fields."
+      },
+      "javaPath": "java/solution-2-constant-space-chains/Solution.java",
+      "pythonPath": "python/solution-2-constant-space-chains/solution.py"
+    }
+  ]
+}

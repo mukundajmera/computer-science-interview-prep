@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-full-dfs-count",
+      "title": "Full DFS count",
+      "tier": 1,
+      "strategy": "Count the current node plus counts from both children.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack grows with tree height h."
+      },
+      "javaPath": "java/solution-1-full-dfs-count/Solution.java",
+      "pythonPath": "python/solution-1-full-dfs-count/solution.py"
+    },
+    {
+      "id": "solution-2-complete-tree-heights",
+      "title": "Complete-tree height pruning",
+      "tier": 2,
+      "strategy": "Compare leftmost heights to count perfect subtrees in one step.",
+      "timeComplexity": {
+        "class": "O(log^2 n)",
+        "explanation": "Each recursive level computes two left heights, and a complete tree has logarithmic height."
+      },
+      "spaceComplexity": {
+        "class": "O(log n)",
+        "explanation": "The recursive stack follows one branch per level."
+      },
+      "javaPath": "java/solution-2-complete-tree-heights/Solution.java",
+      "pythonPath": "python/solution-2-complete-tree-heights/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+%% Iterator Pattern Class Diagram
+%% Provides way to access elements sequentially without exposing representation
+
+classDiagram
+    class Iterator {
+        <<interface>>
+        +hasNext() boolean
+        +next() Object
+        +reset() void
+    }
+    
+    class ConcreteIterator {
+        -collection ConcreteAggregate
+        -currentIndex int
+        +ConcreteIterator(ConcreteAggregate)
+        +hasNext() boolean
+        +next() Object
+        +reset() void
+    }
+    
+    class Aggregate {
+        <<interface>>
+        +createIterator() Iterator
+    }
+    
+    class ConcreteAggregate {
+        -items List~Object~
+        +createIterator() Iterator
+        +getItems() List
+        +getCount() int
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Iterator <|.. ConcreteIterator
+    Aggregate <|.. ConcreteAggregate
+    ConcreteAggregate --> ConcreteIterator : creates
+    ConcreteIterator --> ConcreteAggregate : traverses
+    Client --> Iterator : uses
+    Client --> Aggregate : uses

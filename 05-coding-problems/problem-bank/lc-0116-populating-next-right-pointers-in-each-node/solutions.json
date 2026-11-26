@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-level-order-queue",
+      "title": "Level-order queue",
+      "tier": 1,
+      "strategy": "Traverse level by level and link adjacent nodes in the queue slice.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is enqueued and linked once."
+      },
+      "spaceComplexity": {
+        "class": "O(w)",
+        "explanation": "The queue can store one level of width w."
+      },
+      "javaPath": "java/solution-1-level-order-queue/Solution.java",
+      "pythonPath": "python/solution-1-level-order-queue/solution.py"
+    },
+    {
+      "id": "solution-2-perfect-tree-pointers",
+      "title": "Perfect-tree pointer walk",
+      "tier": 2,
+      "strategy": "Use established next pointers on the current level to wire the next level.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every non-leaf wires two child links once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only current-level pointers are stored."
+      },
+      "javaPath": "java/solution-2-perfect-tree-pointers/Solution.java",
+      "pythonPath": "python/solution-2-perfect-tree-pointers/solution.py"
+    }
+  ]
+}

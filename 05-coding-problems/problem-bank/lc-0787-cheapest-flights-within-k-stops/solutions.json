@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-limited-bellman-ford",
+      "title": "Limited Bellman-Ford",
+      "tier": 1,
+      "strategy": "Relax all flights for exactly k + 1 edge layers using a snapshot from the previous layer.",
+      "timeComplexity": {
+        "class": "O(KE)",
+        "explanation": "For K = k + 1 allowed flight edges, each layer scans every flight once."
+      },
+      "spaceComplexity": {
+        "class": "O(V)",
+        "explanation": "Only previous and current best-cost arrays are stored."
+      },
+      "javaPath": "java/solution-1-limited-bellman-ford/Solution.java",
+      "pythonPath": "python/solution-1-limited-bellman-ford/solution.py"
+    },
+    {
+      "id": "solution-2-stateful-dijkstra",
+      "title": "Stateful Dijkstra",
+      "tier": 2,
+      "strategy": "Use a min-heap over cost, city, and edge count so cheaper states are expanded first within the stop budget.",
+      "timeComplexity": {
+        "class": "O((V + E)K log(VK))",
+        "explanation": "For K = k + 1 allowed flight edges, a city can have distinct useful costs per edge count."
+      },
+      "spaceComplexity": {
+        "class": "O(VK + E)",
+        "explanation": "The adjacency list, heap, and best table store per-stop states."
+      },
+      "javaPath": "java/solution-2-stateful-dijkstra/Solution.java",
+      "pythonPath": "python/solution-2-stateful-dijkstra/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-visited-matrix-dfs",
+      "title": "DFS with separate visited matrix",
+      "tier": 1,
+      "strategy": "Start DFS from every matching cell and track used cells in a separate boolean matrix.",
+      "timeComplexity": { "class": "O(m*n*4^L)", "explanation": "Each cell can start a search, and each word position branches to neighboring cells in the worst case." },
+      "spaceComplexity": { "class": "O(m*n + L)", "explanation": "The visited matrix stores all cells and the recursion stack can grow to the word length." },
+      "javaPath": "java/solution-1-visited-matrix-dfs/Solution.java",
+      "pythonPath": "python/solution-1-visited-matrix-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-in-place-marking-dfs",
+      "title": "DFS with in-place marking",
+      "tier": 2,
+      "strategy": "Temporarily mark the current board cell during DFS and restore it after exploring neighbors.",
+      "timeComplexity": { "class": "O(m*n*4^L)", "explanation": "The branching search complexity is unchanged, but each state uses constant extra bookkeeping." },
+      "spaceComplexity": { "class": "O(L)", "explanation": "Only the recursion stack grows with the word length; the board itself stores visited marks temporarily." },
+      "javaPath": "java/solution-2-in-place-marking-dfs/Solution.java",
+      "pythonPath": "python/solution-2-in-place-marking-dfs/solution.py"
+    }
+  ]
+}

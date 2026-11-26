@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-neighbor-scan",
+      "title": "Linear neighbor scan",
+      "tier": 1,
+      "strategy": "Scan each index and return the first value that is greater than both existing neighbors.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every position may be checked once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only loop variables are stored."
+      },
+      "javaPath": "java/solution-1-linear-neighbor-scan/Solution.java",
+      "pythonPath": "python/solution-1-linear-neighbor-scan/solution.py"
+    },
+    {
+      "id": "solution-2-binary-slope",
+      "title": "Binary slope",
+      "tier": 2,
+      "strategy": "Use the slope between mid and mid+1 to discard the side that cannot contain a peak.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each comparison halves the remaining search interval."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The search uses two pointers."
+      },
+      "javaPath": "java/solution-2-binary-slope/Solution.java",
+      "pythonPath": "python/solution-2-binary-slope/solution.py"
+    }
+  ]
+}

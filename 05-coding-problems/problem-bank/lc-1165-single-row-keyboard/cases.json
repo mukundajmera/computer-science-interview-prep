@@ -1,0 +1,32 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "forward movement",
+      "input": {
+        "keyboard": "abcdefghijklmnopqrstuvwxyz",
+        "word": "cba"
+      },
+      "expected": 4
+    },
+    {
+      "name": "custom layout",
+      "input": {
+        "keyboard": "pqrstuvwxyzabcdefghijklmno",
+        "word": "leetcode"
+      },
+      "expected": 73
+    },
+    {
+      "name": "single character",
+      "input": {
+        "keyboard": "abcdefghijklmnopqrstuvwxyz",
+        "word": "a"
+      },
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+sequenceDiagram
+    actor C as Customer
+    participant OS as Order Service
+    participant IS as Inventory Service
+    participant DS as Dark Store System
+    participant P as Picker App
+    participant DD as Dispatch System
+    participant R as Rider App
+
+    C->>OS: Place order
+    OS->>IS: Reserve inventory
+    IS-->>OS: Inventory reserved
+    OS->>DS: Send order to dark store
+    DS->>P: Assign order to picker
+    P->>DS: Start picking
+    P-->>DS: Finish picking (Order packed)
+
+    DS->>DD: Order ready for dispatch
+    DD->>R: Offer delivery task
+    R-->>DD: Accept task
+    R->>DS: Arrive at dark store & pickup
+
+    loop Every few seconds
+        R->>DD: Send GPS ping
+        DD-->>C: Update live tracking
+    end
+
+    R->>C: Arrive at customer location
+    R->>DD: Mark order delivered
+    DD-->>OS: Update order status
+    OS-->>C: Delivery complete notification

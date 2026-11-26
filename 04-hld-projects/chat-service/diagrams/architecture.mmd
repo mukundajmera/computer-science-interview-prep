@@ -1,0 +1,96 @@
+flowchart TB
+    subgraph Clients["Client Layer"]
+        direction LR
+        M[Mobile Apps]
+        W[Web Clients]
+        D[Desktop Apps]
+    end
+
+    subgraph Edge["Edge Layer"]
+        LB[REST Load Balancer]
+        WSLB[WebSocket Load Balancer<br/>Sticky Sessions]
+    end
+
+    subgraph Gateway["API Gateway"]
+        AUTH[Auth/Rate Limit]
+    end
+
+    subgraph API["Application Layer"]
+        REST[REST API Servers]
+        WS1[WS Manager 1]
+        WS2[WS Manager 2]
+        WSN[WS Manager N]
+    end
+
+    subgraph Core["Core Services"]
+        MSG[Message Service]
+        CONV[Conversation Service]
+        PRES[Presence Service]
+        GROUP[Group Service]
+    end
+
+    subgraph Async["Async Processing"]
+        KAFKA[Kafka<br/>Message Queue]
+        DW[Delivery Workers]
+        FOW[Fan-out Workers]
+        NW[Notification Workers]
+    end
+
+    subgraph Storage["Storage Layer"]
+        CASS[(Cassandra<br/>Messages)]
+        REDIS[(Redis Cluster<br/>Sessions/Presence)]
+        PG[(PostgreSQL<br/>Users/Groups)]
+    end
+
+    subgraph External["External Services"]
+        PUSH[Push Notification<br/>APNs/FCM]
+    end
+
+    %% Client connections
+    M & W & D --> LB
+    M & W & D -.->|WebSocket| WSLB
+
+    %% Edge to Gateway
+    LB --> AUTH
+    WSLB --> WS1 & WS2 & WSN
+
+    %% Gateway to Services
+    AUTH --> REST
+    REST --> MSG & CONV & GROUP
+
+    %% WebSocket to Services
+    WS1 & WS2 & WSN --> MSG
+    WS1 & WS2 & WSN --> PRES
+
+    %% Core to Queue
+    MSG --> KAFKA
+    PRES --> REDIS
+
+    %% Queue to Workers
+    KAFKA --> DW & FOW
+    FOW --> KAFKA
+
+    %% Workers to WebSocket
+    DW --> WS1 & WS2 & WSN
+    DW --> NW
+    NW --> PUSH
+
+    %% Services to Storage
+    MSG --> CASS
+    CONV --> PG
+    GROUP --> PG
+    PRES --> REDIS
+
+    %% Cross-server communication
+    WS1 & WS2 & WSN <-.->|Pub/Sub| REDIS
+
+    %% Styling
+    classDef primary fill:#4a90d9,stroke:#2e6da4,color:white
+    classDef storage fill:#5cb85c,stroke:#4cae4c,color:white
+    classDef async fill:#f0ad4e,stroke:#eea236,color:white
+    classDef external fill:#d9534f,stroke:#d43f3a,color:white
+
+    class MSG,CONV,PRES,GROUP primary
+    class CASS,REDIS,PG storage
+    class KAFKA,DW,FOW,NW async
+    class PUSH external

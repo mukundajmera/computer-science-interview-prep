@@ -1,0 +1,57 @@
+flowchart TD
+    subgraph Clients["Clients & Ingestion"]
+        UserClient["User Mobile / Web Client"]
+        SearchClient["Search Query Client"]
+    end
+
+    subgraph IngestionPath["Post Publishing & Ingestion Pipeline"]
+        APIGateway["API Gateway"]
+        PostService["Post Service"]
+        PostDB[("Canonical Post DB\nPostgreSQL Hash Sharded")]
+        OutboxTable[("Transactional Outbox")]
+        OutboxPublisher["Outbox Publisher"]
+        OutboxScanner["Outbox Scanner"]
+        Kafka["Kafka Event Bus\npost-created / post-updated"]
+        IndexWorker["Index Ingestion Worker\nTokenize & Normalize"]
+        DLQ[("DLQ")]
+    end
+
+    subgraph SearchPath["Search & Retrieval Pipeline"]
+        SearchGateway["Search API Gateway\nAuth & Rate Limiting"]
+        QueryService["Query Service"]
+        QueryCache[("Query Cache")]
+        PrivacyCache[("Privacy Graph Cache\nRedis viewer-acl")]
+        QueryRouter["Search Query Router / Scatter-Gather"]
+        Ranker["Ranking\nBM25 + Feature Store"]
+    end
+
+    subgraph StorageCluster["Search Index & Storage Cluster"]
+        IndexShards[("Inverted Index Shards\nElasticsearch / Lucene\nTime-bucketed hot/warm")]
+        DocStore[("Forward Document Store\nSnippet & Metadata")]
+        FeatureStore[("Feature Store\nLikes, Shares, Trust")]
+    end
+
+    UserClient -->|Publish Post| APIGateway
+    APIGateway --> PostService
+    PostService --> PostDB
+    PostService --> OutboxTable
+    OutboxTable --> OutboxPublisher
+    OutboxTable --> OutboxScanner
+    OutboxScanner --> Kafka
+    OutboxPublisher --> Kafka
+    Kafka --> IndexWorker
+    IndexWorker -->|Write Posting Lists| IndexShards
+    IndexWorker -->|Store Doc Details| DocStore
+    IndexWorker -->|Poison Events| DLQ
+
+    SearchClient -->|Search Query| SearchGateway
+    SearchGateway --> QueryCache
+    SearchGateway --> QueryService
+    QueryService --> PrivacyCache
+    QueryService --> QueryRouter
+    QueryRouter -->|Scatter Query| IndexShards
+    IndexShards -->|Early Termination Hits| Ranker
+    DocStore -->|Hydrate Snippets| Ranker
+    FeatureStore -->|Fetch Signals| Ranker
+    Ranker -->|Ranked Results\n(Graceful Degradation)| SearchGateway
+    SearchGateway -->|JSON Response| SearchClient

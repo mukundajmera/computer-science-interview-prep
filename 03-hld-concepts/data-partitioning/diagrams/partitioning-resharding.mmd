@@ -1,0 +1,30 @@
+graph TD
+    subgraph App["Application Layer"]
+        Writer[App Writer]
+        Reader[App Reader]
+        Router[Router/Proxy]
+    end
+
+    subgraph Shard1["Shard 1 (Old)"]
+        DB1[DB Partition 1]
+    end
+
+    subgraph Shard2["Shard 2 (New)"]
+        DB2[DB Partition 2]
+    end
+
+    subgraph Migration["Migration Pipeline"]
+        CDC[CDC / Debezium]
+        Migrator[Data Migrator]
+    end
+
+    Writer -->|1. Write with Key Salting| Router
+    Reader -->|Read| Router
+    Router -->|2. Route to Shard 1| DB1
+
+    DB1 -->|3. Capture Changes| CDC
+    CDC -->|4. Process stream| Migrator
+    Migrator -->|5. Replay to Shard 2| DB2
+    
+    Router -.->|"6. Cutover Checkpoint (Update Mapping)"| DB2
+    Router -.->|"7. Rollback Plan (Revert Mapping)"| DB1

@@ -1,0 +1,21 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "direct and split forms both valid",
+      "input": { "s": "blueprint", "wordDict": ["blue", "print", "blueprint"] },
+      "expected": true
+    },
+    {
+      "name": "blocked suffix",
+      "input": { "s": "codepath", "wordDict": ["code", "pat", "paths"] },
+      "expected": false
+    },
+    {
+      "name": "single word",
+      "input": { "s": "system", "wordDict": ["sys", "system", "tem"] },
+      "expected": true
+    }
+  ]
+}

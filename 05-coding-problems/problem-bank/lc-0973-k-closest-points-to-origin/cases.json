@@ -1,0 +1,106 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list-of-lists"
+  },
+  "cases": [
+    {
+      "name": "two closest without ties",
+      "input": {
+        "points": [
+          [
+            3,
+            3
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            -2,
+            0
+          ]
+        ],
+        "k": 2
+      },
+      "expected": [
+        [
+          1,
+          1
+        ],
+        [
+          -2,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "keeps all tied boundary points included",
+      "input": {
+        "points": [
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            -1,
+            -1
+          ]
+        ],
+        "k": 3
+      },
+      "expected": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          -1,
+          -1
+        ]
+      ]
+    },
+    {
+      "name": "single closest point",
+      "input": {
+        "points": [
+          [
+            10,
+            10
+          ],
+          [
+            -3,
+            4
+          ],
+          [
+            2,
+            -1
+          ]
+        ],
+        "k": 1
+      },
+      "expected": [
+        [
+          2,
+          -1
+        ]
+      ]
+    }
+  ]
+}

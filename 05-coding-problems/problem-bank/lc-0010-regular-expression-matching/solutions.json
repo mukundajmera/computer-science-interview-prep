@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-memo",
+      "title": "Recursive memoization",
+      "tier": 1,
+      "strategy": "Define a state `(i, j)` for text suffix `s[i:]` and pattern suffix `p[j:]`; memoize the skip-or-consume decisions around `*`.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "There are at most `(m + 1) * (n + 1)` text/pattern states and each state does constant transition work."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The memo table and recursion stack store state results; the stack depth is bounded by `m + n` and the table dominates."
+      },
+      "javaPath": "java/solution-1-recursive-memo/Solution.java",
+      "pythonPath": "python/solution-1-recursive-memo/solution.py"
+    },
+    {
+      "id": "solution-2-bottom-up-dp",
+      "title": "Bottom-up DP",
+      "tier": 2,
+      "strategy": "Fill the same state table from the end of the text and pattern toward the beginning.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Every state in the DP table is computed once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The boolean table stores all suffix-match answers."
+      },
+      "javaPath": "java/solution-2-bottom-up-dp/Solution.java",
+      "pythonPath": "python/solution-2-bottom-up-dp/solution.py"
+    }
+  ]
+}

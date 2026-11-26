@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-backtracking-counts",
+      "title": "Backtracking counts",
+      "tier": 1,
+      "strategy": "Grow valid prefixes by tracking how many opening and closing parentheses have been used.",
+      "timeComplexity": {
+        "class": "O(C_n n)",
+        "explanation": "There are C_n valid strings and each output string has length 2n."
+      },
+      "spaceComplexity": {
+        "class": "O(C_n n)",
+        "explanation": "The result stores every string; the recursion path uses O(n)."
+      },
+      "javaPath": "java/solution-1-backtracking-counts/Solution.java",
+      "pythonPath": "python/solution-1-backtracking-counts/solution.py"
+    },
+    {
+      "id": "solution-2-catalan-dp",
+      "title": "Catalan DP composition",
+      "tier": 2,
+      "strategy": "Build every size by wrapping a left subproblem and appending a right subproblem.",
+      "timeComplexity": {
+        "class": "O(C_n n)",
+        "explanation": "Every valid output is produced and copied; duplicate-free composition still emits C_n strings."
+      },
+      "spaceComplexity": {
+        "class": "O(C_n n)",
+        "explanation": "The DP table and final output store generated strings."
+      },
+      "javaPath": "java/solution-2-catalan-dp/Solution.java",
+      "pythonPath": "python/solution-2-catalan-dp/solution.py"
+    }
+  ]
+}

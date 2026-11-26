@@ -1,0 +1,84 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list"
+  },
+  "cases": [
+    {
+      "name": "moves through parent and child branches",
+      "input": {
+        "root": [
+          10,
+          6,
+          15,
+          3,
+          8,
+          12,
+          20,
+          null,
+          4
+        ],
+        "target": {
+          "from": "root",
+          "path": "L"
+        },
+        "k": 2
+      },
+      "expected": [
+        4,
+        15
+      ]
+    },
+    {
+      "name": "zero distance",
+      "input": {
+        "root": [
+          10,
+          6,
+          15,
+          3,
+          8,
+          12,
+          20,
+          null,
+          4
+        ],
+        "target": {
+          "from": "root",
+          "path": "LR"
+        },
+        "k": 0
+      },
+      "expected": [
+        8
+      ]
+    },
+    {
+      "name": "root as target",
+      "input": {
+        "root": [
+          10,
+          6,
+          15,
+          3,
+          8,
+          12,
+          20,
+          null,
+          4
+        ],
+        "target": {
+          "from": "root",
+          "path": ""
+        },
+        "k": 2
+      },
+      "expected": [
+        3,
+        8,
+        12,
+        20
+      ]
+    }
+  ]
+}

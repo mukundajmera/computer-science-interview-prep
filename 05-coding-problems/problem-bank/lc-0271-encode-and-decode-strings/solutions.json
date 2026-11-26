@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-length-prefix",
+      "title": "Length prefix",
+      "tier": 1,
+      "strategy": "Prefix each string with its decimal length and a separator that is read only after the length.",
+      "timeComplexity": {
+        "class": "O(N)",
+        "explanation": "Encoding and decoding scan the total character count once."
+      },
+      "spaceComplexity": {
+        "class": "O(N)",
+        "explanation": "The encoded string and decoded list store the full payload."
+      },
+      "javaPath": "java/solution-1-length-prefix/Solution.java",
+      "pythonPath": "python/solution-1-length-prefix/solution.py"
+    },
+    {
+      "id": "solution-2-indexed-length-prefix",
+      "title": "Indexed length prefix",
+      "tier": 2,
+      "strategy": "Use the same format with explicit index movement to keep decode iterative and allocation-light.",
+      "timeComplexity": {
+        "class": "O(N)",
+        "explanation": "Each encoded character belongs to exactly one parse step."
+      },
+      "spaceComplexity": {
+        "class": "O(N)",
+        "explanation": "Output storage is linear in payload size."
+      },
+      "javaPath": "java/solution-2-indexed-length-prefix/Solution.java",
+      "pythonPath": "python/solution-2-indexed-length-prefix/solution.py"
+    }
+  ]
+}

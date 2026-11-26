@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-count-current-run",
+      "title": "Count current run while writing",
+      "tier": 1,
+      "strategy": "Track the current value count and copy a number into the prefix only while its run count is at most two.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each array element is inspected once and kept elements are written once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the write index, previous value, and run count are stored."
+      },
+      "javaPath": "java/solution-1-count-current-run/Solution.java",
+      "pythonPath": "python/solution-1-count-current-run/solution.py"
+    },
+    {
+      "id": "solution-2-compare-with-two-back",
+      "title": "Compare against two-back prefix",
+      "tier": 2,
+      "strategy": "Write each value when fewer than two values are kept or when it differs from the value two positions behind the write index.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The compacting pass performs one constant-time comparison per input value."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The algorithm mutates the input prefix using only one write index."
+      },
+      "javaPath": "java/solution-2-compare-with-two-back/Solution.java",
+      "pythonPath": "python/solution-2-compare-with-two-back/solution.py"
+    }
+  ]
+}

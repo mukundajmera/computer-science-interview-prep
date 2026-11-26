@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recompute-heights",
+      "title": "Recompute heights",
+      "tier": 1,
+      "strategy": "At every node, compute left and right heights from scratch and recursively check child diameters.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "A skewed tree recomputes heights for many overlapping subtrees."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "Recursion depth follows tree height."
+      },
+      "javaPath": "java/solution-1-recompute-heights/Solution.java",
+      "pythonPath": "python/solution-1-recompute-heights/solution.py"
+    },
+    {
+      "id": "solution-2-postorder-height",
+      "title": "Postorder height",
+      "tier": 2,
+      "strategy": "Compute each subtree height once and update the best path length during postorder traversal.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node contributes one height calculation."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack follows tree height."
+      },
+      "javaPath": "java/solution-2-postorder-height/Solution.java",
+      "pythonPath": "python/solution-2-postorder-height/solution.py"
+    }
+  ]
+}

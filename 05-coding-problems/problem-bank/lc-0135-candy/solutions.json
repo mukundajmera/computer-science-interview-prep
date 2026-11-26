@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-two-pass-arrays",
+      "title": "Two directional candy arrays",
+      "tier": 1,
+      "strategy": "Compute the candy requirement from the left and from the right, then sum the larger requirement at each position.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Three linear passes cover left requirements, right requirements, and summation."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Two arrays store directional requirements."
+      },
+      "javaPath": "java/solution-1-two-pass-arrays/Solution.java",
+      "pythonPath": "python/solution-1-two-pass-arrays/solution.py"
+    },
+    {
+      "id": "solution-2-one-array-two-pass",
+      "title": "One candy array with reverse correction",
+      "tier": 2,
+      "strategy": "Fill left-to-right increases in one array, then scan right-to-left and raise entries that must beat a right neighbor.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each index is processed in the forward and backward scans."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "One candy array stores the final assignment."
+      },
+      "javaPath": "java/solution-2-one-array-two-pass/Solution.java",
+      "pythonPath": "python/solution-2-one-array-two-pass/solution.py"
+    }
+  ]
+}

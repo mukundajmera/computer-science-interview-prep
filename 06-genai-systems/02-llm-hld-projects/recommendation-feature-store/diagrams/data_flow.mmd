@@ -1,0 +1,14 @@
+graph LR
+    Events[User Events] --> Kafka[Event Stream]
+    Kafka --> Flink[Real-time Processing]
+    Kafka --> DataLake[Data Lake]
+    
+    Flink --> OnlineStore[(Online Feature Store)]
+    
+    DataLake --> Spark[Batch Processing]
+    Spark --> OfflineStore[(Offline Feature Store)]
+    Spark --> OnlineStore
+    
+    OfflineStore --> Training[Model Training Pipeline]
+    Training --> ModelRegistry[Model Registry]
+    ModelRegistry --> Serving[Model Serving]

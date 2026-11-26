@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-trim-and-split",
+      "title": "Trim and split",
+      "tier": 1,
+      "strategy": "Remove trailing spaces, split the remaining string by spaces, and read the length of the final token.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Trimming and splitting scan the input string and allocate tokens whose total length is bounded by n." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The token array and trimmed string can store characters proportional to the input length." },
+      "javaPath": "java/solution-1-trim-and-split/Solution.java",
+      "pythonPath": "python/solution-1-trim-and-split/solution.py"
+    },
+    {
+      "id": "solution-2-reverse-scan",
+      "title": "Reverse scan",
+      "tier": 2,
+      "strategy": "Walk backward past trailing spaces, then count characters until the previous space or the beginning of the string.",
+      "timeComplexity": { "class": "O(n)", "explanation": "In the worst case the scan moves across every character once from right to left." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only the index and count variables are stored." },
+      "javaPath": "java/solution-2-reverse-scan/Solution.java",
+      "pythonPath": "python/solution-2-reverse-scan/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-iterative-expansion",
+      "title": "Iterative expansion",
+      "tier": 1,
+      "strategy": "Start with an empty prefix and extend all current prefixes for each digit.",
+      "timeComplexity": {
+        "class": "O(4^n n)",
+        "explanation": "There can be up to 4^n combinations and each produced string has length n."
+      },
+      "spaceComplexity": {
+        "class": "O(4^n n)",
+        "explanation": "The result list stores every generated string."
+      },
+      "javaPath": "java/solution-1-iterative-expansion/Solution.java",
+      "pythonPath": "python/solution-1-iterative-expansion/solution.py"
+    },
+    {
+      "id": "solution-2-backtracking-prefix",
+      "title": "Backtracking prefix",
+      "tier": 2,
+      "strategy": "Build one prefix in-place and append a string when its length reaches the digit count.",
+      "timeComplexity": {
+        "class": "O(4^n n)",
+        "explanation": "The search emits up to 4^n strings and copies n characters per result."
+      },
+      "spaceComplexity": {
+        "class": "O(4^n n)",
+        "explanation": "The output dominates; the recursion prefix adds O(n) auxiliary stack space."
+      },
+      "javaPath": "java/solution-2-backtracking-prefix/Solution.java",
+      "pythonPath": "python/solution-2-backtracking-prefix/solution.py"
+    }
+  ]
+}

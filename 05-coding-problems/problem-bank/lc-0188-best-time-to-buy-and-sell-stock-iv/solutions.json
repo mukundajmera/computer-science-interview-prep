@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-quadratic-transaction-dp",
+      "title": "Quadratic transaction DP",
+      "tier": 1,
+      "strategy": "For each transaction count and sell day, test every earlier buy day against the previous transaction layer.",
+      "timeComplexity": {
+        "class": "O(k*n^2)",
+        "explanation": "Each transaction/day state may scan all earlier buy days."
+      },
+      "spaceComplexity": {
+        "class": "O(k*n)",
+        "explanation": "The DP table stores the best profit by transaction count and day."
+      },
+      "javaPath": "java/solution-1-quadratic-transaction-dp/Solution.java",
+      "pythonPath": "python/solution-1-quadratic-transaction-dp/solution.py"
+    },
+    {
+      "id": "solution-2-optimized-transaction-dp",
+      "title": "Optimized transaction DP",
+      "tier": 2,
+      "strategy": "Carry the best previous-layer balance while scanning each transaction layer.",
+      "timeComplexity": {
+        "class": "O(k*n)",
+        "explanation": "Each transaction layer scans the price list once."
+      },
+      "spaceComplexity": {
+        "class": "O(k*n)",
+        "explanation": "This version keeps the table explicit for clarity."
+      },
+      "javaPath": "java/solution-2-optimized-transaction-dp/Solution.java",
+      "pythonPath": "python/solution-2-optimized-transaction-dp/solution.py"
+    }
+  ]
+}

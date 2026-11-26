@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-email-graph-dfs",
+      "title": "Email graph DFS",
+      "tier": 1,
+      "strategy": "Build an undirected email graph and collect connected components.",
+      "timeComplexity": {
+        "class": "O(N log N)",
+        "explanation": "Each email edge is traversed and component emails are sorted."
+      },
+      "spaceComplexity": {
+        "class": "O(N)",
+        "explanation": "The graph, visited set, and output components store the emails."
+      },
+      "javaPath": "java/solution-1-email-graph-dfs/Solution.java",
+      "pythonPath": "python/solution-1-email-graph-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-union-find",
+      "title": "Union find",
+      "tier": 2,
+      "strategy": "Union emails that appear in the same account, then group emails by representative.",
+      "timeComplexity": {
+        "class": "O(N alpha(N) + N log N)",
+        "explanation": "Union/find is near-constant and each group is sorted."
+      },
+      "spaceComplexity": {
+        "class": "O(N)",
+        "explanation": "Parent maps and grouped component lists store every email."
+      },
+      "javaPath": "java/solution-2-union-find/Solution.java",
+      "pythonPath": "python/solution-2-union-find/solution.py"
+    }
+  ]
+}

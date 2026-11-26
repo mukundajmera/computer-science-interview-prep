@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bfs-amount-levels",
+      "title": "BFS over reachable amounts",
+      "tier": 1,
+      "strategy": "Treat each coin addition as an edge and search by coin count levels until the amount is reached.",
+      "timeComplexity": {
+        "class": "O(amount * c)",
+        "explanation": "Each reachable amount can expand up to c coin denominations."
+      },
+      "spaceComplexity": {
+        "class": "O(amount)",
+        "explanation": "Visited amounts and the queue are bounded by amount + 1 states."
+      },
+      "javaPath": "java/solution-1-bfs-amount-levels/Solution.java",
+      "pythonPath": "python/solution-1-bfs-amount-levels/solution.py"
+    },
+    {
+      "id": "solution-2-bottom-up-dp",
+      "title": "Bottom-up minimum coins DP",
+      "tier": 2,
+      "strategy": "Build the best coin count for every amount from 1 through the target.",
+      "timeComplexity": {
+        "class": "O(amount * c)",
+        "explanation": "For each amount, every denomination can be tested."
+      },
+      "spaceComplexity": {
+        "class": "O(amount)",
+        "explanation": "The DP table stores one minimum count for each amount."
+      },
+      "javaPath": "java/solution-2-bottom-up-dp/Solution.java",
+      "pythonPath": "python/solution-2-bottom-up-dp/solution.py"
+    }
+  ]
+}

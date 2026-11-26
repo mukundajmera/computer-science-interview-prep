@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant BatchJob as Nightly Batch Job
+    participant Cache
+    participant DB
+
+    Note over BatchJob,DB: Cache Avalanche Mitigation via TTL Jitter
+    
+    BatchJob->>BatchJob: Load 100,000 Product Prices
+    
+    loop For Each Product
+        Note over BatchJob: Anti-Pattern: TTL = 24h (Causes Avalanche tomorrow)
+        Note over BatchJob: Mitigation: TTL = 24h + Random(0, 2h)
+        BatchJob->>Cache: SET Product:X = Price (TTL = 24h + 45m)
+        BatchJob->>Cache: SET Product:Y = Price (TTL = 24h + 12m)
+        BatchJob->>Cache: SET Product:Z = Price (TTL = 24h + 1h 30m)
+    end
+    
+    Note over Cache,DB: 24 Hours Later...
+    
+    Note over Cache: Expirations are smoothed out over a 2-hour window.
+    Note over Cache: Database sees a steady, manageable trickle of refresh queries instead of a massive simultaneous spike.

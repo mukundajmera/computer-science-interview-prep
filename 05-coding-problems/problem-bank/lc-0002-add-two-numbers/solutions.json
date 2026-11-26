@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-copy-digits",
+      "title": "Copy digits before adding",
+      "tier": 1,
+      "strategy": "Copy each linked-list digit into arrays, then add aligned positions with a carry while building the result chain.",
+      "timeComplexity": { "class": "O(max(m, n))", "explanation": "Each digit from both inputs is copied once and each result position is produced once." },
+      "spaceComplexity": { "class": "O(m + n)", "explanation": "The copied digit arrays store every input value before the addition loop runs." },
+      "javaPath": "java/solution-1-copy-digits/Solution.java",
+      "pythonPath": "python/solution-1-copy-digits/solution.py"
+    },
+    {
+      "id": "solution-2-stream-with-carry",
+      "title": "Stream digits with carry",
+      "tier": 2,
+      "strategy": "Walk both lists directly, creating one result node per summed digit and carrying overflow into the next position.",
+      "timeComplexity": { "class": "O(max(m, n))", "explanation": "The loop advances through the longer input once and may add one final carry node." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Aside from the returned result chain, only current pointers, a carry value, and a tail pointer are stored." },
+      "javaPath": "java/solution-2-stream-with-carry/Solution.java",
+      "pythonPath": "python/solution-2-stream-with-carry/solution.py"
+    }
+  ]
+}

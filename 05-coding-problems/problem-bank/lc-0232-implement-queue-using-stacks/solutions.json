@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-transfer-on-pop",
+      "title": "Two stacks with lazy transfer",
+      "tier": 1,
+      "strategy": "Push into an input stack and move elements to an output stack only when the output stack is empty.",
+      "timeComplexity": {
+        "class": "O(1) amortized per operation",
+        "explanation": "Each value moves from input to output at most once before being popped."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Both stacks together store all queued values."
+      },
+      "javaPath": "java/solution-1-transfer-on-pop/Solution.java",
+      "pythonPath": "python/solution-1-transfer-on-pop/solution.py"
+    },
+    {
+      "id": "solution-2-transfer-on-push",
+      "title": "Costly push with front stack",
+      "tier": 2,
+      "strategy": "Keep the oldest element on top by rebuilding the main stack on every push.",
+      "timeComplexity": {
+        "class": "O(n) push, O(1) pop/peek/empty",
+        "explanation": "A push may move every queued item twice; reads and removals are direct."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The queue contents live in one stack, with temporary movement during push."
+      },
+      "javaPath": "java/solution-2-transfer-on-push/Solution.java",
+      "pythonPath": "python/solution-2-transfer-on-push/solution.py"
+    }
+  ]
+}

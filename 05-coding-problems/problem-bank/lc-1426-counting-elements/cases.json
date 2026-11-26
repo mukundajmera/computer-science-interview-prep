@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "duplicates count",
+      "input": {
+        "arr": [
+          1,
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "name": "none",
+      "input": {
+        "arr": [
+          5,
+          7,
+          9
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "chain",
+      "input": {
+        "arr": [
+          0,
+          1,
+          2,
+          2
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

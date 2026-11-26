@@ -1,0 +1,8 @@
+graph TD
+    APP["App + SDK (W3C Context)"] -->|UDP/gRPC| OTLP["Local Sidecar (Collector)"]
+    OTLP -->|Batch gRPC| LB["Ingestion Gateway"]
+    LB --> KAFKA["Kafka (Buffer)"]
+    KAFKA --> WORKER["Ingestion Workers (Tail Sampler / DAG Assembler)"]
+    WORKER --> CH["ClickHouse / Storage"]
+    UI["Observability UI"] --> API["Query API"]
+    API --> CH

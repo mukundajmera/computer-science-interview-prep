@@ -1,0 +1,114 @@
+{
+  "id": "lc-0061-rotate-list",
+  "title": "Rotate List",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "linked-list",
+    "two-pointers",
+    "modulo"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 158,
+      "group": "linked-list",
+      "sourceUrl": "https://leetcode.com/problems/rotate-list"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 65,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/rotate-list"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 371,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/rotate-list"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "61",
+    "titleSlug": "rotate-list",
+    "url": "https://leetcode.com/problems/rotate-list",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "rotateRight",
+      "returnType": "ListNode",
+      "parameters": [
+        {
+          "name": "head",
+          "type": "ListNode"
+        },
+        {
+          "name": "k",
+          "type": "int"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "rotateRight",
+      "returnType": "Optional[ListNode]",
+      "parameters": [
+        {
+          "name": "head",
+          "type": "Optional[ListNode]"
+        },
+        {
+          "name": "k",
+          "type": "int"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

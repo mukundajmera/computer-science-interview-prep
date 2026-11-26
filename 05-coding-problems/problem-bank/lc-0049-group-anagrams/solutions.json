@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sorted-key",
+      "title": "Sorted-character key",
+      "tier": 1,
+      "strategy": "Sort every word's characters and use that normalized spelling as the hash-map key.",
+      "timeComplexity": {
+        "class": "O(n * k log k)",
+        "explanation": "Each of the n words sorts at most k characters."
+      },
+      "spaceComplexity": {
+        "class": "O(n * k)",
+        "explanation": "The output groups and normalized keys store characters from the input."
+      },
+      "javaPath": "java/solution-1-sorted-key/Solution.java",
+      "pythonPath": "python/solution-1-sorted-key/solution.py"
+    },
+    {
+      "id": "solution-2-count-vector-key",
+      "title": "Character-count vector key",
+      "tier": 2,
+      "strategy": "Count each letter and serialize the fixed-size count vector as the hash-map key.",
+      "timeComplexity": {
+        "class": "O(n * (k + a))",
+        "explanation": "Each word is scanned once and a fixed alphabet of a letters is encoded."
+      },
+      "spaceComplexity": {
+        "class": "O(n * k + n * a)",
+        "explanation": "The output stores grouped words and the map stores one fixed-size key per group."
+      },
+      "javaPath": "java/solution-2-count-vector-key/Solution.java",
+      "pythonPath": "python/solution-2-count-vector-key/solution.py"
+    }
+  ]
+}

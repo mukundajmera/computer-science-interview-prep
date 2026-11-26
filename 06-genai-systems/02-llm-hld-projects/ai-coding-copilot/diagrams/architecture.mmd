@@ -1,0 +1,67 @@
+flowchart TB
+    subgraph IDE["IDE Extension"]
+        Listener[Text Change Listener]
+        Debouncer[Debouncer - 300ms]
+        CtxCollector[Context Collector]
+        GhostText[Ghost Text Renderer]
+        ChatUI[Chat Panel]
+    end
+
+    subgraph Gateway["API Gateway"]
+        LB[Global Load Balancer]
+        Auth[Auth + Rate Limiter]
+        PathRouter[Path Router]
+    end
+
+    subgraph FastPath["Fast Path - Inline Completions"]
+        CompSvc[Completion Service]
+        CtxRanker[Context Ranker]
+        CompCache[(Completion Cache)]
+        FastLLM[Fast Model - Codestral]
+    end
+
+    subgraph RichPath["Rich Path - Chat"]
+        ChatSvc[Chat Service]
+        ChatCtx[Chat Context Builder]
+        PowerLLM[Powerful Model - GPT-4o]
+    end
+
+    subgraph Safety["Safety"]
+        SecScanner[Security Scanner]
+        LicenseCheck[License Checker]
+    end
+
+    subgraph Telemetry["Telemetry"]
+        FeedbackSvc[Feedback Service]
+        Analytics[(ClickHouse)]
+    end
+
+    subgraph Storage["Storage"]
+        Redis[(Redis Cluster)]
+        PG[(PostgreSQL)]
+    end
+
+    Listener --> Debouncer
+    Debouncer --> CtxCollector
+    CtxCollector --> LB
+    ChatUI --> LB
+
+    LB --> Auth
+    Auth --> PathRouter
+    PathRouter --> CompSvc
+    PathRouter --> ChatSvc
+
+    CompSvc --> CompCache
+    CompSvc --> CtxRanker
+    CtxRanker --> FastLLM
+    FastLLM --> SecScanner
+    SecScanner --> LicenseCheck
+
+    ChatSvc --> ChatCtx
+    ChatCtx --> PowerLLM
+    PowerLLM --> SecScanner
+
+    CompSvc --> Redis
+    ChatSvc --> PG
+    ChatSvc --> Redis
+    FeedbackSvc --> Analytics

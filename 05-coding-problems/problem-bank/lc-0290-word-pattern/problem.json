@@ -1,0 +1,107 @@
+{
+  "id": "lc-0290-word-pattern",
+  "title": "Word Pattern",
+  "difficulty": "easy",
+  "status": "verified",
+  "patterns": [
+    "Hash Table",
+    "String"
+  ],
+  "collections": [
+    {
+      "id": "leetcode-top-150",
+      "order": 41,
+      "group": "Hashmap",
+      "sourceUrl": "https://leetcode.com/problems/word-pattern"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 57,
+      "group": "Arrays & Hashing",
+      "sourceUrl": "https://leetcode.com/problems/word-pattern"
+    }
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "leetcode": {
+    "frontendId": "290",
+    "titleSlug": "word-pattern",
+    "url": "https://leetcode.com/problems/word-pattern",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "wordPattern",
+      "returnType": "boolean",
+      "parameters": [
+        {
+          "name": "pattern",
+          "type": "String"
+        },
+        {
+          "name": "s",
+          "type": "String"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "wordPattern",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pattern",
+          "type": "str"
+        },
+        {
+          "name": "s",
+          "type": "str"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

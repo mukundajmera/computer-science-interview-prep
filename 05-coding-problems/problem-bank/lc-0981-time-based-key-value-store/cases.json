@@ -1,0 +1,131 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "single key timeline",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "set",
+          "input": {
+            "key": "app",
+            "value": "v1",
+            "timestamp": 5
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "get",
+          "input": {
+            "key": "app",
+            "timestamp": 4
+          },
+          "expected": ""
+        },
+        {
+          "type": "call",
+          "method": "get",
+          "input": {
+            "key": "app",
+            "timestamp": 5
+          },
+          "expected": "v1"
+        },
+        {
+          "type": "call",
+          "method": "set",
+          "input": {
+            "key": "app",
+            "value": "v2",
+            "timestamp": 10
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "get",
+          "input": {
+            "key": "app",
+            "timestamp": 9
+          },
+          "expected": "v1"
+        },
+        {
+          "type": "call",
+          "method": "get",
+          "input": {
+            "key": "app",
+            "timestamp": 10
+          },
+          "expected": "v2"
+        }
+      ]
+    },
+    {
+      "name": "independent keys",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {},
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "set",
+          "input": {
+            "key": "a",
+            "value": "red",
+            "timestamp": 2
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "set",
+          "input": {
+            "key": "b",
+            "value": "blue",
+            "timestamp": 3
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "get",
+          "input": {
+            "key": "a",
+            "timestamp": 3
+          },
+          "expected": "red"
+        },
+        {
+          "type": "call",
+          "method": "get",
+          "input": {
+            "key": "b",
+            "timestamp": 2
+          },
+          "expected": ""
+        },
+        {
+          "type": "call",
+          "method": "get",
+          "input": {
+            "key": "missing",
+            "timestamp": 100
+          },
+          "expected": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "mixed two by two quadrants",
+      "input": { "grid": [[1, 0], [0, 1]] },
+      "expected": {
+        "val": false,
+        "isLeaf": false,
+        "topLeft": { "val": true, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null },
+        "topRight": { "val": false, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null },
+        "bottomLeft": { "val": false, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null },
+        "bottomRight": { "val": true, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null }
+      }
+    },
+    {
+      "name": "uniform false region",
+      "input": { "grid": [[0, 0], [0, 0]] },
+      "expected": {
+        "val": false,
+        "isLeaf": true,
+        "topLeft": null,
+        "topRight": null,
+        "bottomLeft": null,
+        "bottomRight": null
+      }
+    },
+    {
+      "name": "nested split in one quadrant",
+      "input": { "grid": [[1, 1, 0, 0], [1, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 0]] },
+      "expected": {
+        "val": true,
+        "isLeaf": false,
+        "topLeft": { "val": true, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null },
+        "topRight": { "val": false, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null },
+        "bottomLeft": {
+          "val": true,
+          "isLeaf": false,
+          "topLeft": { "val": true, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null },
+          "topRight": { "val": false, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null },
+          "bottomLeft": { "val": false, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null },
+          "bottomRight": { "val": false, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null }
+        },
+        "bottomRight": { "val": false, "isLeaf": true, "topLeft": null, "topRight": null, "bottomLeft": null, "bottomRight": null }
+      }
+    }
+  ]
+}

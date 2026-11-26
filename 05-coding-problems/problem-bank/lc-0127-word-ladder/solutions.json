@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bfs-word-scan",
+      "title": "BFS with dictionary scan",
+      "tier": 1,
+      "strategy": "Run BFS and find neighbors by scanning unvisited words that differ by one character.",
+      "timeComplexity": {
+        "class": "O(n^2*l)",
+        "explanation": "Each visited word can compare with every dictionary word across l characters."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The queue and visited set can store dictionary words."
+      },
+      "javaPath": "java/solution-1-bfs-word-scan/Solution.java",
+      "pythonPath": "python/solution-1-bfs-word-scan/solution.py"
+    },
+    {
+      "id": "solution-2-bfs-pattern-index",
+      "title": "BFS with wildcard pattern index",
+      "tier": 2,
+      "strategy": "Index words by wildcard patterns and use those buckets to enumerate one-change neighbors.",
+      "timeComplexity": {
+        "class": "O(n*l^2)",
+        "explanation": "Each of n words contributes l patterns, and pattern string construction costs up to l."
+      },
+      "spaceComplexity": {
+        "class": "O(n*l)",
+        "explanation": "Each word is stored in one bucket per character position."
+      },
+      "javaPath": "java/solution-2-bfs-pattern-index/Solution.java",
+      "pythonPath": "python/solution-2-bfs-pattern-index/solution.py"
+    }
+  ]
+}

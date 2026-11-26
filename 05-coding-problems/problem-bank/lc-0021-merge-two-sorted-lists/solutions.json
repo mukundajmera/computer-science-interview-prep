@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-collect-sort-build",
+      "title": "Collect values, sort, and rebuild",
+      "tier": 1,
+      "strategy": "Read every node value into a temporary list, sort the values, then create a new sorted chain.",
+      "timeComplexity": { "class": "O((m + n) log(m + n))", "explanation": "The temporary value list contains all m + n nodes, and sorting those values dominates the linear scans and rebuild." },
+      "spaceComplexity": { "class": "O(m + n)", "explanation": "The value list and rebuilt output chain both grow with the total number of input nodes." },
+      "javaPath": "java/solution-1-collect-sort-build/Solution.java",
+      "pythonPath": "python/solution-1-collect-sort-build/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-splice",
+      "title": "Iterative pointer splice",
+      "tier": 2,
+      "strategy": "Advance through both chains and attach the smaller current node to a dummy tail.",
+      "timeComplexity": { "class": "O(m + n)", "explanation": "Each node from both input chains is inspected and linked once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "The merge reuses existing nodes and keeps only a dummy node plus a tail pointer." },
+      "javaPath": "java/solution-2-iterative-splice/Solution.java",
+      "pythonPath": "python/solution-2-iterative-splice/solution.py"
+    }
+  ]
+}

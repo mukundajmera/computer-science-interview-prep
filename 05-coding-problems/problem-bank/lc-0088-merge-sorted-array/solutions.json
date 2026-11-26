@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-extra-array-sort",
+      "title": "Copy into extra array and sort",
+      "tier": 1,
+      "strategy": "Copy the active prefix of nums1 and all of nums2 into a temporary array, sort it, then copy it back into nums1.",
+      "timeComplexity": { "class": "O((m + n) log(m + n))", "explanation": "The temporary array contains m + n values and sorting dominates the linear copy steps." },
+      "spaceComplexity": { "class": "O(m + n)", "explanation": "The temporary array stores every value before it is copied back to nums1." },
+      "javaPath": "java/solution-1-extra-array-sort/Solution.java",
+      "pythonPath": "python/solution-1-extra-array-sort/solution.py"
+    },
+    {
+      "id": "solution-2-reverse-three-pointers",
+      "title": "Reverse three-pointer merge",
+      "tier": 2,
+      "strategy": "Write the largest remaining value into the open buffer position from right to left.",
+      "timeComplexity": { "class": "O(m + n)", "explanation": "Each source value is compared and written at most once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "The merge uses only three indexes and writes directly into nums1." },
+      "javaPath": "java/solution-2-reverse-three-pointers/Solution.java",
+      "pythonPath": "python/solution-2-reverse-three-pointers/solution.py"
+    }
+  ]
+}

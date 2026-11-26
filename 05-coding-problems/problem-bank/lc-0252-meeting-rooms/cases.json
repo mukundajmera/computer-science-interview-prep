@@ -1,0 +1,87 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "no meetings",
+      "input": {
+        "intervals": []
+      },
+      "expected": true
+    },
+    {
+      "name": "non overlapping adjacent meetings",
+      "input": {
+        "intervals": [
+          [
+            0,
+            5
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            12,
+            15
+          ]
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "direct overlap",
+      "input": {
+        "intervals": [
+          [
+            0,
+            30
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            15,
+            20
+          ]
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "unsorted overlap",
+      "input": {
+        "intervals": [
+          [
+            7,
+            10
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            8
+          ]
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "single meeting",
+      "input": {
+        "intervals": [
+          [
+            3,
+            9
+          ]
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

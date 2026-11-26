@@ -1,0 +1,12 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "pattern in middle", "input": { "haystack": "datastructure", "needle": "struct" }, "expected": 4 },
+    { "name": "pattern at front", "input": { "haystack": "needlework", "needle": "needle" }, "expected": 0 },
+    { "name": "pattern absent", "input": { "haystack": "abracadabra", "needle": "cadx" }, "expected": -1 },
+    { "name": "overlapping prefixes", "input": { "haystack": "aaaaab", "needle": "aaab" }, "expected": 2 },
+    { "name": "pattern longer than text", "input": { "haystack": "abc", "needle": "abcd" }, "expected": -1 },
+    { "name": "empty pattern starts at zero", "input": { "haystack": "abc", "needle": "" }, "expected": 0 }
+  ]
+}

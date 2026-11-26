@@ -1,0 +1,57 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list"
+  },
+  "cases": [
+    {
+      "name": "multiple segmentations",
+      "input": {
+        "s": "catsanddog",
+        "wordDict": [
+          "cat",
+          "cats",
+          "and",
+          "sand",
+          "dog"
+        ]
+      },
+      "expected": [
+        "cats and dog",
+        "cat sand dog"
+      ]
+    },
+    {
+      "name": "overlapping prefix words",
+      "input": {
+        "s": "pineapplepenapple",
+        "wordDict": [
+          "apple",
+          "pen",
+          "applepen",
+          "pine",
+          "pineapple"
+        ]
+      },
+      "expected": [
+        "pine apple pen apple",
+        "pineapple pen apple",
+        "pine applepen apple"
+      ]
+    },
+    {
+      "name": "impossible break",
+      "input": {
+        "s": "catsandog",
+        "wordDict": [
+          "cats",
+          "dog",
+          "sand",
+          "and",
+          "cat"
+        ]
+      },
+      "expected": []
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-buffer-nodes",
+      "title": "Buffer nodes",
+      "tier": 1,
+      "strategy": "Collect odd-position nodes followed by even-position nodes, then relink those existing nodes in that order.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The list is scanned once to collect values and once to rewrite them."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The reordered node references are stored in an auxiliary list."
+      },
+      "javaPath": "java/solution-1-buffer-nodes/Solution.java",
+      "pythonPath": "python/solution-1-buffer-nodes/solution.py"
+    },
+    {
+      "id": "solution-2-relink-in-place",
+      "title": "Relink in place",
+      "tier": 2,
+      "strategy": "Maintain odd and even tails, splice alternating nodes, then append the even chain after the odd chain.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is visited a constant number of times."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only a few pointer variables are needed."
+      },
+      "javaPath": "java/solution-2-relink-in-place/Solution.java",
+      "pythonPath": "python/solution-2-relink-in-place/solution.py"
+    }
+  ]
+}

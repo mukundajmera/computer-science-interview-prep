@@ -1,0 +1,51 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "five nodes chain and leaves",
+      "input": {
+        "root": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": [
+        4,
+        5,
+        2,
+        null,
+        null,
+        3,
+        1
+      ]
+    },
+    {
+      "name": "three nodes triangle",
+      "input": {
+        "root": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": [
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "name": "empty tree",
+      "input": {
+        "root": []
+      },
+      "expected": []
+    }
+  ]
+}

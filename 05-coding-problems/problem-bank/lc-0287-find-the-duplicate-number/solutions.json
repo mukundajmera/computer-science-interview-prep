@@ -1,0 +1,52 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-seen-set",
+      "title": "Seen set",
+      "tier": 1,
+      "strategy": "Track values already observed and return the first value observed twice.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each array element is checked once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The set can store every distinct value before the duplicate is found."
+      },
+      "javaPath": "java/solution-1-seen-set/Solution.java",
+      "pythonPath": "python/solution-1-seen-set/solution.py"
+    },
+    {
+      "id": "solution-2-value-binary-search",
+      "title": "Value binary search",
+      "tier": 2,
+      "strategy": "Binary-search the value range using counts to decide which half must contain a duplicate.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Each value-range step counts across the full array."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only range boundaries and counters are stored."
+      },
+      "javaPath": "java/solution-2-value-binary-search/Solution.java",
+      "pythonPath": "python/solution-2-value-binary-search/solution.py"
+    },
+    {
+      "id": "solution-3-floyd-cycle-detection",
+      "title": "Floyd cycle detection",
+      "tier": 3,
+      "strategy": "Treat each value as a next pointer and find the entrance of the induced cycle.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The tortoise and hare pointers traverse a linear number of links."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only two pointer values are stored."
+      },
+      "javaPath": "java/solution-3-floyd-cycle-detection/Solution.java",
+      "pythonPath": "python/solution-3-floyd-cycle-detection/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-binary-search",
+      "title": "Binary search",
+      "tier": 1,
+      "strategy": "Maintain a closed search interval and discard the half that cannot contain the target.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each comparison halves the remaining search interval."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The search stores only two boundaries."
+      },
+      "javaPath": "java/solution-1-binary-search/Solution.java",
+      "pythonPath": "python/solution-1-binary-search/solution.py"
+    }
+  ]
+}

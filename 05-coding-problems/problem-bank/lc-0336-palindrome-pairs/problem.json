@@ -1,0 +1,97 @@
+{
+  "id": "lc-0336-palindrome-pairs",
+  "title": "Palindrome Pairs",
+  "difficulty": "hard",
+  "status": "verified",
+  "patterns": [
+    "hash-table",
+    "string"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 164,
+      "group": "string",
+      "sourceUrl": "https://leetcode.com/problems/palindrome-pairs"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "336",
+    "titleSlug": "palindrome-pairs",
+    "url": "https://leetcode.com/problems/palindrome-pairs",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "palindromePairs",
+      "returnType": "List<List<Integer>>",
+      "parameters": [
+        {
+          "name": "words",
+          "type": "String[]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "palindromePairs",
+      "returnType": "List[List[int]]",
+      "parameters": [
+        {
+          "name": "words",
+          "type": "List[str]"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-brute-force/Solution.java",
+      "python/solution-1-brute-force/solution.py",
+      "java/solution-2-reversed-word-map/Solution.java",
+      "python/solution-2-reversed-word-map/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

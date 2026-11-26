@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant A as User A
+    participant B as User B
+    participant S as Session Service
+    participant O as Operation Processor
+    A->>S: op(base_version=10)
+    B->>S: op(base_version=10)
+    S->>O: validate + transform A
+    O-->>S: applied op v11
+    S->>O: transform B against v11
+    O-->>S: rebased op v12
+    S-->>A: ack + v12 stream
+    S-->>B: ack + v12 stream

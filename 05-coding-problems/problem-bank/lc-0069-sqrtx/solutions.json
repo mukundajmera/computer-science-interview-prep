@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-square-scan",
+      "title": "Linear square scan",
+      "tier": 1,
+      "strategy": "Increase the candidate root until the next square would exceed x.",
+      "timeComplexity": {
+        "class": "O(sqrt(x))",
+        "explanation": "The loop increments once for each possible integer root up to the answer."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the candidate root is stored."
+      },
+      "javaPath": "java/solution-1-linear-square-scan/Solution.java",
+      "pythonPath": "python/solution-1-linear-square-scan/solution.py"
+    },
+    {
+      "id": "solution-2-binary-search-root",
+      "title": "Binary search root",
+      "tier": 2,
+      "strategy": "Binary search the largest candidate whose square does not exceed x.",
+      "timeComplexity": {
+        "class": "O(log x)",
+        "explanation": "Each comparison halves the candidate root range."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only boundaries, midpoint, and answer are maintained."
+      },
+      "javaPath": "java/solution-2-binary-search-root/Solution.java",
+      "pythonPath": "python/solution-2-binary-search-root/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+%% Factory Method Pattern Class Diagram
+%% Defines interface for creating objects, letting subclasses decide which class to instantiate
+
+classDiagram
+    class Creator {
+        <<abstract>>
+        +factoryMethod()* Product
+        +someOperation() void
+    }
+    
+    class ConcreteCreatorA {
+        +factoryMethod() Product
+    }
+    
+    class ConcreteCreatorB {
+        +factoryMethod() Product
+    }
+    
+    class Product {
+        <<interface>>
+        +operation() void
+    }
+    
+    class ConcreteProductA {
+        +operation() void
+    }
+    
+    class ConcreteProductB {
+        +operation() void
+    }
+    
+    Creator <|-- ConcreteCreatorA
+    Creator <|-- ConcreteCreatorB
+    Product <|.. ConcreteProductA
+    Product <|.. ConcreteProductB
+    
+    ConcreteCreatorA ..> ConcreteProductA : creates
+    ConcreteCreatorB ..> ConcreteProductB : creates
+    Creator --> Product : uses

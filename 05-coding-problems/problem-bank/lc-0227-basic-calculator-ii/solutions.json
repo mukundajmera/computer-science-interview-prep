@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-stack-terms",
+      "title": "Stack terms",
+      "tier": 1,
+      "strategy": "Push signed addition/subtraction terms and immediately fold multiplication or division into the top term.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The expression string is scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The stack can store one term for each additive segment."
+      },
+      "javaPath": "java/solution-1-stack-terms/Solution.java",
+      "pythonPath": "python/solution-1-stack-terms/solution.py"
+    },
+    {
+      "id": "solution-2-rolling-last-term",
+      "title": "Rolling last term",
+      "tier": 2,
+      "strategy": "Keep a running total excluding the current multiplicative term, and update the last term by operator precedence.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each character is scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the current number, last term, and total are stored."
+      },
+      "javaPath": "java/solution-2-rolling-last-term/Solution.java",
+      "pythonPath": "python/solution-2-rolling-last-term/solution.py"
+    }
+  ]
+}

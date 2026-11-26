@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-choose-skip-set",
+      "title": "Choose/skip with result set",
+      "tier": 1,
+      "strategy": "Sort candidates, explore choose/skip decisions for every index, and let a set remove duplicate value rows.",
+      "timeComplexity": {
+        "class": "O(2^n * n)",
+        "explanation": "Every subset can be explored and copied into the result set."
+      },
+      "spaceComplexity": {
+        "class": "O(2^n * n)",
+        "explanation": "The dedupe set may hold many copied combinations plus recursion state."
+      },
+      "javaPath": "java/solution-1-choose-skip-set/Solution.java",
+      "pythonPath": "python/solution-1-choose-skip-set/solution.py"
+    },
+    {
+      "id": "solution-2-sorted-backtracking",
+      "title": "Sorted backtracking with duplicate skip",
+      "tier": 2,
+      "strategy": "At each depth, iterate forward and skip equal values already considered at that same depth.",
+      "timeComplexity": {
+        "class": "O(2^n * n)",
+        "explanation": "The valid subset search is still exponential in the worst case, with copying cost per answer."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Ignoring output, the path and recursion stack are bounded by the number of candidates."
+      },
+      "javaPath": "java/solution-2-sorted-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-sorted-backtracking/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+graph TD
+    subgraph Clients["Clients"]
+        C1[Client 1]
+        C2[Client 2]
+        C3[Client 3]
+    end
+
+    subgraph EdgeGateway["WebSocket Edge Servers"]
+        WS1["Gateway 1<br/>(Stateful Connections)"]
+        WS2["Gateway 2<br/>(Stateful Connections)"]
+    end
+
+    subgraph Backplane["Pub/Sub Backplane (Redis/Kafka)"]
+        PUB[Publisher]
+        SUB[Subscriber]
+        
+        RedisInfo["Redis I/O Threads:<br/>Single-thread &lt;v6<br/>Multi-thread I/O v6+<br/>Revised I/O v8"]
+        KafkaUserspace["Kafka: Conventional Userspace Path<br/>(Requires TLS or App logic)"]
+        KafkaSendfile["Kafka: sendfile path<br/>(Platform/Kernel supported, Cleartext)"]
+    end
+
+    C1 <-->|WS| WS1
+    C2 <-->|WS| WS1
+    C3 <-->|WS| WS2
+
+    WS1 -->|Publish Event| PUB
+    WS2 -->|Publish Event| PUB
+
+    SUB -->|Broadcast to WS1| WS1
+    SUB -->|Broadcast to WS2| WS2
+    
+    PUB -.->|Redis Routing| RedisInfo
+    RedisInfo -.-> SUB
+
+    PUB -.->|Kafka Routing| KafkaUserspace
+    KafkaUserspace -.-> SUB
+
+    PUB -.->|Kafka Routing| KafkaSendfile
+    KafkaSendfile -.-> SUB

@@ -1,0 +1,59 @@
+erDiagram
+    Users {
+        string user_id PK
+        string username
+        string preferences
+        datetime created_at
+    }
+
+    Videos {
+        string video_id PK
+        string title
+        string description
+        string category
+        datetime uploaded_at
+    }
+
+    WatchEvents {
+        string event_id PK
+        string user_id FK
+        string video_id FK
+        int watch_duration_seconds
+        datetime timestamp
+    }
+
+    UserEmbeddings {
+        string user_id PK
+        string embedding_vector
+        datetime updated_at
+    }
+
+    VideoEmbeddings {
+        string video_id PK
+        string embedding_vector
+        datetime updated_at
+    }
+
+    Impressions {
+        string impression_id PK
+        string user_id FK
+        string video_id FK
+        datetime timestamp
+    }
+
+    NegativeFeedback {
+        string feedback_id PK
+        string user_id FK
+        string video_id FK
+        string reason
+        datetime timestamp
+    }
+
+    Users ||--o{ WatchEvents : watches
+    Videos ||--o{ WatchEvents : watched_in
+    Users ||--o| UserEmbeddings : has
+    Videos ||--o| VideoEmbeddings : has
+    Users ||--o{ Impressions : receives
+    Videos ||--o{ Impressions : shown_in
+    Users ||--o{ NegativeFeedback : gives
+    Videos ||--o{ NegativeFeedback : receives

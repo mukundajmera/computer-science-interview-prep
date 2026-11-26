@@ -1,0 +1,33 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "different grandchildren under same child",
+      "input": {
+        "root": [9, 4, 13, 2, 6, 11, 15, null, 3, 5, 7],
+        "p": { "from": "root", "path": "LLR" },
+        "q": { "from": "root", "path": "LRL" }
+      },
+      "expected": { "from": "root", "path": "L" }
+    },
+    {
+      "name": "one node is ancestor of the other",
+      "input": {
+        "root": [8, 4, 12, 2, 6, 10, 14, 1, 3],
+        "p": { "from": "root", "path": "L" },
+        "q": { "from": "root", "path": "LLR" }
+      },
+      "expected": { "from": "root", "path": "L" }
+    },
+    {
+      "name": "root separates both targets",
+      "input": {
+        "root": [5, 2, 9, 2, 4, 7, 9],
+        "p": { "from": "root", "path": "LL" },
+        "q": { "from": "root", "path": "RR" }
+      },
+      "expected": { "from": "root", "path": "" }
+    }
+  ]
+}

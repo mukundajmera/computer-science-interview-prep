@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-scan",
+      "title": "Linear lower-bound scan",
+      "tier": 1,
+      "strategy": "Walk from the front and return the first index with value greater than or equal to target.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The scan may inspect every element before deciding the insertion position."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only a loop index is used."
+      },
+      "javaPath": "java/solution-1-linear-scan/Solution.java",
+      "pythonPath": "python/solution-1-linear-scan/solution.py"
+    },
+    {
+      "id": "solution-2-binary-search-lower-bound",
+      "title": "Binary search lower bound",
+      "tier": 2,
+      "strategy": "Maintain a half-open search range and converge on the first value not less than target.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each iteration halves the remaining search range."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The search uses constant extra variables."
+      },
+      "javaPath": "java/solution-2-binary-search-lower-bound/Solution.java",
+      "pythonPath": "python/solution-2-binary-search-lower-bound/solution.py"
+    }
+  ]
+}

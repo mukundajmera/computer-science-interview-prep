@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-row-simulation",
+      "title": "Row simulation with direction flips",
+      "tier": 1,
+      "strategy": "Append each character to its current row and flip direction whenever the top or bottom row is reached.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each character is appended once and row strings are joined once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The row builders store all characters before the final join."
+      },
+      "javaPath": "java/solution-1-row-simulation/Solution.java",
+      "pythonPath": "python/solution-1-row-simulation/solution.py"
+    },
+    {
+      "id": "solution-2-cycle-index-walk",
+      "title": "Cycle index walk",
+      "tier": 2,
+      "strategy": "For each row, jump through the string by the zigzag cycle length and include diagonal middle-row characters when present.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every character index is appended exactly once across all row scans."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The output builder stores the converted string."
+      },
+      "javaPath": "java/solution-2-cycle-index-walk/Solution.java",
+      "pythonPath": "python/solution-2-cycle-index-walk/solution.py"
+    }
+  ]
+}

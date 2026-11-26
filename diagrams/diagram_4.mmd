@@ -1,0 +1,5 @@
+graph TD
+  Node1_GPU1 -- NVLink --> Node1_GPU2
+  Node1_GPU2 -- NVLink --> Node1_GPU3
+  Node1_GPU3 -- NVLink --> Node1_GPU4
+  Node1_GPU4 -- Infiniband --> Node2_GPU1

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-forward-scan",
+      "title": "Forward scan",
+      "tier": 1,
+      "strategy": "For each position, scan right until a warmer value is found or the array ends.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "In the worst case each day scans nearly every later day."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the output array and loop counters are used."
+      },
+      "javaPath": "java/solution-1-forward-scan/Solution.java",
+      "pythonPath": "python/solution-1-forward-scan/solution.py"
+    },
+    {
+      "id": "solution-2-monotonic-stack",
+      "title": "Monotonic stack",
+      "tier": 2,
+      "strategy": "Keep indices with unresolved warmer days in decreasing temperature order and resolve them when a warmer day arrives.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each index is pushed once and popped at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The stack can hold all indices when temperatures never rise."
+      },
+      "javaPath": "java/solution-2-monotonic-stack/Solution.java",
+      "pythonPath": "python/solution-2-monotonic-stack/solution.py"
+    }
+  ]
+}

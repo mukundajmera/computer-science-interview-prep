@@ -1,0 +1,37 @@
+%% Facade Pattern Class Diagram
+%% Provides simplified interface to complex subsystem
+
+classDiagram
+    class Facade {
+        -subsystemA SubsystemA
+        -subsystemB SubsystemB
+        -subsystemC SubsystemC
+        +operation() void
+        +anotherOperation() void
+    }
+    
+    class SubsystemA {
+        +operationA1() void
+        +operationA2() void
+    }
+    
+    class SubsystemB {
+        +operationB1() void
+        +operationB2() void
+    }
+    
+    class SubsystemC {
+        +operationC1() void
+        +operationC2() void
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Facade --> SubsystemA
+    Facade --> SubsystemB
+    Facade --> SubsystemC
+    Client --> Facade : uses
+    
+    note for Facade "Provides simple interface\nto complex subsystem.\nClients don't need to know\nabout subsystem classes."

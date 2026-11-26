@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-scan-stack",
+      "title": "Scan stack",
+      "tier": 1,
+      "strategy": "Keep the full push stack and frequencies, scanning backward on pop for the newest max-frequency value.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "A pop may scan the full stack."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The stack and frequency map retain live pushes."
+      },
+      "javaPath": "java/solution-1-scan-stack/Solution.java",
+      "pythonPath": "python/solution-1-scan-stack/solution.py"
+    },
+    {
+      "id": "solution-2-frequency-stacks",
+      "title": "Frequency stacks",
+      "tier": 2,
+      "strategy": "Map each frequency to a stack of values that reached it and track the current maximum frequency.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "Push and pop update constant-time maps/stacks."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Every push is represented in one frequency stack."
+      },
+      "javaPath": "java/solution-2-frequency-stacks/Solution.java",
+      "pythonPath": "python/solution-2-frequency-stacks/solution.py"
+    }
+  ]
+}

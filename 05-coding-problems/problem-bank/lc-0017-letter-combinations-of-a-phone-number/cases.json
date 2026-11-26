@@ -1,0 +1,121 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list"
+  },
+  "cases": [
+    {
+      "name": "two four-letter digits",
+      "input": {
+        "digits": "79"
+      },
+      "expected": [
+        "pw",
+        "px",
+        "py",
+        "pz",
+        "qw",
+        "qx",
+        "qy",
+        "qz",
+        "rw",
+        "rx",
+        "ry",
+        "rz",
+        "sw",
+        "sx",
+        "sy",
+        "sz"
+      ]
+    },
+    {
+      "name": "two three-letter digits",
+      "input": {
+        "digits": "58"
+      },
+      "expected": [
+        "jt",
+        "ju",
+        "jv",
+        "kt",
+        "ku",
+        "kv",
+        "lt",
+        "lu",
+        "lv"
+      ]
+    },
+    {
+      "name": "three four-choice positions",
+      "input": {
+        "digits": "777"
+      },
+      "expected": [
+        "ppp",
+        "ppq",
+        "ppr",
+        "pps",
+        "pqp",
+        "pqq",
+        "pqr",
+        "pqs",
+        "prp",
+        "prq",
+        "prr",
+        "prs",
+        "psp",
+        "psq",
+        "psr",
+        "pss",
+        "qpp",
+        "qpq",
+        "qpr",
+        "qps",
+        "qqp",
+        "qqq",
+        "qqr",
+        "qqs",
+        "qrp",
+        "qrq",
+        "qrr",
+        "qrs",
+        "qsp",
+        "qsq",
+        "qsr",
+        "qss",
+        "rpp",
+        "rpq",
+        "rpr",
+        "rps",
+        "rqp",
+        "rqq",
+        "rqr",
+        "rqs",
+        "rrp",
+        "rrq",
+        "rrr",
+        "rrs",
+        "rsp",
+        "rsq",
+        "rsr",
+        "rss",
+        "spp",
+        "spq",
+        "spr",
+        "sps",
+        "sqp",
+        "sqq",
+        "sqr",
+        "sqs",
+        "srp",
+        "srq",
+        "srr",
+        "srs",
+        "ssp",
+        "ssq",
+        "ssr",
+        "sss"
+      ]
+    }
+  ]
+}

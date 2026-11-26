@@ -1,0 +1,7 @@
+graph TD;
+  A[Query] --> B[BM25 Keyword Search];
+  A --> C[Vector Search];
+  B --> D[Reciprocal Rank Fusion];
+  C --> D;
+  D --> E[Cross-Encoder Reranker];
+  E --> F[LLM Generation];

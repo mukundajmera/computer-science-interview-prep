@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-dfs",
+      "title": "Recursive DFS accumulator",
+      "tier": 1,
+      "strategy": "Carry the numeric prefix into each child and add the prefix only at leaves.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every tree node is visited once and does O(1) arithmetic."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack is bounded by tree height h, which is O(n) for a skewed tree."
+      },
+      "javaPath": "java/solution-1-recursive-dfs/Solution.java",
+      "pythonPath": "python/solution-1-recursive-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-stack",
+      "title": "Iterative DFS stack",
+      "tier": 2,
+      "strategy": "Store each node with the value represented by the path that reaches it.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is pushed and popped at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The explicit stack holds one frontier path per active branch, O(h) for balanced traversal and O(n) in the worst skew."
+      },
+      "javaPath": "java/solution-2-iterative-stack/Solution.java",
+      "pythonPath": "python/solution-2-iterative-stack/solution.py"
+    }
+  ]
+}

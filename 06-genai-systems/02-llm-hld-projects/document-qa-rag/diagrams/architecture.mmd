@@ -1,0 +1,82 @@
+flowchart TB
+    subgraph Clients
+        Web[Web App]
+        APIClient[API Client]
+    end
+
+    subgraph Edge["API Gateway"]
+        LB[Load Balancer]
+        Auth[Auth + Rate Limiter]
+    end
+
+    subgraph Query["Query Processing"]
+        QS[Query Service]
+        ConvMgr[Conversation Manager]
+        Router[Complexity Router]
+    end
+
+    subgraph Retrieval["Retrieval Layer"]
+        HybridR[Hybrid Retriever]
+        VDB[(Vector DB)]
+        ES[(Elasticsearch)]
+        RRF[Rank Fusion]
+        Reranker[Cross-Encoder]
+        ACL[Access Control]
+    end
+
+    subgraph Generation["Generation Layer"]
+        PromptB[Prompt Builder]
+        Safety[Safety Filters]
+        LLMGw[LLM Gateway]
+        GPT4o[GPT-4o]
+        GPT4oMini[GPT-4o-mini]
+    end
+
+    subgraph Ingestion["Ingestion Pipeline"]
+        IngestAPI[Ingestion Service]
+        MQ[(Message Queue)]
+        Parser[Document Parser]
+        Chunker[Chunker]
+        Embedder[Embedding Service]
+    end
+
+    subgraph Storage["Storage"]
+        PG[(PostgreSQL)]
+        S3[(S3)]
+        Redis[(Redis Cache)]
+    end
+
+    Web --> LB
+    APIClient --> LB
+    LB --> Auth
+    Auth --> QS
+    Auth --> IngestAPI
+
+    QS --> ConvMgr
+    QS --> Router
+    Router --> HybridR
+    HybridR --> VDB
+    HybridR --> ES
+    VDB --> RRF
+    ES --> RRF
+    RRF --> Reranker
+    Reranker --> ACL
+    ACL --> PromptB
+    ConvMgr --> PromptB
+    PromptB --> Safety
+    Safety --> LLMGw
+    LLMGw --> GPT4o
+    LLMGw --> GPT4oMini
+
+    IngestAPI --> S3
+    IngestAPI --> MQ
+    MQ --> Parser
+    Parser --> Chunker
+    Chunker --> Embedder
+    Embedder --> VDB
+    Chunker --> PG
+    IngestAPI --> PG
+
+    ConvMgr --> PG
+    ConvMgr --> Redis
+    QS --> Redis

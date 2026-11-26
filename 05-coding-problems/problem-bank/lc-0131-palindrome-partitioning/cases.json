@@ -1,0 +1,52 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list-of-lists"
+  },
+  "cases": [
+    {
+      "name": "three chars with duplicate",
+      "input": {
+        "s": "aab"
+      },
+      "expected": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ]
+    },
+    {
+      "name": "single character",
+      "input": {
+        "s": "a"
+      },
+      "expected": [
+        [
+          "a"
+        ]
+      ]
+    },
+    {
+      "name": "palindrome with distinct outer chars",
+      "input": {
+        "s": "aba"
+      },
+      "expected": [
+        [
+          "a",
+          "b",
+          "a"
+        ],
+        [
+          "aba"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "id": "lc-0108-convert-sorted-array-to-binary-search-tree",
+  "title": "Convert Sorted Array to Binary Search Tree",
+  "difficulty": "easy",
+  "status": "verified",
+  "patterns": [
+    "array",
+    "divide-and-conquer",
+    "binary-search-tree"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 153,
+      "group": "binary-search-tree",
+      "sourceUrl": "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 108,
+      "group": "Divide & Conquer",
+      "sourceUrl": "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 391,
+      "group": "Trees",
+      "sourceUrl": "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "108",
+    "titleSlug": "convert-sorted-array-to-binary-search-tree",
+    "url": "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "sortedArrayToBST",
+      "returnType": "TreeNode",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "int[]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "sortedArrayToBST",
+      "returnType": "Optional[TreeNode]",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "List[int]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

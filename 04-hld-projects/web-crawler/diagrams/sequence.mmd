@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant UF as URL Frontier
+    participant FW as Fetcher Worker
+    participant DNS as DNS Resolver
+    participant PL as Politeness Limiter
+    participant WS as Web Server
+    participant PE as Parser & Extractor
+    participant BF as Bloom Filter
+
+    UF->>FW: Dequeue URL
+    FW->>DNS: Resolve domain to IP
+    DNS-->>FW: Return IP address
+    FW->>PL: Check rate limit/delay
+    PL-->>FW: Permit granted
+    FW->>WS: Fetch HTML content
+    WS-->>FW: HTML response
+    FW->>PE: Forward HTML
+    PE->>PE: Parse and extract links
+    loop For each extracted link
+        PE->>BF: Check deduplication
+        alt Link is new
+            BF-->>PE: Not seen
+            PE->>UF: Enqueue new URL
+        else Link already seen
+            BF-->>PE: Seen
+        end
+    end

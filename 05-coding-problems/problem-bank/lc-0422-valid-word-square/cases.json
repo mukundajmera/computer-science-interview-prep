@@ -1,0 +1,41 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "valid uneven square",
+      "input": {
+        "words": [
+          "ball",
+          "area",
+          "lead",
+          "lady"
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "missing column character",
+      "input": {
+        "words": [
+          "abcd",
+          "bn",
+          "cr",
+          "dt"
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "single word",
+      "input": {
+        "words": [
+          "a"
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

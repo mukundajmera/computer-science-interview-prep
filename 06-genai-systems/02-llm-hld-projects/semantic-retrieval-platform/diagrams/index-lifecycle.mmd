@@ -1,0 +1,13 @@
+stateDiagram-v2
+    [*] --> Received
+    Received --> Parsing: create index job
+    Parsing --> Chunked: extract text and metadata
+    Chunked --> Embedding: enqueue chunk vectors
+    Embedding --> Writing: embeddings generated
+    Writing --> ShadowReady: build new index version
+    ShadowReady --> Validating: replay gold + shadow queries
+    Validating --> Ready: quality and latency gates pass
+    Validating --> Rollback: gates fail
+    Ready --> Serving: route reads to new version
+    Rollback --> [*]
+    Serving --> [*]

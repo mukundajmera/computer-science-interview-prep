@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dp-reachable",
+      "title": "Reachable dynamic programming",
+      "tier": 1,
+      "strategy": "Mark an index reachable if any earlier reachable index can jump to it.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each target index may scan all earlier indexes."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "A boolean reachability array stores one state per index."
+      },
+      "javaPath": "java/solution-1-dp-reachable/Solution.java",
+      "pythonPath": "python/solution-1-dp-reachable/solution.py"
+    },
+    {
+      "id": "solution-2-greedy-farthest",
+      "title": "Greedy farthest reach",
+      "tier": 2,
+      "strategy": "Track the farthest reachable index while scanning from left to right.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each index is inspected once until the scan fails or reaches the end."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the farthest reachable index is stored."
+      },
+      "javaPath": "java/solution-2-greedy-farthest/Solution.java",
+      "pythonPath": "python/solution-2-greedy-farthest/solution.py"
+    }
+  ]
+}

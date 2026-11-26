@@ -1,0 +1,21 @@
+sequenceDiagram
+    actor User
+    participant Ingestion as Ingestion Gateway
+    participant RateLimiter as Rate Limiter / Cache
+    participant PubSub as Redis Pub/Sub
+    participant WS as WebSocket Gateway
+    participant DB as Cassandra
+    participant Viewer
+
+    User->>Ingestion: POST /comments
+    Ingestion->>RateLimiter: Check user rate limits
+    RateLimiter-->>Ingestion: OK
+
+    %% Fast Fanout Path
+    Ingestion->>PubSub: PUBLISH stream_{id}_comments
+    PubSub-->>WS: Deliver message to subscribed gateways
+    WS-->>Viewer: Push comment to active stream viewers
+
+    %% Async Persistence Path
+    Ingestion->>DB: Async persist comment
+    Ingestion-->>User: 201 Created (Accepted)

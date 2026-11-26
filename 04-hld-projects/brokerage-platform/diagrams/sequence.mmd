@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant U as User
+    participant G as Gateway
+    participant O as Order Service
+    participant X as Exchange Adapter
+    participant E as Exchange
+    U->>G: POST /orders (idempotency key)
+    G->>O: Submit command
+    O->>X: Route order
+    X->>E: Place order
+    E-->>X: Ack/Nack
+    X-->>O: Result event
+    O-->>G: Final state
+    G-->>U: Order response

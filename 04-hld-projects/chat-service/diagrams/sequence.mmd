@@ -1,0 +1,73 @@
+sequenceDiagram
+    autonumber
+    participant C as Client
+    participant WS as WebSocket Manager
+    participant MSG as Message Service
+    participant CASS as Cassandra
+    participant MQ as Kafka Queue
+    participant DW as Delivery Worker
+    participant REG as Session Registry
+    participant WS2 as Recipient WS Manager
+    participant R as Recipient Client
+
+    Note over C,R: Send Message Flow
+
+    C->>WS: send_message(conv_id, content, client_msg_id)
+    activate WS
+    
+    WS->>WS: Validate auth & rate limit
+    WS->>MSG: createMessage(sender, conv, content)
+    activate MSG
+    
+    MSG->>MSG: Generate TIMEUUID message_id
+    MSG->>CASS: INSERT INTO messages
+    activate CASS
+    CASS-->>MSG: success
+    deactivate CASS
+    
+    MSG->>MQ: publish(delivery_task)
+    MSG-->>WS: {messageId, status: "sent", timestamp}
+    deactivate MSG
+    
+    WS-->>C: ack(messageId, "sent")
+    deactivate WS
+
+    Note over MQ,R: Asynchronous Delivery
+
+    MQ->>DW: consume(delivery_task)
+    activate DW
+    
+    DW->>REG: lookup(recipient_user_id)
+    activate REG
+    REG-->>DW: {ws_server: "ws2", devices: [...]}
+    deactivate REG
+    
+    alt Recipient Online
+        DW->>WS2: push(message)
+        activate WS2
+        WS2->>R: new_message(message)
+        R-->>WS2: client_ack
+        WS2-->>DW: delivered
+        deactivate WS2
+        
+        DW->>MSG: updateStatus("delivered")
+        MSG-->>WS: push(status_update)
+        WS-->>C: message_delivered(messageId)
+    else Recipient Offline
+        DW->>MQ: enqueue(offline_queue:{user_id})
+        DW->>DW: Trigger push notification
+    end
+    deactivate DW
+
+    Note over C,R: Read Receipt Flow
+
+    R->>WS2: read_ack(conversation_id, last_message_id)
+    activate WS2
+    WS2->>MSG: markAsRead(user, conv, message_id)
+    activate MSG
+    MSG->>MSG: Update read status in Redis
+    MSG->>REG: lookup(sender_user_id)
+    MSG-->>WS: push(read_receipt)
+    deactivate MSG
+    WS-->>C: message_read(messageId, readBy, readAt)
+    deactivate WS2

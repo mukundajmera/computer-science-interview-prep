@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "jump over zero", "input": { "nums": [2, 0, 1, 0] }, "expected": true },
+    { "name": "blocked after first step", "input": { "nums": [1, 0, 2] }, "expected": false },
+    { "name": "single index", "input": { "nums": [0] }, "expected": true },
+    { "name": "direct long jump", "input": { "nums": [4, 0, 0, 0, 1] }, "expected": true },
+    { "name": "late unreachable island", "input": { "nums": [2, 1, 0, 1] }, "expected": false }
+  ]
+}

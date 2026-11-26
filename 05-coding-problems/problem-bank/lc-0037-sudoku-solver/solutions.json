@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-naive-backtracking",
+      "title": "Naive backtracking",
+      "tier": 1,
+      "strategy": "Find the next empty cell, try digits, and rescan row/column/box to test validity.",
+      "timeComplexity": {
+        "class": "O(9^E * 9)",
+        "explanation": "In the worst case E blanks branch over digits and each validity check scans fixed-size lines."
+      },
+      "spaceComplexity": {
+        "class": "O(E)",
+        "explanation": "Recursion depth is the number of empty cells."
+      },
+      "javaPath": "java/solution-1-naive-backtracking/Solution.java",
+      "pythonPath": "python/solution-1-naive-backtracking/solution.py"
+    },
+    {
+      "id": "solution-2-bitmask-backtracking",
+      "title": "Bitmask backtracking",
+      "tier": 2,
+      "strategy": "Maintain row, column, and box digit masks so candidate checks and updates are constant time.",
+      "timeComplexity": {
+        "class": "O(9^E)",
+        "explanation": "Backtracking still explores candidates, but validity checks are O(1)."
+      },
+      "spaceComplexity": {
+        "class": "O(E)",
+        "explanation": "Masks are fixed-size and recursion depth is E."
+      },
+      "javaPath": "java/solution-2-bitmask-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-bitmask-backtracking/solution.py"
+    }
+  ]
+}

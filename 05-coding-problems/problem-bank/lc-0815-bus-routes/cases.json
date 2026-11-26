@@ -1,0 +1,68 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "transfer through shared stop",
+      "input": {
+        "routes": [
+          [
+            1,
+            2,
+            7
+          ],
+          [
+            3,
+            6,
+            7
+          ]
+        ],
+        "source": 1,
+        "target": 6
+      },
+      "expected": 2
+    },
+    {
+      "name": "already at target",
+      "input": {
+        "routes": [
+          [
+            5,
+            8
+          ],
+          [
+            8,
+            9
+          ]
+        ],
+        "source": 5,
+        "target": 5
+      },
+      "expected": 0
+    },
+    {
+      "name": "disconnected route sets",
+      "input": {
+        "routes": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            6
+          ]
+        ],
+        "source": 1,
+        "target": 6
+      },
+      "expected": -1
+    }
+  ]
+}

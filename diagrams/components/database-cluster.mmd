@@ -1,0 +1,40 @@
+%% Database Cluster Architecture
+%% Shows master-replica replication with read/write separation
+
+flowchart TB
+    subgraph Application["Application Layer"]
+        APP[Application Server]
+    end
+
+    subgraph WriteLayer["Write Path"]
+        MASTER[(Master DB<br/>Primary Node<br/>Read/Write)]
+    end
+
+    subgraph ReadLayer["Read Path - Replicas"]
+        R1[(Replica 1<br/>Read-Only)]
+        R2[(Replica 2<br/>Read-Only)]
+        R3[(Replica 3<br/>Read-Only)]
+    end
+
+    subgraph LoadBalancer
+        RLB[Read Load Balancer]
+    end
+
+    APP -->|WRITE Operations| MASTER
+    APP -->|READ Operations| RLB
+    
+    RLB --> R1
+    RLB --> R2
+    RLB --> R3
+
+    MASTER -.->|Async Replication| R1
+    MASTER -.->|Async Replication| R2
+    MASTER -.->|Async Replication| R3
+
+    %% Styling
+    style MASTER fill:#e53e3e,stroke:#c53030,color:#fff
+    style R1 fill:#48bb78,stroke:#276749,color:#fff
+    style R2 fill:#48bb78,stroke:#276749,color:#fff
+    style R3 fill:#48bb78,stroke:#276749,color:#fff
+    style RLB fill:#805ad5,stroke:#553c9a,color:#fff
+    style APP fill:#4299e1,stroke:#2b6cb0,color:#fff

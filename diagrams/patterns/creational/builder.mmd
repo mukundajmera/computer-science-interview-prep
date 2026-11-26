@@ -1,0 +1,62 @@
+%% Builder Pattern Class Diagram
+%% Separates construction of complex object from its representation
+
+classDiagram
+    class Director {
+        -builder Builder
+        +Director(Builder)
+        +construct() void
+        +changeBuilder(Builder) void
+    }
+    
+    class Builder {
+        <<interface>>
+        +reset() void
+        +buildStepA() void
+        +buildStepB() void
+        +buildStepC() void
+        +getResult() Product
+    }
+    
+    class ConcreteBuilder1 {
+        -result Product1
+        +reset() void
+        +buildStepA() void
+        +buildStepB() void
+        +buildStepC() void
+        +getResult() Product1
+    }
+    
+    class ConcreteBuilder2 {
+        -result Product2
+        +reset() void
+        +buildStepA() void
+        +buildStepB() void
+        +buildStepC() void
+        +getResult() Product2
+    }
+    
+    class Product1 {
+        -partA String
+        -partB String
+        -partC String
+    }
+    
+    class Product2 {
+        -partA String
+        -partB String
+        -partC String
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Director --> Builder
+    Builder <|.. ConcreteBuilder1
+    Builder <|.. ConcreteBuilder2
+    ConcreteBuilder1 --> Product1 : creates
+    ConcreteBuilder2 --> Product2 : creates
+    Client --> Director
+    Client --> ConcreteBuilder1
+    Client --> ConcreteBuilder2

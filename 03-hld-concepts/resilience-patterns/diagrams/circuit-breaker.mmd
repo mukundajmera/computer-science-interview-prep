@@ -1,0 +1,25 @@
+stateDiagram-v2
+    [*] --> CLOSED
+
+    CLOSED --> OPEN : Failure rate > threshold
+    OPEN --> HALF_OPEN : Reset timeout expires
+    HALF_OPEN --> CLOSED : Probe requests succeed
+    HALF_OPEN --> OPEN : Any probe request fails
+
+    state CLOSED {
+        direction LR
+        [*] --> MonitorRequests
+        MonitorRequests --> CalculateFailureRate
+    }
+
+    state OPEN {
+        direction LR
+        [*] --> RejectAllRequests
+        RejectAllRequests --> WaitTimeout
+    }
+
+    state HALF_OPEN {
+        direction LR
+        [*] --> AllowProbeRequests
+        AllowProbeRequests --> EvaluateProbes
+    }

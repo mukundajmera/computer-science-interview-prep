@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-boundary-walk",
+      "title": "Shrinking boundary walk",
+      "tier": 1,
+      "strategy": "Walk the current top row, right column, bottom row, and left column, then shrink the corresponding boundary.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Every matrix cell is appended once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Apart from the returned list, only four boundaries are stored."
+      },
+      "javaPath": "java/solution-1-boundary-walk/Solution.java",
+      "pythonPath": "python/solution-1-boundary-walk/solution.py"
+    }
+  ]
+}

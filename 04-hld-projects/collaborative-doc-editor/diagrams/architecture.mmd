@@ -1,0 +1,9 @@
+flowchart LR
+    Client --> Gateway
+    Gateway --> MetadataService
+    Gateway --> SessionGateway
+    SessionGateway --> OperationProcessor
+    OperationProcessor --> OperationLog
+    OperationProcessor --> PresenceService
+    OperationLog --> SnapshotWorker
+    SnapshotWorker --> DocumentStore

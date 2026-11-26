@@ -1,0 +1,120 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "single zero",
+      "input": {
+        "matrix": [
+          [
+            5,
+            0,
+            7
+          ],
+          [
+            8,
+            9,
+            10
+          ]
+        ]
+      },
+      "expected": null,
+      "expectedMutations": {
+        "matrix": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            8,
+            0,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "name": "multiple zeroes",
+      "input": {
+        "matrix": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            0
+          ]
+        ]
+      },
+      "expected": null,
+      "expectedMutations": {
+        "matrix": [
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "no zeroes",
+      "input": {
+        "matrix": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "expected": null,
+      "expectedMutations": {
+        "matrix": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "empty matrix",
+      "input": {
+        "matrix": []
+      },
+      "expected": null,
+      "expectedMutations": {
+        "matrix": []
+      }
+    }
+  ]
+}

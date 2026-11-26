@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-counting-map",
+      "title": "Counting map",
+      "tier": 1,
+      "strategy": "Count every value and return once a count crosses half the array length.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Each element updates one counter." },
+      "spaceComplexity": { "class": "O(k)", "explanation": "The map stores one counter per distinct value." },
+      "javaPath": "java/solution-1-counting-map/Solution.java",
+      "pythonPath": "python/solution-1-counting-map/solution.py"
+    },
+    {
+      "id": "solution-2-boyer-moore",
+      "title": "Boyer-Moore vote",
+      "tier": 2,
+      "strategy": "Cancel different values against the current candidate until the guaranteed majority remains.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The voting pass visits each element once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only the candidate and vote count are stored." },
+      "javaPath": "java/solution-2-boyer-moore/Solution.java",
+      "pythonPath": "python/solution-2-boyer-moore/solution.py"
+    }
+  ]
+}

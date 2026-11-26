@@ -1,0 +1,33 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "five word cold to warm route",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": ["cord", "card", "ward", "warm", "worm", "word"]
+      },
+      "expected": 5
+    },
+    {
+      "name": "target missing",
+      "input": {
+        "beginWord": "cold",
+        "endWord": "warm",
+        "wordList": ["cord", "card", "ward"]
+      },
+      "expected": 0
+    },
+    {
+      "name": "short bridge",
+      "input": {
+        "beginWord": "talk",
+        "endWord": "tail",
+        "wordList": ["tall", "tail", "bail"]
+      },
+      "expected": 3
+    }
+  ]
+}

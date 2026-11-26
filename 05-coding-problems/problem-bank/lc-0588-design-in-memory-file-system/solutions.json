@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-path-map",
+      "title": "Path map",
+      "tier": 1,
+      "strategy": "Store directory children and file content in maps keyed by full path.",
+      "timeComplexity": {
+        "class": "O(p log d)",
+        "explanation": "Operations split path components and listing sorts d names."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Maps store all created paths and file content."
+      },
+      "javaPath": "java/solution-1-path-map/Solution.java",
+      "pythonPath": "python/solution-1-path-map/solution.py"
+    },
+    {
+      "id": "solution-2-trie-nodes",
+      "title": "Trie nodes",
+      "tier": 2,
+      "strategy": "Represent each path component as a trie node with sorted child names and optional file content.",
+      "timeComplexity": {
+        "class": "O(p + d log d)",
+        "explanation": "Traversal follows p components; directory listing sorts d child names."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The trie stores every component and file content once."
+      },
+      "javaPath": "java/solution-2-trie-nodes/Solution.java",
+      "pythonPath": "python/solution-2-trie-nodes/solution.py"
+    }
+  ]
+}

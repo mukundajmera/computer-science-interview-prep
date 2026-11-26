@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-detach-and-reverse",
+      "title": "Detach segment then reverse",
+      "tier": 1,
+      "strategy": "Walk to the requested segment, detach it, reverse those original nodes, then reconnect the reversed segment between the unchanged prefix and suffix.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The algorithm walks to the range and reverses each node in that range once; all work is bounded by the list length." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only a dummy node and fixed traversal pointers are stored while original nodes are rewired." },
+      "javaPath": "java/solution-1-detach-and-reverse/Solution.java",
+      "pythonPath": "python/solution-1-detach-and-reverse/solution.py"
+    },
+    {
+      "id": "solution-2-head-insertion",
+      "title": "In-place head insertion",
+      "tier": 2,
+      "strategy": "Walk to the node before the segment and repeatedly move the next segment node to the segment front.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The algorithm walks to the segment and performs one constant-time move for each node inside the reversed range." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "A dummy node and a small fixed set of pointers are enough to rewire the segment." },
+      "javaPath": "java/solution-2-head-insertion/Solution.java",
+      "pythonPath": "python/solution-2-head-insertion/solution.py"
+    }
+  ]
+}

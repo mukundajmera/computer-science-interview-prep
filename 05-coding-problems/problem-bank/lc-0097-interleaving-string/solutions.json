@@ -1,0 +1,52 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-memoized-dfs",
+      "title": "Memoized DFS over source indices",
+      "tier": 1,
+      "strategy": "Recursively try taking the next target character from either source and memoize the consumed-length pair.",
+      "timeComplexity": {
+        "class": "O(m*n)",
+        "explanation": "Each pair of indices in the two source strings is evaluated once."
+      },
+      "spaceComplexity": {
+        "class": "O(m*n)",
+        "explanation": "The memo table stores source-index pairs, plus recursion depth."
+      },
+      "javaPath": "java/solution-1-memoized-dfs/Solution.java",
+      "pythonPath": "python/solution-1-memoized-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-2d-dp",
+      "title": "2D reachability DP",
+      "tier": 2,
+      "strategy": "Let dp[i][j] say whether prefixes of lengths i and j can form the target prefix of length i+j.",
+      "timeComplexity": {
+        "class": "O(m*n)",
+        "explanation": "Every prefix-pair cell is filled once."
+      },
+      "spaceComplexity": {
+        "class": "O(m*n)",
+        "explanation": "All prefix-pair reachability states are stored."
+      },
+      "javaPath": "java/solution-2-2d-dp/Solution.java",
+      "pythonPath": "python/solution-2-2d-dp/solution.py"
+    },
+    {
+      "id": "solution-3-1d-dp",
+      "title": "1D rolling DP",
+      "tier": 3,
+      "strategy": "Compress the 2D table so dp[j] represents the current row's reachability for j consumed characters from the second source.",
+      "timeComplexity": {
+        "class": "O(m*n)",
+        "explanation": "The same grid of prefix pairs is evaluated."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Only one row over the second source is retained."
+      },
+      "javaPath": "java/solution-3-1d-dp/Solution.java",
+      "pythonPath": "python/solution-3-1d-dp/solution.py"
+    }
+  ]
+}

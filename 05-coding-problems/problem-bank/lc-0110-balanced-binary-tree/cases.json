@@ -1,0 +1,61 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "balanced two-level branch",
+      "input": {
+        "root": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "left chain is too deep",
+      "input": {
+        "root": [
+          1,
+          2,
+          null,
+          3,
+          null,
+          4
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "empty tree is balanced",
+      "input": {
+        "root": []
+      },
+      "expected": true
+    },
+    {
+      "name": "imbalance appears below root",
+      "input": {
+        "root": [
+          1,
+          2,
+          2,
+          3,
+          3,
+          null,
+          null,
+          4,
+          4
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+%% Strategy Pattern Class Diagram
+%% Defines family of algorithms, encapsulates each, and makes them interchangeable
+
+classDiagram
+    class Context {
+        -strategy Strategy
+        +Context(Strategy)
+        +setStrategy(Strategy) void
+        +executeStrategy() void
+    }
+    
+    class Strategy {
+        <<interface>>
+        +execute() void
+    }
+    
+    class ConcreteStrategyA {
+        +execute() void
+    }
+    
+    class ConcreteStrategyB {
+        +execute() void
+    }
+    
+    class ConcreteStrategyC {
+        +execute() void
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Context --> Strategy : uses
+    Strategy <|.. ConcreteStrategyA
+    Strategy <|.. ConcreteStrategyB
+    Strategy <|.. ConcreteStrategyC
+    Client --> Context
+    Client ..> ConcreteStrategyA : creates
+    Client ..> ConcreteStrategyB : creates

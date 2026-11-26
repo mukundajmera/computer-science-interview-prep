@@ -1,0 +1,108 @@
+{
+  "id": "lc-0236-lowest-common-ancestor-of-a-binary-tree",
+  "title": "Lowest Common Ancestor of a Binary Tree",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "tree",
+    "depth-first-search",
+    "parent-map"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-parent-map/Solution.java",
+      "java/solution-2-recursive-postorder/Solution.java",
+      "python/solution-1-parent-map/solution.py",
+      "python/solution-2-recursive-postorder/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 40,
+      "group": "binary-tree",
+      "sourceUrl": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 81,
+      "group": "Binary Tree General",
+      "sourceUrl": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 418,
+      "group": "Trees",
+      "sourceUrl": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "236",
+    "titleSlug": "lowest-common-ancestor-of-a-binary-tree",
+    "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "lowestCommonAncestor",
+      "returnType": "TreeNode",
+      "parameters": [
+        { "name": "root", "type": "TreeNode" },
+        { "name": "p", "type": "TreeNode" },
+        { "name": "q", "type": "TreeNode" }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "lowestCommonAncestor",
+      "returnType": "Optional[TreeNode]",
+      "parameters": [
+        { "name": "root", "type": "Optional[TreeNode]" },
+        { "name": "p", "type": "Optional[TreeNode]" },
+        { "name": "q", "type": "Optional[TreeNode]" }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

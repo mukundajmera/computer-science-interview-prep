@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant Crawler as Product Crawler
+    participant Ingest as Time-Series Ingest
+    participant TSDB as Price Event Log (TSDB)
+    participant Cache as Current Offer Cache
+    participant Evaluator as Threshold Alert Evaluator
+    participant Notifier as Notification Dispatcher
+
+    Crawler->>Ingest: Submit crawl observation (price, SKU)
+    Ingest->>Ingest: Validate and Deduplicate
+    Ingest->>TSDB: Append new price event
+    TSDB-->>Ingest: Acknowledge append
+    Ingest->>Cache: Update current price
+    Ingest->>Evaluator: Publish OfferChanged event
+
+    Evaluator->>Evaluator: Scan active alert rules for product
+    alt Alert condition met (e.g. Price Drop)
+        Evaluator->>Notifier: Emit deduped alert delivery job
+        Notifier->>Notifier: Deliver to user channels (Email, Push)
+    end

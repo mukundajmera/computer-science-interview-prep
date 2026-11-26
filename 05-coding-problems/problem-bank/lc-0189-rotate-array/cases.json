@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "rotate by two", "input": { "nums": [10, 20, 30, 40, 50], "k": 2 }, "expected": null, "expectedMutations": { "nums": [40, 50, 10, 20, 30] } },
+    { "name": "full rotation", "input": { "nums": [1, 2, 3, 4], "k": 4 }, "expected": null, "expectedMutations": { "nums": [1, 2, 3, 4] } },
+    { "name": "single element", "input": { "nums": [7], "k": 99 }, "expected": null, "expectedMutations": { "nums": [7] } },
+    { "name": "empty array stays empty", "input": { "nums": [], "k": 3 }, "expected": null, "expectedMutations": { "nums": [] } },
+    { "name": "large shift", "input": { "nums": [5, 6, 7, 8, 9, 10], "k": 8 }, "expected": null, "expectedMutations": { "nums": [9, 10, 5, 6, 7, 8] } }
+  ]
+}

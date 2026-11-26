@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-preorder-buffer",
+      "title": "Preorder buffer and relink",
+      "tier": 1,
+      "strategy": "Collect existing nodes in preorder, then relink them into a right-child-only chain and clear every left pointer.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is visited once during preorder collection and once during relinking."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The buffer stores references to all nodes before relinking."
+      },
+      "javaPath": "java/solution-1-preorder-buffer/Solution.java",
+      "pythonPath": "python/solution-1-preorder-buffer/solution.py"
+    },
+    {
+      "id": "solution-2-rewire-in-place",
+      "title": "In-place right-spine rewiring",
+      "tier": 2,
+      "strategy": "For each node with a left subtree, splice that left subtree between the node and its original right subtree by attaching the old right subtree to the rightmost node of the left subtree.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is moved into the right spine once; walking to predecessor nodes is bounded by the total rewiring work."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only a few pointers are used while mutating the existing tree."
+      },
+      "javaPath": "java/solution-2-rewire-in-place/Solution.java",
+      "pythonPath": "python/solution-2-rewire-in-place/solution.py"
+    }
+  ]
+}

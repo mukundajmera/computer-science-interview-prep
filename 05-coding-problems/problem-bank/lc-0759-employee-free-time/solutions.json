@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-flatten-merge",
+      "title": "Flatten and merge",
+      "tier": 1,
+      "strategy": "Flatten all busy intervals, sort by start, and record gaps between merged busy ranges.",
+      "timeComplexity": {
+        "class": "O(N log N)",
+        "explanation": "All N intervals are sorted."
+      },
+      "spaceComplexity": {
+        "class": "O(N)",
+        "explanation": "Flattened intervals are stored before merging."
+      },
+      "javaPath": "java/solution-1-flatten-merge/Solution.java",
+      "pythonPath": "python/solution-1-flatten-merge/solution.py"
+    },
+    {
+      "id": "solution-2-min-heap",
+      "title": "Min heap stream",
+      "tier": 2,
+      "strategy": "Push each employee's first interval into a heap, streaming intervals by start time and recording gaps.",
+      "timeComplexity": {
+        "class": "O(N log E)",
+        "explanation": "Each interval enters and leaves a heap of E employees once."
+      },
+      "spaceComplexity": {
+        "class": "O(E)",
+        "explanation": "The heap stores at most one interval per employee."
+      },
+      "javaPath": "java/solution-2-min-heap/Solution.java",
+      "pythonPath": "python/solution-2-min-heap/solution.py"
+    }
+  ]
+}

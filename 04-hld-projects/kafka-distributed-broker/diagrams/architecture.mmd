@@ -1,0 +1,31 @@
+flowchart TD
+    subgraph Producers
+        P1(Producer)
+        P2(Producer)
+    end
+
+    subgraph Cluster[Broker Cluster]
+        B1["Broker 1 (Partition 1 Leader)"]
+        B2["Broker 2 (Partition 2 Leader)"]
+        B3["Broker 3 (Follower)"]
+    end
+
+    subgraph Controller[Metadata Controller]
+        C1(Raft Leader)
+    end
+
+    subgraph Consumers
+        CG1(Consumer Group A)
+        CG2(Consumer Group B)
+    end
+
+    P1 -->|Batch Write| B1
+    P2 -->|Batch Write| B2
+    
+    B1 <-.->|ISR Fetch| B3
+    B2 <-.->|ISR Fetch| B3
+    
+    Cluster <-->|Heartbeat/Metadata| Controller
+    
+    CG1 -->|Pull / Fetch| B1
+    CG2 -->|Pull / Fetch| B2

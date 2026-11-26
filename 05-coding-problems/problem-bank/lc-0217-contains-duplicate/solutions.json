@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-and-scan",
+      "title": "Sort and scan neighbors",
+      "tier": 1,
+      "strategy": "Sort a copy of the input and check whether any adjacent values are equal.",
+      "timeComplexity": { "class": "O(n log n)", "explanation": "Sorting dominates the linear neighbor scan." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "A copied array is sorted so the original input is not mutated." },
+      "javaPath": "java/solution-1-sort-and-scan/Solution.java",
+      "pythonPath": "python/solution-1-sort-and-scan/solution.py"
+    },
+    {
+      "id": "solution-2-hash-set",
+      "title": "Hash set membership",
+      "tier": 2,
+      "strategy": "Track values that have already appeared and return true when the next value is already present.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Each value performs an expected constant-time set lookup and insertion." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The set can store every distinct value when there are no duplicates." },
+      "javaPath": "java/solution-2-hash-set/Solution.java",
+      "pythonPath": "python/solution-2-hash-set/solution.py"
+    }
+  ]
+}

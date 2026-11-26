@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-top-down-dp",
+      "title": "Top-down DP by row and index",
+      "tier": 1,
+      "strategy": "Build a DP table where each value is the minimum path sum reaching that position.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every stored triangle value is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(n^2)",
+        "explanation": "The DP table mirrors the triangle values."
+      },
+      "javaPath": "java/solution-1-top-down-dp/Solution.java",
+      "pythonPath": "python/solution-1-top-down-dp/solution.py"
+    },
+    {
+      "id": "solution-2-bottom-up-in-place",
+      "title": "Bottom-up in-place row buffer",
+      "tier": 2,
+      "strategy": "Start with the bottom row as suffix costs and fold each upper row into that buffer.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every triangle value is combined with two child costs once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Only the bottom-row-sized cost buffer is retained."
+      },
+      "javaPath": "java/solution-2-bottom-up-in-place/Solution.java",
+      "pythonPath": "python/solution-2-bottom-up-in-place/solution.py"
+    }
+  ]
+}

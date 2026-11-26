@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "nested mixed brackets", "input": { "s": "{[()]}" }, "expected": true },
+    { "name": "crossing order", "input": { "s": "([)]" }, "expected": false },
+    { "name": "empty input", "input": { "s": "" }, "expected": true },
+    { "name": "unclosed openers", "input": { "s": "(((" }, "expected": false },
+    { "name": "adjacent groups inside braces", "input": { "s": "{()[]}" }, "expected": true }
+  ]
+}

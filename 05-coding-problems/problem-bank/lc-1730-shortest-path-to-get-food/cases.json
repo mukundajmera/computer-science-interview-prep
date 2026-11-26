@@ -1,0 +1,79 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "adjacent food",
+      "input": {
+        "grid": [
+          [
+            "*",
+            "#"
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "detour around wall",
+      "input": {
+        "grid": [
+          [
+            "*",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "#"
+          ],
+          [
+            "O",
+            "O",
+            "O"
+          ]
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "name": "blocked food",
+      "input": {
+        "grid": [
+          [
+            "*",
+            "X",
+            "#"
+          ]
+        ]
+      },
+      "expected": -1
+    },
+    {
+      "name": "nearest of multiple food cells",
+      "input": {
+        "grid": [
+          [
+            "*",
+            "O",
+            "#"
+          ],
+          [
+            "O",
+            "O",
+            "O"
+          ],
+          [
+            "#",
+            "O",
+            "O"
+          ]
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

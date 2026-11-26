@@ -1,0 +1,8 @@
+flowchart TD
+  User[User Client] --> API[API Gateway]
+  API --> Orchestrator[Search Orchestrator]
+  Orchestrator --> Decomp[Query Decomposition LLM]
+  Orchestrator --> Retrieval[Hybrid Retrieval Engine]
+  Retrieval --> Rerank[Cross-Encoder Reranker]
+  Rerank --> Gen[Grounded Generator LLM]
+  Gen --> User

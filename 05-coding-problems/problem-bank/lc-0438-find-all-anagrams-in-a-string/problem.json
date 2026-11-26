@@ -1,0 +1,112 @@
+{
+  "id": "lc-0438-find-all-anagrams-in-a-string",
+  "title": "Find All Anagrams in a String",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "arrays-hashing",
+    "sliding-window",
+    "string"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 71,
+      "group": "string",
+      "sourceUrl": "https://leetcode.com/problems/find-all-anagrams-in-a-string"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 120,
+      "group": "Arrays & Hashing",
+      "sourceUrl": "https://leetcode.com/problems/find-all-anagrams-in-a-string"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "438",
+    "titleSlug": "find-all-anagrams-in-a-string",
+    "url": "https://leetcode.com/problems/find-all-anagrams-in-a-string",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "findAnagrams",
+      "returnType": "List<Integer>",
+      "parameters": [
+        {
+          "name": "s",
+          "type": "String"
+        },
+        {
+          "name": "p",
+          "type": "String"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "findAnagrams",
+      "returnType": "List[int]",
+      "parameters": [
+        {
+          "name": "s",
+          "type": "str"
+        },
+        {
+          "name": "p",
+          "type": "str"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-sorted-windows/Solution.java",
+      "python/solution-1-sorted-windows/solution.py",
+      "java/solution-2-sliding-frequency/Solution.java",
+      "python/solution-2-sliding-frequency/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

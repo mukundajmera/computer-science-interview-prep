@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-iterative-pointer-reversal",
+      "title": "Iterative pointer reversal",
+      "tier": 1,
+      "strategy": "Traverse down the left spine, repointing each left child to have its original right sibling as left child and original parent as right child.",
+      "timeComplexity": {
+        "class": "O(h)",
+        "explanation": "Only traverses the left spine of the tree of height h."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Rearranges pointers using three auxiliary reference variables."
+      },
+      "javaPath": "java/solution-1-iterative-pointer-reversal/Solution.java",
+      "pythonPath": "python/solution-1-iterative-pointer-reversal/solution.py"
+    }
+  ]
+}

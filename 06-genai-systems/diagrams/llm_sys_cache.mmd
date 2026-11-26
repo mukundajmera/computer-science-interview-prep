@@ -1,0 +1,4 @@
+graph LR;
+  A[Request] --> B{Cache Hit?};
+  B -- Yes --> C[Return Cached];
+  B -- No --> D[Generate & Cache];

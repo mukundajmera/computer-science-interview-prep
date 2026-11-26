@@ -1,0 +1,64 @@
+graph TD
+    subgraph Client Layer
+        C[Client]
+    end
+
+    subgraph Edge Layer
+        CDN[CDN / Edge Cache]
+        WAF[WAF & Rate Limiter]
+    end
+
+    subgraph API Tier
+        LB[Load Balancer]
+        API_W[Write Service]
+        API_R[Read Service]
+    end
+
+    subgraph Core Services
+        KGS[Key Generation Service]
+        SWP[Background Sweeper]
+    end
+
+    subgraph Data Layer
+        REDIS[(Redis Cache)]
+        DB[(Metadata DB - SQL)]
+        S3[(Blob Storage - S3)]
+        POOL[(Key Pool DB)]
+    end
+
+    C -->|GET /xyz123| CDN
+    C -->|POST /pastes| WAF
+    
+    CDN -.->|Cache Miss| WAF
+    WAF --> LB
+    
+    LB -->|POST| API_W
+    LB -->|GET| API_R
+    
+    API_W -->|Get Batch of Keys| KGS
+    KGS -->|Fetch Keys| POOL
+    
+    API_W -->|1. Upload Text| S3
+    API_W -->|2. Insert Metadata| DB
+    API_W -->|3. Cache| REDIS
+    
+    API_R -->|1. Check Cache| REDIS
+    API_R -->|2. Fetch Metadata| DB
+    API_R -->|3. Fetch Text| S3
+    
+    SWP -.->|Query Expired| DB
+    SWP -.->|Delete Text| S3
+    SWP -.->|Delete Metadata| DB
+
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px;
+    classDef client fill:#d4e6f1,stroke:#2874a6,stroke-width:2px;
+    classDef edge fill:#d5f5e3,stroke:#239b56,stroke-width:2px;
+    classDef compute fill:#fcf3cf,stroke:#b7950b,stroke-width:2px;
+    classDef data fill:#fadbd8,stroke:#b03a2e,stroke-width:2px;
+    classDef worker fill:#e8daef,stroke:#76448a,stroke-width:2px;
+
+    class C client;
+    class CDN,WAF edge;
+    class LB,API_W,API_R compute;
+    class KGS,SWP worker;
+    class REDIS,DB,S3,POOL data;

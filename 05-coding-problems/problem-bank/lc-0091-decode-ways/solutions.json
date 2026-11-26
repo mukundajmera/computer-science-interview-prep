@@ -1,0 +1,52 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-memoized-recursion",
+      "title": "Memoized recursion",
+      "tier": 1,
+      "strategy": "At each index, try a valid one-digit code and a valid two-digit code, caching suffix counts.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each index is solved once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Memoization and recursion depth store up to n entries."
+      },
+      "javaPath": "java/solution-1-memoized-recursion/Solution.java",
+      "pythonPath": "python/solution-1-memoized-recursion/solution.py"
+    },
+    {
+      "id": "solution-2-bottom-up-dp",
+      "title": "Bottom-up DP",
+      "tier": 2,
+      "strategy": "Build counts from the end of the string toward the front.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each position performs constant work."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The DP array stores n+1 suffix counts."
+      },
+      "javaPath": "java/solution-2-bottom-up-dp/Solution.java",
+      "pythonPath": "python/solution-2-bottom-up-dp/solution.py"
+    },
+    {
+      "id": "solution-3-constant-space-dp",
+      "title": "Constant-space DP",
+      "tier": 3,
+      "strategy": "Keep only the next two suffix counts while scanning backward.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each character position is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only two future counts are retained."
+      },
+      "javaPath": "java/solution-3-constant-space-dp/Solution.java",
+      "pythonPath": "python/solution-3-constant-space-dp/solution.py"
+    }
+  ]
+}

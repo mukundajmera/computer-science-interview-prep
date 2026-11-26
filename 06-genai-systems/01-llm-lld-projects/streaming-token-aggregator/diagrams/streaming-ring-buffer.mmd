@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant LLM as Producer (LLM)
+    participant Aggregator as StreamingTokenAggregator
+    participant Client as Consumer (HTTP)
+    
+    LLM->>Aggregator: write_chunk(StreamChunk("Hello"))
+    Note over Aggregator: _buffer[0] = "Hello"<br/>_size=1, _tail=1
+    Aggregator-->>Client: _not_empty.notify_all()
+    
+    LLM->>Aggregator: write_chunk(StreamChunk(" World"))
+    Note over Aggregator: _buffer[1] = " World"<br/>_size=2, _tail=2
+    Aggregator-->>Client: _not_empty.notify_all()
+    
+    Client->>Aggregator: read_stream()
+    Note over Aggregator: chunk = _buffer[0]<br/>_head=1, _size=1
+    Aggregator-->>Client: yield "Hello"
+    
+    Client->>Aggregator: read_stream()
+    Note over Aggregator: chunk = _buffer[1]<br/>_head=2, _size=0
+    Aggregator-->>Client: yield " World"
+    
+    Note over Aggregator: _size == 0
+    Client->>Aggregator: read_stream()
+    Note over Client: wait(timeout=time_left) on _not_empty

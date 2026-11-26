@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-minute-simulation",
+      "title": "Minute-by-minute simulation",
+      "tier": 1,
+      "strategy": "Repeatedly scan the grid for fresh oranges adjacent to a currently rotten orange and mark the next wave.",
+      "timeComplexity": {
+        "class": "O((mn)^2)",
+        "explanation": "Each minute can scan the whole grid, and there can be O(mn) minutes."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The next-wave list can hold many cells."
+      },
+      "javaPath": "java/solution-1-minute-simulation/Solution.java",
+      "pythonPath": "python/solution-1-minute-simulation/solution.py"
+    },
+    {
+      "id": "solution-2-multi-source-bfs",
+      "title": "Multi-source BFS",
+      "tier": 2,
+      "strategy": "Start BFS from every initially rotten orange so each fresh orange is processed at the earliest minute it rots.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Every grid cell is enqueued at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The queue can contain a full layer of grid cells."
+      },
+      "javaPath": "java/solution-2-multi-source-bfs/Solution.java",
+      "pythonPath": "python/solution-2-multi-source-bfs/solution.py"
+    }
+  ]
+}

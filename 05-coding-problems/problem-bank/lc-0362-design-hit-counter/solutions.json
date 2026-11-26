@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-timestamp-queue",
+      "title": "Timestamp queue",
+      "tier": 1,
+      "strategy": "Store one timestamp per hit and evict stale timestamps on query.",
+      "timeComplexity": {
+        "class": "O(H)",
+        "explanation": "A query may remove many stale hits."
+      },
+      "spaceComplexity": {
+        "class": "O(H)",
+        "explanation": "Every hit in the active window can be stored."
+      },
+      "javaPath": "java/solution-1-timestamp-queue/Solution.java",
+      "pythonPath": "python/solution-1-timestamp-queue/solution.py"
+    },
+    {
+      "id": "solution-2-rolling-buckets",
+      "title": "Rolling buckets",
+      "tier": 2,
+      "strategy": "Use 300 circular buckets keyed by timestamp modulo 300.",
+      "timeComplexity": {
+        "class": "O(300)",
+        "explanation": "Each query sums a fixed number of buckets."
+      },
+      "spaceComplexity": {
+        "class": "O(300)",
+        "explanation": "The bucket arrays have fixed size."
+      },
+      "javaPath": "java/solution-2-rolling-buckets/Solution.java",
+      "pythonPath": "python/solution-2-rolling-buckets/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+sequenceDiagram
+    autonumber
+    participant Client
+    participant API
+    participant CandidateGen as Candidate Generation (two-tower)
+    participant Ranker as Scoring & Heavy Ranking
+    participant Filter as Diversity / Deduplication Filter
+
+    Client->>API: User home feed request
+    activate API
+
+    API->>CandidateGen: Fetch candidates
+    activate CandidateGen
+    CandidateGen-->>API: Return candidate set
+    deactivate CandidateGen
+
+    API->>Ranker: Score candidates
+    activate Ranker
+    Ranker-->>API: Return ranked list
+    deactivate Ranker
+
+    API->>Filter: Filter candidates
+    activate Filter
+    Filter-->>API: Return finalized list
+    deactivate Filter
+
+    API-->>Client: Delivery
+    deactivate API

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-build-new-list",
+      "title": "Build a new unique list",
+      "tier": 1,
+      "strategy": "Collect the first value of each sorted run, then build a fresh linked list from those values.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The list is traversed once and a new node is built for each unique value."
+      },
+      "spaceComplexity": {
+        "class": "O(u)",
+        "explanation": "`u` unique values are stored and rebuilt."
+      },
+      "javaPath": "java/solution-1-build-new-list/Solution.java",
+      "pythonPath": "python/solution-1-build-new-list/solution.py"
+    },
+    {
+      "id": "solution-2-in-place-skip",
+      "title": "In-place run skipping",
+      "tier": 2,
+      "strategy": "Walk the list and bypass the next node whenever it has the same value as the current node.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is inspected at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The algorithm rewires existing `next` pointers without auxiliary collections."
+      },
+      "javaPath": "java/solution-2-in-place-skip/Solution.java",
+      "pythonPath": "python/solution-2-in-place-skip/solution.py"
+    }
+  ]
+}

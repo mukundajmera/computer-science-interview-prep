@@ -1,0 +1,51 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "target in rotated right half",
+      "input": {
+        "nums": [
+          10,
+          14,
+          2,
+          4,
+          6,
+          8
+        ],
+        "target": 4
+      },
+      "expected": 3
+    },
+    {
+      "name": "target absent between rotated ranges",
+      "input": {
+        "nums": [
+          10,
+          14,
+          2,
+          4,
+          6,
+          8
+        ],
+        "target": 11
+      },
+      "expected": -1
+    },
+    {
+      "name": "unrotated array",
+      "input": {
+        "nums": [
+          3,
+          6,
+          9,
+          12
+        ],
+        "target": 3
+      },
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "row three",
+      "input": {
+        "rowIndex": 3
+      },
+      "expected": [
+        1,
+        3,
+        3,
+        1
+      ]
+    },
+    {
+      "name": "row zero",
+      "input": {
+        "rowIndex": 0
+      },
+      "expected": [
+        1
+      ]
+    },
+    {
+      "name": "row one",
+      "input": {
+        "rowIndex": 1
+      },
+      "expected": [
+        1,
+        1
+      ]
+    }
+  ]
+}

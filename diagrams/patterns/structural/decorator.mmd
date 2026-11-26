@@ -1,0 +1,41 @@
+%% Decorator Pattern Class Diagram
+%% Attaches additional responsibilities to objects dynamically
+
+classDiagram
+    class Component {
+        <<interface>>
+        +operation() void
+    }
+    
+    class ConcreteComponent {
+        +operation() void
+    }
+    
+    class Decorator {
+        <<abstract>>
+        -component Component
+        +Decorator(Component)
+        +operation() void
+    }
+    
+    class ConcreteDecoratorA {
+        -addedState String
+        +operation() void
+        +addedBehavior() void
+    }
+    
+    class ConcreteDecoratorB {
+        +operation() void
+        +addedBehavior() void
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Component <|.. ConcreteComponent
+    Component <|.. Decorator
+    Decorator <|-- ConcreteDecoratorA
+    Decorator <|-- ConcreteDecoratorB
+    Decorator --> Component : wraps
+    Client --> Component : uses

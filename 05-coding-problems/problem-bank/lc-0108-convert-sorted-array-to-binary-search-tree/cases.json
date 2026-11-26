@@ -1,0 +1,51 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "balanced-bst-from-sorted-array"
+  },
+  "cases": [
+    {
+      "name": "three values",
+      "input": {
+        "nums": [
+          2,
+          5,
+          9
+        ]
+      },
+      "expected": [
+        5,
+        2,
+        9
+      ]
+    },
+    {
+      "name": "empty array",
+      "input": {
+        "nums": []
+      },
+      "expected": []
+    },
+    {
+      "name": "five values with lower segment middles",
+      "input": {
+        "nums": [
+          -8,
+          -3,
+          1,
+          6,
+          11
+        ]
+      },
+      "expected": [
+        1,
+        -8,
+        6,
+        null,
+        -3,
+        null,
+        11
+      ]
+    }
+  ]
+}

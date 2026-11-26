@@ -1,0 +1,16 @@
+stateDiagram-v2
+    [*] --> WAL : Write Request
+    WAL --> MemTable : Append sequentially
+    
+    state MemTable {
+        [*] --> ActiveMemTable : Insert
+        ActiveMemTable --> FrozenMemTable : Size Threshold Reached
+    }
+    
+    FrozenMemTable --> L0_SSTable : Flush to Disk
+    
+    state Disk_Levels {
+        L0_SSTable --> L1_SSTables : Compaction
+        L1_SSTables --> L2_SSTables : Compaction
+        L2_SSTables --> LN_SSTables : Compaction
+    }

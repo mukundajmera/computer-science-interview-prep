@@ -1,0 +1,19 @@
+flowchart TB
+    C[Clients] --> G[API Gateway]
+    C -. WebSocket .-> E[WebSocket Edge]
+    G --> A[Comment API]
+    A --> Q[Quota and Slow-Mode]
+    A --> M[Moderation Precheck]
+    A --> L[(Durable Comment Log)]
+    A --> K[Comment Event Stream]
+    K --> F[Fanout Workers]
+    K --> R[Replay Buffer Writer]
+    K --> DLQ[(DLQ)]
+    F --> E
+    R --> RB[(Hot Replay Buffer)]
+    E --> CR[(Connection Registry)]
+    A --> ID[(Idempotency Store)]
+    M --> AU[(Moderation Audit)]
+    G --> H[Replay/History API]
+    H --> RB
+    H --> L

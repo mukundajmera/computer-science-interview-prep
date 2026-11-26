@@ -1,0 +1,20 @@
+flowchart TB
+    C[Clients and Merchants] --> API[Payments API]
+    API --> OR[Payment Orchestrator]
+
+    OR --> ID[(Idempotency Records)]
+    OR --> PS[(Payment Intent and Transaction Store)]
+    OR --> ES[(Ledger and Event Store)]
+    OR --> OB[(Outbox Queue)]
+
+    OB --> GA[Gateway Adapters]
+    GA --> PG[Payment Gateways]
+    PG --> WH[Webhook Handler]
+
+    WH --> PD[(Provider Event Dedupe)]
+    WH --> OR
+
+    RJ[Reconciliation Jobs] --> PG
+    RJ --> RR[(Reconciliation Records)]
+    RJ --> ES
+    ES --> OD[Ops Dashboard]

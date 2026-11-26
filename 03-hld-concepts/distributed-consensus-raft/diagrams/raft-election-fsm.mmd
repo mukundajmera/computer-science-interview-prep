@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant Follower
+    participant Candidate
+    participant Leader
+    
+    Follower->>Candidate: Election Timeout (random 150-300ms)
+    Note over Candidate: Increment Term<br/>Vote for self<br/>Send RequestVote RPCs
+    
+    alt Wins Election (Majority Votes)
+        Candidate->>Leader: Receives votes from majority
+        Note over Leader: Send AppendEntries (Heartbeats)
+    else Loses Election
+        Candidate->>Follower: Receives AppendEntries from valid Leader
+    else Split Vote (Timeout)
+        Candidate->>Candidate: Election Timeout
+        Note over Candidate: Increment Term<br/>Start new election
+    end
+    
+    Leader->>Follower: Discovers server with higher term
+    Candidate->>Follower: Discovers server with higher term

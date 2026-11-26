@@ -1,0 +1,50 @@
+%% Architecture Diagram for Google Maps
+flowchart TB
+    %% Nodes
+    Client["Mobile Client\n(GPS Batching, Vector GPU Rendering)"]
+    CDN["Global CDN\n(Edge POPs)"]
+    Gateway["API Gateway"]
+    S3["Amazon S3\n(70 PB Precomputed Map Tiles)"]
+
+    %% Telemetry Write Path
+    Kafka["Apache Kafka\n(High Throughput Buffer)"]
+    Flink["Apache Flink\n(Stream Processing / Map Matching)"]
+    Cassandra[("Cassandra\n(Raw Telemetry DB)")]
+    
+    %% Routing Read Path
+    RouteService["Route Service\n(Contraction Hierarchies)"]
+    Redis["Redis Cache\n(Active Nav Sessions)"]
+    GraphCache[("In-Memory Route Graph\n(Live Speeds & Topology)")]
+    RerouteService["Reroute Service\n(Session Updates)"]
+
+    %% Edges
+    Client -- "1. Request Tiles (QuadTree z/x/y)" --> CDN
+    CDN -- "2. Cache Miss / Pull Tiles" --> S3
+    
+    Client -- "3. Telemetry Sync (Every 15s)" --> Gateway
+    Gateway -- "4. Enqueue GPS Batches" --> Kafka
+    Kafka -- "5. Consume Streams" --> Flink
+    
+    Flink -- "6. Persist Raw Data" --> Cassandra
+    Flink -- "7. Update Live Traffic/Speeds" --> GraphCache
+    Flink -- "8. Trigger Congestion Alert" --> RerouteService
+
+    Client -- "9. Request Route (A -> B)" --> Gateway
+    Gateway -- "10. Route Query" --> RouteService
+    RouteService -- "11. Graph Search (CH)" --> GraphCache
+    RouteService -- "12. Store Session State" --> Redis
+    
+    RerouteService -- "13. Check Active Sessions" --> Redis
+    RerouteService -- "14. Push Reroute via WS" --> Gateway
+    Gateway -- "15. New ETA/Path" --> Client
+
+    %% Styling
+    classDef storage fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef process fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef streaming fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
+    classDef client fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+
+    class S3,Cassandra,Redis,GraphCache storage;
+    class Gateway,RouteService,RerouteService process;
+    class Kafka,Flink streaming;
+    class Client,CDN client;

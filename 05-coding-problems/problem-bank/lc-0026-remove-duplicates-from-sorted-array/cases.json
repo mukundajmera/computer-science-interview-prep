@@ -1,0 +1,30 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "middle duplicates collapse",
+      "input": { "nums": [1, 2, 2, 2, 5, 5, 9] },
+      "expected": 4,
+      "expectedMutations": { "nums": { "prefix": [1, 2, 5, 9], "lengthFrom": "return" } }
+    },
+    {
+      "name": "negative and zero groups",
+      "input": { "nums": [-3, -3, -1, 0, 0, 4] },
+      "expected": 4,
+      "expectedMutations": { "nums": { "prefix": [-3, -1, 0, 4], "lengthFrom": "return" } }
+    },
+    {
+      "name": "all entries identical",
+      "input": { "nums": [8, 8, 8] },
+      "expected": 1,
+      "expectedMutations": { "nums": { "prefix": [8], "lengthFrom": "return" } }
+    },
+    {
+      "name": "already unique",
+      "input": { "nums": [1, 2, 3, 4] },
+      "expected": 4,
+      "expectedMutations": { "nums": { "prefix": [1, 2, 3, 4], "lengthFrom": "return" } }
+    }
+  ]
+}

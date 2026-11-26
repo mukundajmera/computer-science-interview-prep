@@ -1,0 +1,36 @@
+sequenceDiagram
+    participant Client
+    participant GW as API Gateway
+    participant SearchSvc as Location Search Service
+    participant BizSvc as Business Profile Service
+    participant RedisGeohash as Redis (Geohash)
+    participant RedisCache as Redis (Profile)
+    participant DB as PostgreSQL
+    participant Kafka as Message Queue
+    participant Worker as Index Worker
+
+    %% Read Path (Search)
+    Client->>GW: GET /search/nearby?lat,lng,radius
+    GW->>SearchSvc: Forward Search Request
+    SearchSvc->>SearchSvc: Calculate Geohash & 8 Neighbors
+    SearchSvc->>RedisGeohash: MGET business_ids for 9 Geohashes
+    RedisGeohash-->>SearchSvc: Return List of business_ids
+    SearchSvc->>RedisCache: MGET Profiles for business_ids
+    RedisCache-->>SearchSvc: Return Business Profiles
+    SearchSvc->>SearchSvc: Filter exact distance, Sort, Apply category/rating filters
+    SearchSvc-->>GW: Return Top N Results
+    GW-->>Client: Return Search Results
+
+    %% Write Path (Business Profile Update)
+    Client->>GW: POST /businesses (Update Profile)
+    GW->>BizSvc: Forward Update Request
+    BizSvc->>DB: Update Business Profile
+    DB-->>BizSvc: Success
+    BizSvc-->>GW: Return Success
+    GW-->>Client: Return Success
+    BizSvc->>Kafka: Publish Update Event (CDC / Event)
+    
+    %% Async Index Update
+    Kafka->>Worker: Consume Update Event
+    Worker->>RedisGeohash: Update Geohash sets
+    Worker->>RedisCache: Invalidate / Update Profile Hash

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-seen-set",
+      "title": "Seen set cycle detection",
+      "tier": 1,
+      "strategy": "Store transformed values and stop when one is reached or a value repeats.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each transform processes the current digits; the sequence quickly enters a bounded cycle for base 10 integers."
+      },
+      "spaceComplexity": {
+        "class": "O(log n)",
+        "explanation": "The seen set stores generated values until termination."
+      },
+      "javaPath": "java/solution-1-seen-set/Solution.java",
+      "pythonPath": "python/solution-1-seen-set/solution.py"
+    },
+    {
+      "id": "solution-2-floyd-cycle",
+      "title": "Floyd cycle detection",
+      "tier": 2,
+      "strategy": "Advance one transformed value by one step and another by two steps until they meet or one reaches one.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "The same bounded transform sequence is followed with constant extra state."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only slow and fast values are stored."
+      },
+      "javaPath": "java/solution-2-floyd-cycle/Solution.java",
+      "pythonPath": "python/solution-2-floyd-cycle/solution.py"
+    }
+  ]
+}

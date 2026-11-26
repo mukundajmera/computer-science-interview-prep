@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-start-each-window",
+      "title": "Start each unique window",
+      "tier": 1,
+      "strategy": "Try each start index and extend until a duplicate appears.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each starting position can scan a suffix before stopping on a duplicate or the end."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The seen set stores at most one current duplicate-free window of k distinct characters."
+      },
+      "javaPath": "java/solution-1-start-each-window/Solution.java",
+      "pythonPath": "python/solution-1-start-each-window/solution.py"
+    },
+    {
+      "id": "solution-2-last-seen-window",
+      "title": "Sliding window with last seen positions",
+      "tier": 2,
+      "strategy": "Move the left boundary past the previous copy of the current character.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The right boundary advances once per character and left only moves forward."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The map stores the latest index for each distinct character in the processed prefix."
+      },
+      "javaPath": "java/solution-2-last-seen-window/Solution.java",
+      "pythonPath": "python/solution-2-last-seen-window/solution.py"
+    }
+  ]
+}

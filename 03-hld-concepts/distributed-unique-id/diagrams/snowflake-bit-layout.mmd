@@ -1,0 +1,40 @@
+block-beta
+  columns 64
+  
+  %% Sign Bit (1 bit)
+  %% Represents 1 column width
+  block:sign_bit:1
+    S["0"]
+  end
+  
+  %% Timestamp (41 bits)
+  %% Represents 41 columns width
+  block:timestamp:41
+    T["Millisecond Timestamp (41 bits)"]
+  end
+  
+  %% Datacenter ID (5 bits)
+  %% Represents 5 columns width
+  block:datacenter:5
+    DC["DC (5 bits)"]
+  end
+  
+  %% Worker ID (5 bits)
+  %% Represents 5 columns width
+  block:worker:5
+    W["Worker (5 bits)"]
+  end
+  
+  %% Sequence (12 bits)
+  %% Represents 12 columns width
+  block:sequence:12
+    SEQ["Sequence (12 bits)"]
+  end
+  
+  %% Total = 1 + 41 + 5 + 5 + 12 = 64
+  
+  style S fill:#ff9999,stroke:#333,stroke-width:2px
+  style T fill:#99ccff,stroke:#333,stroke-width:2px
+  style DC fill:#ffcc99,stroke:#333,stroke-width:2px
+  style W fill:#ffcc99,stroke:#333,stroke-width:2px
+  style SEQ fill:#99ff99,stroke:#333,stroke-width:2px

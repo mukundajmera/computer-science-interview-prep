@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant A as Node A
+    participant B as Node B
+    participant C as Node C
+
+    Note over A: Initial [0,0,0]
+    Note over B: Initial [0,0,0]
+    Note over C: Initial [0,0,0]
+
+    A->>A: Local Event 1 (A)
+    Note over A: V_A = [1,0,0]
+
+    A->>B: Send Msg (V_A=[1,0,0])
+    B->>B: Receive Msg
+    Note over B: V_B = max([0,0,0], [1,0,0]) + [0,1,0]<br/>V_B = [1,1,0]
+
+    C->>C: Local Event 2 (C)
+    Note over C: V_C = [0,0,1]
+
+    B->>C: Send Msg (V_B=[1,1,0])
+    C->>C: Receive Msg
+    Note over C: V_C = max([0,0,1], [1,1,0]) + [0,0,1]<br/>V_C = [1,1,2]
+
+    C->>A: Send Msg (V_C=[1,1,2])
+    A->>A: Receive Msg
+    Note over A: V_A = max([1,0,0], [1,1,2]) + [1,0,0]<br/>V_A = [2,1,2]
+
+    Note over B,C: Concurrent Event Check<br/>Node B has [1,1,0]<br/>Node C has [0,0,1] (Before receive)<br/>These are concurrent!

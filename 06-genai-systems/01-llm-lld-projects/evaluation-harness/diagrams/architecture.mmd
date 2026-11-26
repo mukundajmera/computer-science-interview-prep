@@ -1,0 +1,35 @@
+flowchart TD
+    subgraph Test_Case_Loader [Test Case Loader]
+        TC[Test Cases] --> TS[Test Suite]
+        TS --> Filter[Tag Filter]
+    end
+
+    subgraph Model_Adapter_Registry [Model Adapter Registry]
+        Registry[Adapter Registry]
+        Registry --> Echo[Echo Adapter]
+        Registry --> Static[Static Adapter]
+        Registry --> API[API Adapter]
+    end
+
+    subgraph Metric_Evaluators_Pipeline [Metric Evaluators Pipeline]
+        MP[Metrics Pipeline]
+        MP --> EM[Exact Match]
+        MP --> Ngram[N-Gram Overlap]
+        MP --> KP[Keyword Presence]
+        MP --> LC[Length Compliance]
+        MP --> Custom[Custom Metric]
+    end
+
+    subgraph Runner_and_Scoring [Runner and Scoring]
+        Filter --> ER[Evaluation Runner]
+        Registry --> ER
+        ER --> MP
+        ER --> RES[Evaluation Result]
+    end
+
+    subgraph Aggregator_Scorecard_Reporter [Aggregator Scorecard Reporter]
+        RES --> REP[Evaluation Report]
+        REP --> CMP[Report Comparer]
+        Baseline[Baseline Report] --> CMP
+        CMP --> DIFF[Regression / Drift Alert]
+    end

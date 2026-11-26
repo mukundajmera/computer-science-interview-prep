@@ -1,0 +1,5 @@
+flowchart TD
+    User --> API_Gateway
+    API_Gateway --> Text2SQL_Service
+    Text2SQL_Service --> Schema_Retrieval
+    Text2SQL_Service --> LLM_Model

@@ -1,0 +1,44 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "several duplicate runs",
+      "input": {
+        "head": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          4
+        ]
+      },
+      "expected": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "name": "single node",
+      "input": {
+        "head": [
+          5
+        ]
+      },
+      "expected": [
+        5
+      ]
+    },
+    {
+      "name": "empty list",
+      "input": {
+        "head": null
+      },
+      "expected": null
+    }
+  ]
+}

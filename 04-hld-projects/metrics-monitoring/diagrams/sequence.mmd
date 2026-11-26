@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant Agent as StatsD / OpenTelemetry Agent
+    participant Collector as Collector Queue
+    participant Aggregator as TimeSeries Downsampling Aggregator
+    participant TSDB as TSDB Storage
+    participant Evaluator as Alert Rule Evaluator
+    participant PagerDuty as PagerDuty
+
+    Agent->>Collector: push(metrics)
+    Collector->>Aggregator: dequeue(metrics)
+    Aggregator->>Aggregator: downsample()
+    Aggregator->>TSDB: write(time_series_buckets)
+    Evaluator->>TSDB: query(recent_metrics)
+    TSDB-->>Evaluator: return(results)
+    Evaluator->>Evaluator: check_thresholds(results)
+    Evaluator->>PagerDuty: trigger_alert()

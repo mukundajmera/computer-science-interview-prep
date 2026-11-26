@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "word bends around corner", "input": { "board": [["C", "O", "D"], ["A", "T", "E"], ["R", "S", "N"]], "word": "COTS" }, "expected": true },
+    { "name": "word absent despite letters", "input": { "board": [["A", "B"], ["C", "D"]], "word": "ABCD" }, "expected": false },
+    { "name": "single cell match", "input": { "board": [["Z"]], "word": "Z" }, "expected": true },
+    { "name": "cannot reuse same cell", "input": { "board": [["A", "B"], ["C", "D"]], "word": "ABA" }, "expected": false },
+    { "name": "vertical path", "input": { "board": [["H", "I"], ["A", "R"], ["T", "S"]], "word": "HAT" }, "expected": true }
+  ]
+}

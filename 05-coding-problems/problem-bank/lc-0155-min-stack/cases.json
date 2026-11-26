@@ -1,0 +1,35 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "minimum recovers after top value removal",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "push", "input": { "val": 5 }, "expected": null },
+        { "type": "call", "method": "push", "input": { "val": 2 }, "expected": null },
+        { "type": "call", "method": "push", "input": { "val": 7 }, "expected": null },
+        { "type": "call", "method": "getMin", "input": {}, "expected": 2 },
+        { "type": "call", "method": "pop", "input": {}, "expected": null },
+        { "type": "call", "method": "top", "input": {}, "expected": 2 },
+        { "type": "call", "method": "getMin", "input": {}, "expected": 2 },
+        { "type": "call", "method": "pop", "input": {}, "expected": null },
+        { "type": "call", "method": "getMin", "input": {}, "expected": 5 }
+      ]
+    },
+    {
+      "name": "duplicate minimum values",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "push", "input": { "val": 4 }, "expected": null },
+        { "type": "call", "method": "push", "input": { "val": 1 }, "expected": null },
+        { "type": "call", "method": "push", "input": { "val": 1 }, "expected": null },
+        { "type": "call", "method": "getMin", "input": {}, "expected": 1 },
+        { "type": "call", "method": "pop", "input": {}, "expected": null },
+        { "type": "call", "method": "getMin", "input": {}, "expected": 1 },
+        { "type": "call", "method": "pop", "input": {}, "expected": null },
+        { "type": "call", "method": "top", "input": {}, "expected": 4 }
+      ]
+    }
+  ]
+}

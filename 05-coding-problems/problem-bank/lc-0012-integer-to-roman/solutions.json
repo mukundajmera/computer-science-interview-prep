@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-descending-symbol-table",
+      "title": "Descending symbol table",
+      "tier": 1,
+      "strategy": "Repeatedly append the largest Roman token that fits into the remaining value.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "The value range and symbol table are fixed, so the loop has a bounded number of appends."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The output size is bounded by the fixed Roman numeral input range."
+      },
+      "javaPath": "java/solution-1-descending-symbol-table/Solution.java",
+      "pythonPath": "python/solution-1-descending-symbol-table/solution.py"
+    },
+    {
+      "id": "solution-2-place-value-lookup",
+      "title": "Place-value lookup arrays",
+      "tier": 2,
+      "strategy": "Choose the precomputed Roman fragment for each decimal place and concatenate thousands, hundreds, tens, and ones.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "Exactly four place lookups are performed."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The lookup tables and bounded output use constant space."
+      },
+      "javaPath": "java/solution-2-place-value-lookup/Solution.java",
+      "pythonPath": "python/solution-2-place-value-lookup/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-repeated-pair-merge",
+      "title": "Repeated pair merging",
+      "tier": 1,
+      "strategy": "Repeatedly scan for any overlapping pair, merge it, and restart until stable.",
+      "timeComplexity": { "class": "O(n^3)", "explanation": "There can be O(n) merge rounds and each round can compare O(n^2) interval pairs." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "A mutable list of intervals stores the working set." },
+      "javaPath": "java/solution-1-repeated-pair-merge/Solution.java",
+      "pythonPath": "python/solution-1-repeated-pair-merge/solution.py"
+    },
+    {
+      "id": "solution-2-sort-one-pass",
+      "title": "Sort and merge in one pass",
+      "tier": 2,
+      "strategy": "Sort intervals by start, then extend the previous merged interval when ranges overlap.",
+      "timeComplexity": { "class": "O(n log n)", "explanation": "Sorting dominates; the merge pass is linear." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The merged output can contain all intervals." },
+      "javaPath": "java/solution-2-sort-one-pass/Solution.java",
+      "pythonPath": "python/solution-2-sort-one-pass/solution.py"
+    }
+  ]
+}

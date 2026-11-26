@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dfs-map",
+      "title": "DFS clone with map",
+      "tier": 1,
+      "strategy": "Recursively clone each discovered node and store the original-to-copy mapping before traversing neighbors.",
+      "timeComplexity": {
+        "class": "O(V + E)",
+        "explanation": "Every node is cloned once and every neighbor reference is inspected once."
+      },
+      "spaceComplexity": {
+        "class": "O(V)",
+        "explanation": "The clone map stores one entry per node, and recursion can hold up to V stack frames in a chain-shaped graph."
+      },
+      "javaPath": "java/solution-1-dfs-map/Solution.java",
+      "pythonPath": "python/solution-1-dfs-map/solution.py"
+    },
+    {
+      "id": "solution-2-bfs-map",
+      "title": "BFS clone with queue",
+      "tier": 2,
+      "strategy": "Use a queue to discover nodes iteratively, creating clones on first sight and appending cloned neighbors in fixture order.",
+      "timeComplexity": {
+        "class": "O(V + E)",
+        "explanation": "Queue processing visits every node once and scans all adjacency entries."
+      },
+      "spaceComplexity": {
+        "class": "O(V)",
+        "explanation": "The map and queue store cloned or pending nodes proportional to the number of vertices."
+      },
+      "javaPath": "java/solution-2-bfs-map/Solution.java",
+      "pythonPath": "python/solution-2-bfs-map/solution.py"
+    }
+  ]
+}

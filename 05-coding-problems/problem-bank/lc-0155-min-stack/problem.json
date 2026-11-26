@@ -1,0 +1,108 @@
+{
+  "id": "lc-0155-min-stack",
+  "title": "Min Stack",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "stack",
+    "design"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-two-stacks/Solution.java",
+      "java/solution-2-encoded-min-stack/Solution.java",
+      "python/solution-1-two-stacks/solution.py",
+      "python/solution-2-encoded-min-stack/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 31,
+      "group": "stack",
+      "sourceUrl": "https://leetcode.com/problems/min-stack"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 54,
+      "group": "Stack",
+      "sourceUrl": "https://leetcode.com/problems/min-stack"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 266,
+      "group": "Stack",
+      "sourceUrl": "https://leetcode.com/problems/min-stack"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "155",
+    "titleSlug": "min-stack",
+    "url": "https://leetcode.com/problems/min-stack",
+    "paidOnly": false
+  },
+  "signature": {
+    "kind": "object",
+    "java": {
+      "className": "MinStack",
+      "constructor": { "parameters": [] },
+      "methods": [
+        { "name": "push", "returnType": "void", "parameters": [{ "name": "val", "type": "int" }] },
+        { "name": "pop", "returnType": "void", "parameters": [] },
+        { "name": "top", "returnType": "int", "parameters": [] },
+        { "name": "getMin", "returnType": "int", "parameters": [] }
+      ]
+    },
+    "python": {
+      "className": "MinStack",
+      "constructor": { "parameters": [] },
+      "methods": [
+        { "name": "push", "returnType": "None", "parameters": [{ "name": "val", "type": "int" }] },
+        { "name": "pop", "returnType": "None", "parameters": [] },
+        { "name": "top", "returnType": "int", "parameters": [] },
+        { "name": "getMin", "returnType": "int", "parameters": [] }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

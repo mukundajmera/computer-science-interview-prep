@@ -1,0 +1,6 @@
+graph LR;
+  A[Original Query] --> B[LLM];
+  B --> C[Hypothetical Document];
+  C --> D[Embedding Model];
+  D --> E[Vector DB Search];
+  E --> F[Retrieved Real Docs];

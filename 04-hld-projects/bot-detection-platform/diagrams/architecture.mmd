@@ -1,0 +1,37 @@
+flowchart LR
+    E[User Action Event] --> S[Signal Ingest]
+    S --> F[(Feature Store)]
+    F --> U[Supervised Risk Scorer]
+    F --> N[Novelty/Anomaly Detector]
+    U --> C[Decision Calibrator]
+    N --> C
+    C --> O[Remediation Orchestrator]
+    O --> G[Product Gate]
+    C --> Q[Investigator Queue]
+    Q --> T[Investigator Tooling]
+    O --> A[(Audit + Timeline Store)]
+    A --> M[Campaign Monitor]
+
+    subgraph Evaluation
+        U
+        N
+        C
+    end
+
+    subgraph Remediation
+        O
+        G
+    end
+
+    subgraph Feedback Loop
+        T
+        A
+        M
+    end
+
+    %% Feedback paths from step 5: "Investigator outcomes and delayed signals feed model updates"
+    T -.->|Labels| U
+    M -.->|Delayed Signals| F
+
+    %% Failure boundaries / Guardrails from Deep Dives C
+    O -.->|False-Positive Guardrails Breached| B[Rollback/Canary Stop]

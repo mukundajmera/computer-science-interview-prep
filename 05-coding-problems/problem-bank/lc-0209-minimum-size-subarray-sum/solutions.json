@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-all-starts",
+      "title": "Try every start",
+      "tier": 1,
+      "strategy": "For each start index, extend right until the target sum is reached or the array ends.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each start index may scan the remaining suffix."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the running sum and best length are stored."
+      },
+      "javaPath": "java/solution-1-all-starts/Solution.java",
+      "pythonPath": "python/solution-1-all-starts/solution.py"
+    },
+    {
+      "id": "solution-2-sliding-window",
+      "title": "Positive-number sliding window",
+      "tier": 2,
+      "strategy": "Expand right to reach the target, then shrink left while the target still holds.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Both left and right pointers move forward at most n times."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only pointers, running sum, and best length are stored."
+      },
+      "javaPath": "java/solution-2-sliding-window/Solution.java",
+      "pythonPath": "python/solution-2-sliding-window/solution.py"
+    }
+  ]
+}

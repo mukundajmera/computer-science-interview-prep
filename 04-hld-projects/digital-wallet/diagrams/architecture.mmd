@@ -1,0 +1,27 @@
+graph TD
+    Client[Client Apps] --> API_GW[API Gateway]
+    API_GW --> Idempotency[(Idempotency Cache)]
+    API_GW --> Orchestrator[Transfer Orchestrator]
+
+    Orchestrator -- "1. TRY (Hold Funds)" --> Shard1[Raft Group 1: Source]
+    Orchestrator -- "2. TRY (Validate Dest)" --> Shard2[Raft Group 2: Destination]
+    Orchestrator -- "3. CONFIRM (Deduct)" --> Shard1
+    Orchestrator -- "4. CONFIRM (Credit)" --> Shard2
+
+    subgraph Shard 1 Internals
+        Shard1 --> WAL1[(Write-Ahead Log)]
+        WAL1 --> LSM1[(LSM State: RocksDB)]
+        LSM1 -.-> AccountsTable1[Accounts View]
+        LSM1 -.-> LedgerTable1[Ledger Entries]
+    end
+
+    subgraph Shard 2 Internals
+        Shard2 --> WAL2[(Write-Ahead Log)]
+        WAL2 --> LSM2[(LSM State: RocksDB)]
+        LSM2 -.-> AccountsTable2[Accounts View]
+        LSM2 -.-> LedgerTable2[Ledger Entries]
+    end
+
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px;
+    classDef storage fill:#ffdfba,stroke:#333,stroke-width:1px;
+    class Idempotency,WAL1,WAL2,LSM1,LSM2 storage;

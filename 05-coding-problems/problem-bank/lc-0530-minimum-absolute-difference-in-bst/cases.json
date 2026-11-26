@@ -1,0 +1,57 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "uniform gaps",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          6,
+          10,
+          14
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "closest values inside left subtree",
+      "input": {
+        "root": [
+          50,
+          25,
+          75,
+          10,
+          40,
+          60,
+          90,
+          null,
+          null,
+          30,
+          45
+        ]
+      },
+      "expected": 5
+    },
+    {
+      "name": "minimum near lower edge",
+      "input": {
+        "root": [
+          3,
+          1,
+          8,
+          null,
+          2,
+          6,
+          10
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

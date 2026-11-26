@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-scan",
+      "title": "Recursive region scan",
+      "tier": 1,
+      "strategy": "For each square region, scan all cells to decide if it is uniform; otherwise recursively build four quadrants.",
+      "timeComplexity": {
+        "class": "O(n^2 log n)",
+        "explanation": "At each recursion depth, region scans cover O(n^2) cells in total, and there are O(log n) levels for an n by n grid."
+      },
+      "spaceComplexity": {
+        "class": "O(log n)",
+        "explanation": "The recursion depth is logarithmic in the side length, excluding the required output tree."
+      },
+      "javaPath": "java/solution-1-recursive-scan/Solution.java",
+      "pythonPath": "python/solution-1-recursive-scan/solution.py"
+    },
+    {
+      "id": "solution-2-prefix-sum",
+      "title": "Prefix-sum uniformity checks",
+      "tier": 2,
+      "strategy": "Precompute a 2D prefix sum so each region can be classified as all zeroes, all ones, or mixed in constant time.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "The prefix table costs O(n^2), and the recursive build creates a number of nodes bounded by the grid cells."
+      },
+      "spaceComplexity": {
+        "class": "O(n^2)",
+        "explanation": "The prefix-sum table stores one integer per grid coordinate, excluding the output tree."
+      },
+      "javaPath": "java/solution-2-prefix-sum/Solution.java",
+      "pythonPath": "python/solution-2-prefix-sum/solution.py"
+    }
+  ]
+}

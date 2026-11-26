@@ -1,0 +1,67 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list-of-lists"
+  },
+  "cases": [
+    {
+      "name": "reuse and pair",
+      "input": {
+        "candidates": [
+          3,
+          4,
+          5
+        ],
+        "target": 9
+      },
+      "expected": [
+        [
+          3,
+          3,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "name": "single and repeated options",
+      "input": {
+        "candidates": [
+          2,
+          6,
+          8
+        ],
+        "target": 8
+      },
+      "expected": [
+        [
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8
+        ]
+      ]
+    },
+    {
+      "name": "no combination",
+      "input": {
+        "candidates": [
+          7,
+          10
+        ],
+        "target": 6
+      },
+      "expected": []
+    }
+  ]
+}

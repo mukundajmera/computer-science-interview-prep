@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-expand-each-start",
+      "title": "Expand each start",
+      "tier": 1,
+      "strategy": "For every left boundary, extend right while tracking the minimum height in that span.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "There are O(n^2) contiguous spans to evaluate."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the running minimum and best area are stored."
+      },
+      "javaPath": "java/solution-1-expand-each-start/Solution.java",
+      "pythonPath": "python/solution-1-expand-each-start/solution.py"
+    },
+    {
+      "id": "solution-2-monotonic-stack",
+      "title": "Monotonic stack",
+      "tier": 2,
+      "strategy": "Maintain increasing bar indices; when a shorter bar appears, finalize rectangles for taller bars.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each bar is pushed and popped at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The stack can hold all increasing indices."
+      },
+      "javaPath": "java/solution-2-monotonic-stack/Solution.java",
+      "pythonPath": "python/solution-2-monotonic-stack/solution.py"
+    }
+  ]
+}

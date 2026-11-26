@@ -1,0 +1,48 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "four rows alphabet segment",
+      "input": {
+        "s": "ABCDEFGHIJK",
+        "numRows": 4
+      },
+      "expected": "AGBFHCEIKDJ"
+    },
+    {
+      "name": "single row unchanged",
+      "input": {
+        "s": "SYSTEM",
+        "numRows": 1
+      },
+      "expected": "SYSTEM"
+    },
+    {
+      "name": "two rows alternate",
+      "input": {
+        "s": "CODING",
+        "numRows": 2
+      },
+      "expected": "CDNOIG"
+    },
+    {
+      "name": "rows exceed length",
+      "input": {
+        "s": "DATA",
+        "numRows": 6
+      },
+      "expected": "DATA"
+    },
+    {
+      "name": "three rows compact",
+      "input": {
+        "s": "INTERVIEW",
+        "numRows": 3
+      },
+      "expected": "IRWNEVETI"
+    }
+  ]
+}

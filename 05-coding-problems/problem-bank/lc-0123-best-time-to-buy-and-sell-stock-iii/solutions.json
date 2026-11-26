@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-prefix-suffix-profits",
+      "title": "Prefix and suffix one-transaction profits",
+      "tier": 1,
+      "strategy": "Precompute the best single transaction ending by each day and starting from each day, then combine the split.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The prices are scanned forward once and backward once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Two arrays store best one-transaction profits for every split point."
+      },
+      "javaPath": "java/solution-1-prefix-suffix-profits/Solution.java",
+      "pythonPath": "python/solution-1-prefix-suffix-profits/solution.py"
+    },
+    {
+      "id": "solution-2-four-state-scan",
+      "title": "Four-state scan",
+      "tier": 2,
+      "strategy": "Track the best cash position after first buy, first sell, second buy, and second sell.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each price updates four scalar states once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only four states are stored."
+      },
+      "javaPath": "java/solution-2-four-state-scan/Solution.java",
+      "pythonPath": "python/solution-2-four-state-scan/solution.py"
+    }
+  ]
+}

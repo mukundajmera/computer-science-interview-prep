@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bitmask-set",
+      "title": "Bitmask with set dedupe",
+      "tier": 1,
+      "strategy": "Generate every index subset and store sorted value rows in a set.",
+      "timeComplexity": {
+        "class": "O(2^n * n)",
+        "explanation": "All masks are inspected and each row can cost linear time to copy."
+      },
+      "spaceComplexity": {
+        "class": "O(2^n * n)",
+        "explanation": "The dedupe set can store every unique subset."
+      },
+      "javaPath": "java/solution-1-bitmask-set/Solution.java",
+      "pythonPath": "python/solution-1-bitmask-set/solution.py"
+    },
+    {
+      "id": "solution-2-sorted-backtracking",
+      "title": "Sorted backtracking skip",
+      "tier": 2,
+      "strategy": "Sort first, then skip equal values already considered at the same depth.",
+      "timeComplexity": {
+        "class": "O(a * n)",
+        "explanation": "`a` unique subsets are emitted and copied."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Ignoring output, the path and recursion stack are linear."
+      },
+      "javaPath": "java/solution-2-sorted-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-sorted-backtracking/solution.py"
+    }
+  ]
+}

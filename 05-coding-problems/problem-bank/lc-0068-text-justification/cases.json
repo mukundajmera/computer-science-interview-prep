@@ -1,0 +1,68 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "uneven interior gaps",
+      "input": {
+        "words": [
+          "Fit",
+          "words",
+          "well"
+        ],
+        "maxWidth": 10
+      },
+      "expected": [
+        "Fit  words",
+        "well      "
+      ]
+    },
+    {
+      "name": "one word per line",
+      "input": {
+        "words": [
+          "Short",
+          "line"
+        ],
+        "maxWidth": 8
+      },
+      "expected": [
+        "Short   ",
+        "line    "
+      ]
+    },
+    {
+      "name": "three line paragraph",
+      "input": {
+        "words": [
+          "alpha",
+          "beta",
+          "gamma",
+          "delta",
+          "pi"
+        ],
+        "maxWidth": 14
+      },
+      "expected": [
+        "alpha     beta",
+        "gamma delta pi"
+      ]
+    },
+    {
+      "name": "last line with gaps",
+      "input": {
+        "words": [
+          "one",
+          "two",
+          "three"
+        ],
+        "maxWidth": 13
+      },
+      "expected": [
+        "one two three"
+      ]
+    }
+  ]
+}

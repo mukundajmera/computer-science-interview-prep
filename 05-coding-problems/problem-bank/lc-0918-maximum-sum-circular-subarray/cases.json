@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "wrap beats middle",
+      "input": {
+        "nums": [
+          6,
+          -2,
+          4,
+          -1
+        ]
+      },
+      "expected": 9
+    },
+    {
+      "name": "all negative picks least bad",
+      "input": {
+        "nums": [
+          -8,
+          -3,
+          -5
+        ]
+      },
+      "expected": -3
+    },
+    {
+      "name": "non wrapping best",
+      "input": {
+        "nums": [
+          3,
+          -1,
+          2,
+          -1
+        ]
+      },
+      "expected": 4
+    }
+  ]
+}

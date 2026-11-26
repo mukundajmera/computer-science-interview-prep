@@ -1,0 +1,55 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "net left",
+      "input": {
+        "s": "abcdef",
+        "shift": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      },
+      "expected": "cdefab"
+    },
+    {
+      "name": "full rotation",
+      "input": {
+        "s": "abc",
+        "shift": [
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      "expected": "abc"
+    },
+    {
+      "name": "net right",
+      "input": {
+        "s": "hello",
+        "shift": [
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      "expected": "lohel"
+    }
+  ]
+}

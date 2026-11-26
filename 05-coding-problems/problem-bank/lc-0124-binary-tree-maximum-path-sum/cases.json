@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "root connects useful branches",
+      "input": {
+        "root": [
+          4,
+          -2,
+          6,
+          -1,
+          3,
+          5,
+          7
+        ]
+      },
+      "expected": 18
+    },
+    {
+      "name": "single negative node",
+      "input": {
+        "root": [
+          -3
+        ]
+      },
+      "expected": -3
+    },
+    {
+      "name": "right branch wins",
+      "input": {
+        "root": [
+          2,
+          -1,
+          3
+        ]
+      },
+      "expected": 5
+    }
+  ]
+}

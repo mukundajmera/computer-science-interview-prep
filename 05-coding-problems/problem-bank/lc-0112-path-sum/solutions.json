@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-remaining-sum",
+      "title": "Recursive remaining sum",
+      "tier": 1,
+      "strategy": "Subtract node values on descent and test the remaining sum at leaves.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is visited once until a matching path is found."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack grows with tree height h."
+      },
+      "javaPath": "java/solution-1-recursive-remaining-sum/Solution.java",
+      "pythonPath": "python/solution-1-recursive-remaining-sum/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-node-sums",
+      "title": "Iterative node sums",
+      "tier": 2,
+      "strategy": "Carry each node with the sum accumulated to that node.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is pushed and popped at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The explicit stack follows pending root-to-node paths and is height-sized for skewed trees."
+      },
+      "javaPath": "java/solution-2-iterative-node-sums/Solution.java",
+      "pythonPath": "python/solution-2-iterative-node-sums/solution.py"
+    }
+  ]
+}

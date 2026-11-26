@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-used-array-backtracking",
+      "title": "Used-array backtracking",
+      "tier": 1,
+      "strategy": "Track which input indices have been used in the current permutation.",
+      "timeComplexity": {
+        "class": "O(n! n)",
+        "explanation": "There are n! permutations and each result copies n values."
+      },
+      "spaceComplexity": {
+        "class": "O(n! n)",
+        "explanation": "The output dominates; path and used flags use O(n)."
+      },
+      "javaPath": "java/solution-1-used-array-backtracking/Solution.java",
+      "pythonPath": "python/solution-1-used-array-backtracking/solution.py"
+    },
+    {
+      "id": "solution-2-in-place-swaps",
+      "title": "In-place swaps",
+      "tier": 2,
+      "strategy": "Swap each remaining value into the current position, recurse, then swap back.",
+      "timeComplexity": {
+        "class": "O(n! n)",
+        "explanation": "All n! permutations are emitted and copied."
+      },
+      "spaceComplexity": {
+        "class": "O(n! n)",
+        "explanation": "The output dominates; recursion depth is O(n)."
+      },
+      "javaPath": "java/solution-2-in-place-swaps/Solution.java",
+      "pythonPath": "python/solution-2-in-place-swaps/solution.py"
+    }
+  ]
+}

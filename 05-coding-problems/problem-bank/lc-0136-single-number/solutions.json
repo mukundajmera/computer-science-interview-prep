@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-set-cancellation",
+      "title": "Set cancellation",
+      "tier": 1,
+      "strategy": "Toggle each value in a set so duplicate values cancel out and the final set contains the answer.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each array value performs one average-case set operation."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The set can hold up to half of the array values before cancellations finish."
+      },
+      "javaPath": "java/solution-1-set-cancellation/Solution.java",
+      "pythonPath": "python/solution-1-set-cancellation/solution.py"
+    },
+    {
+      "id": "solution-2-xor-cancellation",
+      "title": "XOR cancellation",
+      "tier": 2,
+      "strategy": "XOR all values; paired values cancel to zero and leave the lone value.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The array is scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only one accumulator is maintained."
+      },
+      "javaPath": "java/solution-2-xor-cancellation/Solution.java",
+      "pythonPath": "python/solution-2-xor-cancellation/solution.py"
+    }
+  ]
+}

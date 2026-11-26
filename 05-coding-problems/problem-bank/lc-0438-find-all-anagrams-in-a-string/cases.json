@@ -1,0 +1,85 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two separated matches",
+      "input": {
+        "s": "cbaebabacd",
+        "p": "abc"
+      },
+      "expected": [
+        0,
+        6
+      ]
+    },
+    {
+      "name": "overlapping matches",
+      "input": {
+        "s": "abab",
+        "p": "ab"
+      },
+      "expected": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "pattern longer than text",
+      "input": {
+        "s": "ab",
+        "p": "abcd"
+      },
+      "expected": []
+    },
+    {
+      "name": "repeated letters",
+      "input": {
+        "s": "baa",
+        "p": "aa"
+      },
+      "expected": [
+        1
+      ]
+    },
+    {
+      "name": "all windows match",
+      "input": {
+        "s": "aaaaa",
+        "p": "aa"
+      },
+      "expected": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "repeated-letter near misses",
+      "input": {
+        "s": "aaabaaa",
+        "p": "aaa"
+      },
+      "expected": [
+        0,
+        4
+      ]
+    },
+    {
+      "name": "overlapping repeated-letter matches",
+      "input": {
+        "s": "abababab",
+        "p": "aab"
+      },
+      "expected": [
+        0,
+        2,
+        4
+      ]
+    }
+  ]
+}

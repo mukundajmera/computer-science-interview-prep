@@ -1,0 +1,52 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "cooldown creates idle slots",
+      "input": {
+        "tasks": [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "C"
+        ],
+        "n": 2
+      },
+      "expected": 7
+    },
+    {
+      "name": "enough variety fills every gap",
+      "input": {
+        "tasks": [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B",
+          "C",
+          "C"
+        ],
+        "n": 1
+      },
+      "expected": 8
+    },
+    {
+      "name": "zero cooldown",
+      "input": {
+        "tasks": [
+          "A",
+          "A",
+          "B"
+        ],
+        "n": 0
+      },
+      "expected": 3
+    }
+  ]
+}

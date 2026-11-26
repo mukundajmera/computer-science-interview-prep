@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-scan",
+      "title": "Linear scan",
+      "tier": 1,
+      "strategy": "Check versions from left to right until the first bad version appears.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The scan may inspect every version."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only loop counters are stored."
+      },
+      "javaPath": "java/solution-1-linear-scan/Solution.java",
+      "pythonPath": "python/solution-1-linear-scan/solution.py"
+    },
+    {
+      "id": "solution-2-binary-search",
+      "title": "Binary search",
+      "tier": 2,
+      "strategy": "Use the monotonic predicate to shrink toward the first true version.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each oracle check halves the remaining range."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only search bounds are stored."
+      },
+      "javaPath": "java/solution-2-binary-search/Solution.java",
+      "pythonPath": "python/solution-2-binary-search/solution.py"
+    }
+  ]
+}

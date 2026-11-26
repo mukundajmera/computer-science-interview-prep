@@ -1,0 +1,32 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "choose two from four",
+      "input": {
+        "s": "aaaa",
+        "t": "aa"
+      },
+      "expected": 6
+    },
+    {
+      "name": "target too long",
+      "input": {
+        "s": "abc",
+        "t": "abcd"
+      },
+      "expected": 0
+    },
+    {
+      "name": "empty target",
+      "input": {
+        "s": "abc",
+        "t": ""
+      },
+      "expected": 1
+    }
+  ]
+}

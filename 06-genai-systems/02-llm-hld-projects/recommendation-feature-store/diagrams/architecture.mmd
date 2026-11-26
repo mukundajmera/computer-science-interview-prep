@@ -1,0 +1,20 @@
+graph TD
+    Client --> API[API Gateway]
+    API --> RecService[Recommendation Service]
+    RecService --> Retrieval[Two-Tower Retrieval]
+    RecService --> Ranker[Deep Ranking Model]
+    RecService --> LLM[LLM Reranker]
+    
+    Retrieval --> VectorDB[(Vector DB)]
+    Ranker --> OnlineStore[(Online Feature Store)]
+    
+    Streaming[Stream Processing / Flink] --> OnlineStore
+    Streaming --> VectorDB
+    
+    Batch[Batch Processing / Spark] --> OfflineStore[(Offline Feature Store)]
+    Batch --> OnlineStore
+    
+    OfflineStore -.Point-in-Time Join.-> Training[Model Training]
+    Training --> ModelRegistry[Model Registry]
+    ModelRegistry --> Ranker
+    ModelRegistry --> Retrieval

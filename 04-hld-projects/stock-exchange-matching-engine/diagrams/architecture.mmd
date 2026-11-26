@@ -1,0 +1,43 @@
+flowchart TD
+    %% Define styles
+    classDef client fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef gateway fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef core fill:#fbb,stroke:#333,stroke-width:2px;
+    classDef data fill:#bfb,stroke:#333,stroke-width:2px;
+
+    %% Client Layer
+    Client["Client / Broker"]:::client
+    MarketDataSub["Market Data Subscriber"]:::client
+
+    %% Gateway Layer
+    FIXGateway["FIX / API Gateway"]:::gateway
+    RiskEngine["Pre-Trade Risk Engine"]:::gateway
+
+    %% Core Matching Layer
+    Sequencer["Sequencer (Multicast)"]:::core
+    Primary["Primary Matching Engine"]:::core
+    Standby["Hot Standby Matching Engine"]:::core
+
+    %% Data / Publishing Layer
+    Journal["Persister / Journaling"]:::data
+    MarketDataPub["Market Data Publisher"]:::data
+    Database[("End of Day DB")]:::data
+
+    %% Connections
+    Client -- "Place/Cancel Order" --> FIXGateway
+    FIXGateway -- "Validate" --> RiskEngine
+    RiskEngine -- "Validated Order" --> Sequencer
+    
+    Sequencer -- "Sequenced Order Log" --> Primary
+    Sequencer -- "Sequenced Order Log" --> Standby
+    Sequencer -- "Sequenced Order Log" --> Journal
+
+    Primary -- "Execution / Fills" --> FIXGateway
+    Primary -- "Order Book Deltas" --> MarketDataPub
+    
+    Standby -. "Execution (Dropped/Ignored)" .-> FIXGateway
+    
+    FIXGateway -- "Execution Report" --> Client
+    MarketDataPub -- "L2 Depth / Trades" --> MarketDataSub
+    
+    Journal -- "Replication / DR" --> Database

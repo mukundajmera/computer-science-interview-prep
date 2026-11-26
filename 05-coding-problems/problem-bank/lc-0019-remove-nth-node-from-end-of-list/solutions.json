@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-copy-excluding-target",
+      "title": "Copy values except the target",
+      "tier": 1,
+      "strategy": "Copy all values into an array, skip the index that must be removed, then build a new linked list.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The input is scanned once to collect values and the rebuilt list is produced with another linear pass." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The value array and rebuilt chain scale with the number of input nodes." },
+      "javaPath": "java/solution-1-copy-excluding-target/Solution.java",
+      "pythonPath": "python/solution-1-copy-excluding-target/solution.py"
+    },
+    {
+      "id": "solution-2-two-pointer-gap",
+      "title": "Two-pointer gap deletion",
+      "tier": 2,
+      "strategy": "Move a fast pointer n nodes ahead, then advance fast and slow together so slow stops before the node to delete.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The fast pointer advances through the list once, and the slow pointer follows within that same traversal." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "A dummy node and two pointers are enough to unlink the target node in place." },
+      "javaPath": "java/solution-2-two-pointer-gap/Solution.java",
+      "pythonPath": "python/solution-2-two-pointer-gap/solution.py"
+    }
+  ]
+}

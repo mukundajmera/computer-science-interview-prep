@@ -1,0 +1,31 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "two separated climbs",
+      "input": { "k": 2, "prices": [1, 5, 2, 8, 4, 9] },
+      "expected": 12
+    },
+    {
+      "name": "single transaction limit",
+      "input": { "k": 1, "prices": [1, 5, 2, 8] },
+      "expected": 7
+    },
+    {
+      "name": "unlimited shortcut",
+      "input": { "k": 100, "prices": [1, 2, 3, 4] },
+      "expected": 3
+    },
+    {
+      "name": "zero transactions",
+      "input": { "k": 0, "prices": [1, 9, 2, 8] },
+      "expected": 0
+    },
+    {
+      "name": "empty prices",
+      "input": { "k": 3, "prices": [] },
+      "expected": 0
+    }
+  ]
+}

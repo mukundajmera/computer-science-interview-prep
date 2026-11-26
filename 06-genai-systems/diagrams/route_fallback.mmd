@@ -1,0 +1,4 @@
+graph LR;
+  A[Primary Model] --> B{Fails?};
+  B -- Yes --> C[Fallback Model];
+  B -- No --> D[Response];

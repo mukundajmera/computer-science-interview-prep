@@ -1,0 +1,56 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "late compact window",
+      "input": {
+        "s": "figehaeci",
+        "t": "aei"
+      },
+      "expected": "aeci"
+    },
+    {
+      "name": "single character target",
+      "input": {
+        "s": "ab",
+        "t": "b"
+      },
+      "expected": "b"
+    },
+    {
+      "name": "duplicate source letters",
+      "input": {
+        "s": "aabbcc",
+        "t": "abc"
+      },
+      "expected": "abbc"
+    },
+    {
+      "name": "missing target",
+      "input": {
+        "s": "short",
+        "t": "longer"
+      },
+      "expected": ""
+    },
+    {
+      "name": "duplicate target letters",
+      "input": {
+        "s": "baaac",
+        "t": "aac"
+      },
+      "expected": "aac"
+    },
+    {
+      "name": "empty target",
+      "input": {
+        "s": "abc",
+        "t": ""
+      },
+      "expected": ""
+    }
+  ]
+}

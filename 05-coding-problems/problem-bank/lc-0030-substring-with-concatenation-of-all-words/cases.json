@@ -1,0 +1,61 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two arrangements",
+      "input": {
+        "s": "redblublured",
+        "words": [
+          "red",
+          "blu"
+        ]
+      },
+      "expected": [
+        0,
+        6
+      ]
+    },
+    {
+      "name": "overlapping repeated words",
+      "input": {
+        "s": "aaaaaa",
+        "words": [
+          "aa",
+          "aa"
+        ]
+      },
+      "expected": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "one late match",
+      "input": {
+        "s": "mossreedpinefern",
+        "words": [
+          "pine",
+          "fern"
+        ]
+      },
+      "expected": [
+        8
+      ]
+    },
+    {
+      "name": "no complete block",
+      "input": {
+        "s": "mossfernreed",
+        "words": [
+          "moss",
+          "bark"
+        ]
+      },
+      "expected": []
+    }
+  ]
+}

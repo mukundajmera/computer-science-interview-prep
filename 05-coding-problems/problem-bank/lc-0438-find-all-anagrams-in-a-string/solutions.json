@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sorted-windows",
+      "title": "Sorted windows",
+      "tier": 1,
+      "strategy": "Sort the pattern once, sort each same-length window, and collect matching starts.",
+      "timeComplexity": {
+        "class": "O((n-m+1) * m log m)",
+        "explanation": "Each of the n-m+1 windows of length m is sorted before comparison."
+      },
+      "spaceComplexity": {
+        "class": "O(m)",
+        "explanation": "A sorted copy of one window and the pattern are stored during comparison."
+      },
+      "javaPath": "java/solution-1-sorted-windows/Solution.java",
+      "pythonPath": "python/solution-1-sorted-windows/solution.py"
+    },
+    {
+      "id": "solution-2-sliding-frequency",
+      "title": "Sliding frequency",
+      "tier": 2,
+      "strategy": "Maintain fixed-size character counts for the current window and update them as the window slides.",
+      "timeComplexity": {
+        "class": "O(n + a)",
+        "explanation": "The scan touches each text character a constant number of times, with a fixed alphabet-size comparison."
+      },
+      "spaceComplexity": {
+        "class": "O(a)",
+        "explanation": "Two frequency arrays store counts for the alphabet."
+      },
+      "javaPath": "java/solution-2-sliding-frequency/Solution.java",
+      "pythonPath": "python/solution-2-sliding-frequency/solution.py"
+    }
+  ]
+}

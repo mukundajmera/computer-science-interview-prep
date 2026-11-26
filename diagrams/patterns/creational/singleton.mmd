@@ -1,0 +1,19 @@
+%% Singleton Pattern Class Diagram
+%% Ensures a class has only one instance with global access point
+
+classDiagram
+    class Singleton {
+        -static Singleton instance
+        -Singleton()
+        +static getInstance() Singleton
+        +businessMethod() void
+        +getData() Object
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Client --> Singleton : uses getInstance()
+    
+    note for Singleton "Private constructor prevents\ndirect instantiation.\nStatic method provides\nglobal access point."

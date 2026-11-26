@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-copy-values",
+      "title": "Copy values into a reversed chain",
+      "tier": 1,
+      "strategy": "Collect node values into an array, then build a new linked list while reading that array from right to left.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The algorithm scans the input chain once and rebuilds one node for each collected value." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The value array and rebuilt chain both scale with the number of nodes." },
+      "javaPath": "java/solution-1-copy-values/Solution.java",
+      "pythonPath": "python/solution-1-copy-values/solution.py"
+    },
+    {
+      "id": "solution-2-pointer-reversal",
+      "title": "In-place pointer reversal",
+      "tier": 2,
+      "strategy": "Walk the chain once, reversing each node's next pointer toward the already-reversed prefix.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Each node is visited and rewired exactly once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only previous, current, and next references are maintained while the existing nodes are reused." },
+      "javaPath": "java/solution-2-pointer-reversal/Solution.java",
+      "pythonPath": "python/solution-2-pointer-reversal/solution.py"
+    }
+  ]
+}

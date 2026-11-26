@@ -1,0 +1,30 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "branches become preorder right chain",
+      "input": { "root": [8, 3, 10, 1, 6, null, 14, null, null, 4, 7] },
+      "expected": null,
+      "expectedMutations": {
+        "root": [8, null, 3, null, 1, null, 6, null, 4, null, 7, null, 10, null, 14]
+      }
+    },
+    {
+      "name": "already right leaning",
+      "input": { "root": [2, null, 5, null, 9] },
+      "expected": null,
+      "expectedMutations": {
+        "root": [2, null, 5, null, 9]
+      }
+    },
+    {
+      "name": "empty tree",
+      "input": { "root": [] },
+      "expected": null,
+      "expectedMutations": {
+        "root": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list-of-lists"
+  },
+  "cases": [
+    {
+      "name": "several groups",
+      "input": {
+        "strings": [
+          "abc",
+          "bcd",
+          "acef",
+          "xyz",
+          "az",
+          "ba",
+          "a",
+          "z"
+        ]
+      },
+      "expected": [
+        [
+          "abc",
+          "bcd",
+          "xyz"
+        ],
+        [
+          "acef"
+        ],
+        [
+          "az",
+          "ba"
+        ],
+        [
+          "a",
+          "z"
+        ]
+      ]
+    },
+    {
+      "name": "single pattern",
+      "input": {
+        "strings": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "expected": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ]
+    }
+  ]
+}

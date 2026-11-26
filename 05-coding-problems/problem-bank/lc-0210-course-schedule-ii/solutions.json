@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dfs-postorder",
+      "title": "DFS postorder",
+      "tier": 1,
+      "strategy": "Detect cycles with DFS state and append courses after descendants, then reverse the postorder.",
+      "timeComplexity": {
+        "class": "O(V+E)",
+        "explanation": "Each course and prerequisite edge is traversed at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(V+E)",
+        "explanation": "The adjacency list, state array, recursion stack, and output order are stored."
+      },
+      "javaPath": "java/solution-1-dfs-postorder/Solution.java",
+      "pythonPath": "python/solution-1-dfs-postorder/solution.py"
+    },
+    {
+      "id": "solution-2-kahn-queue",
+      "title": "Kahn queue",
+      "tier": 2,
+      "strategy": "Emit zero-indegree courses while decrementing dependent indegrees; incomplete output means a cycle.",
+      "timeComplexity": {
+        "class": "O(V+E)",
+        "explanation": "Each course is queued once and each prerequisite edge is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(V+E)",
+        "explanation": "The adjacency list, indegrees, queue, and result are stored."
+      },
+      "javaPath": "java/solution-2-kahn-queue/Solution.java",
+      "pythonPath": "python/solution-2-kahn-queue/solution.py"
+    }
+  ]
+}

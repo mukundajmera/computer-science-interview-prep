@@ -1,0 +1,6 @@
+graph TD;
+  A[Query] --> B[Retriever];
+  B --> C[Vector DB];
+  C --> D[Ranker];
+  D --> E[Generator];
+  E --> F[Response];

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bfs-level-direction",
+      "title": "BFS with alternating inserts",
+      "tier": 1,
+      "strategy": "Process one queue level at a time and append values to the front on right-to-left levels.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is dequeued once and each value is inserted into exactly one level list."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The returned levels store n values; auxiliary queue space is O(w) for the maximum tree width."
+      },
+      "javaPath": "java/solution-1-bfs-level-direction/Solution.java",
+      "pythonPath": "python/solution-1-bfs-level-direction/solution.py"
+    },
+    {
+      "id": "solution-2-dfs-depth-buckets",
+      "title": "DFS depth buckets",
+      "tier": 2,
+      "strategy": "Create one bucket per depth and place values at the front for odd depths.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "DFS visits each node once and performs O(1) bucket insertion with linked/deque buckets."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The returned levels store n values; auxiliary recursion stack space is O(h)."
+      },
+      "javaPath": "java/solution-2-dfs-depth-buckets/Solution.java",
+      "pythonPath": "python/solution-2-dfs-depth-buckets/solution.py"
+    }
+  ]
+}

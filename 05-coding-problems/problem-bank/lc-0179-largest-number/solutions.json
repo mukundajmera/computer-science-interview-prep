@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-exhaustive-permutations",
+      "title": "Exhaustive permutations",
+      "tier": 1,
+      "strategy": "Try every ordering and keep the lexicographically largest concatenation.",
+      "timeComplexity": {
+        "class": "O(n! * d)",
+        "explanation": "Every permutation is materialized and compared, with d total digits."
+      },
+      "spaceComplexity": {
+        "class": "O(n + d)",
+        "explanation": "The recursion path and candidate string are stored."
+      },
+      "javaPath": "java/solution-1-exhaustive-permutations/Solution.java",
+      "pythonPath": "python/solution-1-exhaustive-permutations/solution.py"
+    },
+    {
+      "id": "solution-2-concatenation-sort",
+      "title": "Concatenation sort",
+      "tier": 2,
+      "strategy": "Sort string values by which concatenation order produces a larger pairwise result.",
+      "timeComplexity": {
+        "class": "O(n log n * d)",
+        "explanation": "Sorting performs comparator calls that compare concatenations of digit strings."
+      },
+      "spaceComplexity": {
+        "class": "O(n + d)",
+        "explanation": "String copies and the final concatenation are stored."
+      },
+      "javaPath": "java/solution-2-concatenation-sort/Solution.java",
+      "pythonPath": "python/solution-2-concatenation-sort/solution.py"
+    }
+  ]
+}

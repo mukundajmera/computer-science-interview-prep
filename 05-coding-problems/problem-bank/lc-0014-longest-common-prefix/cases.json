@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "shared short prefix", "input": { "strs": ["system", "synthesis", "syntax"] }, "expected": "sy" },
+    { "name": "no common start", "input": { "strs": ["alpha", "beta", "gamma"] }, "expected": "" },
+    { "name": "single string", "input": { "strs": ["standalone"] }, "expected": "standalone" },
+    { "name": "one empty string", "input": { "strs": ["code", "", "codec"] }, "expected": "" },
+    { "name": "longer shared prefix", "input": { "strs": ["interview", "internet", "interval"] }, "expected": "inter" }
+  ]
+}

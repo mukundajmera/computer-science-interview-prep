@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-search-from-each-cell",
+      "title": "Search from each cell",
+      "tier": 1,
+      "strategy": "For every cell, run a DFS downhill to see whether both border sets can be reached.",
+      "timeComplexity": {
+        "class": "O((mn)^2)",
+        "explanation": "Each cell can explore much of the grid."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "A visited set is needed per search."
+      },
+      "javaPath": "java/solution-1-search-from-each-cell/Solution.java",
+      "pythonPath": "python/solution-1-search-from-each-cell/solution.py"
+    },
+    {
+      "id": "solution-2-reverse-border-dfs",
+      "title": "Reverse border DFS",
+      "tier": 2,
+      "strategy": "Start from each ocean border and move uphill; cells reached by both traversals are answers.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each ocean traversal visits each cell at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "Two reachability matrices and traversal stack are stored."
+      },
+      "javaPath": "java/solution-2-reverse-border-dfs/Solution.java",
+      "pythonPath": "python/solution-2-reverse-border-dfs/solution.py"
+    }
+  ]
+}

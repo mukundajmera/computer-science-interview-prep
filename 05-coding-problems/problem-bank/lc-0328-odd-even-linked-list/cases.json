@@ -1,0 +1,183 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "five nodes alternate",
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": [
+        1,
+        3,
+        5,
+        2,
+        4
+      ],
+      "linkedListContract": {
+        "result": {
+          "from": "head",
+          "nodeIndices": [
+            0,
+            2,
+            4,
+            1,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "name": "seven nodes",
+      "input": {
+        "head": [
+          2,
+          1,
+          3,
+          5,
+          6,
+          4,
+          7
+        ]
+      },
+      "expected": [
+        2,
+        3,
+        6,
+        7,
+        1,
+        5,
+        4
+      ],
+      "linkedListContract": {
+        "result": {
+          "from": "head",
+          "nodeIndices": [
+            0,
+            2,
+            4,
+            6,
+            1,
+            3,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "name": "empty list",
+      "input": {
+        "head": null
+      },
+      "expected": null
+    },
+    {
+      "name": "single node",
+      "input": {
+        "head": [
+          1
+        ]
+      },
+      "expected": [
+        1
+      ],
+      "linkedListContract": {
+        "result": {
+          "from": "head",
+          "nodeIndices": [
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "two nodes unchanged",
+      "input": {
+        "head": [
+          1,
+          2
+        ]
+      },
+      "expected": [
+        1,
+        2
+      ],
+      "linkedListContract": {
+        "result": {
+          "from": "head",
+          "nodeIndices": [
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "name": "three nodes move middle after tail",
+      "input": {
+        "head": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": [
+        1,
+        3,
+        2
+      ],
+      "linkedListContract": {
+        "result": {
+          "from": "head",
+          "nodeIndices": [
+            0,
+            2,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "name": "six nodes preserve group order",
+      "input": {
+        "head": [
+          10,
+          20,
+          30,
+          40,
+          50,
+          60
+        ]
+      },
+      "expected": [
+        10,
+        30,
+        50,
+        20,
+        40,
+        60
+      ],
+      "linkedListContract": {
+        "result": {
+          "from": "head",
+          "nodeIndices": [
+            0,
+            2,
+            4,
+            1,
+            3,
+            5
+          ]
+        }
+      }
+    }
+  ]
+}

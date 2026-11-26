@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "mixed low bits",
+      "input": {
+        "n": 29
+      },
+      "expected": 4
+    },
+    {
+      "name": "single high bit",
+      "input": {
+        "n": 256
+      },
+      "expected": 1
+    },
+    {
+      "name": "all positive bits set",
+      "input": {
+        "n": 2147483647
+      },
+      "expected": 31
+    },
+    {
+      "name": "all signed bits set",
+      "input": {
+        "n": -1
+      },
+      "expected": 32
+    },
+    {
+      "name": "sign bit only",
+      "input": {
+        "n": -2147483648
+      },
+      "expected": 1
+    }
+  ]
+}

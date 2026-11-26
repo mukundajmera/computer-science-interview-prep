@@ -1,0 +1,45 @@
+erDiagram
+    MetricDefinitions {
+        string metric_id PK
+        string name
+        string description
+        string type
+        string unit
+    }
+
+    Dimensions {
+        string dimension_id PK
+        string metric_id FK
+        string key
+        string value
+    }
+
+    TimeSeriesChunks {
+        string chunk_id PK
+        string metric_id FK
+        timestamp start_time
+        timestamp end_time
+        json data_points
+        string resolution
+    }
+
+    AlertConfigs {
+        string alert_id PK
+        string metric_id FK
+        string condition
+        float threshold
+        string window_size
+        string notification_channel
+    }
+
+    Dashboards {
+        string dashboard_id PK
+        string name
+        string owner_id
+        json layout
+    }
+
+    MetricDefinitions ||--o{ Dimensions : has
+    MetricDefinitions ||--o{ TimeSeriesChunks : records
+    MetricDefinitions ||--o{ AlertConfigs : triggers
+    Dashboards }o--o{ MetricDefinitions : displays

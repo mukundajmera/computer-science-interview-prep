@@ -1,0 +1,36 @@
+stateDiagram-v2
+    direction TB
+    [*] --> CreateOrder: Start Saga
+
+    state "Order Service" as OS {
+        CreateOrder: Create Order (PENDING)
+    }
+
+    state "Payment Service" as PS {
+        ProcessPayment: Process Payment (Compensable)
+        RefundPayment: Refund Payment (Compensation)
+    }
+
+    state "Inventory Service" as IS {
+        ReserveInventory: Reserve Inventory (Pivot)
+    }
+
+    state "Shipping Service" as SS {
+        ScheduleShipping: Schedule Shipping (Retriable)
+    }
+
+    CreateOrder --> ProcessPayment: OrderCreatedEvent
+    ProcessPayment --> ReserveInventory: PaymentProcessedEvent
+    ReserveInventory --> ScheduleShipping: InventoryReservedEvent
+    ScheduleShipping --> OrderCompleted: ShippingScheduledEvent
+    
+    OrderCompleted: Update Order (COMPLETED)
+    OrderCompleted --> [*]
+
+    %% Failure Path
+    ProcessPayment --> OrderFailed: PaymentFailed
+    ReserveInventory --> RefundPayment: InventoryFailed (Trigger Compensation)
+    RefundPayment --> OrderFailed: PaymentRefunded
+
+    OrderFailed: Update Order (CANCELLED)
+    OrderFailed --> [*]

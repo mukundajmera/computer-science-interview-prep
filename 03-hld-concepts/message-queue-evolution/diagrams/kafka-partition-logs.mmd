@@ -1,0 +1,20 @@
+graph LR
+    subgraph Topic: Orders
+        subgraph Partition 0
+            P0_0[Offset 0] --> P0_1[Offset 1] --> P0_2[Offset 2] --> P0_3[Offset 3]
+        end
+        subgraph Partition 1
+            P1_0[Offset 0] --> P1_1[Offset 1] --> P1_2[Offset 2]
+        end
+    end
+
+    Producer -->|Hash(Key) % 2| Partition 0
+    Producer -->|Hash(Key) % 2| Partition 1
+
+    subgraph Consumer Group A
+        C1[Consumer 1] -.->|Reads| P0_2
+        C2[Consumer 2] -.->|Reads| P1_1
+    end
+
+    C1 -->|Commits Offset 2| OffsetTopic[(__consumer_offsets)]
+    C2 -->|Commits Offset 1| OffsetTopic

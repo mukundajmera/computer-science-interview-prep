@@ -1,0 +1,57 @@
+erDiagram
+    DarkStores {
+        string store_id PK
+        string location
+        string status
+    }
+
+    InventoryUnits {
+        string sku_id PK
+        string store_id FK
+        int quantity
+    }
+
+    Orders {
+        string order_id PK
+        string store_id FK
+        string customer_id
+        string status
+        string created_at
+    }
+
+    OrderItems {
+        string item_id PK
+        string order_id FK
+        string sku_id
+        int quantity
+    }
+
+    Pickers {
+        string picker_id PK
+        string store_id FK
+        string status
+    }
+
+    Riders {
+        string rider_id PK
+        string status
+        string current_location
+    }
+
+    GPSPings {
+        string ping_id PK
+        string rider_id FK
+        string order_id FK
+        float lat
+        float lng
+        string timestamp
+    }
+
+    DarkStores ||--o{ InventoryUnits : "stocks"
+    DarkStores ||--o{ Orders : "fulfills"
+    DarkStores ||--o{ Pickers : "employs"
+    Orders ||--|{ OrderItems : "contains"
+    Pickers ||--o{ Orders : "picks"
+    Riders ||--o{ Orders : "delivers"
+    Riders ||--o{ GPSPings : "generates"
+    Orders ||--o{ GPSPings : "tracks"

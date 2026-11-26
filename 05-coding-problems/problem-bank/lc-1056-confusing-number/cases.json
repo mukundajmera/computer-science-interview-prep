@@ -1,0 +1,29 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "rotates to different number",
+      "input": {
+        "n": 6
+      },
+      "expected": true
+    },
+    {
+      "name": "invalid digit",
+      "input": {
+        "n": 25
+      },
+      "expected": false
+    },
+    {
+      "name": "same after rotation",
+      "input": {
+        "n": 11
+      },
+      "expected": false
+    }
+  ]
+}

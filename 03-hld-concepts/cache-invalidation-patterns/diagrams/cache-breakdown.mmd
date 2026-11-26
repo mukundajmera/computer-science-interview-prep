@@ -1,0 +1,39 @@
+sequenceDiagram
+    participant Clients
+    participant API
+    participant Cache
+    participant Mutex as Distributed Lock
+    participant DB
+
+    Note over Clients,DB: Cache Breakdown (Thundering Herd) & Singleflight Mitigation
+    
+    Note over Cache: Key "viral_tweet_123" Expires
+    
+    par 1000 Concurrent Requests
+        Clients->>API: GET /tweet/123
+        API->>Cache: GET "viral_tweet_123"
+        Cache-->>API: Miss
+    end
+    
+    Note over API: All threads attempt to acquire lock
+    
+    API->>Mutex: Try Acquire Lock "lock:tweet_123"
+    
+    alt Thread 1 (Wins Lock)
+        Mutex-->>API: Lock Acquired
+        API->>DB: Query Tweet 123 (Only 1 query hits DB!)
+        DB-->>API: Tweet Data
+        API->>Cache: SET "viral_tweet_123" = Data
+        API->>Mutex: Release Lock
+        API-->>Clients: Return Data
+    else Thread 2-1000 (Lose Lock)
+        Mutex-->>API: Lock Failed
+        Note over API: Threads wait/poll for cache population
+        loop Retry Cache
+            API->>Cache: GET "viral_tweet_123"
+            alt After Thread 1 Completes
+                Cache-->>API: Tweet Data (Hit)
+            end
+        end
+        API-->>Clients: Return Data
+    end

@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-stack-evaluator",
+      "title": "Stack evaluator",
+      "tier": 1,
+      "strategy": "Push operands and apply each operator to the last two values.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every token is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The operand stack can hold many pending values."
+      },
+      "javaPath": "java/solution-1-stack-evaluator/Solution.java",
+      "pythonPath": "python/solution-1-stack-evaluator/solution.py"
+    }
+  ]
+}

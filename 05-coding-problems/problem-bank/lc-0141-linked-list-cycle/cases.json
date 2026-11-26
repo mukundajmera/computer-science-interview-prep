@@ -1,0 +1,36 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "cycle to middle node",
+      "input": { "head": { "values": [6, 1, 8, 5], "cycleTo": 2 } },
+      "expected": true
+    },
+    {
+      "name": "tail points to head",
+      "input": { "head": { "values": [4, 7], "cycleTo": 0 } },
+      "expected": true
+    },
+    {
+      "name": "single node self cycle",
+      "input": { "head": { "values": [9], "cycleTo": 0 } },
+      "expected": true
+    },
+    {
+      "name": "plain multi node chain",
+      "input": { "head": [1, 2, 3, 4] },
+      "expected": false
+    },
+    {
+      "name": "duplicate values without cycle",
+      "input": { "head": [5, 5] },
+      "expected": false
+    },
+    {
+      "name": "empty chain",
+      "input": { "head": null },
+      "expected": false
+    }
+  ]
+}

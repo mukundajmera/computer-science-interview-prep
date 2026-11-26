@@ -1,0 +1,57 @@
+erDiagram
+    ModerationEvents {
+        string content_id PK
+        string actor_id
+        datetime created_at
+        string surface
+    }
+
+    ModelScores {
+        string score_id PK
+        string content_id FK
+        string model_version
+        float risk_score
+        float confidence
+        string features_ref
+    }
+
+    PolicyDecisions {
+        string decision_id PK
+        string content_id FK
+        string action
+        string reasons
+        string policy_version
+        datetime decided_at
+    }
+
+    ReviewTasks {
+        string task_id PK
+        string content_id FK
+        int priority
+        string status
+        string assigned_to
+        datetime created_at
+    }
+
+    ReviewerVotes {
+        string vote_id PK
+        string task_id FK
+        string reviewer_id
+        string decision
+        string reason
+        datetime voted_at
+    }
+
+    AuditRecords {
+        string audit_id PK
+        string content_id FK
+        string timeline
+        string final_action
+        datetime recorded_at
+    }
+
+    ModerationEvents ||--o{ ModelScores : "evaluated into"
+    ModerationEvents ||--o| PolicyDecisions : "results in"
+    ModerationEvents ||--o| ReviewTasks : "escalated to"
+    ModerationEvents ||--o| AuditRecords : "logged as"
+    ReviewTasks ||--o{ ReviewerVotes : "collects"

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-all-triples",
+      "title": "All triples",
+      "tier": 1,
+      "strategy": "Check every triple and keep the sum with the smallest absolute difference to target.",
+      "timeComplexity": {
+        "class": "O(n^3)",
+        "explanation": "Every combination of three indices can be evaluated."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the best sum and loop counters are stored."
+      },
+      "javaPath": "java/solution-1-all-triples/Solution.java",
+      "pythonPath": "python/solution-1-all-triples/solution.py"
+    },
+    {
+      "id": "solution-2-sort-two-pointers",
+      "title": "Sort and two pointers",
+      "tier": 2,
+      "strategy": "Fix one value, then move two pointers inward to approach the target.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Sorting costs O(n log n), then each fixed index runs a linear two-pointer scan."
+      },
+      "spaceComplexity": {
+        "class": "O(log n)",
+        "explanation": "Sorting may use recursion stack space."
+      },
+      "javaPath": "java/solution-2-sort-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-sort-two-pointers/solution.py"
+    }
+  ]
+}

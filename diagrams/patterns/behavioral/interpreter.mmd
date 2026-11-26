@@ -1,0 +1,48 @@
+%% Interpreter Pattern Class Diagram
+%% Defines grammar representation and interpreter for a language
+
+classDiagram
+    class AbstractExpression {
+        <<interface>>
+        +interpret(Context) Object
+    }
+    
+    class TerminalExpression {
+        -data String
+        +interpret(Context) Object
+    }
+    
+    class NonterminalExpression {
+        -expressions List~AbstractExpression~
+        +interpret(Context) Object
+    }
+    
+    class AndExpression {
+        -expr1 AbstractExpression
+        -expr2 AbstractExpression
+        +interpret(Context) Object
+    }
+    
+    class OrExpression {
+        -expr1 AbstractExpression
+        -expr2 AbstractExpression
+        +interpret(Context) Object
+    }
+    
+    class Context {
+        -variables Map~String, Object~
+        +lookup(String) Object
+        +assign(String, Object) void
+    }
+    
+    class Client {
+        +buildSyntaxTree() AbstractExpression
+    }
+    
+    AbstractExpression <|.. TerminalExpression
+    AbstractExpression <|.. NonterminalExpression
+    NonterminalExpression <|-- AndExpression
+    NonterminalExpression <|-- OrExpression
+    NonterminalExpression o--> AbstractExpression : contains
+    Client --> AbstractExpression : builds & interprets
+    AbstractExpression ..> Context : uses

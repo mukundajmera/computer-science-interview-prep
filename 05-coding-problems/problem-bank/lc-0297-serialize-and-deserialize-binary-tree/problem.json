@@ -1,0 +1,139 @@
+{
+  "id": "lc-0297-serialize-and-deserialize-binary-tree",
+  "title": "Serialize and Deserialize Binary Tree",
+  "difficulty": "hard",
+  "status": "verified",
+  "patterns": [
+    "tree",
+    "depth-first-search",
+    "design"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 43,
+      "group": "binary-tree",
+      "sourceUrl": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 473,
+      "group": "Trees",
+      "sourceUrl": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "297",
+    "titleSlug": "serialize-and-deserialize-binary-tree",
+    "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "kind": "object",
+    "java": {
+      "className": "Codec",
+      "constructor": {
+        "parameters": []
+      },
+      "methods": [
+        {
+          "name": "serialize",
+          "returnType": "String",
+          "parameters": [
+            {
+              "name": "root",
+              "type": "TreeNode"
+            }
+          ]
+        },
+        {
+          "name": "deserialize",
+          "returnType": "TreeNode",
+          "parameters": [
+            {
+              "name": "data",
+              "type": "String"
+            }
+          ]
+        }
+      ]
+    },
+    "python": {
+      "className": "Codec",
+      "constructor": {
+        "parameters": []
+      },
+      "methods": [
+        {
+          "name": "serialize",
+          "returnType": "str",
+          "parameters": [
+            {
+              "name": "root",
+              "type": "Optional[TreeNode]"
+            }
+          ]
+        },
+        {
+          "name": "deserialize",
+          "returnType": "Optional[TreeNode]",
+          "parameters": [
+            {
+              "name": "data",
+              "type": "str"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-recursive-preorder/Solution.java",
+      "python/solution-1-recursive-preorder/solution.py",
+      "java/solution-2-iterative-preorder/Solution.java",
+      "python/solution-2-iterative-preorder/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

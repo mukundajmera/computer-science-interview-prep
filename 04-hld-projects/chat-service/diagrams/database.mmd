@@ -1,0 +1,93 @@
+erDiagram
+    USERS {
+        uuid user_id PK
+        string username UK
+        string phone UK
+        string display_name
+        string avatar_url
+        timestamp created_at
+        timestamp last_seen
+    }
+
+    CONVERSATIONS {
+        uuid conversation_id PK
+        string type "direct, group"
+        string name "nullable for direct"
+        uuid created_by FK
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    CONVERSATION_PARTICIPANTS {
+        uuid conversation_id PK,FK
+        uuid user_id PK,FK
+        string role "admin, member"
+        timestamp joined_at
+        timestamp last_read_at
+        uuid last_read_message_id
+        boolean is_muted
+    }
+
+    MESSAGES {
+        uuid conversation_id PK
+        timeuuid message_id PK "clustering key DESC"
+        uuid sender_id FK
+        string content
+        string message_type "text, image, video"
+        uuid reply_to_id "nullable"
+        timestamp created_at
+        boolean is_deleted
+    }
+
+    USER_INBOX {
+        uuid user_id PK
+        timeuuid updated_at PK "clustering key DESC"
+        uuid conversation_id
+        uuid last_message_id
+        int unread_count
+        string snippet
+    }
+
+    MESSAGE_STATUS {
+        uuid message_id PK
+        uuid user_id PK
+        string status "sent, delivered, read"
+        timestamp status_at
+    }
+
+    USER_DEVICES {
+        uuid user_id PK,FK
+        string device_id PK
+        string device_type "ios, android, web"
+        string push_token
+        timestamp last_active
+        string ws_server_id
+    }
+
+    PRESENCE_CACHE {
+        uuid user_id PK
+        string status "online, offline, away"
+        timestamp last_seen
+        string_array connected_devices
+    }
+
+    GROUPS {
+        uuid group_id PK,FK
+        uuid conversation_id FK
+        string name
+        string description
+        string avatar_url
+        int member_count
+        uuid created_by FK
+        timestamp created_at
+    }
+
+    %% Relationships
+    USERS ||--o{ CONVERSATION_PARTICIPANTS : "participates in"
+    CONVERSATIONS ||--o{ CONVERSATION_PARTICIPANTS : "has"
+    CONVERSATIONS ||--o{ MESSAGES : "contains"
+    USERS ||--o{ MESSAGES : "sends"
+    USERS ||--o{ USER_INBOX : "has"
+    MESSAGES ||--o{ MESSAGE_STATUS : "has"
+    USERS ||--o{ USER_DEVICES : "has"
+    CONVERSATIONS ||--o| GROUPS : "may be"

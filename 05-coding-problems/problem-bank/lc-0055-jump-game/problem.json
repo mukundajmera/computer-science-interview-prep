@@ -1,0 +1,106 @@
+{
+  "id": "lc-0055-jump-game",
+  "title": "Jump Game",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "array",
+    "greedy",
+    "dynamic-programming"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 113,
+      "group": "dynamic-programming",
+      "sourceUrl": "https://leetcode.com/problems/jump-game"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 9,
+      "group": "Array / String",
+      "sourceUrl": "https://leetcode.com/problems/jump-game"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 779,
+      "group": "Greedy",
+      "sourceUrl": "https://leetcode.com/problems/jump-game"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "55",
+    "titleSlug": "jump-game",
+    "url": "https://leetcode.com/problems/jump-game",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "canJump",
+      "returnType": "boolean",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "int[]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "canJump",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "List[int]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

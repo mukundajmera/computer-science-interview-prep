@@ -1,0 +1,41 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "one duplicate pair",
+      "input": {
+        "nums": [
+          9,
+          4,
+          9
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "name": "negative duplicate pairs",
+      "input": {
+        "nums": [
+          6,
+          -2,
+          6,
+          7,
+          -2
+        ]
+      },
+      "expected": 7
+    },
+    {
+      "name": "single element",
+      "input": {
+        "nums": [
+          42
+        ]
+      },
+      "expected": 42
+    }
+  ]
+}

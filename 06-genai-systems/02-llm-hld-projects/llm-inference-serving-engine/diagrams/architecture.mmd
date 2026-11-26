@@ -1,0 +1,54 @@
+flowchart TD
+    %% Define styles
+    classDef client fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef gateway fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef scheduler fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
+    classDef memory fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+    classDef worker fill:#fce4ec,stroke:#c2185b,stroke-width:2px;
+
+    %% Client Layer
+    Client["Client (API / SDK)"]:::client
+
+    %% Gateway Layer
+    Gateway["API Gateway / Tokenizer"]:::gateway
+
+    %% Scheduler & Memory Manager
+    subgraph Scheduler_Node ["Scheduler Node (CPU)"]
+        Scheduler["Continuous Batching Scheduler"]:::scheduler
+        Queue_Wait["Waiting Queue"]:::scheduler
+        Queue_Run["Running Queue"]:::scheduler
+        BlockManager["KV Cache Block Manager (PagedAttention)"]:::memory
+    end
+
+    %% Worker Pool
+    subgraph Worker_Pool ["GPU Worker Pool (Tensor Parallelism)"]
+        GPU1["GPU 0 (Model Shard)"]:::worker
+        GPU2["GPU 1 (Model Shard)"]:::worker
+        GPUN["GPU N (Model Shard)"]:::worker
+        
+        VRAM1["VRAM (Weights + KV Blocks)"]:::memory
+        VRAM2["VRAM (Weights + KV Blocks)"]:::memory
+        VRAMN["VRAM (Weights + KV Blocks)"]:::memory
+        
+        GPU1 --- VRAM1
+        GPU2 --- VRAM2
+        GPUN --- VRAMN
+        
+        GPU1 <-->|"NVLink (AllReduce)"| GPU2
+        GPU2 <-->|"NVLink (AllReduce)"| GPUN
+    end
+
+    %% Flow connections
+    Client -- "1. Prompt (HTTP/gRPC)" --> Gateway
+    Gateway -- "2. Tokenized Request" --> Queue_Wait
+    Queue_Wait --> Scheduler
+    Scheduler <-->|"3. Manage Running Set"| Queue_Run
+    Scheduler <-->|"4. Allocate Blocks"| BlockManager
+    BlockManager -.->|"Map to physical memory"| VRAM1
+    BlockManager -.->|"Map to physical memory"| VRAM2
+    BlockManager -.->|"Map to physical memory"| VRAMN
+
+    Scheduler -- "5. Batch Execution Command" --> Worker_Pool
+    Worker_Pool -- "6. Generated Token" --> Scheduler
+    Scheduler -- "7. Detokenize & Stream SSE" --> Gateway
+    Gateway -- "8. SSE Response Chunk" --> Client

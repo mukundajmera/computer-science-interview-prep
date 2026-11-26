@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bit-loop",
+      "title": "Bit loop",
+      "tier": 1,
+      "strategy": "Read the low bit 32 times, append it to the result, and shift the input right.",
+      "timeComplexity": {
+        "class": "O(32)",
+        "explanation": "The loop has one iteration per bit position."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the input copy, result, and loop index are stored."
+      },
+      "javaPath": "java/solution-1-bit-loop/Solution.java",
+      "pythonPath": "python/solution-1-bit-loop/solution.py"
+    },
+    {
+      "id": "solution-2-mask-swaps",
+      "title": "Mask swaps",
+      "tier": 2,
+      "strategy": "Swap bit groups of size 16, 8, 4, 2, and 1 using fixed masks.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "A fixed number of bit-mask operations is executed."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the transformed integer is stored."
+      },
+      "javaPath": "java/solution-2-mask-swaps/Solution.java",
+      "pythonPath": "python/solution-2-mask-swaps/solution.py"
+    }
+  ]
+}

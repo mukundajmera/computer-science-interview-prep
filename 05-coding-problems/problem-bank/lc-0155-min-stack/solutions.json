@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-two-stacks",
+      "title": "Value stack plus minimum stack",
+      "tier": 1,
+      "strategy": "Keep a normal value stack and push a value onto a second stack whenever it becomes the active minimum.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "push, pop, top, and getMin each perform a constant number of stack operations."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The value stack stores n values and the minimum stack can also store up to n values."
+      },
+      "javaPath": "java/solution-1-two-stacks/Solution.java",
+      "pythonPath": "python/solution-1-two-stacks/solution.py"
+    },
+    {
+      "id": "solution-2-encoded-min-stack",
+      "title": "Encoded minimum in one stack",
+      "tier": 2,
+      "strategy": "Store an encoded marker when a pushed value becomes the new minimum so the previous minimum can be restored on pop.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "Each public operation does constant arithmetic and stack access."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "A single stack stores one raw or encoded value for each active pushed value."
+      },
+      "javaPath": "java/solution-2-encoded-min-stack/Solution.java",
+      "pythonPath": "python/solution-2-encoded-min-stack/solution.py"
+    }
+  ]
+}

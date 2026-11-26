@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-copy-paths",
+      "title": "Copy paths",
+      "tier": 1,
+      "strategy": "Pass a copied path list into each child during DFS.",
+      "timeComplexity": {
+        "class": "O(nh)",
+        "explanation": "Each node can copy a root-to-node path of length up to h."
+      },
+      "spaceComplexity": {
+        "class": "O(nh)",
+        "explanation": "Copied paths across recursion can accumulate with path length."
+      },
+      "javaPath": "java/solution-1-copy-paths/Solution.java",
+      "pythonPath": "python/solution-1-copy-paths/solution.py"
+    },
+    {
+      "id": "solution-2-backtracking",
+      "title": "Backtracking",
+      "tier": 2,
+      "strategy": "Maintain one mutable path and copy it only when a matching leaf is found.",
+      "timeComplexity": {
+        "class": "O(nh)",
+        "explanation": "Traversal visits n nodes and copies each matching path of length up to h."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The working path and recursion stack follow tree height, excluding output."
+      },
+      "javaPath": "java/solution-2-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-backtracking/solution.py"
+    }
+  ]
+}

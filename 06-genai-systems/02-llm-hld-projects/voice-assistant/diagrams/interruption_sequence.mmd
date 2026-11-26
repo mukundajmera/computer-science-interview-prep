@@ -1,0 +1,27 @@
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client (WebRTC)
+    participant V as VAD
+    participant O as Orchestrator
+    participant M as AI Pipeline (LLM/TTS)
+    
+    O->>C: Streaming TTS Audio (Turn N)
+    C->>U: Plays Audio
+    
+    U->>C: Starts speaking (Barge-in)
+    C->>V: Audio frames
+    V->>O: Event: Speech Detected!
+    
+    Note over O,M: Handle Interruption
+    O->>M: Cancel Generation (Turn N)
+    O->>C: Stop TTS Playback
+    
+    C->>U: Audio stops
+    
+    V->>O: Audio frames (User Query)
+    O->>M: Process Turn N+1
+    M->>O: Streaming Response (Turn N+1)
+    O->>C: Streaming TTS Audio (Turn N+1)
+    C->>U: Plays New Audio
+```

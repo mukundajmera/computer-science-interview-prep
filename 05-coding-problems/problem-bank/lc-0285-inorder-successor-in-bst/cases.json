@@ -1,0 +1,106 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "right subtree minimum",
+      "input": {
+        "root": [
+          5,
+          3,
+          8,
+          2,
+          4,
+          7,
+          9
+        ],
+        "p": {
+          "from": "root",
+          "path": ""
+        }
+      },
+      "expected": {
+        "from": "root",
+        "path": "RL"
+      }
+    },
+    {
+      "name": "successor is ancestor",
+      "input": {
+        "root": [
+          5,
+          3,
+          8,
+          2,
+          4,
+          7,
+          9
+        ],
+        "p": {
+          "from": "root",
+          "path": "LR"
+        }
+      },
+      "expected": {
+        "from": "root",
+        "path": ""
+      }
+    },
+    {
+      "name": "successor inside subtree",
+      "input": {
+        "root": [
+          5,
+          3,
+          8,
+          2,
+          4,
+          7,
+          9
+        ],
+        "p": {
+          "from": "root",
+          "path": "L"
+        }
+      },
+      "expected": {
+        "from": "root",
+        "path": "LR"
+      }
+    },
+    {
+      "name": "maximum has no successor",
+      "input": {
+        "root": [
+          5,
+          3,
+          8,
+          2,
+          4,
+          7,
+          9
+        ],
+        "p": {
+          "from": "root",
+          "path": "RR"
+        }
+      },
+      "expected": []
+    },
+    {
+      "name": "single node has no successor",
+      "input": {
+        "root": [
+          1
+        ],
+        "p": {
+          "from": "root",
+          "path": ""
+        }
+      },
+      "expected": []
+    }
+  ]
+}

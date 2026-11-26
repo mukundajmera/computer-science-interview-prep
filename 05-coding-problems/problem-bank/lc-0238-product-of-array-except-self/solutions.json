@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-nested-product",
+      "title": "Nested product scan",
+      "tier": 1,
+      "strategy": "For each index, multiply every value at a different index.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "The outer loop chooses each output index and the inner loop scans the full array."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The result array stores one product per input element."
+      },
+      "javaPath": "java/solution-1-nested-product/Solution.java",
+      "pythonPath": "python/solution-1-nested-product/solution.py"
+    },
+    {
+      "id": "solution-2-prefix-suffix",
+      "title": "Prefix and suffix products",
+      "tier": 2,
+      "strategy": "Store product of values before each index, then multiply by products after each index.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Two linear passes build prefix and suffix contributions."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The output array is required; aside from it only scalar running products are stored."
+      },
+      "javaPath": "java/solution-2-prefix-suffix/Solution.java",
+      "pythonPath": "python/solution-2-prefix-suffix/solution.py"
+    }
+  ]
+}

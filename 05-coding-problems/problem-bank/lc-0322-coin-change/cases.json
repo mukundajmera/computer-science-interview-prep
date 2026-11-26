@@ -1,0 +1,42 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "mix of three coins",
+      "input": {
+        "coins": [
+          2,
+          4,
+          7
+        ],
+        "amount": 13
+      },
+      "expected": 3
+    },
+    {
+      "name": "unreachable odd amount",
+      "input": {
+        "coins": [
+          5,
+          10
+        ],
+        "amount": 3
+      },
+      "expected": -1
+    },
+    {
+      "name": "zero amount",
+      "input": {
+        "coins": [
+          3,
+          6
+        ],
+        "amount": 0
+      },
+      "expected": 0
+    }
+  ]
+}

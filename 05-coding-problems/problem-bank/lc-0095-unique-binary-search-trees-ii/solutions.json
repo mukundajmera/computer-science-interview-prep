@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-ranges",
+      "title": "Recursive range product",
+      "tier": 1,
+      "strategy": "Try each value as root and combine every left-range tree with every right-range tree.",
+      "timeComplexity": {
+        "class": "O(C_n * n)",
+        "explanation": "The Catalan number `C_n` trees are produced and each tree has up to n nodes."
+      },
+      "spaceComplexity": {
+        "class": "O(C_n * n)",
+        "explanation": "The output stores all generated trees; recursion depth is linear."
+      },
+      "javaPath": "java/solution-1-recursive-ranges/Solution.java",
+      "pythonPath": "python/solution-1-recursive-ranges/solution.py"
+    }
+  ]
+}

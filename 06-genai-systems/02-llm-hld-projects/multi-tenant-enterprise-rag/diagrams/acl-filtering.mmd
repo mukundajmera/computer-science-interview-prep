@@ -1,0 +1,17 @@
+graph TD
+    subgraph Query_Context [Query User Context]
+        A["User Query (e.g., Alice in T-MKTG)"] --> B["Retrieve User ACLs"]
+        B --> C["Generate Hybrid Query"]
+    end
+    
+    subgraph Vector_DB [Trust Boundary: Vector DB In-Engine Filtering]
+        C --> D{"Single-Stage In-Engine ACL Filter<br/>(Retrieval Trust Boundary)"}
+        D -- "tenant_id == 'T-MKTG' AND<br>user_groups IN acl_list" --> E["k-NN & BM25 Search"]
+        D -- "tenant_id == 'T-ENG'" --> F["Blocked / Dropped"]
+    end
+    
+    subgraph Post_Retrieval [Response Trust Boundary]
+        E --> G["RRF & Cross-Encoder Reranking"]
+        G --> H["Final Tenant Check<br/>(Response Trust Boundary)"]
+        H --> I["LLM Context Window"]
+    end

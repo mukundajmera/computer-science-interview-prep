@@ -1,0 +1,39 @@
+sequenceDiagram
+    participant User
+    participant App as Application
+    participant MS as Memory Store
+    participant TL as Token Limiter
+    participant Sum as Summarizer
+    participant Ext as Entity Extractor
+    participant Ctx as Context Assembler
+
+    User->>App: Sends new message
+    App->>MS: append_turn(UserMessage)
+    MS->>MS: Store in Buffer Window
+
+    MS->>TL: check_token_limits(Buffer)
+    alt Token Budget Exceeded
+        TL-->>MS: Exceeded Threshold
+        MS->>Sum: trigger_summarization(Oldest Turns)
+        Sum-->>MS: Return Condensed Summary
+        MS->>MS: Update Summary Memory
+        MS->>MS: Prune Summarized Turns from Buffer
+    else Under Budget
+        TL-->>MS: Within Limits
+    end
+
+    MS->>Ext: extract_entities(UserMessage)
+    Ext-->>MS: Return Facts/Entities
+    MS->>MS: Update Entity Memory
+
+    App->>MS: request_context()
+    MS->>Ctx: assemble_prompt()
+
+    par Fetching Context Tiers
+        Ctx->>MS: Get Buffer Window Memory
+        Ctx->>MS: Get Summary Memory
+        Ctx->>MS: Get Relevant Entities
+    end
+
+    Ctx-->>App: Final Context Prompt
+    App->>User: LLM Generated Response

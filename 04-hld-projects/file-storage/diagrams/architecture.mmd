@@ -1,0 +1,58 @@
+```mermaid
+flowchart TB
+    subgraph Clients
+        Desktop[Desktop Client]
+        Mobile[Mobile Client]
+        Web[Web Client]
+    end
+    
+    subgraph Gateway["API Gateway"]
+        LB[Load Balancer]
+        Auth[Auth Service]
+    end
+    
+    subgraph Core["Core Services"]
+        FileService[File Service]
+        BlockService[Block Service]
+        SyncService[Sync Service]
+        ShareService[Share Service]
+    end
+    
+    subgraph Queue["Message Queue"]
+        SyncQueue[Sync Events Queue]
+        DedupQueue[Dedup Queue]
+    end
+    
+    subgraph Storage["Storage Layer"]
+        MetaDB[(Metadata DB<br/>PostgreSQL)]
+        BlockStore[(Block Store<br/>S3/GCS)]
+        Cache[(Cache<br/>Redis)]
+    end
+    
+    subgraph CDN["Content Delivery"]
+        EdgeCDN[CDN Edge Nodes]
+    end
+    
+    Desktop --> LB
+    Mobile --> LB
+    Web --> LB
+    
+    LB --> Auth --> FileService
+    Auth --> ShareService
+    
+    FileService --> MetaDB
+    FileService --> Cache
+    FileService --> BlockService
+    FileService --> SyncQueue
+    
+    BlockService --> BlockStore
+    BlockService --> DedupQueue
+    
+    BlockStore --> EdgeCDN
+    
+    SyncQueue --> SyncService
+    SyncService --> Cache
+    
+    style BlockStore fill:#54a0ff
+    style MetaDB fill:#5f27cd
+```

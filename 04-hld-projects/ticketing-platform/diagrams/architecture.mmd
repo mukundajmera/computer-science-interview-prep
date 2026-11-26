@@ -1,0 +1,31 @@
+flowchart TB
+    C[Clients] --> G[API Gateway]
+    
+    subgraph Admission & Discovery
+        G --> AQ[Virtual Waiting Room]
+        G --> ES[Event Service]
+        G --> SS[Search Service]
+        ES --> EDB[(Event DB)]
+        SS --> IDX[(Elasticsearch)]
+    end
+
+    subgraph Checkout & Booking
+        G --> SH[Seat Hold Service]
+        G --> BO[Booking Orchestrator]
+        
+        SH -->|Acquires Lock TTL| RC[(Redis Hold Store)]
+        SH -->|Periodic Sweep / Reconcile| SDB[(PostgreSQL Seat DB)]
+        
+        BO -->|Idempotent Payment| PAY[Payment Provider]
+        BO -->|Authoritative Commit| ODB[(PostgreSQL Order DB)]
+        BO -->|Enqueue Issuance| TIX[Ticket Issuance Service]
+    end
+
+    subgraph Post-Booking
+        TIX --> MQ[(Kafka Queue)]
+        MQ --> NTF[Notification Service]
+    end
+
+    %% Failure Boundaries
+    SDB -.->|Fencing / State Owner| BO
+    RC -.->|TTL Expiry / Loss Risk| SDB

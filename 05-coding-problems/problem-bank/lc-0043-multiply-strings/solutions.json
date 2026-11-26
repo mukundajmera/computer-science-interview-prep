@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-partial-products",
+      "title": "Partial product strings",
+      "tier": 1,
+      "strategy": "Build one shifted partial product per multiplier digit and add it into the running string result.",
+      "timeComplexity": {
+        "class": "O(n(m + n))",
+        "explanation": "For each multiplier digit, a partial product and string addition can touch the product length."
+      },
+      "spaceComplexity": {
+        "class": "O(m + n)",
+        "explanation": "The largest partial product and running result are bounded by the output digit count."
+      },
+      "javaPath": "java/solution-1-partial-products/Solution.java",
+      "pythonPath": "python/solution-1-partial-products/solution.py"
+    },
+    {
+      "id": "solution-2-digit-array",
+      "title": "Shared digit array",
+      "tier": 2,
+      "strategy": "Accumulate each digit-pair product directly into its grade-school array positions.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Every pair of input digits contributes once."
+      },
+      "spaceComplexity": {
+        "class": "O(m + n)",
+        "explanation": "The result array has at most `m + n` digits."
+      },
+      "javaPath": "java/solution-2-digit-array/Solution.java",
+      "pythonPath": "python/solution-2-digit-array/solution.py"
+    }
+  ]
+}

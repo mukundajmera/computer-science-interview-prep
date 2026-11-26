@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-two-dimensional-dp",
+      "title": "Two-dimensional DP",
+      "tier": 1,
+      "strategy": "Fill a grid where each cell equals paths from above plus paths from the left.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Every grid cell is computed once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The full DP grid stores every cell count."
+      },
+      "javaPath": "java/solution-1-two-dimensional-dp/Solution.java",
+      "pythonPath": "python/solution-1-two-dimensional-dp/solution.py"
+    },
+    {
+      "id": "solution-2-one-dimensional-dp",
+      "title": "One-dimensional DP",
+      "tier": 2,
+      "strategy": "Compress the DP grid to one row because each state only needs the current left value and previous-row value.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "The nested loops still visit every logical cell."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Only one row of n path counts is stored."
+      },
+      "javaPath": "java/solution-2-one-dimensional-dp/Solution.java",
+      "pythonPath": "python/solution-2-one-dimensional-dp/solution.py"
+    }
+  ]
+}

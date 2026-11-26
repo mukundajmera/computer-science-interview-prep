@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-swap-set",
+      "title": "Swap permutations with set",
+      "tier": 1,
+      "strategy": "Generate every index permutation by swapping and store value rows in a set to collapse duplicates.",
+      "timeComplexity": {
+        "class": "O(n! * n)",
+        "explanation": "All index permutations may be generated and each copied row costs linear time."
+      },
+      "spaceComplexity": {
+        "class": "O(n! * n)",
+        "explanation": "The dedupe set may store every unique row plus recursion stack."
+      },
+      "javaPath": "java/solution-1-swap-set/Solution.java",
+      "pythonPath": "python/solution-1-swap-set/solution.py"
+    },
+    {
+      "id": "solution-2-sorted-used-array",
+      "title": "Sorted used-array backtracking",
+      "tier": 2,
+      "strategy": "Sort values and skip a duplicate value when its previous equal value has not been used in the current branch.",
+      "timeComplexity": {
+        "class": "O(a * n)",
+        "explanation": "`a` unique permutations are emitted and each row costs `n` to copy."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Ignoring output, only the path, used flags, and recursion stack are stored."
+      },
+      "javaPath": "java/solution-2-sorted-used-array/Solution.java",
+      "pythonPath": "python/solution-2-sorted-used-array/solution.py"
+    }
+  ]
+}

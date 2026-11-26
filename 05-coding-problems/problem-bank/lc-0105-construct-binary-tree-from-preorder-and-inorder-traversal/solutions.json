@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-slicing",
+      "title": "Recursive slicing",
+      "tier": 1,
+      "strategy": "Split traversal arrays for each subtree directly.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each recursive step can copy or scan arrays, and skewed trees repeat that work across many levels."
+      },
+      "spaceComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Copied traversal slices can accumulate across recursive calls in skewed inputs."
+      },
+      "javaPath": "java/solution-1-recursive-slicing/Solution.java",
+      "pythonPath": "python/solution-1-recursive-slicing/solution.py"
+    },
+    {
+      "id": "solution-2-index-map-ranges",
+      "title": "Index map ranges",
+      "tier": 2,
+      "strategy": "Use inorder positions and traversal index ranges to build each subtree without copying.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is created once and each inorder lookup is constant time."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The index map and recursion stack store O(n) state."
+      },
+      "javaPath": "java/solution-2-index-map-ranges/Solution.java",
+      "pythonPath": "python/solution-2-index-map-ranges/solution.py"
+    }
+  ]
+}

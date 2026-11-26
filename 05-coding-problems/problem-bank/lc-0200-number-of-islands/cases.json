@@ -1,0 +1,10 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "three separated groups", "input": { "grid": [["1", "1", "0", "0"], ["0", "1", "0", "1"], ["0", "0", "0", "1"], ["1", "0", "0", "0"]] }, "expected": 3 },
+    { "name": "all water", "input": { "grid": [["0", "0"], ["0", "0"]] }, "expected": 0 },
+    { "name": "single large island", "input": { "grid": [["1", "1", "1"], ["1", "0", "1"], ["1", "1", "1"]] }, "expected": 1 },
+    { "name": "diagonal does not connect", "input": { "grid": [["1", "0", "1"], ["0", "1", "0"], ["1", "0", "1"]] }, "expected": 5 }
+  ]
+}

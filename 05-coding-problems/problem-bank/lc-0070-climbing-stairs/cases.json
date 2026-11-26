@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "eight steps", "input": { "n": 8 }, "expected": 34 },
+    { "name": "four steps", "input": { "n": 4 }, "expected": 5 },
+    { "name": "five steps", "input": { "n": 5 }, "expected": 8 },
+    { "name": "six steps", "input": { "n": 6 }, "expected": 13 },
+    { "name": "seven steps", "input": { "n": 7 }, "expected": 21 }
+  ]
+}

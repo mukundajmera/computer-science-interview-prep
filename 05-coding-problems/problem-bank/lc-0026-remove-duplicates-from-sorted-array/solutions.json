@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-extra-list",
+      "title": "Extra list of unique values",
+      "tier": 1,
+      "strategy": "Build a list of values when they differ from the previous value, copy it into the prefix, and return its length.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The sorted array is scanned once and the unique values are copied once." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The temporary list can contain every value when all inputs are unique." },
+      "javaPath": "java/solution-1-extra-list/Solution.java",
+      "pythonPath": "python/solution-1-extra-list/solution.py"
+    },
+    {
+      "id": "solution-2-write-pointer",
+      "title": "In-place unique write pointer",
+      "tier": 2,
+      "strategy": "Keep the next write position and copy a value only when it starts a new unique group.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Each value is compared to the previous kept value once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "The array is compacted in place with only a write index." },
+      "javaPath": "java/solution-2-write-pointer/Solution.java",
+      "pythonPath": "python/solution-2-write-pointer/solution.py"
+    }
+  ]
+}

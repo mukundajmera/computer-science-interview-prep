@@ -1,0 +1,18 @@
+erDiagram
+    CACHE_ENTRY {
+        string key PK
+        string value
+        datetime expires_at
+        datetime last_accessed
+    }
+    NODE_MEMBERSHIP {
+        string node_id PK
+        string state
+        int capacity_mb
+        datetime last_heartbeat
+    }
+    SHARD_ASSIGNMENT {
+        string token_range PK
+        string primary_node
+        string replica_nodes
+    }

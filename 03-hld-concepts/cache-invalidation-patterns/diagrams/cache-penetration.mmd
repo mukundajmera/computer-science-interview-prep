@@ -1,0 +1,34 @@
+sequenceDiagram
+    participant Attacker
+    participant API
+    participant BloomFilter as Bloom Filter
+    participant Cache
+    participant DB
+
+    Note over Attacker,DB: Cache Penetration & Mitigation
+    
+    Attacker->>API: GET /item?id=-999 (Invalid ID)
+    
+    API->>BloomFilter: Check if -999 exists
+    
+    alt ID Not in Bloom Filter (Mitigation)
+        BloomFilter-->>API: False
+        API-->>Attacker: 404 Not Found (Rejected early)
+    else ID Bypasses Filter / Filter False Positive
+        BloomFilter-->>API: True
+        API->>Cache: GET -999
+        Cache-->>API: Miss
+        API->>DB: Query ID -999
+        DB-->>API: Null
+        
+        Note over API,Cache: Null Object Caching Mitigation
+        API->>Cache: SET -999 = "NULL" (TTL: 30s)
+        API-->>Attacker: 404 Not Found
+        
+        Attacker->>API: GET /item?id=-999 (Invalid ID)
+        API->>BloomFilter: Check if -999 exists
+        BloomFilter-->>API: True
+        API->>Cache: GET -999
+        Cache-->>API: "NULL" (Hit)
+        API-->>Attacker: 404 Not Found (DB Protected)
+    end

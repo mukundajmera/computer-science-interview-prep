@@ -1,0 +1,34 @@
+sequenceDiagram
+    participant C as Client
+    participant API as Embedding API
+    participant Cache as Cache Layer
+    participant Q as Batch Queue
+    participant M as Model Engine
+    participant Res as Response Handler
+
+    C->>API: Send Embedding Request(text)
+    API->>Cache: Lookup Request(hash)
+
+    alt Cache Hit
+        Cache-->>API: Return Cached Embedding
+        API-->>C: Return EmbeddingResult
+    else Cache Miss
+        Cache-->>API: Cache Miss
+        API->>Q: Enqueue Request
+
+        Note over Q,M: Dynamic Micro-Batching
+
+        loop Buffer Window
+            Q->>Q: Wait for max batch size OR timeout
+        end
+
+        Q->>M: Forward Batch(List[text])
+        M-->>Res: Return Batch Results(List[Raw Embedding])
+
+        Note over Res: Process and Distribute
+
+        Res->>Res: L2 Normalize & Project
+        Res->>Cache: Store New Embeddings
+        Res-->>API: Distribute Results to original requests
+        API-->>C: Return EmbeddingResult
+    end

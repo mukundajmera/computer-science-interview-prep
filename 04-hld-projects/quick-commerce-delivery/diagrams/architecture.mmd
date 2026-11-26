@@ -1,0 +1,17 @@
+flowchart TB
+    C[Clients] --> G[API Gateway]
+    G --> AV[Availability Service]
+    G --> OR[Order Service]
+
+    AV --> NF[Nearby Fulfillment Service]
+    NF --> GEO[(Geo Index)]
+
+    AV --> IC[(Inventory Cache)]
+    AV --> IR[(Inventory Read Replica)]
+
+    OR --> RS[Reservation Service]
+    RS --> IW[(Inventory Writer DB)]
+    OR --> OW[(Orders DB)]
+
+    OR --> MQ[(Kafka/Queue)]
+    MQ --> AN[Analytics/Notifications]

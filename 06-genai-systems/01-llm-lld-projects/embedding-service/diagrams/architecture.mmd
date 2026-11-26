@@ -1,0 +1,35 @@
+flowchart TD
+    classDef component fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef storage fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef external fill:#f3e5f5,stroke:#8e24aa,stroke-width:2px;
+
+    Client[Client Applications] -->|Text Requests| API[Embedding API / Router]
+
+    subgraph EmbeddingService [Embedding Service Architecture]
+        API --> Cache[(Quantized In-Memory Cache)]
+
+        Cache -->|Cache Miss| BatchQueue[Dynamic Micro-Batching Queue]
+        Cache -->|Cache Hit| ResDist[Response Distribution]
+
+        BatchQueue -->|Batched Contexts| AdapterPool
+
+        subgraph AdapterPool [Multi-Model Adapter Pool]
+            AdapterA[Local Model Adapter]
+            AdapterB[OpenAI Adapter]
+            AdapterC[Custom Model Adapter]
+        end
+
+        AdapterPool -->|Raw Embeddings| DimLayer[Dimensionality Projection Layer]
+
+        DimLayer -->|Projected & Normalized| Cache
+        DimLayer -->|Final Embeddings| ResDist
+    end
+
+    ResDist -->|Results| Client
+
+    AdapterA -.-> ModelLocal[Local ML Model]
+    AdapterB -.-> ModelRemote[Remote LLM API]
+
+    class Cache storage;
+    class API,BatchQueue,ResDist,DimLayer,AdapterA,AdapterB,AdapterC component;
+    class Client,ModelLocal,ModelRemote external;

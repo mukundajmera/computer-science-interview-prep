@@ -1,0 +1,44 @@
+%% Observer Pattern Class Diagram
+%% Defines one-to-many dependency so dependents are notified of state changes
+
+classDiagram
+    class Subject {
+        <<interface>>
+        +attach(Observer) void
+        +detach(Observer) void
+        +notify() void
+    }
+    
+    class ConcreteSubject {
+        -state int
+        -observers List~Observer~
+        +attach(Observer) void
+        +detach(Observer) void
+        +notify() void
+        +getState() int
+        +setState(int) void
+    }
+    
+    class Observer {
+        <<interface>>
+        +update() void
+    }
+    
+    class ConcreteObserverA {
+        -subject ConcreteSubject
+        -observerState int
+        +update() void
+    }
+    
+    class ConcreteObserverB {
+        -subject ConcreteSubject
+        -observerState int
+        +update() void
+    }
+    
+    Subject <|.. ConcreteSubject
+    Observer <|.. ConcreteObserverA
+    Observer <|.. ConcreteObserverB
+    ConcreteSubject --> Observer : notifies
+    ConcreteObserverA --> ConcreteSubject : observes
+    ConcreteObserverB --> ConcreteSubject : observes

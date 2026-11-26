@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-iterative-row-construction",
+      "title": "Iterative row construction",
+      "tier": 1,
+      "strategy": "Construct each row starting and ending with 1, summing adjacent pairs from the previous row.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Constructing n rows computes 1 + 2 + ... + n elements."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "No auxiliary memory used beyond the returned nested list."
+      },
+      "javaPath": "java/solution-1-iterative-row-construction/Solution.java",
+      "pythonPath": "python/solution-1-iterative-row-construction/solution.py"
+    }
+  ]
+}

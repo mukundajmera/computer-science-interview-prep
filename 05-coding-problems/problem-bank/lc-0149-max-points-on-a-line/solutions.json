@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-triple-collinearity",
+      "title": "Triple collinearity",
+      "tier": 1,
+      "strategy": "For every pair, count all points whose area determinant with that pair is zero.",
+      "timeComplexity": {
+        "class": "O(n^3)",
+        "explanation": "There are O(n^2) pairs and each pair scans all n points."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only counters and coordinate differences are stored."
+      },
+      "javaPath": "java/solution-1-triple-collinearity/Solution.java",
+      "pythonPath": "python/solution-1-triple-collinearity/solution.py"
+    },
+    {
+      "id": "solution-2-anchor-slope-map",
+      "title": "Anchor slope map",
+      "tier": 2,
+      "strategy": "For each anchor point, normalize slopes to all later points and count equal slope keys.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each anchor compares against every other point once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The slope frequency map for one anchor can contain O(n) slopes."
+      },
+      "javaPath": "java/solution-2-anchor-slope-map/Solution.java",
+      "pythonPath": "python/solution-2-anchor-slope-map/solution.py"
+    }
+  ]
+}

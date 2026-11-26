@@ -1,0 +1,59 @@
+sequenceDiagram
+    actor Client
+
+    box rgb(240, 248, 255) Actual Service Architecture (Production)
+        participant APIGW as API Gateway
+        participant MetadataDB as Metadata Service
+        participant BlobNodes as Data Storage (Chunk Servers)
+    end
+
+    box rgb(255, 250, 240) Simplified Offline Simulation (Educational)
+        participant S3Service as S3StorageService
+        participant MPMgr as MultipartUploadManager
+    end
+
+    rect rgb(240, 248, 255)
+        note right of Client: Production: Write Path (PutObject) with retries & 2PC
+        Client->>APIGW: PUT /{bucket}/{object_key} (Payload)
+        APIGW->>MetadataDB: Allocate new chunk_ids & get available node_ids
+        MetadataDB-->>APIGW: Return chunk_ids & node_ids
+        
+        loop Chunk Write Retries
+            APIGW->>BlobNodes: Stream payload chunks (Erasure Coding 8+4)
+            alt Unknown Outcome / Timeout
+                BlobNodes--xAPIGW: Network Error / Timeout
+                APIGW->>BlobNodes: Retry Chunk Write
+            else Success
+                BlobNodes-->>APIGW: ACK chunks durably written
+            end
+        end
+
+        APIGW->>MetadataDB: Prepare Metadata Commit (2PC)
+        MetadataDB-->>APIGW: Prepared
+        APIGW->>MetadataDB: Commit Metadata (Object -> Chunk mapping)
+        MetadataDB-->>APIGW: ACK Metadata committed
+        APIGW-->>Client: 200 OK
+    end
+
+    rect rgb(255, 250, 240)
+        note right of Client: Simulation: Normal Transition (Multipart Upload Assembly)
+        Client->>MPMgr: initiateMultipartUpload(bucket, key)
+        MPMgr-->>Client: Return uploadId
+        Client->>MPMgr: uploadPart(uploadId, partNumber=2, data)
+        MPMgr-->>Client: Return ETag
+        Client->>MPMgr: uploadPart(uploadId, partNumber=1, data)
+        MPMgr-->>Client: Return ETag
+        Client->>MPMgr: completeMultipartUpload(uploadId, [1, 2])
+        MPMgr->>S3Service: assemble and putObject(bucket, key, compositeData)
+        S3Service-->>MPMgr: Return versionId
+        MPMgr-->>Client: composite ETag
+    end
+
+    rect rgb(255, 240, 240)
+        note right of Client: Simulation: Failure Transition (Missing Resources / Out-of-order)
+        Client->>S3Service: getObject(unknownBucket, key)
+        S3Service--xClient: Throw Exception (Bucket doesn't exist)
+        
+        Client->>MPMgr: completeMultipartUpload(uploadId, [2, 1])
+        MPMgr--xClient: Throw Exception (Out of order parts)
+    end

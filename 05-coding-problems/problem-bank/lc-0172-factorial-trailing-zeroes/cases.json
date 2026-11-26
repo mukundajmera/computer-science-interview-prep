@@ -1,0 +1,29 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two factors of five",
+      "input": {
+        "n": 10
+      },
+      "expected": 2
+    },
+    {
+      "name": "includes a twenty-five factor",
+      "input": {
+        "n": 25
+      },
+      "expected": 6
+    },
+    {
+      "name": "larger power contributions",
+      "input": {
+        "n": 125
+      },
+      "expected": 31
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+graph TD
+    %% Define Styles
+    classDef streamer fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef ingest fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef transcode fill:#bfb,stroke:#333,stroke-width:2px;
+    classDef origin fill:#fbb,stroke:#333,stroke-width:2px;
+    classDef cdn fill:#ffb,stroke:#333,stroke-width:2px;
+    classDef viewer fill:#ddd,stroke:#333,stroke-width:2px;
+    classDef chat fill:#dfd,stroke:#333,stroke-width:2px;
+
+    %% Streamer Side
+    S1[Broadcaster / OBS]:::streamer
+    S2[Mobile Broadcaster]:::streamer
+
+    %% Ingest Layer
+    subgraph Ingest Layer
+        IG1[Ingest Gateway RTMP/SRT]:::ingest
+        IG2[Ingest Gateway WHIP]:::ingest
+        SEI[SEI NTP Timestamp Injector]:::ingest
+    end
+
+    %% Transcoding
+    subgraph Transcoding & Packaging
+        TR1[ABR Transcoder GPU]:::transcode
+        TR2[ABR Transcoder GPU]:::transcode
+        PK[LL-HLS / CMAF Packager]:::transcode
+    end
+
+    %% Origin Shield Tier
+    subgraph Origin Shield Hierarchy
+        O2[Tier 2 Core Origin]:::origin
+        O1A[Tier 1 Regional Shield US]:::origin
+        O1B[Tier 1 Regional Shield EU]:::origin
+    end
+
+    %% CDN Edge
+    subgraph CDN Edge Network
+        E1[CDN Edge PoP West]:::cdn
+        E2[CDN Edge PoP East]:::cdn
+        E3[CDN Edge PoP Europe]:::cdn
+    end
+
+    %% Viewers
+    V1[Viewer Player Web]:::viewer
+    V2[Viewer Player Mobile]:::viewer
+    V3[Viewer Player TV]:::viewer
+
+    %% Live Chat
+    subgraph Auxiliary Services
+        CS[Live Chat WebSocket Server]:::chat
+    end
+
+    %% Connections - Ingest
+    S1 -- "RTMP (Video/Audio)" --> IG1
+    S2 -- "SRT (Video/Audio)" --> IG1
+    IG1 --> SEI
+    IG2 --> SEI
+
+    %% Connections - Transcode
+    SEI -- "High Bitrate Stream" --> TR1
+    SEI -- "High Bitrate Stream" --> TR2
+    TR1 -- "1080p, 720p (Synced Keyframes)" --> PK
+    TR2 -- "480p, 360p (Synced Keyframes)" --> PK
+
+    %% Connections - Origin
+    PK -- "Push Manifests & Partial Chunks" --> O2
+    O2 -- "HTTP Chunked Transfer" --> O1A
+    O2 -- "HTTP Chunked Transfer" --> O1B
+
+    %% Connections - CDN
+    O1A -- "Multiplexed Stream" --> E1
+    O1A -- "Multiplexed Stream" --> E2
+    O1B -- "Multiplexed Stream" --> E3
+
+    %% Connections - Viewers
+    E1 -- "LL-HLS Delivery" --> V1
+    E2 -- "LL-HLS Delivery" --> V2
+    E3 -- "LL-HLS Delivery" --> V3
+
+    %% Connections - Chat Sync
+    V1 -. "Sync using SEI Timestamp" .- CS
+    V2 -. "Sync using SEI Timestamp" .- CS

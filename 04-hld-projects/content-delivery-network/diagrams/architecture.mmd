@@ -1,0 +1,19 @@
+flowchart TD
+    Client --> Anycast["Anycast IP / GeoDNS"]
+    Anycast --> PoP_Edge["Edge PoP Router"]
+    
+    subgraph Edge_PoP ["Edge Point of Presence"]
+        PoP_Edge -->|Consistent Hashing| CacheNode1["Edge Node 1 (SSD/RAM)"]
+        PoP_Edge -->|Consistent Hashing| CacheNode2["Edge Node 2 (SSD/RAM)"]
+    end
+    
+    CacheNode1 -- "Cache Miss" --> Shield["Regional Origin Shield"]
+    
+    subgraph Tier2 ["Tier 2 Cache"]
+        Shield --> Coalescer["Request Coalescer"]
+    end
+    
+    Coalescer -- "Single Fetch" --> Customer["Customer Origin"]
+    
+    Control["Control Plane / Purge API"] -.->|Redis Pub/Sub| Edge_PoP
+    Control -.->|Redis Pub/Sub| Tier2

@@ -1,0 +1,34 @@
+sequenceDiagram
+    participant C as Client (Alice)
+    participant WS as WebSocket Server
+    participant FG as Friend Graph
+    participant C_Cache as Redis Cache
+    participant PS as Redis Pub/Sub
+    participant K as Kafka
+    participant W as Worker
+    participant DB as Cassandra
+
+    %% Connection & Initialization
+    C->>WS: Connect WebSocket
+    WS->>FG: Get friends of Alice
+    FG-->>WS: Return [Bob, Charlie]
+    WS->>C_Cache: MGET locations for [Bob, Charlie]
+    C_Cache-->>WS: Return locations
+    WS->>WS: Filter friends > 5 miles away
+    WS-->>C: Initial nearby friends list
+    WS->>PS: Subscribe to channel:user:Bob, channel:user:Charlie
+
+    %% Location Update
+    C->>WS: Location Update (lat, lng, ts)
+    WS->>C_Cache: SETEX loc:Alice (10m TTL)
+    WS->>PS: PUBLISH channel:user:Alice
+    WS-)K: Async publish event
+    
+    %% Async Persistence
+    K-)W: Consume event
+    W-)DB: Batch Write Location History
+
+    %% Receiving Friend Update
+    PS-->>WS: Update from channel:user:Bob
+    WS->>WS: Check if Bob within 5 miles
+    WS-->>C: Forward Bob's new location

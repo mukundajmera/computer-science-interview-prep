@@ -1,0 +1,53 @@
+flowchart TB
+    Client((Client))
+    
+    subgraph Control Plane
+        API[API Gateway]
+        History[History Service\nState Machine]
+        Matching[Matching Service\nTask Dispatch]
+        Timer[Timer Processor]
+    end
+    
+    subgraph Data Layer
+        DB[(Distributed SQL DB)]
+        Events[(Event History)]
+        Queues[(Task Queues)]
+    end
+    
+    subgraph Worker Fleet
+        WW[Workflow Worker]
+        AW[Activity Worker]
+    end
+
+    Client -- Start Workflow --> API
+    API -- Route --> History
+    History -- Persist Event --> Events
+    History -- Schedule Task --> Matching
+    Matching -- Enqueue --> Queues
+    
+    WW -- Long-poll Workflow Tasks --> API
+    API -- Route --> Matching
+    Matching -- Dequeue --> WW
+    WW -- Replay & Send Commands --> API
+    
+    AW -- Long-poll Activity Tasks --> API
+    AW -- Heartbeat --> API
+    AW -- Return Result --> API
+    
+    Timer -- Scan expired timers --> DB
+    Timer -- Fire Timer Event --> History
+    
+    History <--> DB
+    Events -. Part of .- DB
+    Queues -. Part of .- DB
+
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px;
+    classDef client fill:#d4edda,stroke:#28a745,stroke-width:2px;
+    classDef service fill:#cce5ff,stroke:#004085,stroke-width:2px;
+    classDef db fill:#fff3cd,stroke:#856404,stroke-width:2px;
+    classDef worker fill:#e2e3e5,stroke:#383d41,stroke-width:2px;
+    
+    class Client client;
+    class API,History,Matching,Timer service;
+    class DB,Events,Queues db;
+    class WW,AW worker;

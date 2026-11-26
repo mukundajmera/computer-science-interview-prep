@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-level-order-last-node",
+      "title": "Level-order last node",
+      "tier": 1,
+      "strategy": "Traverse by levels and keep the last node value from each level.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The queue and result can together grow linearly in the number of nodes."
+      },
+      "javaPath": "java/solution-1-level-order-last-node/Solution.java",
+      "pythonPath": "python/solution-1-level-order-last-node/solution.py"
+    },
+    {
+      "id": "solution-2-right-first-dfs",
+      "title": "Right-first DFS",
+      "tier": 2,
+      "strategy": "Visit right children before left children and record the first value at each depth.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack grows with height h, while the result stores one value per depth."
+      },
+      "javaPath": "java/solution-2-right-first-dfs/Solution.java",
+      "pythonPath": "python/solution-2-right-first-dfs/solution.py"
+    }
+  ]
+}

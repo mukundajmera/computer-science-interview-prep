@@ -1,0 +1,63 @@
+```mermaid
+erDiagram
+    USERS {
+        uuid user_id PK
+        string email
+        bigint storage_quota_bytes
+        bigint storage_used_bytes
+        timestamp created_at
+    }
+    
+    FILES {
+        uuid file_id PK
+        uuid user_id FK
+        uuid parent_folder_id FK
+        string filename
+        string content_type
+        bigint size_bytes
+        string content_hash
+        int version
+        boolean is_folder
+        boolean is_deleted
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    FILE_VERSIONS {
+        uuid version_id PK
+        uuid file_id FK
+        int version_number
+        bigint size_bytes
+        string content_hash
+        timestamp created_at
+    }
+    
+    FILE_BLOCKS {
+        uuid file_id PK
+        int block_index PK
+        uuid block_id FK
+    }
+    
+    BLOCKS {
+        uuid block_id PK
+        string content_hash UK
+        string storage_path
+        bigint size_bytes
+        int reference_count
+    }
+    
+    SHARE_LINKS {
+        uuid link_id PK
+        uuid file_id FK
+        string access_token UK
+        string permission "view/edit"
+        timestamp expires_at
+        timestamp created_at
+    }
+    
+    USERS ||--o{ FILES : "owns"
+    FILES ||--o{ FILE_VERSIONS : "has"
+    FILES ||--o{ FILE_BLOCKS : "composed of"
+    FILE_BLOCKS }o--|| BLOCKS : "references"
+    FILES ||--o{ SHARE_LINKS : "shared via"
+```

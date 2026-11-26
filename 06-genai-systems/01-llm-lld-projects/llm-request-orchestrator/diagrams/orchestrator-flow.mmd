@@ -1,0 +1,34 @@
+sequenceDiagram
+    autonumber
+    actor Caller as Client Agent
+    participant Orch as Request Orchestrator
+    participant Idem as Idempotency Store
+    participant CB as Circuit Breaker
+    participant Provider as Model Provider
+
+    Caller->>Orch: execute(request)
+    Orch->>Idem: check(idempotency_key)
+    alt Cached response exists
+        Idem-->>Orch: cached LLMResponse
+        Orch-->>Caller: return cached response
+    else Cache miss
+        Orch->>CB: allow_request()
+        alt Circuit is OPEN
+            CB-->>Orch: CircuitBreakerOpenError
+            Orch-->>Caller: Fallback response / error
+        else Circuit is CLOSED / HALF-OPEN
+            loop Up to max_retries
+                Orch->>Provider: complete(request)
+                alt Success
+                    Provider-->>Orch: LLMResponse
+                    Orch->>CB: record_success()
+                    Orch->>Idem: store(idempotency_key, response)
+                    Orch-->>Caller: return response
+                else Retryable Error (RateLimit / 503)
+                    Provider-->>Orch: error
+                    Orch->>CB: record_failure()
+                    Orch->>Orch: sleep(backoff_delay)
+                end
+            end
+        end
+    end

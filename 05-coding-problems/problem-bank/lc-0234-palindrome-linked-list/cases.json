@@ -1,0 +1,38 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "even mirrored values",
+      "input": { "head": [2, 4, 4, 2] },
+      "expected": true,
+      "linkedListContract": {
+        "postCall": { "head": [0, 1, 2, 3] }
+      }
+    },
+    {
+      "name": "odd mirrored values",
+      "input": { "head": [1, 3, 5, 3, 1] },
+      "expected": true,
+      "linkedListContract": {
+        "postCall": { "head": [0, 1, 2, 3, 4] }
+      }
+    },
+    {
+      "name": "mismatch near tail",
+      "input": { "head": [9, 1, 9, 2] },
+      "expected": false,
+      "linkedListContract": {
+        "postCall": { "head": [0, 1, 2, 3] }
+      }
+    },
+    {
+      "name": "odd mismatch preserves input chain",
+      "input": { "head": [1, 2, 3, 4, 1] },
+      "expected": false,
+      "linkedListContract": {
+        "postCall": { "head": [0, 1, 2, 3, 4] }
+      }
+    }
+  ]
+}

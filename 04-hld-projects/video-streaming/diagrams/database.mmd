@@ -1,0 +1,136 @@
+```mermaid
+erDiagram
+    USERS {
+        string user_id PK
+        string email UK
+        string username UK
+        string password_hash
+        string profile_picture_url
+        timestamp created_at
+        timestamp last_login
+    }
+
+    CHANNELS {
+        string channel_id PK
+        string user_id FK
+        string name
+        string description
+        string banner_url
+        string avatar_url
+        int subscriber_count
+        int video_count
+        timestamp created_at
+    }
+
+    VIDEOS {
+        string video_id PK
+        string channel_id FK
+        string title
+        text description
+        int duration_seconds
+        enum status "uploading|processing|ready|failed"
+        enum visibility "public|private|unlisted"
+        bigint view_count
+        int like_count
+        int dislike_count
+        int comment_count
+        string thumbnail_url
+        timestamp upload_date
+        timestamp published_at
+    }
+
+    VIDEO_QUALITIES {
+        string video_id PK
+        string quality PK
+        string storage_path
+        int bitrate_kbps
+        bigint file_size_bytes
+        string codec
+        int width
+        int height
+    }
+
+    VIDEO_TAGS {
+        string video_id PK
+        string tag PK
+    }
+
+    SUBSCRIPTIONS {
+        string subscriber_id PK
+        string channel_id PK
+        boolean notifications_enabled
+        timestamp subscribed_at
+    }
+
+    WATCH_HISTORY {
+        string user_id PK
+        string video_id PK
+        int last_position_seconds
+        float completion_rate
+        timestamp last_watched
+    }
+
+    LIKES {
+        string user_id PK
+        string video_id PK
+        boolean is_like
+        timestamp created_at
+    }
+
+    COMMENTS {
+        string comment_id PK
+        string video_id FK
+        string user_id FK
+        string parent_comment_id FK
+        text content
+        int like_count
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    PLAYLISTS {
+        string playlist_id PK
+        string user_id FK
+        string title
+        string description
+        enum visibility "public|private|unlisted"
+        int video_count
+        timestamp created_at
+    }
+
+    PLAYLIST_VIDEOS {
+        string playlist_id PK
+        string video_id PK
+        int position
+        timestamp added_at
+    }
+
+    UPLOAD_SESSIONS {
+        string upload_id PK
+        string video_id FK
+        string user_id FK
+        bigint total_size
+        int chunks_total
+        int chunks_uploaded
+        enum status "active|completed|failed|expired"
+        timestamp created_at
+        timestamp expires_at
+    }
+
+    USERS ||--o{ CHANNELS : owns
+    CHANNELS ||--o{ VIDEOS : publishes
+    VIDEOS ||--|{ VIDEO_QUALITIES : has
+    VIDEOS ||--o{ VIDEO_TAGS : tagged
+    USERS ||--o{ SUBSCRIPTIONS : subscribes
+    CHANNELS ||--o{ SUBSCRIPTIONS : has
+    USERS ||--o{ WATCH_HISTORY : watches
+    VIDEOS ||--o{ WATCH_HISTORY : watched_by
+    USERS ||--o{ LIKES : creates
+    VIDEOS ||--o{ LIKES : receives
+    VIDEOS ||--o{ COMMENTS : has
+    USERS ||--o{ COMMENTS : writes
+    USERS ||--o{ PLAYLISTS : creates
+    PLAYLISTS ||--|{ PLAYLIST_VIDEOS : contains
+    VIDEOS ||--o{ PLAYLIST_VIDEOS : in
+    VIDEOS ||--o| UPLOAD_SESSIONS : created_via
+```

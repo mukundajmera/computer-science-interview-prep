@@ -1,0 +1,14 @@
+graph TD
+    subgraph WritePath["Write Path (Memory & Disk)"]
+        Client[Client Request] -->|1. Write| CL["CommitLog (Disk)<br/>Append-only log for durability"]
+        Client -->|2. Write| MT["MemTable (RAM)<br/>In-memory sorted tree"]
+        MT -->|3. Flush triggered by size/time| SST1["SSTable L0 (Disk)<br/>Immutable sorted string table"]
+    end
+
+    subgraph Compaction["Compaction Process (Disk)"]
+        SST1 -->|Merge & Tombstone Removal| Compactor[Compaction Process]
+        SST2[SSTable L0] -->|Merge| Compactor
+        SST3[SSTable L0] -->|Merge| Compactor
+        Compactor -->|Output New Segment| SST_L1["SSTable L1<br/>Larger, consolidated table"]
+    end
+ 

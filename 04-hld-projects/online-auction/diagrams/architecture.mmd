@@ -1,0 +1,40 @@
+flowchart TB
+  C[Web/mobile clients] --> G[API gateway]
+  G --> A[Auction API]
+
+  subgraph Correctness_Boundary [Correctness Boundary]
+    B[Bid coordinator]
+    F[Close scanner & finalizer]
+    I[(bid_idempotency)]
+    H[(auction_head)]
+    E[(bid_event)]
+    S[(auction)]
+  end
+
+  subgraph Async_Derived [Async & Derived]
+    P[Projection workers]
+    R[(auction_projection)]
+    N[Notification workers]
+    O[(notification_outbox)]
+  end
+
+  A --> R
+  A -. fallback .-> H
+  A -. fallback .-> E
+  
+  A --> B
+
+  B --> I
+  B --> H
+  B --> E
+
+  S --> F
+  F --> H
+  F -. emit closed .-> E
+
+  E --> P
+  P --> R
+
+  E --> N
+  N --> O
+  O --> M[Email/push/websocket fanout]

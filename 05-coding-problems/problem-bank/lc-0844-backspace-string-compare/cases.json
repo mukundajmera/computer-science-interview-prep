@@ -1,0 +1,64 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "same after one erase",
+      "input": {
+        "s": "ab#c",
+        "t": "ad#c"
+      },
+      "expected": true
+    },
+    {
+      "name": "both empty after erases",
+      "input": {
+        "s": "ab##",
+        "t": "c#d#"
+      },
+      "expected": true
+    },
+    {
+      "name": "different final text",
+      "input": {
+        "s": "a#c",
+        "t": "b"
+      },
+      "expected": false
+    },
+    {
+      "name": "leading backspaces ignored",
+      "input": {
+        "s": "####a",
+        "t": "a"
+      },
+      "expected": true
+    },
+    {
+      "name": "consecutive erases expose mismatch",
+      "input": {
+        "s": "bxj##tw",
+        "t": "bxo#j##tw"
+      },
+      "expected": true
+    },
+    {
+      "name": "all leading erases empty both",
+      "input": {
+        "s": "####",
+        "t": "###"
+      },
+      "expected": true
+    },
+    {
+      "name": "exhaust then type same suffix",
+      "input": {
+        "s": "###a#c",
+        "t": "c"
+      },
+      "expected": true
+    }
+  ]
+}

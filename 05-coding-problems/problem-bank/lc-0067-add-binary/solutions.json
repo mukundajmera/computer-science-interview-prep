@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-pad-and-scan",
+      "title": "Pad and scan",
+      "tier": 1,
+      "strategy": "Left-pad the shorter string with zeros, then add aligned bits from right to left.",
+      "timeComplexity": {
+        "class": "O(n + m)",
+        "explanation": "Padding and scanning touch each input bit a constant number of times."
+      },
+      "spaceComplexity": {
+        "class": "O(n + m)",
+        "explanation": "The padded strings and output buffer are proportional to the longer input plus any carry."
+      },
+      "javaPath": "java/solution-1-pad-and-scan/Solution.java",
+      "pythonPath": "python/solution-1-pad-and-scan/solution.py"
+    },
+    {
+      "id": "solution-2-two-pointers",
+      "title": "Two pointers without padding",
+      "tier": 2,
+      "strategy": "Walk both strings from the end and treat missing digits as zero.",
+      "timeComplexity": {
+        "class": "O(n + m)",
+        "explanation": "The loop advances through each input string once from right to left."
+      },
+      "spaceComplexity": {
+        "class": "O(n + m)",
+        "explanation": "The result stores at most one more bit than the longer input; no padded copies are needed."
+      },
+      "javaPath": "java/solution-2-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-two-pointers/solution.py"
+    }
+  ]
+}

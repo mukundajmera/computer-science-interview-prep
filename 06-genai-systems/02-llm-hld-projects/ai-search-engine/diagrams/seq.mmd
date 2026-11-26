@@ -1,0 +1,12 @@
+sequenceDiagram
+  participant Client
+  participant API
+  participant Engine
+  participant LLM
+  Client->>API: GET /search?q=...
+  API->>Engine: Forward Query
+  Engine->>Engine: Retrieve & Rerank
+  Engine->>LLM: Prompt with Context
+  LLM-->>Engine: Stream Tokens
+  Engine-->>API: SSE Stream
+  API-->>Client: Render UI incrementally

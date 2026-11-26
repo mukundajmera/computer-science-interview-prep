@@ -1,0 +1,32 @@
+graph TD
+    subgraph Client
+        LLM[LLM/Agent]
+    end
+
+    subgraph "Tool Router Component"
+        Router[Tool Router]
+        MiddlewareChain[Middleware Chain]
+        Validator[Schema Validator & Repair Engine]
+        DependencyResolver[DAG Dependency Resolver]
+        ExecutionPool[Rate-Limited Parallel Execution Pool]
+
+        subgraph ToolRegistry[Tool Registry Catalog]
+            T1[Tool 1]
+            T2[Tool 2]
+            TN[Tool N]
+        end
+    end
+
+    subgraph "Execution Output"
+        ResultAggregator[Result Aggregator]
+    end
+
+    LLM -->|Tool Calls| Router
+    Router --> MiddlewareChain
+    MiddlewareChain --> Validator
+    Validator --> DependencyResolver
+    DependencyResolver --> ExecutionPool
+    ExecutionPool <--> ToolRegistry
+    ExecutionPool --> ResultAggregator
+    ResultAggregator --> MiddlewareChain
+    MiddlewareChain -->|Tool Results| LLM

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-count-each-number",
+      "title": "Count each number",
+      "tier": 1,
+      "strategy": "For every value, repeatedly clear its lowest set bit until it becomes zero.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Each number can inspect up to its bit length."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The output array stores one count for every value from 0 through n."
+      },
+      "javaPath": "java/solution-1-count-each-number/Solution.java",
+      "pythonPath": "python/solution-1-count-each-number/solution.py"
+    },
+    {
+      "id": "solution-2-dp-lowest-bit",
+      "title": "DP lowest bit",
+      "tier": 2,
+      "strategy": "Use the recurrence bits[i] = bits[i >> 1] + (i & 1).",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each output position is computed once in constant time."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The output array doubles as the dynamic-programming table."
+      },
+      "javaPath": "java/solution-2-dp-lowest-bit/Solution.java",
+      "pythonPath": "python/solution-2-dp-lowest-bit/solution.py"
+    }
+  ]
+}

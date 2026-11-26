@@ -1,0 +1,70 @@
+erDiagram
+    TENANT ||--o{ ADVERTISER : "hosts"
+    ADVERTISER ||--o{ CAMPAIGN : "owns"
+    CAMPAIGN ||--o{ CLICK_EVENT : "receives"
+
+    CLICK_EVENT ||--o| DEDUP_INDEX : "checked against"
+    CLICK_EVENT ||--o{ EVENT_BUCKET_CONTRIBUTION : "generates"
+    AGGREGATE_BUCKET ||--o{ EVENT_BUCKET_CONTRIBUTION : "composed of"
+    AGGREGATE_BUCKET ||--o{ CORRECTION_LOG : "corrected by"
+
+    TENANT {
+        string tenant_id PK
+        string name
+        string tier
+    }
+
+    ADVERTISER {
+        string advertiser_id PK
+        string tenant_id FK
+        string name
+        string billing_status
+    }
+
+    CAMPAIGN {
+        string campaign_id PK
+        string advertiser_id FK
+        string status
+        decimal budget
+    }
+
+    CLICK_EVENT {
+        string event_id PK
+        string campaign_id FK
+        string ad_group_id
+        string publisher_id
+        timestamp event_time
+        json attributes
+    }
+
+    DEDUP_INDEX {
+        string event_id PK
+        timestamp first_seen_at
+        boolean processed
+    }
+
+    EVENT_BUCKET_CONTRIBUTION {
+        string event_id PK, FK
+        string bucket_id PK, FK "References deterministic bucket identity"
+        timestamp applied_at
+    }
+
+    AGGREGATE_BUCKET {
+        string bucket_id PK "Derived from tenant_id, window_start, granularity, dims_hash"
+        string tenant_id FK "UNIQUE(tenant_id, window_start, granularity, dims_hash)"
+        timestamp window_start
+        string granularity
+        string dims_hash
+        bigint click_count
+        timestamp last_updated_at
+    }
+
+    CORRECTION_LOG {
+        string correction_id PK
+        string bucket_id FK
+        timestamp window_start
+        string dims_hash
+        int delta
+        string reason
+        timestamp applied_at
+    }

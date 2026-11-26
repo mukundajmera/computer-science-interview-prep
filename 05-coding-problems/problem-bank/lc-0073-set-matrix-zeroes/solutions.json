@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-row-column-sets",
+      "title": "Row and column marker sets",
+      "tier": 1,
+      "strategy": "Record every row and column containing a zero, then rewrite cells whose row or column was recorded.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Both the scan and rewrite visit each cell."
+      },
+      "spaceComplexity": {
+        "class": "O(m + n)",
+        "explanation": "The marker sets can store every row and column."
+      },
+      "javaPath": "java/solution-1-row-column-sets/Solution.java",
+      "pythonPath": "python/solution-1-row-column-sets/solution.py"
+    },
+    {
+      "id": "solution-2-first-row-column-markers",
+      "title": "First row and column markers",
+      "tier": 2,
+      "strategy": "Use the first row and column as marker storage, with flags for whether those marker areas originally contained zeroes.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each cell is inspected and possibly rewritten a constant number of times."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only two boolean flags and loop variables are stored."
+      },
+      "javaPath": "java/solution-2-first-row-column-markers/Solution.java",
+      "pythonPath": "python/solution-2-first-row-column-markers/solution.py"
+    }
+  ]
+}

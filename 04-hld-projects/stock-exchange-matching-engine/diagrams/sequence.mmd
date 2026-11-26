@@ -1,0 +1,35 @@
+sequenceDiagram
+    autonumber
+    actor C as Client
+    participant F as FIX Gateway
+    participant R as Risk Engine
+    participant S as Sequencer
+    participant P as Primary ME
+    participant B as Standby ME
+    participant J as Journal
+    participant M as Market Data Pub
+    actor MDS as Data Subscriber
+
+    C->>F: Place Order (Symbol, Side, Price, Qty)
+    F->>R: Validate Order
+    R-->>F: Order Validated (Funds Held)
+    F->>S: Forward Validated Order
+    
+    par Multicast Sequenced Order
+        S->>P: Sequenced Order Log
+        S->>B: Sequenced Order Log
+        S->>J: Sequenced Order Log
+    end
+
+    J-->>J: Persist to Disk
+    B-->>B: Deterministic State Update (Outputs Dropped)
+    
+    P-->>P: Execute Matching Logic
+    
+    par Publish Results
+        P->>F: Execution / Fill Report
+        P->>M: Order Book Deltas (Trades)
+    end
+    
+    F->>C: Execution Report to Client
+    M->>MDS: L2 Depth / Trade Broadcast

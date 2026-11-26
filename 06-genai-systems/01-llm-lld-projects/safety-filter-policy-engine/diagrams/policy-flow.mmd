@@ -1,0 +1,31 @@
+sequenceDiagram
+    participant User
+    participant Ingress
+    participant Pipeline as Filter Pipeline
+    participant Triage as Policy Triage
+    participant Audit as Audit Trail
+
+    User->>Ingress: Submit Prompt
+    Ingress->>Pipeline: Route to filters
+
+    Pipeline->>Pipeline: Pre-prompt Sanitization
+    Pipeline->>Pipeline: Regex Fast Filters
+    Pipeline->>Pipeline: Semantic Classification
+
+    Pipeline->>Triage: Moderation Results & Scores
+    Triage->>Triage: Apply Policy Thresholds
+    Triage->>Triage: Determine Action (Strictest Wins)
+
+    Triage->>Audit: Log Evaluation Decision
+    Audit-->>Triage: Confirm Logged
+
+    alt Action is BLOCK
+        Triage-->>Ingress: Blocked Content Error
+        Ingress-->>User: Reject Request
+    else Action is FLAG
+        Triage-->>Ingress: Proceed with Flag
+        Ingress-->>User: Accept (Flagged)
+    else Action is ALLOW
+        Triage-->>Ingress: Proceed
+        Ingress-->>User: Accept
+    end

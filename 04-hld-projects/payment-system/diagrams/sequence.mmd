@@ -1,0 +1,24 @@
+sequenceDiagram
+    autonumber
+    participant Client
+    participant Merchant
+    participant PaymentSystem as Payment System
+    participant PSP as Payment Service Provider
+    participant Ledger as Ledger
+    participant Reconcile as Settlement Reconcile
+
+    Client->>Merchant: Checkout
+    Merchant->>PaymentSystem: Create Payment Intent
+    PaymentSystem-->>Merchant: Return Client Secret
+    Merchant-->>Client: Init Payment UI
+    Client->>PSP: PSP Redirect / Token Auth
+    PSP-->>Client: Auth Response
+    PSP->>PaymentSystem: Webhook Ingress
+    PaymentSystem->>Ledger: Ledger Post (Record Transaction)
+    Ledger-->>PaymentSystem: Ledger Updated
+    PaymentSystem-->>PSP: Webhook Ack
+    Reconcile->>PSP: Fetch Settlement Batch
+    PSP-->>Reconcile: Batch Data
+    Reconcile->>PaymentSystem: Settlement Reconcile
+    PaymentSystem->>Ledger: Ledger Post (Update Status)
+    Ledger-->>PaymentSystem: Ledger Updated

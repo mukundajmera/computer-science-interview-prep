@@ -1,0 +1,34 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "two-sum-indices",
+    "notes": "Any two distinct indices that add to the target are valid."
+  },
+  "cases": [
+    {
+      "name": "first two elements",
+      "input": { "nums": [4, 6, 10], "target": 10 },
+      "expected": [0, 1]
+    },
+    {
+      "name": "duplicate values at different indices",
+      "input": { "nums": [8, 3, 3, 12], "target": 6 },
+      "expected": [1, 2]
+    },
+    {
+      "name": "negative plus positive",
+      "input": { "nums": [5, -2, 11, 7], "target": 5 },
+      "expected": [1, 3]
+    },
+    {
+      "name": "answer after distractors",
+      "input": { "nums": [12, 1, 4, 9, 15], "target": 13 },
+      "expected": [0, 1]
+    },
+    {
+      "name": "zero participates",
+      "input": { "nums": [14, 0, -4, 18], "target": 14 },
+      "expected": [0, 1]
+    }
+  ]
+}

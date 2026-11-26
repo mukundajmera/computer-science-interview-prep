@@ -1,0 +1,45 @@
+sequenceDiagram
+    autonumber
+    participant Client
+    participant Service as Microservice
+    participant DB as Local Database
+    participant CDC as CDC Tool (Debezium)
+    participant Broker as Message Broker (Kafka)
+    participant Consumer as Downstream Service
+
+    Client->>Service: POST /api/resource
+    activate Service
+    
+    rect rgb(240, 248, 255)
+    Note over Service, DB: Local ACID Transaction
+    Service->>DB: BEGIN TX
+    Service->>DB: 1. INSERT INTO business_table
+    Service->>DB: 2. INSERT INTO outbox_table (event_payload)
+    Service->>DB: COMMIT TX
+    end
+    
+    Service-->>Client: 201 Created
+    deactivate Service
+
+    loop Asynchronous Log Tailing
+        CDC->>DB: Tail Transaction Log (WAL/binlog)
+        DB-->>CDC: Stream Committed Changes
+        CDC->>CDC: Filter for outbox_table inserts
+        CDC->>Broker: Publish Event
+    end
+
+    Broker->>Consumer: Consume Event
+    
+    activate Consumer
+    rect rgb(255, 240, 245)
+    Note over Consumer: Inbox Pattern (Deduplication)
+    Consumer->>Consumer: BEGIN TX
+    Consumer->>Consumer: 1. CHECK/INSERT inbox_table (event_id)
+    alt if duplicate constraint violation
+        Consumer->>Consumer: Ignore Event (ROLLBACK)
+    else if unique
+        Consumer->>Consumer: 2. Process Business Logic
+        Consumer->>Consumer: COMMIT TX
+    end
+    end
+    deactivate Consumer

@@ -1,0 +1,48 @@
+sequenceDiagram
+    participant User
+    participant GW as API Gateway
+    participant Chat as Chat Service
+    participant Config as Config Cache
+    participant Budget as Budget Check
+    participant PG as PostgreSQL
+    participant Safety as Safety Filter
+    participant Router as Model Router
+    participant LLM as LLM Provider
+    participant Usage as Usage Tracker
+
+    User->>GW: POST /chat/completions
+    GW->>GW: Validate JWT, extract tenant_id
+    GW->>GW: Per-tenant rate limit check
+
+    GW->>Chat: Forward with tenant context
+
+    Chat->>Config: Load tenant config (Redis)
+    Config-->>Chat: System prompt, safety policy, model tier
+
+    Chat->>Budget: Check token budget (Redis counter)
+    alt Over budget
+        Budget-->>User: 429 Budget exceeded
+    end
+
+    Chat->>PG: Load conversation history (RLS)
+    PG-->>Chat: Filtered messages
+
+    Chat->>Chat: Assemble prompt (platform + tenant + history + user)
+
+    Chat->>Safety: Input check (per-tenant policy)
+    alt Blocked
+        Safety-->>User: Content policy violation
+    end
+
+    Chat->>Router: Route by tenant tier
+    Router->>LLM: Stream request
+
+    loop Token streaming
+        LLM-->>Chat: Token
+        Chat->>Safety: Output check
+        Chat-->>User: SSE chunk
+    end
+
+    Chat->>PG: Save messages (tenant_id)
+    Chat->>Usage: Record tokens (async)
+    Chat-->>User: SSE done + usage stats

@@ -1,0 +1,47 @@
+%% CDN Network Architecture
+%% Shows geographic distribution with edge caching
+
+flowchart TB
+    subgraph Users["Users (Global)"]
+        US[US Users<br/>New York]
+        EU[EU Users<br/>London]
+        ASIA[Asia Users<br/>Tokyo]
+    end
+
+    subgraph CDN["CDN Edge Locations"]
+        EDGE_US[Edge Server US<br/>Cache: 99% Hit Rate]
+        EDGE_EU[Edge Server EU<br/>Cache: 98% Hit Rate]
+        EDGE_ASIA[Edge Server Asia<br/>Cache: 97% Hit Rate]
+    end
+
+    subgraph Origin["Origin Infrastructure"]
+        ORIGIN[Origin Server<br/>Primary Data Source]
+        STORAGE[(Object Storage<br/>S3/GCS)]
+    end
+
+    US -->|Request| EDGE_US
+    EU -->|Request| EDGE_EU
+    ASIA -->|Request| EDGE_ASIA
+
+    EDGE_US -->|Cache HIT| US
+    EDGE_EU -->|Cache HIT| EU
+    EDGE_ASIA -->|Cache HIT| ASIA
+
+    EDGE_US -.->|Cache MISS| ORIGIN
+    EDGE_EU -.->|Cache MISS| ORIGIN
+    EDGE_ASIA -.->|Cache MISS| ORIGIN
+
+    ORIGIN --> STORAGE
+    ORIGIN -.->|Populate Cache| EDGE_US
+    ORIGIN -.->|Populate Cache| EDGE_EU
+    ORIGIN -.->|Populate Cache| EDGE_ASIA
+
+    %% Styling
+    style EDGE_US fill:#48bb78,stroke:#276749,color:#fff
+    style EDGE_EU fill:#48bb78,stroke:#276749,color:#fff
+    style EDGE_ASIA fill:#48bb78,stroke:#276749,color:#fff
+    style ORIGIN fill:#4299e1,stroke:#2b6cb0,color:#fff
+    style STORAGE fill:#4a5568,stroke:#1a202c,color:#fff
+    style US fill:#ed8936,stroke:#c05621,color:#fff
+    style EU fill:#ed8936,stroke:#c05621,color:#fff
+    style ASIA fill:#ed8936,stroke:#c05621,color:#fff

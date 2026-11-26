@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bitmask-enumeration",
+      "title": "Bitmask enumeration",
+      "tier": 1,
+      "strategy": "Use each bit pattern from 0 to 2^n - 1 as the inclusion mask for one subset.",
+      "timeComplexity": {
+        "class": "O(n2^n)",
+        "explanation": "There are 2^n masks and each can inspect n positions."
+      },
+      "spaceComplexity": {
+        "class": "O(n2^n)",
+        "explanation": "The output contains 2^n subsets with up to n values each."
+      },
+      "javaPath": "java/solution-1-bitmask-enumeration/Solution.java",
+      "pythonPath": "python/solution-1-bitmask-enumeration/solution.py"
+    },
+    {
+      "id": "solution-2-backtracking",
+      "title": "Backtracking include/exclude",
+      "tier": 2,
+      "strategy": "Walk the array once, recursively choosing whether each value is absent or present in the current subset.",
+      "timeComplexity": {
+        "class": "O(n2^n)",
+        "explanation": "Each subset copy can contain up to n values."
+      },
+      "spaceComplexity": {
+        "class": "O(n2^n)",
+        "explanation": "The output dominates; the decision path uses O(n) extra stack space."
+      },
+      "javaPath": "java/solution-2-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-backtracking/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-basic-backtracking",
+      "title": "Basic backtracking",
+      "tier": 1,
+      "strategy": "Try every next number greater than the previous one until the path reaches length k.",
+      "timeComplexity": {
+        "class": "O(C(n,k) k)",
+        "explanation": "There are C(n,k) combinations and each stored result copies k numbers."
+      },
+      "spaceComplexity": {
+        "class": "O(C(n,k) k)",
+        "explanation": "The output stores every combination; the recursion path adds O(k)."
+      },
+      "javaPath": "java/solution-1-basic-backtracking/Solution.java",
+      "pythonPath": "python/solution-1-basic-backtracking/solution.py"
+    },
+    {
+      "id": "solution-2-pruned-backtracking",
+      "title": "Pruned backtracking",
+      "tier": 2,
+      "strategy": "Stop loop choices that cannot leave enough numbers to fill the remaining slots.",
+      "timeComplexity": {
+        "class": "O(C(n,k) k)",
+        "explanation": "The same C(n,k) results must be emitted and copied."
+      },
+      "spaceComplexity": {
+        "class": "O(C(n,k) k)",
+        "explanation": "The output dominates; the path and stack use O(k)."
+      },
+      "javaPath": "java/solution-2-pruned-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-pruned-backtracking/solution.py"
+    }
+  ]
+}

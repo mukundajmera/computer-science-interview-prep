@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-single-row-in-place",
+      "title": "Single row in-place update",
+      "tier": 1,
+      "strategy": "Maintain a single row array and update from right to left to avoid overwriting previous-row dependencies.",
+      "timeComplexity": {
+        "class": "O(k^2)",
+        "explanation": "Generating up to index k performs k iterations with row length expanding to k + 1."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "Allocates one row of size k + 1."
+      },
+      "javaPath": "java/solution-1-single-row-in-place/Solution.java",
+      "pythonPath": "python/solution-1-single-row-in-place/solution.py"
+    }
+  ]
+}

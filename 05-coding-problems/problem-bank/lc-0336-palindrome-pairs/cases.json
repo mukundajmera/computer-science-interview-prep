@@ -1,0 +1,78 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list-of-lists"
+  },
+  "cases": [
+    {
+      "name": "reverse words",
+      "input": {
+        "words": [
+          "bat",
+          "tab",
+          "cat"
+        ]
+      },
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "empty string with palindrome",
+      "input": {
+        "words": [
+          "",
+          "aba",
+          "xyz"
+        ]
+      },
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "prefix and suffix splits",
+      "input": {
+        "words": [
+          "abcd",
+          "dcba",
+          "lls",
+          "s",
+          "sssll"
+        ]
+      },
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    }
+  ]
+}

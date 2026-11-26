@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-prefix-suffix-maxima",
+      "title": "Prefix and suffix maxima",
+      "tier": 1,
+      "strategy": "Precompute the tallest bar at or before each index and at or after each index, then sum local water depths.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Prefix, suffix, and summation passes are linear."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Two arrays store left and right maxima."
+      },
+      "javaPath": "java/solution-1-prefix-suffix-maxima/Solution.java",
+      "pythonPath": "python/solution-1-prefix-suffix-maxima/solution.py"
+    },
+    {
+      "id": "solution-2-two-pointers",
+      "title": "Two pointers with running walls",
+      "tier": 2,
+      "strategy": "Move inward from the smaller side, updating that side maximum and adding water when the current bar is below it.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each pointer advances at most n times total."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only pointers, running maxima, and the total are stored."
+      },
+      "javaPath": "java/solution-2-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-two-pointers/solution.py"
+    }
+  ]
+}

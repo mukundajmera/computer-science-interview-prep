@@ -1,0 +1,70 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "three complete levels",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          6,
+          10,
+          14
+        ]
+      },
+      "expected": [
+        [
+          8
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          2,
+          6,
+          10,
+          14
+        ]
+      ]
+    },
+    {
+      "name": "empty tree",
+      "input": {
+        "root": []
+      },
+      "expected": []
+    },
+    {
+      "name": "missing children at mixed positions",
+      "input": {
+        "root": [
+          5,
+          2,
+          9,
+          null,
+          3,
+          8
+        ]
+      },
+      "expected": [
+        [
+          5
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          3,
+          8
+        ]
+      ]
+    }
+  ]
+}

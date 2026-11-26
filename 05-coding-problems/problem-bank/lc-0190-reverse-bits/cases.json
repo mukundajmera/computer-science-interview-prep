@@ -1,0 +1,36 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "zero stays zero",
+      "input": {
+        "n": 0
+      },
+      "expected": 0
+    },
+    {
+      "name": "single bit near front",
+      "input": {
+        "n": 2
+      },
+      "expected": 1073741824
+    },
+    {
+      "name": "low bit becomes signed high bit",
+      "input": {
+        "n": 1
+      },
+      "expected": -2147483648
+    },
+    {
+      "name": "two low bits separated",
+      "input": {
+        "n": 10
+      },
+      "expected": 1342177280
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-scan-each-window",
+      "title": "Scan each window",
+      "tier": 1,
+      "strategy": "Compute each window maximum by scanning its k elements.",
+      "timeComplexity": {
+        "class": "O(nk)",
+        "explanation": "There are n-k+1 windows and each scan can inspect k values."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the output and loop counters are stored."
+      },
+      "javaPath": "java/solution-1-scan-each-window/Solution.java",
+      "pythonPath": "python/solution-1-scan-each-window/solution.py"
+    },
+    {
+      "id": "solution-2-monotonic-deque",
+      "title": "Monotonic deque",
+      "tier": 2,
+      "strategy": "Keep candidate indices in decreasing value order and remove indices that leave the window.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each index is inserted and removed at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The deque stores at most k window indices."
+      },
+      "javaPath": "java/solution-2-monotonic-deque/Solution.java",
+      "pythonPath": "python/solution-2-monotonic-deque/solution.py"
+    }
+  ]
+}

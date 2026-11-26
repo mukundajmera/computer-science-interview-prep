@@ -1,0 +1,104 @@
+{
+  "id": "lc-0253-meeting-rooms-ii",
+  "title": "Meeting Rooms II",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "heap",
+    "intervals",
+    "sorting"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 144,
+      "group": "array",
+      "sourceUrl": "https://leetcode.com/problems/meeting-rooms-ii"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 836,
+      "group": "Intervals",
+      "sourceUrl": "https://leetcode.com/problems/meeting-rooms-ii"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "253",
+    "titleSlug": "meeting-rooms-ii",
+    "url": "https://leetcode.com/problems/meeting-rooms-ii",
+    "paidOnly": true
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "minMeetingRooms",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "intervals",
+          "type": "int[][]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "minMeetingRooms",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "intervals",
+          "type": "List[List[int]]"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-sweep-line/Solution.java",
+      "python/solution-1-sweep-line/solution.py",
+      "java/solution-2-min-heap-end-times/Solution.java",
+      "python/solution-2-min-heap-end-times/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

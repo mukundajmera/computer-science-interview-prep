@@ -1,0 +1,48 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "right branch reaches target",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          6,
+          10,
+          14
+        ],
+        "targetSum": 30
+      },
+      "expected": true
+    },
+    {
+      "name": "no leaf total",
+      "input": {
+        "root": [
+          8,
+          4,
+          12,
+          2,
+          6,
+          10,
+          14
+        ],
+        "targetSum": 31
+      },
+      "expected": false
+    },
+    {
+      "name": "empty tree",
+      "input": {
+        "root": [],
+        "targetSum": 0
+      },
+      "expected": false
+    }
+  ]
+}

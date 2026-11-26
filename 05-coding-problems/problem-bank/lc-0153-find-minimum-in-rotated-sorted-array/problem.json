@@ -1,0 +1,105 @@
+{
+  "id": "lc-0153-find-minimum-in-rotated-sorted-array",
+  "title": "Find Minimum in Rotated Sorted Array",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "array",
+    "binary-search"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 159,
+      "group": "binary-search",
+      "sourceUrl": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 119,
+      "group": "Binary Search",
+      "sourceUrl": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 322,
+      "group": "Binary Search",
+      "sourceUrl": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "153",
+    "titleSlug": "find-minimum-in-rotated-sorted-array",
+    "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "findMin",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "int[]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "findMin",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "List[int]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

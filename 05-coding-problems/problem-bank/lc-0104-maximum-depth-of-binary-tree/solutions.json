@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-dfs",
+      "title": "Recursive DFS depth",
+      "tier": 1,
+      "strategy": "Return one plus the larger child depth from each node.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is visited exactly once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack grows with tree height h."
+      },
+      "javaPath": "java/solution-1-recursive-dfs/Solution.java",
+      "pythonPath": "python/solution-1-recursive-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-bfs",
+      "title": "Iterative BFS levels",
+      "tier": 2,
+      "strategy": "Count how many breadth-first layers are removed from the queue.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node enters and leaves the queue once."
+      },
+      "spaceComplexity": {
+        "class": "O(w)",
+        "explanation": "The queue stores up to the maximum tree width w."
+      },
+      "javaPath": "java/solution-2-iterative-bfs/Solution.java",
+      "pythonPath": "python/solution-2-iterative-bfs/solution.py"
+    }
+  ]
+}

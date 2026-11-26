@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-backtracking-include-current",
+      "title": "Include-current recursion",
+      "tier": 1,
+      "strategy": "At each candidate, choose it again or move to the next candidate.",
+      "timeComplexity": {
+        "class": "O(R)",
+        "explanation": "The recursion explores candidate reuse branches up to the number of generated partial combinations R."
+      },
+      "spaceComplexity": {
+        "class": "O(R)",
+        "explanation": "The output stores all valid combinations and the recursion path stores one active combination."
+      },
+      "javaPath": "java/solution-1-backtracking-include-current/Solution.java",
+      "pythonPath": "python/solution-1-backtracking-include-current/solution.py"
+    },
+    {
+      "id": "solution-2-loop-backtracking",
+      "title": "Loop backtracking",
+      "tier": 2,
+      "strategy": "Loop over candidate choices from the current start index and recurse with the same index for reuse.",
+      "timeComplexity": {
+        "class": "O(R)",
+        "explanation": "The search cost scales with the number of explored partial and complete combinations R."
+      },
+      "spaceComplexity": {
+        "class": "O(R)",
+        "explanation": "The output dominates; recursion depth is bounded by target divided by the smallest candidate."
+      },
+      "javaPath": "java/solution-2-loop-backtracking/Solution.java",
+      "pythonPath": "python/solution-2-loop-backtracking/solution.py"
+    }
+  ]
+}

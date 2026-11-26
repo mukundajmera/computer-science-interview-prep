@@ -1,0 +1,15 @@
+sequenceDiagram
+  participant Client
+  participant Router
+  participant Scheduler
+  participant GPU_Worker
+  Client->>Router: Submit Prompt
+  Router->>Scheduler: Enqueue
+  Scheduler->>GPU_Worker: Dispatch (Prefill Phase)
+  loop Every Generation Step
+    GPU_Worker->>GPU_Worker: Generate Next Token (Decode)
+    GPU_Worker-->>Client: Stream Token
+    alt Slot Available
+      Scheduler->>GPU_Worker: Inject New Request
+    end
+  end

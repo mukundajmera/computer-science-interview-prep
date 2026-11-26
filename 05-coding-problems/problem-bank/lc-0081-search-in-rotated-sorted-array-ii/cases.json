@@ -1,0 +1,57 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "rotated with duplicates found",
+      "input": {
+        "nums": [
+          4,
+          5,
+          6,
+          6,
+          7,
+          0,
+          1,
+          2,
+          4
+        ],
+        "target": 0
+      },
+      "expected": true
+    },
+    {
+      "name": "rotated with duplicates missing",
+      "input": {
+        "nums": [
+          4,
+          5,
+          6,
+          6,
+          7,
+          0,
+          1,
+          2,
+          4
+        ],
+        "target": 3
+      },
+      "expected": false
+    },
+    {
+      "name": "all equal values",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "target": 1
+      },
+      "expected": true
+    }
+  ]
+}

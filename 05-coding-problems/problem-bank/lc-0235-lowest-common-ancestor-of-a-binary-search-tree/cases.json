@@ -1,0 +1,98 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "targets split at root",
+      "input": {
+        "root": [
+          6,
+          2,
+          8,
+          0,
+          4,
+          7,
+          9,
+          null,
+          null,
+          3,
+          5
+        ],
+        "p": {
+          "from": "root",
+          "path": "L"
+        },
+        "q": {
+          "from": "root",
+          "path": "R"
+        }
+      },
+      "expected": {
+        "from": "root",
+        "path": ""
+      }
+    },
+    {
+      "name": "one target is ancestor",
+      "input": {
+        "root": [
+          6,
+          2,
+          8,
+          0,
+          4,
+          7,
+          9,
+          null,
+          null,
+          3,
+          5
+        ],
+        "p": {
+          "from": "root",
+          "path": "L"
+        },
+        "q": {
+          "from": "root",
+          "path": "LR"
+        }
+      },
+      "expected": {
+        "from": "root",
+        "path": "L"
+      }
+    },
+    {
+      "name": "targets split below left child",
+      "input": {
+        "root": [
+          6,
+          2,
+          8,
+          0,
+          4,
+          7,
+          9,
+          null,
+          null,
+          3,
+          5
+        ],
+        "p": {
+          "from": "root",
+          "path": "LRL"
+        },
+        "q": {
+          "from": "root",
+          "path": "LRR"
+        }
+      },
+      "expected": {
+        "from": "root",
+        "path": "LR"
+      }
+    }
+  ]
+}

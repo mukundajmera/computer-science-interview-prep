@@ -1,0 +1,48 @@
+```mermaid
+erDiagram
+    USERS {
+        uuid user_id PK
+        string username
+        string display_name
+        int follower_count
+        int following_count
+        boolean is_celebrity
+        timestamp created_at
+    }
+    
+    POSTS {
+        uuid post_id PK
+        uuid user_id FK
+        text content
+        list media_ids
+        int like_count
+        int share_count
+        int comment_count
+        timestamp created_at
+        boolean is_deleted
+    }
+    
+    USER_FOLLOWS {
+        uuid follower_id PK
+        uuid followee_id PK
+        timestamp created_at
+    }
+    
+    USER_FEED_CACHE {
+        uuid user_id PK
+        sorted_set post_ids "Score = timestamp"
+        timestamp last_updated
+    }
+    
+    POST_ENGAGEMENT {
+        uuid post_id PK
+        uuid user_id PK
+        string engagement_type "like/share/comment"
+        timestamp created_at
+    }
+    
+    USERS ||--o{ POSTS : "creates"
+    USERS ||--o{ USER_FOLLOWS : "follows"
+    USERS ||--o{ USER_FEED_CACHE : "has"
+    POSTS ||--o{ POST_ENGAGEMENT : "receives"
+```

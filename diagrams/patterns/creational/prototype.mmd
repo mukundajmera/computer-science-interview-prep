@@ -1,0 +1,38 @@
+%% Prototype Pattern Class Diagram
+%% Creates new objects by cloning existing ones
+
+classDiagram
+    class Prototype {
+        <<interface>>
+        +clone() Prototype
+    }
+    
+    class ConcretePrototype1 {
+        -field1 String
+        -field2 int
+        +ConcretePrototype1(ConcretePrototype1)
+        +clone() Prototype
+    }
+    
+    class ConcretePrototype2 {
+        -fieldA String
+        -fieldB List
+        +ConcretePrototype2(ConcretePrototype2)
+        +clone() Prototype
+    }
+    
+    class PrototypeRegistry {
+        -prototypes Map~String, Prototype~
+        +addPrototype(String, Prototype) void
+        +getPrototype(String) Prototype
+    }
+    
+    class Client {
+        +operation() void
+    }
+    
+    Prototype <|.. ConcretePrototype1
+    Prototype <|.. ConcretePrototype2
+    PrototypeRegistry --> Prototype : stores
+    Client --> PrototypeRegistry : uses
+    Client --> Prototype : clones

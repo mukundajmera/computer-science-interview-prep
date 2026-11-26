@@ -1,0 +1,16 @@
+flowchart LR
+    C[Client Session] --> GW[Recommendation Gateway]
+    GW --> CG1[Candidate Gen: Similar Content]
+    GW --> CG2[Candidate Gen: Subscriptions]
+    GW --> CG3[Candidate Gen: Trending]
+    CG1 --> LR[Lightweight Ranker]
+    CG2 --> LR
+    CG3 --> LR
+    LR --> HR[Heavy Ranker Value Model]
+    HR --> TOP[Top-K Response]
+    TOP --> C
+    C --> FB[Feedback Events]
+    FB --> FS[(Feature Store)]
+    FS --> CG1
+    FS --> LR
+    FS --> HR

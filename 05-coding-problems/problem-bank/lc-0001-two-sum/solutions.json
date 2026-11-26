@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-brute-force",
+      "title": "Brute force pair scan",
+      "tier": 1,
+      "strategy": "Check every pair of distinct indices until a pair sums to the target.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "For each index i, the algorithm scans every later index j. The number of pair checks is n - 1 plus n - 2 down to 1, which is proportional to n squared."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The algorithm stores only loop counters and the returned pair. It does not allocate auxiliary storage proportional to the input length."
+      },
+      "javaPath": "java/solution-1-brute-force/Solution.java",
+      "pythonPath": "python/solution-1-brute-force/solution.py"
+    },
+    {
+      "id": "solution-2-complement-map",
+      "title": "One-pass complement map",
+      "tier": 2,
+      "strategy": "Store seen values with their indices and check whether the current value's complement has already appeared.",
+      "timeComplexity": {
+        "class": "O(n) expected",
+        "explanation": "The array is scanned once. Each hash lookup and insertion is expected constant time, so the expected total time grows linearly with the input length."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "If the matching pair appears late, the map can store an index for nearly every earlier value, so auxiliary memory grows linearly in the worst case."
+      },
+      "javaPath": "java/solution-2-complement-map/Solution.java",
+      "pythonPath": "python/solution-2-complement-map/solution.py"
+    }
+  ]
+}

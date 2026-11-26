@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant Client
+    participant Leader
+    participant Follower1
+    participant Follower2
+    
+    Client->>Leader: Send command
+    Note over Leader: Append to local log
+    
+    Leader->>Follower1: AppendEntries (entries, prevLogIndex, prevLogTerm)
+    Leader->>Follower2: AppendEntries (entries, prevLogIndex, prevLogTerm)
+    
+    Note over Follower1: Check consistency
+    Follower1-->>Leader: AppendEntriesResponse (Success)
+    
+    Note over Follower2: Check consistency
+    Follower2-->>Leader: AppendEntriesResponse (Success)
+    
+    Note over Leader: Majority reached<br/>Update commitIndex
+    Note over Leader: Apply command to State Machine
+    Leader-->>Client: Return result
+    
+    Leader->>Follower1: AppendEntries (Heartbeat with new commitIndex)
+    Note over Follower1: Apply committed entries to State Machine

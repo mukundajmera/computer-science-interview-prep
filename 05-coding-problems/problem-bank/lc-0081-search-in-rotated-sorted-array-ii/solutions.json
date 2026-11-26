@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-scan",
+      "title": "Linear scan",
+      "tier": 1,
+      "strategy": "Scan each value until the target is found or the array is exhausted.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every value may be inspected once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the loop state is stored."
+      },
+      "javaPath": "java/solution-1-linear-scan/Solution.java",
+      "pythonPath": "python/solution-1-linear-scan/solution.py"
+    },
+    {
+      "id": "solution-2-duplicate-aware-binary-search",
+      "title": "Duplicate-aware binary search",
+      "tier": 2,
+      "strategy": "Use rotated binary search when one side is known sorted, and shrink both ends when duplicates make the order ambiguous.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The duplicate-shrinking fallback can remove only one value per step in the worst case; otherwise it behaves like O(log n)."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The search keeps only three indices."
+      },
+      "javaPath": "java/solution-2-duplicate-aware-binary-search/Solution.java",
+      "pythonPath": "python/solution-2-duplicate-aware-binary-search/solution.py"
+    }
+  ]
+}

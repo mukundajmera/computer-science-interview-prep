@@ -1,0 +1,99 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two-room staggered overlap",
+      "input": {
+        "intervals": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            8,
+            10
+          ]
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "adjacent meetings reuse room",
+      "input": {
+        "intervals": [
+          [
+            7,
+            10
+          ],
+          [
+            2,
+            7
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "three simultaneous rooms",
+      "input": {
+        "intervals": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            8,
+            9
+          ]
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "name": "unsorted intervals",
+      "input": {
+        "intervals": [
+          [
+            9,
+            10
+          ],
+          [
+            4,
+            9
+          ],
+          [
+            4,
+            17
+          ]
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "name": "empty schedule",
+      "input": {
+        "intervals": []
+      },
+      "expected": 0
+    }
+  ]
+}

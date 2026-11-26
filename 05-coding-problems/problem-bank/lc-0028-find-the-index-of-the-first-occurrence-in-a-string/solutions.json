@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-check-every-start",
+      "title": "Check every possible start",
+      "tier": 1,
+      "strategy": "Try each candidate start in the text and compare the pattern character by character.",
+      "timeComplexity": { "class": "O(n * m)", "explanation": "There are up to n candidate starts, and each can compare up to m pattern characters before failing or matching." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "The scan stores only loop indices and does not allocate data proportional to either string." },
+      "javaPath": "java/solution-1-check-every-start/Solution.java",
+      "pythonPath": "python/solution-1-check-every-start/solution.py"
+    },
+    {
+      "id": "solution-2-kmp-prefix-table",
+      "title": "KMP prefix table",
+      "tier": 2,
+      "strategy": "Build the pattern prefix table and reuse previous match information instead of restarting comparisons after each mismatch.",
+      "timeComplexity": { "class": "O(n + m)", "explanation": "The prefix table scans the pattern once, and the search advances through the text while moving the pattern pointer backward only via table links." },
+      "spaceComplexity": { "class": "O(m)", "explanation": "The prefix table stores one integer for each pattern position." },
+      "javaPath": "java/solution-2-kmp-prefix-table/Solution.java",
+      "pythonPath": "python/solution-2-kmp-prefix-table/solution.py"
+    }
+  ]
+}

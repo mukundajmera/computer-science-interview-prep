@@ -1,0 +1,48 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "read refreshes before eviction",
+      "operations": [
+        { "type": "constructor", "input": { "capacity": 2 }, "expected": null },
+        { "type": "call", "method": "put", "input": { "key": 4, "value": 40 }, "expected": null },
+        { "type": "call", "method": "put", "input": { "key": 9, "value": 90 }, "expected": null },
+        { "type": "call", "method": "get", "input": { "key": 4 }, "expected": 40 },
+        { "type": "call", "method": "put", "input": { "key": 12, "value": 120 }, "expected": null },
+        { "type": "call", "method": "get", "input": { "key": 9 }, "expected": -1 },
+        { "type": "call", "method": "get", "input": { "key": 4 }, "expected": 40 },
+        { "type": "call", "method": "put", "input": { "key": 15, "value": 150 }, "expected": null },
+        { "type": "call", "method": "get", "input": { "key": 12 }, "expected": -1 },
+        { "type": "call", "method": "get", "input": { "key": 15 }, "expected": 150 }
+      ]
+    },
+    {
+      "name": "updating existing key keeps it recent",
+      "operations": [
+        { "type": "constructor", "input": { "capacity": 2 }, "expected": null },
+        { "type": "call", "method": "put", "input": { "key": 6, "value": 60 }, "expected": null },
+        { "type": "call", "method": "put", "input": { "key": 7, "value": 70 }, "expected": null },
+        { "type": "call", "method": "put", "input": { "key": 6, "value": 66 }, "expected": null },
+        { "type": "call", "method": "get", "input": { "key": 6 }, "expected": 66 },
+        { "type": "call", "method": "put", "input": { "key": 8, "value": 80 }, "expected": null },
+        { "type": "call", "method": "get", "input": { "key": 7 }, "expected": -1 },
+        { "type": "call", "method": "get", "input": { "key": 6 }, "expected": 66 },
+        { "type": "call", "method": "get", "input": { "key": 8 }, "expected": 80 }
+      ]
+    },
+    {
+      "name": "single slot replaces older entry",
+      "operations": [
+        { "type": "constructor", "input": { "capacity": 1 }, "expected": null },
+        { "type": "call", "method": "put", "input": { "key": 3, "value": 30 }, "expected": null },
+        { "type": "call", "method": "get", "input": { "key": 3 }, "expected": 30 },
+        { "type": "call", "method": "put", "input": { "key": 4, "value": 40 }, "expected": null },
+        { "type": "call", "method": "get", "input": { "key": 3 }, "expected": -1 },
+        { "type": "call", "method": "get", "input": { "key": 4 }, "expected": 40 },
+        { "type": "call", "method": "put", "input": { "key": 4, "value": 44 }, "expected": null },
+        { "type": "call", "method": "get", "input": { "key": 4 }, "expected": 44 }
+      ]
+    }
+  ]
+}

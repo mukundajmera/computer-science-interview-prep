@@ -1,0 +1,74 @@
+flowchart TB
+    subgraph Clients
+        WebApp[Web App]
+        Mobile[Mobile SDK]
+        APIClient[API Integration]
+    end
+
+    subgraph Gateway["API Gateway"]
+        LB[Load Balancer]
+        TenantAuth[Tenant Auth + Rate Limiter]
+    end
+
+    subgraph ChatService["Chat Service"]
+        ChatAPI[Chat API]
+        ConvMgr[Conversation Manager]
+        PromptAssembler[Prompt Assembler]
+    end
+
+    subgraph TenantMgmt["Tenant Management"]
+        ConfigSvc[Config Service]
+        AdminAPI[Admin API]
+        BillingSvc[Billing + Usage]
+    end
+
+    subgraph Safety["Safety Layer"]
+        InputSafety[Input Filter]
+        OutputSafety[Output Filter]
+        PolicyEngine[Policy Engine]
+    end
+
+    subgraph Models["Model Layer"]
+        ModelRouter[Model Router]
+        LLMGateway[LLM Gateway]
+        Mini[GPT-4o-mini - Basic]
+        Full[GPT-4o - Pro]
+        Custom[Custom - Enterprise]
+    end
+
+    subgraph Storage["Storage"]
+        PG[(PostgreSQL + RLS)]
+        Redis[(Redis Cluster)]
+        CH[(ClickHouse)]
+        S3[(S3)]
+    end
+
+    WebApp --> LB
+    Mobile --> LB
+    APIClient --> LB
+    LB --> TenantAuth
+    TenantAuth --> ChatAPI
+    TenantAuth --> AdminAPI
+
+    ChatAPI --> ConvMgr
+    ChatAPI --> PromptAssembler
+    PromptAssembler --> InputSafety
+    InputSafety --> PolicyEngine
+    PolicyEngine --> ModelRouter
+    ModelRouter --> LLMGateway
+    LLMGateway --> Mini
+    LLMGateway --> Full
+    LLMGateway --> Custom
+    Mini --> OutputSafety
+    Full --> OutputSafety
+    Custom --> OutputSafety
+    OutputSafety --> PolicyEngine
+
+    AdminAPI --> ConfigSvc
+    ConfigSvc --> PG
+    ConfigSvc --> Redis
+    ConvMgr --> PG
+    ConvMgr --> Redis
+    ChatAPI --> BillingSvc
+    BillingSvc --> CH
+    BillingSvc --> Redis

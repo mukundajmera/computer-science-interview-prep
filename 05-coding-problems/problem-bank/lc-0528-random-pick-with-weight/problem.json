@@ -1,0 +1,119 @@
+{
+  "id": "lc-0528-random-pick-with-weight",
+  "title": "Random Pick with Weight",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "prefix-sum",
+    "binary-search",
+    "randomized"
+  ],
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 121,
+      "group": "math",
+      "sourceUrl": "https://leetcode.com/problems/random-pick-with-weight"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 329,
+      "group": "Binary Search",
+      "sourceUrl": "https://leetcode.com/problems/random-pick-with-weight"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "528",
+    "titleSlug": "random-pick-with-weight",
+    "url": "https://leetcode.com/problems/random-pick-with-weight",
+    "paidOnly": false
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "kind": "object",
+    "java": {
+      "className": "Solution",
+      "constructor": {
+        "parameters": [
+          {
+            "name": "w",
+            "type": "int[]"
+          }
+        ]
+      },
+      "methods": [
+        {
+          "name": "pickIndex",
+          "returnType": "int",
+          "parameters": []
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "constructor": {
+        "parameters": [
+          {
+            "name": "w",
+            "type": "List[int]"
+          }
+        ]
+      },
+      "methods": [
+        {
+          "name": "pickIndex",
+          "returnType": "int",
+          "parameters": []
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-expanded-bag/Solution.java",
+      "python/solution-1-expanded-bag/solution.py",
+      "java/solution-2-prefix-binary-search/Solution.java",
+      "python/solution-2-prefix-binary-search/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

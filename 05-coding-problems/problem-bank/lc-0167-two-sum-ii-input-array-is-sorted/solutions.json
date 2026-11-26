@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-binary-search-complement",
+      "title": "Binary search each complement",
+      "tier": 1,
+      "strategy": "For each left index, binary search the sorted suffix for the required complement.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "There can be one binary search for each index."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only loop indexes and search bounds are stored."
+      },
+      "javaPath": "java/solution-1-binary-search-complement/Solution.java",
+      "pythonPath": "python/solution-1-binary-search-complement/solution.py"
+    },
+    {
+      "id": "solution-2-two-pointers",
+      "title": "Two pointers from both ends",
+      "tier": 2,
+      "strategy": "Move the left pointer right when the sum is too small and the right pointer left when the sum is too large.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each pointer moves inward at most n times total."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only two pointer indexes are stored."
+      },
+      "javaPath": "java/solution-2-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-two-pointers/solution.py"
+    }
+  ]
+}

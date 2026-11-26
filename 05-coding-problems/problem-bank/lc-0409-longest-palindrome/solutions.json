@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-frequency-counts",
+      "title": "Frequency counts",
+      "tier": 1,
+      "strategy": "Count each character and use every even pair, plus one center character if any odd count exists.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The string is scanned once and the count table is scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The table stores one count per distinct character."
+      },
+      "javaPath": "java/solution-1-frequency-counts/Solution.java",
+      "pythonPath": "python/solution-1-frequency-counts/solution.py"
+    },
+    {
+      "id": "solution-2-toggle-odd-set",
+      "title": "Toggle odd set",
+      "tier": 2,
+      "strategy": "Track characters with odd parity; every second occurrence contributes a pair immediately.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each character performs constant-time set work."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The odd set holds at most one entry per distinct character."
+      },
+      "javaPath": "java/solution-2-toggle-odd-set/Solution.java",
+      "pythonPath": "python/solution-2-toggle-odd-set/solution.py"
+    }
+  ]
+}

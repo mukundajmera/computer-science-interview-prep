@@ -1,0 +1,48 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "unique values",
+      "input": {
+        "nums1": [
+          12,
+          28,
+          46
+        ],
+        "nums2": [
+          46,
+          12,
+          28
+        ]
+      },
+      "expected": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "duplicates deterministic",
+      "input": {
+        "nums1": [
+          7,
+          7,
+          3
+        ],
+        "nums2": [
+          7,
+          3,
+          7
+        ]
+      },
+      "expected": [
+        0,
+        2,
+        1
+      ]
+    }
+  ]
+}

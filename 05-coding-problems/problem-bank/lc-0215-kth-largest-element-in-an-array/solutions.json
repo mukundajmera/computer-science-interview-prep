@@ -1,0 +1,52 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-descending",
+      "title": "Sort descending",
+      "tier": 1,
+      "strategy": "Sort the array and index the kth value from the end.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Comparison sorting dominates the work."
+      },
+      "spaceComplexity": {
+        "class": "O(log n) to O(n)",
+        "explanation": "Java's in-place primitive sort uses stack space, while Python's list sort may allocate temporary merge buffers."
+      },
+      "javaPath": "java/solution-1-sort-descending/Solution.java",
+      "pythonPath": "python/solution-1-sort-descending/solution.py"
+    },
+    {
+      "id": "solution-2-min-heap-size-k",
+      "title": "Min-heap size k",
+      "tier": 2,
+      "strategy": "Maintain a min-heap containing the k largest values seen so far.",
+      "timeComplexity": {
+        "class": "O(n log k)",
+        "explanation": "Each value may trigger one heap operation bounded by heap size k."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The heap stores at most k values."
+      },
+      "javaPath": "java/solution-2-min-heap-size-k/Solution.java",
+      "pythonPath": "python/solution-2-min-heap-size-k/solution.py"
+    },
+    {
+      "id": "solution-3-quickselect",
+      "title": "Quickselect",
+      "tier": 3,
+      "strategy": "Partition around pivots until the target sorted index is placed.",
+      "timeComplexity": {
+        "class": "O(n) average, O(n^2) worst",
+        "explanation": "Balanced partitions inspect linear total work on average, but unlucky pivots can repeatedly shrink by one."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Partitioning is in place."
+      },
+      "javaPath": "java/solution-3-quickselect/Solution.java",
+      "pythonPath": "python/solution-3-quickselect/solution.py"
+    }
+  ]
+}

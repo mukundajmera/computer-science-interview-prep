@@ -1,0 +1,36 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "reaches one",
+      "input": {
+        "n": 7
+      },
+      "expected": true
+    },
+    {
+      "name": "cycles",
+      "input": {
+        "n": 4
+      },
+      "expected": false
+    },
+    {
+      "name": "already one",
+      "input": {
+        "n": 1
+      },
+      "expected": true
+    },
+    {
+      "name": "larger happy number",
+      "input": {
+        "n": 82
+      },
+      "expected": true
+    }
+  ]
+}

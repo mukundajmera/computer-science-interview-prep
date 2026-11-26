@@ -1,0 +1,103 @@
+{
+  "id": "lc-0416-partition-equal-subset-sum",
+  "title": "Partition Equal Subset Sum",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "dynamic-programming",
+    "knapsack"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-memoized-search/Solution.java",
+      "python/solution-1-memoized-search/solution.py",
+      "java/solution-2-one-dimensional-dp/Solution.java",
+      "python/solution-2-one-dimensional-dp/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 53,
+      "group": "dynamic-programming",
+      "sourceUrl": "https://leetcode.com/problems/partition-equal-subset-sum"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 672,
+      "group": "1-D Dynamic Programming",
+      "sourceUrl": "https://leetcode.com/problems/partition-equal-subset-sum"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "416",
+    "titleSlug": "partition-equal-subset-sum",
+    "url": "https://leetcode.com/problems/partition-equal-subset-sum",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "canPartition",
+      "returnType": "boolean",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "int[]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "canPartition",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "nums",
+          "type": "List[int]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+%% Memento Pattern Class Diagram
+%% Captures and externalizes object's internal state without violating encapsulation
+
+classDiagram
+    class Originator {
+        -state String
+        +save() Memento
+        +restore(Memento) void
+        +doSomething() void
+    }
+    
+    class Memento {
+        <<interface>>
+        +getDate() Date
+    }
+    
+    class ConcreteMemento {
+        -state String
+        -date Date
+        +ConcreteMemento(String)
+        +getState() String
+        +getDate() Date
+    }
+    
+    class Caretaker {
+        -mementos List~Memento~
+        -originator Originator
+        +Caretaker(Originator)
+        +backup() void
+        +undo() void
+        +showHistory() void
+    }
+    
+    Memento <|.. ConcreteMemento
+    Originator --> ConcreteMemento : creates
+    Caretaker --> Memento : stores
+    Caretaker --> Originator : uses
+    
+    note for Originator "Creates memento with\ncurrent state snapshot.\nRestores state from memento."
+    
+    note for Caretaker "Stores mementos but never\nmodifies or examines their\ncontents (narrow interface)."

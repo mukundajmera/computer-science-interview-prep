@@ -1,0 +1,6 @@
+from typing import Optional, Protocol
+
+
+class WindowStateStore(Protocol):
+    def save(self, window_key: str, state_payload: str) -> None: ...
+    def load(self, window_key: str) -> Optional[str]: ...

@@ -1,0 +1,2 @@
+class ClockMovedBackwardsException(Exception):
+    pass

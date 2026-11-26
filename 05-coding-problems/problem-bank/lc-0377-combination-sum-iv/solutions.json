@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-memoized-search",
+      "title": "Memoized search",
+      "tier": 1,
+      "strategy": "Recursively subtract each number from the remaining target and cache counts by remainder.",
+      "timeComplexity": {
+        "class": "O(target * n)",
+        "explanation": "Each remainder evaluates all n numbers once."
+      },
+      "spaceComplexity": {
+        "class": "O(target)",
+        "explanation": "Memoization and recursion stack store target-sized state."
+      },
+      "javaPath": "java/solution-1-memoized-search/Solution.java",
+      "pythonPath": "python/solution-1-memoized-search/solution.py"
+    },
+    {
+      "id": "solution-2-bottom-up-dp",
+      "title": "Bottom-up DP",
+      "tier": 2,
+      "strategy": "For each total from 1 through target, sum the counts of totals that can precede every chosen number.",
+      "timeComplexity": {
+        "class": "O(target * n)",
+        "explanation": "Each total considers every number."
+      },
+      "spaceComplexity": {
+        "class": "O(target)",
+        "explanation": "The DP array stores one count per total."
+      },
+      "javaPath": "java/solution-2-bottom-up-dp/Solution.java",
+      "pythonPath": "python/solution-2-bottom-up-dp/solution.py"
+    }
+  ]
+}

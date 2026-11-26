@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-heap-cycle-simulation",
+      "title": "Heap cycle simulation",
+      "tier": 1,
+      "strategy": "Repeatedly schedule up to n + 1 currently most frequent task labels, reinserting labels that still have work.",
+      "timeComplexity": {
+        "class": "O(T log U)",
+        "explanation": "T scheduled/idle slots each touch a heap of U distinct labels."
+      },
+      "spaceComplexity": {
+        "class": "O(U)",
+        "explanation": "The heap stores one counter per label."
+      },
+      "javaPath": "java/solution-1-heap-cycle-simulation/Solution.java",
+      "pythonPath": "python/solution-1-heap-cycle-simulation/solution.py"
+    },
+    {
+      "id": "solution-2-frequency-frame-formula",
+      "title": "Frequency frame formula",
+      "tier": 2,
+      "strategy": "Use the maximum frequency to count mandatory frames, then compare against the raw task count.",
+      "timeComplexity": {
+        "class": "O(T + U)",
+        "explanation": "Count tasks once and scan the U label counts."
+      },
+      "spaceComplexity": {
+        "class": "O(U)",
+        "explanation": "Frequency counts are stored for distinct labels."
+      },
+      "javaPath": "java/solution-2-frequency-frame-formula/Solution.java",
+      "pythonPath": "python/solution-2-frequency-frame-formula/solution.py"
+    }
+  ]
+}

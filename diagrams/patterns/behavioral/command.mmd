@@ -1,0 +1,41 @@
+%% Command Pattern Class Diagram
+%% Encapsulates request as object for parameterization, queuing, and undo
+
+classDiagram
+    class Command {
+        <<interface>>
+        +execute() void
+        +undo() void
+    }
+    
+    class ConcreteCommand {
+        -receiver Receiver
+        -state Object
+        +ConcreteCommand(Receiver)
+        +execute() void
+        +undo() void
+    }
+    
+    class Invoker {
+        -command Command
+        -history List~Command~
+        +setCommand(Command) void
+        +executeCommand() void
+        +undoCommand() void
+    }
+    
+    class Receiver {
+        +action() void
+        +reverseAction() void
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Command <|.. ConcreteCommand
+    ConcreteCommand --> Receiver : calls
+    Invoker --> Command : invokes
+    Client --> Invoker
+    Client --> ConcreteCommand : creates
+    Client --> Receiver : creates

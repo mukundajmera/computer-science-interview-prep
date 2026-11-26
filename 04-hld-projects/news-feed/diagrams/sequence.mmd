@@ -1,0 +1,54 @@
+```mermaid
+sequenceDiagram
+    autonumber
+    participant User
+    participant API as API Gateway
+    participant PostSvc as Post Service
+    participant Kafka
+    participant Fanout as Fanout Worker
+    participant FollowSvc as Follow Service
+    participant FeedCache as Feed Cache
+    participant PostDB as Posts DB
+    
+    Note over User,PostDB: Post Creation Flow
+    
+    User->>API: POST /api/v1/posts
+    API->>PostSvc: Create post
+    PostSvc->>PostDB: INSERT post
+    PostDB-->>PostSvc: Success
+    PostSvc->>Kafka: Publish {postId, userId}
+    PostSvc-->>User: 201 {postId}
+    
+    Note over Kafka,FeedCache: Async Fan-out
+    
+    Kafka->>Fanout: Post event
+    Fanout->>FollowSvc: Get followers(userId)
+    FollowSvc-->>Fanout: [follower1, follower2, ...]
+    
+    alt User has < 10K followers
+        loop For each follower batch
+            Fanout->>FeedCache: ZADD feed:{followerId} postId timestamp
+        end
+    else Celebrity (> 10K followers)
+        Note over Fanout: Skip fan-out, fetch at read time
+    end
+    
+    Note over User,PostDB: Feed Read Flow
+    
+    User->>API: GET /api/v1/feed?cursor=...
+    API->>FeedSvc: Get feed
+    
+    FeedSvc->>FeedCache: ZREVRANGE feed:{userId} cursor limit
+    FeedCache-->>FeedSvc: [postId1, postId2, ...]
+    
+    FeedSvc->>FollowSvc: Get followed celebrities
+    FollowSvc-->>FeedSvc: [celeb1, celeb2]
+    
+    FeedSvc->>PostDB: Fetch celebrity posts since cursor
+    PostDB-->>FeedSvc: Celebrity posts
+    
+    FeedSvc->>FeedSvc: Merge and rank
+    FeedSvc->>PostDB: Hydrate post details
+    
+    FeedSvc-->>User: {posts, nextCursor}
+```

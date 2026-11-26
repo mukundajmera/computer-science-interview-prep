@@ -1,0 +1,100 @@
+{
+  "id": "lc-0116-populating-next-right-pointers-in-each-node",
+  "title": "Populating Next Right Pointers In Each Node",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "tree",
+    "breadth-first-search",
+    "linked-list"
+  ],
+  "collections": [
+    {
+      "id": "neetcode-all",
+      "order": 416,
+      "group": "Trees",
+      "sourceUrl": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "116",
+    "titleSlug": "populating-next-right-pointers-in-each-node",
+    "url": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node"
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "customTypes": {
+      "Node": "binary-tree-next"
+    },
+    "java": {
+      "className": "Solution",
+      "methodName": "connect",
+      "returnType": "Node",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "Node"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "connect",
+      "returnType": "Optional[Node]",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "Optional[Node]"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-level-order-queue/Solution.java",
+      "python/solution-1-level-order-queue/solution.py",
+      "java/solution-2-perfect-tree-pointers/Solution.java",
+      "python/solution-2-perfect-tree-pointers/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

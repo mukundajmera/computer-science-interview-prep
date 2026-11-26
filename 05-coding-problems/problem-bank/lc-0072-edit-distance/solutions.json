@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-full-dp-table",
+      "title": "Full DP table",
+      "tier": 1,
+      "strategy": "Build a table where each cell stores the best distance between two prefixes.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Every pair of prefixes from the two words is evaluated once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The table stores a distance for every prefix pair."
+      },
+      "javaPath": "java/solution-1-full-dp-table/Solution.java",
+      "pythonPath": "python/solution-1-full-dp-table/solution.py"
+    },
+    {
+      "id": "solution-2-rolling-rows",
+      "title": "Rolling rows",
+      "tier": 2,
+      "strategy": "Keep only the previous and current DP rows, using the shorter word as the column dimension.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "The same prefix-pair transitions are still evaluated."
+      },
+      "spaceComplexity": {
+        "class": "O(min(m,n))",
+        "explanation": "Only one row for the shorter word plus the current row is stored."
+      },
+      "javaPath": "java/solution-2-rolling-rows/Solution.java",
+      "pythonPath": "python/solution-2-rolling-rows/solution.py"
+    }
+  ]
+}

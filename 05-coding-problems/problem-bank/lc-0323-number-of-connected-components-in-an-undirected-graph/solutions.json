@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dfs-components",
+      "title": "DFS components",
+      "tier": 1,
+      "strategy": "Build adjacency lists and start a traversal from each unvisited node.",
+      "timeComplexity": {
+        "class": "O(n+e)",
+        "explanation": "Every node and edge is visited at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(n+e)",
+        "explanation": "The adjacency list and visited set are stored."
+      },
+      "javaPath": "java/solution-1-dfs-components/Solution.java",
+      "pythonPath": "python/solution-1-dfs-components/solution.py"
+    },
+    {
+      "id": "solution-2-union-find",
+      "title": "Union-Find",
+      "tier": 2,
+      "strategy": "Start with n components and decrement the count whenever an edge joins two different sets.",
+      "timeComplexity": {
+        "class": "O(n+e alpha(n))",
+        "explanation": "Union-Find operations are nearly constant time."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Parent and rank arrays store one entry per node."
+      },
+      "javaPath": "java/solution-2-union-find/Solution.java",
+      "pythonPath": "python/solution-2-union-find/solution.py"
+    }
+  ]
+}

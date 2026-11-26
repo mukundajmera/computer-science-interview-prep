@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dfs-cycle-states",
+      "title": "DFS cycle states",
+      "tier": 1,
+      "strategy": "Mark each course as unvisited, visiting, or done while searching for a back-edge.",
+      "timeComplexity": {
+        "class": "O(V+E)",
+        "explanation": "Each course and prerequisite edge is visited at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(V+E)",
+        "explanation": "The graph plus DFS recursion/state arrays are stored."
+      },
+      "javaPath": "java/solution-1-dfs-cycle-states/Solution.java",
+      "pythonPath": "python/solution-1-dfs-cycle-states/solution.py"
+    },
+    {
+      "id": "solution-2-kahn-topological-count",
+      "title": "Kahn topological count",
+      "tier": 2,
+      "strategy": "Repeatedly remove courses with zero remaining prerequisites and verify every course is removed.",
+      "timeComplexity": {
+        "class": "O(V+E)",
+        "explanation": "Each course enters the queue once and each edge lowers one indegree."
+      },
+      "spaceComplexity": {
+        "class": "O(V+E)",
+        "explanation": "The adjacency list, indegrees, and queue are stored."
+      },
+      "javaPath": "java/solution-2-kahn-topological-count/Solution.java",
+      "pythonPath": "python/solution-2-kahn-topological-count/solution.py"
+    }
+  ]
+}

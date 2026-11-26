@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-split-and-reverse",
+      "title": "Split, reverse, and join words",
+      "tier": 1,
+      "strategy": "Use language word splitting to discard extra spaces, reverse the resulting list, and join with one space.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The string is scanned to split words and scanned again to build the output."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The list of words and output string can together grow with the input length."
+      },
+      "javaPath": "java/solution-1-split-and-reverse/Solution.java",
+      "pythonPath": "python/solution-1-split-and-reverse/solution.py"
+    },
+    {
+      "id": "solution-2-scan-from-right",
+      "title": "Scan words from right to left",
+      "tier": 2,
+      "strategy": "Walk the string from right to left, extracting each word and appending it to the answer in discovered order.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each character is skipped or copied a constant number of times."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The output and collected words require space proportional to the input length."
+      },
+      "javaPath": "java/solution-2-scan-from-right/Solution.java",
+      "pythonPath": "python/solution-2-scan-from-right/solution.py"
+    }
+  ]
+}

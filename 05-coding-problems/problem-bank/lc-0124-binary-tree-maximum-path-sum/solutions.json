@@ -1,0 +1,20 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dfs-gain",
+      "title": "DFS gain",
+      "tier": 1,
+      "strategy": "For each node, compute the best one-sided gain to its parent and update the global best path through that node.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each tree node is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack height is h, which can be n for a skewed tree."
+      },
+      "javaPath": "java/solution-1-dfs-gain/Solution.java",
+      "pythonPath": "python/solution-1-dfs-gain/solution.py"
+    }
+  ]
+}

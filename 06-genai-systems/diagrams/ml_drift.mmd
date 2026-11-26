@@ -1,0 +1,5 @@
+graph TD;
+  A[Production Data] --> B[Distribution Monitor];
+  B --> C{Drift Detected?};
+  C -- Yes --> D[Trigger Retrain/Eval];
+  C -- No --> E[Continue];

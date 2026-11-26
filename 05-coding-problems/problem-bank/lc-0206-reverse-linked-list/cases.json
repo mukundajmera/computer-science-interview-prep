@@ -1,0 +1,21 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "reverse compact chain",
+      "input": { "head": [4, 1, 9] },
+      "expected": [9, 1, 4]
+    },
+    {
+      "name": "empty chain",
+      "input": { "head": null },
+      "expected": null
+    },
+    {
+      "name": "single node",
+      "input": { "head": [6] },
+      "expected": [6]
+    }
+  ]
+}

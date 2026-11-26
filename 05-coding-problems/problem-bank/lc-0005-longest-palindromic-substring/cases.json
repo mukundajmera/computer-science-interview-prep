@@ -1,0 +1,26 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "odd palindrome at front",
+      "input": { "s": "racecarxyz" },
+      "expected": "racecar"
+    },
+    {
+      "name": "even palindrome at end",
+      "input": { "s": "abbaxyzzyx" },
+      "expected": "xyzzyx"
+    },
+    {
+      "name": "whole string palindrome",
+      "input": { "s": "abcddcba" },
+      "expected": "abcddcba"
+    },
+    {
+      "name": "single character fallback",
+      "input": { "s": "abcdef" },
+      "expected": "a"
+    }
+  ]
+}

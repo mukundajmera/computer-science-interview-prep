@@ -1,0 +1,99 @@
+{
+  "id": "lc-0012-integer-to-roman",
+  "title": "Integer to Roman",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "Array / String",
+    "Math & Geometry"
+  ],
+  "collections": [
+    {
+      "id": "leetcode-top-150",
+      "order": 18,
+      "group": "Array / String",
+      "sourceUrl": "https://leetcode.com/problems/integer-to-roman"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 882,
+      "group": "Math & Geometry",
+      "sourceUrl": "https://leetcode.com/problems/integer-to-roman"
+    }
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "leetcode": {
+    "frontendId": "12",
+    "titleSlug": "integer-to-roman",
+    "url": "https://leetcode.com/problems/integer-to-roman",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "intToRoman",
+      "returnType": "String",
+      "parameters": [
+        {
+          "name": "num",
+          "type": "int"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "intToRoman",
+      "returnType": "str",
+      "parameters": [
+        {
+          "name": "num",
+          "type": "int"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

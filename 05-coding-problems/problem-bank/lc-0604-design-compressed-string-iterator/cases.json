@@ -1,0 +1,80 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "multi digit count",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {
+            "compressedString": "a2b10"
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {},
+          "expected": "a"
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {},
+          "expected": "a"
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {},
+          "expected": "b"
+        },
+        {
+          "type": "call",
+          "method": "hasNext",
+          "input": {},
+          "expected": true
+        }
+      ]
+    },
+    {
+      "name": "exhaustion returns space",
+      "operations": [
+        {
+          "type": "constructor",
+          "input": {
+            "compressedString": "x1"
+          },
+          "expected": null
+        },
+        {
+          "type": "call",
+          "method": "hasNext",
+          "input": {},
+          "expected": true
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {},
+          "expected": "x"
+        },
+        {
+          "type": "call",
+          "method": "hasNext",
+          "input": {},
+          "expected": false
+        },
+        {
+          "type": "call",
+          "method": "next",
+          "input": {},
+          "expected": " "
+        }
+      ]
+    }
+  ]
+}

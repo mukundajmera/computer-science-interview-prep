@@ -1,0 +1,123 @@
+```mermaid
+erDiagram
+    USERS {
+        string user_id PK
+        string email UK
+        string phone UK
+        string name
+        string password_hash
+        enum user_type "rider|driver"
+        boolean is_active
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    DRIVERS {
+        string driver_id PK
+        string user_id FK
+        string license_number UK
+        enum status "offline|available|busy|on_trip"
+        float rating
+        int total_trips
+        boolean is_verified
+        timestamp last_location_update
+    }
+
+    VEHICLES {
+        string vehicle_id PK
+        string driver_id FK
+        string license_plate UK
+        string make
+        string model
+        int year
+        enum vehicle_type "economy|comfort|premium|xl"
+        string color
+        boolean is_active
+    }
+
+    DRIVER_LOCATIONS {
+        string driver_id PK
+        float latitude
+        float longitude
+        string geohash
+        float heading
+        float speed
+        timestamp updated_at
+    }
+
+    RIDES {
+        string ride_id PK
+        string rider_id FK
+        string driver_id FK
+        float pickup_lat
+        float pickup_lng
+        string pickup_address
+        float dropoff_lat
+        float dropoff_lng
+        string dropoff_address
+        enum status "requested|matched|driver_arriving|in_progress|completed|cancelled"
+        float estimated_fare
+        float actual_fare
+        float surge_multiplier
+        float distance_km
+        int duration_minutes
+        timestamp requested_at
+        timestamp matched_at
+        timestamp pickup_at
+        timestamp dropoff_at
+        timestamp cancelled_at
+        string cancellation_reason
+    }
+
+    RIDE_TRACKING {
+        string tracking_id PK
+        string ride_id FK
+        float latitude
+        float longitude
+        float speed
+        timestamp recorded_at
+    }
+
+    PAYMENTS {
+        string payment_id PK
+        string ride_id FK
+        string rider_id FK
+        string driver_id FK
+        float amount
+        float platform_fee
+        float driver_payout
+        enum status "pending|completed|failed|refunded"
+        string payment_method_id
+        string transaction_id
+        timestamp created_at
+    }
+
+    RATINGS {
+        string rating_id PK
+        string ride_id FK
+        string from_user_id FK
+        string to_user_id FK
+        int rating
+        string comment
+        timestamp created_at
+    }
+
+    SURGE_ZONES {
+        string zone_id PK
+        string geohash_prefix
+        float multiplier
+        int active_drivers
+        int pending_requests
+        timestamp calculated_at
+        timestamp expires_at
+    }
+
+    USERS ||--o| DRIVERS : "can be"
+    DRIVERS ||--|{ VEHICLES : "has"
+    DRIVERS ||--|| DRIVER_LOCATIONS : "current location"
+    USERS ||--o{ RIDES : "requests as rider"
+    DRIVERS ||--o{ RIDES : "accepts"
+    RIDES ||--|{ RIDE_TRACKING : "tracked by"
+    RIDES ||--|| PAYMENTS : "has"
+    RIDES ||--|{ RATINGS : "rated"
+```

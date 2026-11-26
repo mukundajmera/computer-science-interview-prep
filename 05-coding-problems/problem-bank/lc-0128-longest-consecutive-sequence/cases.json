@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "three item run", "input": { "nums": [10, 5, 6, 7, 20] }, "expected": 3 },
+    { "name": "duplicates inside run", "input": { "nums": [1, 2, 2, 3] }, "expected": 3 },
+    { "name": "empty input", "input": { "nums": [] }, "expected": 0 },
+    { "name": "negative to zero", "input": { "nums": [-2, -1, 0, 4] }, "expected": 3 },
+    { "name": "single value", "input": { "nums": [50] }, "expected": 1 }
+  ]
+}

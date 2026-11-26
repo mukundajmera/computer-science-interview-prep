@@ -1,0 +1,52 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-check-all-substrings",
+      "title": "Check all substrings",
+      "tier": 1,
+      "strategy": "Try every even-length substring and validate its parenthesis balance.",
+      "timeComplexity": {
+        "class": "O(n^3)",
+        "explanation": "There are O(n^2) substrings and each validation can scan O(n) characters."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only counters and loop indexes are stored."
+      },
+      "javaPath": "java/solution-1-check-all-substrings/Solution.java",
+      "pythonPath": "python/solution-1-check-all-substrings/solution.py"
+    },
+    {
+      "id": "solution-2-stack-boundaries",
+      "title": "Stack boundaries",
+      "tier": 2,
+      "strategy": "Keep indexes of unmatched opens plus the latest invalid close as a boundary.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each character index is pushed and popped at most once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The stack can hold all opening indexes in a prefix."
+      },
+      "javaPath": "java/solution-2-stack-boundaries/Solution.java",
+      "pythonPath": "python/solution-2-stack-boundaries/solution.py"
+    },
+    {
+      "id": "solution-3-two-pass-counters",
+      "title": "Two-pass counters",
+      "tier": 3,
+      "strategy": "Scan left-to-right and right-to-left so invalid excess closes and opens both reset the window.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Two linear scans cover the string."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only open/close counters and the best length are stored."
+      },
+      "javaPath": "java/solution-3-two-pass-counters/Solution.java",
+      "pythonPath": "python/solution-3-two-pass-counters/solution.py"
+    }
+  ]
+}

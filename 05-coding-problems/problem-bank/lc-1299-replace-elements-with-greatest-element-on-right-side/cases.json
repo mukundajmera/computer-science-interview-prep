@@ -1,0 +1,55 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "varied suffix maxima",
+      "input": {
+        "arr": [
+          17,
+          18,
+          5,
+          4,
+          6,
+          1
+        ]
+      },
+      "expected": [
+        18,
+        6,
+        6,
+        6,
+        1,
+        -1
+      ]
+    },
+    {
+      "name": "single value",
+      "input": {
+        "arr": [
+          10
+        ]
+      },
+      "expected": [
+        -1
+      ]
+    },
+    {
+      "name": "descending",
+      "input": {
+        "arr": [
+          9,
+          7,
+          3
+        ]
+      },
+      "expected": [
+        7,
+        3,
+        -1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+sequenceDiagram
+    participant C as Client
+    participant GW as API Gateway (Node 1)
+    participant BG as Background Async Thread
+    participant R as Central Redis Store
+
+    Note over R: Global Limit: 1000/sec
+    
+    %% Initialization
+    GW->>BG: Initialize Rate Limiter
+    BG->>R: Reserve Batch (e.g., 100 tokens)
+    R-->>BG: OK, 100 Reserved (900 remaining)
+    BG->>GW: Update Local Cache (Tokens=100)
+    
+    %% Fast path
+    C->>GW: Request 1
+    Note over GW: Sub-microsecond check<br/>Tokens: 99
+    GW-->>C: 200 OK
+    
+    C->>GW: Request N
+    Note over GW: Tokens drop below threshold (e.g., < 20)
+    GW-->>C: 200 OK
+    
+    %% Async Replenishment
+    GW->>BG: Trigger Replenishment (Non-blocking)
+    BG->>R: Reserve Next Batch (100 tokens)
+    
+    %% Continuous traffic during replenishment
+    C->>GW: Request N+1
+    Note over GW: Local tokens still available
+    GW-->>C: 200 OK
+    
+    R-->>BG: OK, 100 Reserved (800 remaining)
+    BG->>GW: Update Local Cache (Tokens += 100)
+    
+    %% Over limit scenario
+    Note over R: Global Quota Exhausted (0 remaining)
+    BG->>R: Reserve Next Batch
+    R-->>BG: Rejected, Limit Exceeded
+    BG->>GW: Cache Empty, Refill Failed
+    
+    C->>GW: Request (No local tokens)
+    GW-->>C: 429 Too Many Requests

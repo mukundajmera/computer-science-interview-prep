@@ -1,0 +1,82 @@
+```mermaid
+flowchart TB
+    subgraph Clients
+        WEB[Web App]
+        MOB[Mobile Apps]
+        TV[Smart TV]
+    end
+
+    subgraph "Edge Layer"
+        CDN[CDN - Multi-Provider]
+        EDGE[Edge PoPs]
+    end
+
+    subgraph "API Gateway"
+        LB[Load Balancer]
+        GW[API Gateway]
+        AUTH[Auth Service]
+        RL[Rate Limiter]
+    end
+
+    subgraph "Application Services"
+        US[Upload Service]
+        SS[Streaming Service]
+        MS[Metadata Service]
+        SEARCH[Search Service]
+        REC[Recommendation Service]
+        ANA[Analytics Service]
+    end
+
+    subgraph "Processing Layer"
+        TQ[Transcoding Queue - SQS]
+        TW[Transcoding Workers - K8s]
+        THUMB[Thumbnail Generator]
+    end
+
+    subgraph "Data Layer"
+        PG[(PostgreSQL - Metadata)]
+        ES[(Elasticsearch - Search)]
+        RD[(Redis Cluster - Cache)]
+        S3[(S3 - Video Storage)]
+        CH[(ClickHouse - Analytics)]
+        KF[Kafka - Events]
+    end
+
+    WEB --> CDN
+    MOB --> CDN
+    TV --> CDN
+
+    CDN --> EDGE
+    EDGE --> LB
+    CDN --> S3
+
+    LB --> GW
+    GW --> AUTH
+    GW --> RL
+
+    GW --> US
+    GW --> SS
+    GW --> MS
+    GW --> SEARCH
+    GW --> REC
+
+    US --> S3
+    US --> TQ
+    TQ --> TW
+    TW --> S3
+    TW --> THUMB
+
+    SS --> RD
+    SS --> S3
+
+    MS --> PG
+    MS --> RD
+    MS --> ES
+
+    SEARCH --> ES
+    REC --> RD
+    REC --> CH
+
+    ANA --> KF
+    KF --> CH
+```

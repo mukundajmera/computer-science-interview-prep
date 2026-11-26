@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-word-and-prefix-sets",
+      "title": "Word and prefix sets",
+      "tier": 1,
+      "strategy": "Store every inserted word in one set and every generated prefix in another set.",
+      "timeComplexity": {
+        "class": "O(L)",
+        "explanation": "insert creates L prefixes, while search and startsWith do one hash lookup for length L strings."
+      },
+      "spaceComplexity": {
+        "class": "O(T)",
+        "explanation": "The sets retain complete words and all distinct prefixes across the inserted text."
+      },
+      "javaPath": "java/solution-1-word-and-prefix-sets/Solution.java",
+      "pythonPath": "python/solution-1-word-and-prefix-sets/solution.py"
+    },
+    {
+      "id": "solution-2-trie-nodes",
+      "title": "Trie nodes with child maps",
+      "tier": 2,
+      "strategy": "Walk or create one node per character and mark terminal nodes for full-word matches.",
+      "timeComplexity": {
+        "class": "O(L)",
+        "explanation": "Every operation scans each character in the queried word or prefix once."
+      },
+      "spaceComplexity": {
+        "class": "O(T)",
+        "explanation": "The trie stores one node per distinct prefix character path."
+      },
+      "javaPath": "java/solution-2-trie-nodes/Solution.java",
+      "pythonPath": "python/solution-2-trie-nodes/solution.py"
+    }
+  ]
+}

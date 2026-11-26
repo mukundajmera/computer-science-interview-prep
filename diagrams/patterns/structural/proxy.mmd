@@ -1,0 +1,30 @@
+%% Proxy Pattern Class Diagram
+%% Provides surrogate or placeholder for another object to control access
+
+classDiagram
+    class Subject {
+        <<interface>>
+        +request() void
+    }
+    
+    class RealSubject {
+        +request() void
+    }
+    
+    class Proxy {
+        -realSubject RealSubject
+        +request() void
+        -checkAccess() boolean
+        -logAccess() void
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Subject <|.. RealSubject
+    Subject <|.. Proxy
+    Proxy --> RealSubject : controls access to
+    Client --> Subject : uses
+    
+    note for Proxy "Controls access to RealSubject.\nCan add lazy loading,\naccess control, logging,\ncaching, etc."

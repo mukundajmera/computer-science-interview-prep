@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-row-then-column-search",
+      "title": "Find candidate row then search it",
+      "tier": 1,
+      "strategy": "Find the row whose range can contain the target, then binary search within that row.",
+      "timeComplexity": { "class": "O(m + log n)", "explanation": "The row scan can inspect m rows, followed by binary search over n columns." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only indexes and bounds are stored." },
+      "javaPath": "java/solution-1-row-then-column-search/Solution.java",
+      "pythonPath": "python/solution-1-row-then-column-search/solution.py"
+    },
+    {
+      "id": "solution-2-flattened-binary-search",
+      "title": "Flattened binary search",
+      "tier": 2,
+      "strategy": "Treat the matrix as one sorted array and translate flat indexes to row/column coordinates.",
+      "timeComplexity": { "class": "O(log(mn))", "explanation": "Binary search halves the flattened search space each step." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only binary search bounds are stored." },
+      "javaPath": "java/solution-2-flattened-binary-search/Solution.java",
+      "pythonPath": "python/solution-2-flattened-binary-search/solution.py"
+    }
+  ]
+}

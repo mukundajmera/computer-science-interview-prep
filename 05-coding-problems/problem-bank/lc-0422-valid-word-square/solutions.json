@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-build-columns",
+      "title": "Build columns",
+      "tier": 1,
+      "strategy": "Construct every column string and compare it with the corresponding row string.",
+      "timeComplexity": {
+        "class": "O(nm)",
+        "explanation": "Every character is copied into a column."
+      },
+      "spaceComplexity": {
+        "class": "O(nm)",
+        "explanation": "Column strings can store all characters."
+      },
+      "javaPath": "java/solution-1-build-columns/Solution.java",
+      "pythonPath": "python/solution-1-build-columns/solution.py"
+    },
+    {
+      "id": "solution-2-direct-symmetry-check",
+      "title": "Direct symmetry check",
+      "tier": 2,
+      "strategy": "For each row character, directly verify the mirrored column position exists and matches.",
+      "timeComplexity": {
+        "class": "O(nm)",
+        "explanation": "Each existing character is checked once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only loop variables are stored."
+      },
+      "javaPath": "java/solution-2-direct-symmetry-check/Solution.java",
+      "pythonPath": "python/solution-2-direct-symmetry-check/solution.py"
+    }
+  ]
+}

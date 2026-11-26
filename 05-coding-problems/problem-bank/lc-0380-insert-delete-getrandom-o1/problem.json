@@ -1,0 +1,107 @@
+{
+  "id": "lc-0380-insert-delete-getrandom-o1",
+  "title": "Insert Delete GetRandom O(1)",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "design",
+    "hash-map",
+    "array"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-set-snapshot/Solution.java",
+      "java/solution-2-indexed-array/Solution.java",
+      "python/solution-1-set-snapshot/solution.py",
+      "python/solution-2-indexed-array/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 162,
+      "group": "hash-table",
+      "sourceUrl": "https://leetcode.com/problems/insert-delete-getrandom-o1"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 12,
+      "group": "Array / String",
+      "sourceUrl": "https://leetcode.com/problems/insert-delete-getrandom-o1"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 127,
+      "group": "Arrays & Hashing",
+      "sourceUrl": "https://leetcode.com/problems/insert-delete-getrandom-o1"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "380",
+    "titleSlug": "insert-delete-getrandom-o1",
+    "url": "https://leetcode.com/problems/insert-delete-getrandom-o1",
+    "paidOnly": false
+  },
+  "signature": {
+    "kind": "object",
+    "java": {
+      "className": "RandomizedSet",
+      "constructor": { "parameters": [] },
+      "methods": [
+        { "name": "insert", "returnType": "boolean", "parameters": [{ "name": "val", "type": "int" }] },
+        { "name": "remove", "returnType": "boolean", "parameters": [{ "name": "val", "type": "int" }] },
+        { "name": "getRandom", "returnType": "int", "parameters": [] }
+      ]
+    },
+    "python": {
+      "className": "RandomizedSet",
+      "constructor": { "parameters": [] },
+      "methods": [
+        { "name": "insert", "returnType": "bool", "parameters": [{ "name": "val", "type": "int" }] },
+        { "name": "remove", "returnType": "bool", "parameters": [{ "name": "val", "type": "int" }] },
+        { "name": "getRandom", "returnType": "int", "parameters": [] }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

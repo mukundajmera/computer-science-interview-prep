@@ -1,0 +1,99 @@
+{
+  "id": "lc-0149-max-points-on-a-line",
+  "title": "Max Points on a Line",
+  "difficulty": "hard",
+  "status": "verified",
+  "patterns": [
+    "Math",
+    "Math & Geometry"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "leetcode-top-150",
+      "order": 136,
+      "group": "Math",
+      "sourceUrl": "https://leetcode.com/problems/max-points-on-a-line"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 867,
+      "group": "Math & Geometry",
+      "sourceUrl": "https://leetcode.com/problems/max-points-on-a-line"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "149",
+    "titleSlug": "max-points-on-a-line",
+    "url": "https://leetcode.com/problems/max-points-on-a-line",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "maxPoints",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "points",
+          "type": "int[][]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "maxPoints",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "points",
+          "type": "List[List[int]]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "mixed numbers",
+      "input": {
+        "nums": [
+          1,
+          2,
+          1
+        ]
+      },
+      "expected": [
+        1,
+        2,
+        1,
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "single element",
+      "input": {
+        "nums": [
+          5
+        ]
+      },
+      "expected": [
+        5,
+        5
+      ]
+    },
+    {
+      "name": "includes zero",
+      "input": {
+        "nums": [
+          0,
+          3
+        ]
+      },
+      "expected": [
+        0,
+        3,
+        0,
+        3
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-list-window-sum",
+      "title": "List window sum",
+      "tier": 1,
+      "strategy": "Keep all values in a list and sum the active suffix for every query.",
+      "timeComplexity": {
+        "class": "O(k)",
+        "explanation": "Each next can sum up to k values."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "All inserted values are retained."
+      },
+      "javaPath": "java/solution-1-list-window-sum/Solution.java",
+      "pythonPath": "python/solution-1-list-window-sum/solution.py"
+    },
+    {
+      "id": "solution-2-queue-running-sum",
+      "title": "Queue running sum",
+      "tier": 2,
+      "strategy": "Keep only the active window in a queue and maintain its running sum.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "Each next does constant queue and sum updates."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The queue stores at most k values."
+      },
+      "javaPath": "java/solution-2-queue-running-sum/Solution.java",
+      "pythonPath": "python/solution-2-queue-running-sum/solution.py"
+    }
+  ]
+}

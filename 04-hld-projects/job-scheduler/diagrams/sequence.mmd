@@ -1,0 +1,31 @@
+sequenceDiagram
+    actor Client
+    participant API as Scheduler API
+    participant Store as Job Store
+    participant Wheel as Time Wheel / Tick
+    participant Worker
+
+    Client->>API: Submit Job (cron / one-shot)
+    API->>Store: Save Job Definition
+    API-->>Client: Return Job ID
+
+    loop Every Tick
+        Wheel->>Store: Find due jobs
+        Store-->>Wheel: List of due jobs
+        Wheel->>Store: Create ExecutionRun & enqueue
+    end
+
+    Worker->>Store: Claim pending Run (Lock)
+    Store-->>Worker: Run details
+
+    loop During execution
+        Worker->>Store: Send Heartbeat
+    end
+
+    alt Job completes successfully
+        Worker->>Store: Ack Completion
+    else Job fails / Worker crashes
+        Worker--xStore: Heartbeat missed or Nack
+        Wheel->>Store: Detect missed heartbeat
+        Wheel->>Store: Retry backoff / Re-enqueue
+    end

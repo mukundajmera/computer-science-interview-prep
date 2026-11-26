@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-dfs",
+      "title": "Recursive DFS",
+      "tier": 1,
+      "strategy": "Visit node, recursively traverse left subtree, then recursively traverse right subtree.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node in the tree is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "Call stack frames correspond to the height h of the tree."
+      },
+      "javaPath": "java/solution-1-recursive-dfs/Solution.java",
+      "pythonPath": "python/solution-1-recursive-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-stack",
+      "title": "Iterative stack",
+      "tier": 2,
+      "strategy": "Use an explicit stack, popping the current node and pushing right before left to process left children first.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is pushed and popped exactly once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The stack stores at most nodes along the branch depth."
+      },
+      "javaPath": "java/solution-2-iterative-stack/Solution.java",
+      "pythonPath": "python/solution-2-iterative-stack/solution.py"
+    }
+  ]
+}

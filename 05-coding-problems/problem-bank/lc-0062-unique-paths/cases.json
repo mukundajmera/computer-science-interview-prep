@@ -1,0 +1,48 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "three by seven",
+      "input": {
+        "m": 3,
+        "n": 7
+      },
+      "expected": 28
+    },
+    {
+      "name": "single row",
+      "input": {
+        "m": 1,
+        "n": 5
+      },
+      "expected": 1
+    },
+    {
+      "name": "square grid",
+      "input": {
+        "m": 4,
+        "n": 4
+      },
+      "expected": 20
+    },
+    {
+      "name": "single column",
+      "input": {
+        "m": 5,
+        "n": 1
+      },
+      "expected": 1
+    },
+    {
+      "name": "seven by three symmetry",
+      "input": {
+        "m": 7,
+        "n": 3
+      },
+      "expected": 28
+    }
+  ]
+}

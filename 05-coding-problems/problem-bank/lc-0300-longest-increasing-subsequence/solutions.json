@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-quadratic-dp",
+      "title": "Quadratic DP by ending index",
+      "tier": 1,
+      "strategy": "Let dp[i] be the best increasing subsequence length ending at i and compare against every earlier index.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each pair of indices may be compared once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "One DP value is stored per input index."
+      },
+      "javaPath": "java/solution-1-quadratic-dp/Solution.java",
+      "pythonPath": "python/solution-1-quadratic-dp/solution.py"
+    },
+    {
+      "id": "solution-2-patience-tails",
+      "title": "Patience tails with binary search",
+      "tier": 2,
+      "strategy": "Maintain the smallest possible tail value for every increasing subsequence length.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Each value performs one binary search over the tails array."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The tails array can grow to length n for a fully increasing input."
+      },
+      "javaPath": "java/solution-2-patience-tails/Solution.java",
+      "pythonPath": "python/solution-2-patience-tails/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-count-five-factors",
+      "title": "Count factors in multiples of five",
+      "tier": 1,
+      "strategy": "Visit every multiple of five and count how many times it is divisible by five.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The total number of factor divisions is bounded by n/5 + n/25 + n/125 + ..., which is linear in n."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the total and current multiple are stored."
+      },
+      "javaPath": "java/solution-1-count-five-factors/Solution.java",
+      "pythonPath": "python/solution-1-count-five-factors/solution.py"
+    },
+    {
+      "id": "solution-2-sum-powers-of-five",
+      "title": "Sum powers of five",
+      "tier": 2,
+      "strategy": "Repeatedly divide n by five and add how many numbers contribute each power of five.",
+      "timeComplexity": {
+        "class": "O(log n)",
+        "explanation": "Each step removes a factor of five from n."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the running total and shrinking n are stored."
+      },
+      "javaPath": "java/solution-2-sum-powers-of-five/Solution.java",
+      "pythonPath": "python/solution-2-sum-powers-of-five/solution.py"
+    }
+  ]
+}

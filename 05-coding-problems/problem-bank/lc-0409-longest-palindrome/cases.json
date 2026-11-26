@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "one odd group can sit in center",
+      "input": {
+        "s": "aaabc"
+      },
+      "expected": 3
+    },
+    {
+      "name": "all counts even",
+      "input": {
+        "s": "aabbcc"
+      },
+      "expected": 6
+    },
+    {
+      "name": "case-sensitive characters",
+      "input": {
+        "s": "Aa"
+      },
+      "expected": 1
+    },
+    {
+      "name": "single repeated character",
+      "input": {
+        "s": "zzzz"
+      },
+      "expected": 4
+    },
+    {
+      "name": "all unique characters",
+      "input": {
+        "s": "abcde"
+      },
+      "expected": 1
+    }
+  ]
+}

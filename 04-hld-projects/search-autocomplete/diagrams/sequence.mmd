@@ -1,0 +1,49 @@
+sequenceDiagram
+    autonumber
+    
+    actor User as User Client
+    participant GW as API Gateway
+    participant Query as Autocomplete Service
+    participant Cache as Redis Cache
+    participant Trie as Trie DB
+    participant Log as Data Collection
+    participant Queue as Kafka
+    participant Spark as Spark Aggregator
+    participant Freq as Frequency DB
+    participant Builder as Trie Builder
+    
+    rect rgb(238, 242, 255)
+        note right of User: Read Path (Real-time Keystrokes)
+        User->>GW: GET /autocomplete?q=tw
+        GW->>Query: Forward request
+        Query->>Cache: Check top-5 for "tw"
+        
+        alt Cache Hit
+            Cache-->>Query: Return suggestions
+        else Cache Miss
+            Query->>Trie: Lookup "tw" subtree
+            Trie-->>Query: Return top-5 suggestions
+            Query->>Cache: Update cache with results
+        end
+        
+        Query-->>GW: Return suggestions
+        GW-->>User: Display autocomplete list
+    end
+    
+    rect rgb(240, 253, 244)
+        note right of User: Write Path (Search Execution)
+        User->>GW: POST /search?q=twitter
+        GW->>Log: Log query execution
+        Log->>Queue: Append query event
+    end
+    
+    rect rgb(255, 247, 237)
+        note right of Queue: Async Aggregation Pipeline (Hourly/Weekly)
+        Queue->>Spark: Consume raw events
+        Spark->>Spark: Aggregate query frequencies
+        Spark->>Freq: Update frequency counts
+        Builder->>Freq: Fetch updated counts
+        Builder->>Builder: Rebuild Trie snapshot
+        Builder->>Trie: Deploy new Trie
+        Builder->>Cache: Invalidate/Warm Cache
+    end

@@ -1,0 +1,82 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "can split into equal halves",
+      "input": {
+        "nums": [
+          1,
+          5,
+          11,
+          5
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "odd total cannot split",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          5
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "single pair",
+      "input": {
+        "nums": [
+          2,
+          2
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "needs non-greedy choice",
+      "input": {
+        "nums": [
+          3,
+          3,
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": true
+    },
+    {
+      "name": "even total cannot reach half",
+      "input": {
+        "nums": [
+          1,
+          2,
+          5
+        ]
+      },
+      "expected": false
+    },
+    {
+      "name": "many duplicates split evenly",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+---
+title: Search Autocomplete Architecture
+---
+graph TD
+    %% Define Styles
+    classDef client fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef service fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef storage fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
+    classDef infra fill:#f3e5f5,stroke:#4a148c,stroke-width:2px;
+    
+    %% Client & Gateway
+    Client[Web/Mobile Client]:::client
+    CDN[CDN / Edge Cache]:::infra
+    LB[Load Balancer]:::infra
+    
+    %% Read Path
+    API_Gateway[API Gateway]:::service
+    Autocomplete_Service[Autocomplete Service]:::service
+    Redis_Cache[(Prefix Cache Redis)]:::storage
+    Trie_DB[(Trie DB)]:::storage
+    
+    %% Write Path
+    Data_Collection[Data Collection Service]:::service
+    Kafka[Kafka / Message Queue]:::infra
+    Raw_Logs[(Raw Analytics Logs)]:::storage
+    
+    %% Batch Pipeline
+    Spark[Spark Aggregator / Batch Job]:::service
+    Frequency_DB[(Frequency DB)]:::storage
+    Trie_Builder[Trie Builder]:::service
+    Blacklist[(Blacklist Filter)]:::storage
+
+    %% Connections - Read Path
+    Client -- "1. GET /autocomplete?q=tw" --> CDN
+    CDN -- "Cache Miss" --> LB
+    LB --> API_Gateway
+    API_Gateway --> Autocomplete_Service
+    Autocomplete_Service -- "2. Check Cache" --> Redis_Cache
+    Autocomplete_Service -- "3. Cache Miss (Lookup)" --> Trie_DB
+    
+    %% Connections - Write Path
+    Client -- "Search Executed" --> API_Gateway
+    API_Gateway --> Data_Collection
+    Data_Collection -- "Append Log" --> Kafka
+    Kafka --> Raw_Logs
+    
+    %% Connections - Batch Pipeline
+    Raw_Logs --> Spark
+    Spark -- "Aggregates Frequencies" --> Frequency_DB
+    Frequency_DB --> Trie_Builder
+    Blacklist -. "Filter bad words" .-> Trie_Builder
+    Trie_Builder -- "Builds Snapshot" --> Trie_DB
+    Trie_Builder -- "Warms Cache" --> Redis_Cache
+    
+    %% Subgraphs for clarity
+    subgraph Read_Path [Serving Layer - Real Time]
+        Autocomplete_Service
+        Redis_Cache
+        Trie_DB
+    end
+    
+    subgraph Write_Path [Analytics - Async]
+        Data_Collection
+        Kafka
+        Raw_Logs
+    end
+    
+    subgraph Batch_Path [Offline Pipeline - Weekly/Hourly]
+        Spark
+        Frequency_DB
+        Trie_Builder
+        Blacklist
+    end

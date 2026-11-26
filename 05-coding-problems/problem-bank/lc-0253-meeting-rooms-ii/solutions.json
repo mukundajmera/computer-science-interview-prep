@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sweep-line",
+      "title": "Sweep line",
+      "tier": 1,
+      "strategy": "Convert starts to +1 and ends to -1 events and track maximum active meetings.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting the events dominates."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Two events are stored for every interval."
+      },
+      "javaPath": "java/solution-1-sweep-line/Solution.java",
+      "pythonPath": "python/solution-1-sweep-line/solution.py"
+    },
+    {
+      "id": "solution-2-min-heap-end-times",
+      "title": "Min-heap end times",
+      "tier": 2,
+      "strategy": "Process intervals by start time and reuse the room whose end time is earliest when possible.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting plus heap operations over intervals dominate."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The heap can hold all active room end times."
+      },
+      "javaPath": "java/solution-2-min-heap-end-times/Solution.java",
+      "pythonPath": "python/solution-2-min-heap-end-times/solution.py"
+    }
+  ]
+}

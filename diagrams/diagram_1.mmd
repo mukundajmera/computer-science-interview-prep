@@ -1,0 +1,9 @@
+graph TD
+  Client --> API_Gateway
+  API_Gateway --> Router
+  Router --> Global_Queue
+  Router --> Prefix_Cache_Manager
+  Global_Queue --> Scheduler
+  Scheduler --> GPU_Worker_Pool_1
+  Scheduler --> GPU_Worker_Pool_2
+  Prefix_Cache_Manager -.-> Router

@@ -1,0 +1,114 @@
+{
+  "id": "lc-0212-word-search-ii",
+  "title": "Word Search II",
+  "difficulty": "hard",
+  "status": "verified",
+  "patterns": [
+    "trie",
+    "backtracking",
+    "matrix"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 138,
+      "group": "graph",
+      "sourceUrl": "https://leetcode.com/problems/word-search-ii"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 100,
+      "group": "Trie",
+      "sourceUrl": "https://leetcode.com/problems/word-search-ii"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 550,
+      "group": "Tries",
+      "sourceUrl": "https://leetcode.com/problems/word-search-ii"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "212",
+    "titleSlug": "word-search-ii",
+    "url": "https://leetcode.com/problems/word-search-ii",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "findWords",
+      "returnType": "List<String>",
+      "parameters": [
+        {
+          "name": "board",
+          "type": "char[][]"
+        },
+        {
+          "name": "words",
+          "type": "String[]"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "findWords",
+      "returnType": "List[str]",
+      "parameters": [
+        {
+          "name": "board",
+          "type": "List[List[str]]"
+        },
+        {
+          "name": "words",
+          "type": "List[str]"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

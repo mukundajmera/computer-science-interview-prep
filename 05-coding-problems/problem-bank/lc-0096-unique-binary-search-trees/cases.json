@@ -1,0 +1,36 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "empty range convention",
+      "input": {
+        "n": 0
+      },
+      "expected": 1
+    },
+    {
+      "name": "one node",
+      "input": {
+        "n": 1
+      },
+      "expected": 1
+    },
+    {
+      "name": "three nodes",
+      "input": {
+        "n": 3
+      },
+      "expected": 5
+    },
+    {
+      "name": "five nodes",
+      "input": {
+        "n": 5
+      },
+      "expected": 42
+    }
+  ]
+}

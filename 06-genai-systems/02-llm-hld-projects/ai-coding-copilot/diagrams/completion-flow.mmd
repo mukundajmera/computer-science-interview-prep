@@ -1,0 +1,38 @@
+sequenceDiagram
+    participant IDE as IDE Extension
+    participant GW as API Gateway
+    participant Comp as Completion Service
+    participant Cache as Redis Cache
+    participant Rank as Context Ranker
+    participant Model as Fast Model (Codestral)
+    participant Safety as Safety Scanner
+
+    IDE->>IDE: User types character
+    IDE->>IDE: Debounce timer (300ms)
+    IDE->>IDE: Timer expires → collect context
+
+    IDE->>GW: POST /completions (timeout: 300ms)
+    GW->>GW: Auth + rate limit (5ms)
+    GW->>Comp: Route to fast path
+
+    Comp->>Cache: Check cache (prefix hash)
+    alt Cache hit
+        Cache-->>Comp: Cached completion
+        Comp-->>IDE: Return (< 50ms total)
+    else Cache miss
+        Comp->>Rank: Rank context within budget
+        Rank-->>Comp: FIM prompt (prefix + suffix + related)
+
+        Comp->>Model: Generate completion
+        Model-->>Comp: Tokens (< 150ms)
+
+        Comp->>Safety: Security + license check
+        Safety-->>Comp: Pass
+
+        Comp->>Cache: Store in cache
+        Comp-->>IDE: Return completion
+    end
+
+    IDE->>IDE: Render ghost text
+    Note over IDE: User presses Tab (accept) or types (reject)
+    IDE->>GW: POST /feedback {accepted/rejected}

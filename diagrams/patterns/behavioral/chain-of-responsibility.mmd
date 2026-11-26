@@ -1,0 +1,41 @@
+%% Chain of Responsibility Pattern Class Diagram
+%% Passes request along chain of handlers until one handles it
+
+classDiagram
+    class Handler {
+        <<interface>>
+        +setNext(Handler) Handler
+        +handle(Request) Object
+    }
+    
+    class BaseHandler {
+        <<abstract>>
+        -nextHandler Handler
+        +setNext(Handler) Handler
+        +handle(Request) Object
+    }
+    
+    class ConcreteHandlerA {
+        +handle(Request) Object
+    }
+    
+    class ConcreteHandlerB {
+        +handle(Request) Object
+    }
+    
+    class ConcreteHandlerC {
+        +handle(Request) Object
+    }
+    
+    class Client {
+        +main() void
+    }
+    
+    Handler <|.. BaseHandler
+    BaseHandler <|-- ConcreteHandlerA
+    BaseHandler <|-- ConcreteHandlerB
+    BaseHandler <|-- ConcreteHandlerC
+    BaseHandler --> Handler : next
+    Client --> Handler : sends request
+    
+    note for BaseHandler "Each handler decides to\nprocess or pass to next.\nChain can be composed\nat runtime."

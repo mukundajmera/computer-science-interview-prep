@@ -1,0 +1,61 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "balanced seven nodes",
+      "input": {
+        "preorder": [
+          8,
+          4,
+          2,
+          6,
+          12,
+          10,
+          14
+        ],
+        "inorder": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14
+        ]
+      },
+      "expected": [
+        8,
+        4,
+        12,
+        2,
+        6,
+        10,
+        14
+      ]
+    },
+    {
+      "name": "left leaning chain",
+      "input": {
+        "preorder": [
+          5,
+          4,
+          3
+        ],
+        "inorder": [
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": [
+        5,
+        4,
+        null,
+        3
+      ]
+    }
+  ]
+}

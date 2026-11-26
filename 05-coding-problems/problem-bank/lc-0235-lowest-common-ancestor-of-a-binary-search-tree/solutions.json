@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-path-comparison",
+      "title": "Path comparison",
+      "tier": 1,
+      "strategy": "Build the BST search path to each target and return the last shared node.",
+      "timeComplexity": {
+        "class": "O(h)",
+        "explanation": "Each target search follows one root-to-leaf path, where h is tree height."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The two explicit paths can store up to h nodes each."
+      },
+      "javaPath": "java/solution-1-path-comparison/Solution.java",
+      "pythonPath": "python/solution-1-path-comparison/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-bst-walk",
+      "title": "Iterative BST walk",
+      "tier": 2,
+      "strategy": "Walk downward until the two targets no longer belong strictly to the same side.",
+      "timeComplexity": {
+        "class": "O(h)",
+        "explanation": "The loop moves down one level per iteration."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only the current pointer is stored."
+      },
+      "javaPath": "java/solution-2-iterative-bst-walk/Solution.java",
+      "pythonPath": "python/solution-2-iterative-bst-walk/solution.py"
+    }
+  ]
+}

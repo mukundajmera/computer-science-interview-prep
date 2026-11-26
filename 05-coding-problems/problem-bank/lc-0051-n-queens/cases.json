@@ -1,0 +1,53 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list-of-lists"
+  },
+  "cases": [
+    {
+      "name": "one queen",
+      "input": {
+        "n": 1
+      },
+      "expected": [
+        [
+          "Q"
+        ]
+      ]
+    },
+    {
+      "name": "two queens impossible",
+      "input": {
+        "n": 2
+      },
+      "expected": []
+    },
+    {
+      "name": "three queens impossible",
+      "input": {
+        "n": 3
+      },
+      "expected": []
+    },
+    {
+      "name": "four queens two boards",
+      "input": {
+        "n": 4
+      },
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ]
+    }
+  ]
+}

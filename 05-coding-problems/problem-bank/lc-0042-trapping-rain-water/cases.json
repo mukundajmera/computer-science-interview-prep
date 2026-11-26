@@ -1,0 +1,63 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two basins",
+      "input": {
+        "height": [
+          3,
+          0,
+          2,
+          0,
+          4
+        ]
+      },
+      "expected": 7
+    },
+    {
+      "name": "single valley",
+      "input": {
+        "height": [
+          2,
+          1,
+          2
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "monotonic rising",
+      "input": {
+        "height": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "name": "separated walls",
+      "input": {
+        "height": [
+          5,
+          0,
+          0,
+          5
+        ]
+      },
+      "expected": 10
+    },
+    {
+      "name": "empty heights",
+      "input": {
+        "height": []
+      },
+      "expected": 0
+    }
+  ]
+}

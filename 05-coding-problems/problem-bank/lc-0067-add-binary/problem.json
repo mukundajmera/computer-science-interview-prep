@@ -1,0 +1,114 @@
+{
+  "id": "lc-0067-add-binary",
+  "title": "Add Binary",
+  "difficulty": "easy",
+  "status": "verified",
+  "patterns": [
+    "string",
+    "bit-manipulation",
+    "simulation"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 47,
+      "group": "binary",
+      "sourceUrl": "https://leetcode.com/problems/add-binary"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 125,
+      "group": "Bit Manipulation",
+      "sourceUrl": "https://leetcode.com/problems/add-binary"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 917,
+      "group": "Bit Manipulation",
+      "sourceUrl": "https://leetcode.com/problems/add-binary"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "67",
+    "titleSlug": "add-binary",
+    "url": "https://leetcode.com/problems/add-binary",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "addBinary",
+      "returnType": "String",
+      "parameters": [
+        {
+          "name": "a",
+          "type": "String"
+        },
+        {
+          "name": "b",
+          "type": "String"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "addBinary",
+      "returnType": "str",
+      "parameters": [
+        {
+          "name": "a",
+          "type": "str"
+        },
+        {
+          "name": "b",
+          "type": "str"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+erDiagram
+    PRODUCT ||--o{ OFFER : "has"
+    PRODUCT ||--o{ ALERT : "tracked by"
+    OFFER ||--o{ PRICE_EVENT : "records"
+    OFFER ||--o{ PRICE_ROLLUP : "summarized into"
+    USER ||--o{ ALERT : "creates"
+    ALERT ||--o{ ALERT_DELIVERY : "generates"
+    PRICE_EVENT ||--o{ ALERT_DELIVERY : "triggers"
+    MERCHANT ||--o{ OFFER : "lists"
+
+    PRODUCT {
+        string product_id PK
+        string canonical_title
+        string brand
+        string category
+        string image_ref
+        datetime created_at
+    }
+
+    OFFER {
+        string offer_id PK
+        string product_id FK
+        string merchant_id FK
+        string merchant_sku
+        string canonical_url
+        string status
+        int current_price_cents
+        string currency
+        datetime updated_at
+    }
+
+    PRICE_EVENT {
+        string event_id PK
+        string offer_id FK
+        datetime observed_at
+        int amount_cents
+        string currency
+        string availability
+        string source
+        string event_hash
+    }
+
+    PRICE_ROLLUP {
+        string offer_id PK
+        datetime bucket_start PK
+        string bucket_size PK
+        int min_price
+        int max_price
+        int open_price
+        int close_price
+    }
+
+    ALERT {
+        string alert_id PK
+        string user_id FK
+        string product_id FK
+        string condition
+        string channels
+        string state
+        datetime created_at
+    }
+
+    ALERT_DELIVERY {
+        string delivery_id PK
+        string alert_id FK
+        string price_event_id FK
+        string channel
+        string state
+        int attempt
+        string dedupe_key
+        datetime next_attempt_at
+    }
+
+    USER {
+        string user_id PK
+        string email
+    }
+
+    MERCHANT {
+        string merchant_id PK
+        string robots_policy
+        int token_rate
+    }

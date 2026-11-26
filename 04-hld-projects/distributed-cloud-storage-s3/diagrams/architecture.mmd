@@ -1,0 +1,64 @@
+flowchart TD
+    subgraph "Actual Service Architecture (Production)"
+        ClientProd["Client"]
+        
+        subgraph "API Layer"
+            LBProd["API Gateway / Load Balancer"]
+            StorageFrontendProd["Stateless API Gateway / Storage Frontend"]
+        end
+
+        subgraph "Control Plane (Metadata)"
+            MetadataDBProd[("Metadata Service\n(CockroachDB/Spanner)\nConsensus & 2PC")]
+            KMSProd["Key Management Service\n(KMS)"]
+        end
+
+        subgraph "Data Plane (Storage)"
+            BlobNode1Prod[("Chunk Server 1\n(JBOD)")]
+            BlobNode2Prod[("Chunk Server 2\n(JBOD)")]
+            BlobNodeNProd[("Chunk Server N\n(JBOD)")]
+        end
+
+        subgraph "Background Services"
+            GCProd["Garbage Collection Daemon"]
+            BitrotProd["Bitrot Scrubbing Daemon"]
+        end
+
+        ClientProd -->|PUT/GET Object| LBProd
+        LBProd --> StorageFrontendProd
+
+        StorageFrontendProd -->|Read/Write Metadata| MetadataDBProd
+        StorageFrontendProd -->|Request Keys/Secrets| KMSProd
+        StorageFrontendProd -->|Read/Write Chunks <br> Erasure Coding 8+4| BlobNode1Prod
+        StorageFrontendProd -->|Read/Write Chunks <br> Erasure Coding 8+4| BlobNode2Prod
+        StorageFrontendProd -->|Read/Write Chunks <br> Erasure Coding 8+4| BlobNodeNProd
+
+        GCProd -->|Scan Deleted| MetadataDBProd
+        GCProd -->|Remove Chunks| BlobNode1Prod
+        GCProd -->|Remove Chunks| BlobNode2Prod
+        GCProd -->|Remove Chunks| BlobNodeNProd
+
+        BitrotProd -->|Verify/Reconstruct| BlobNode1Prod
+        BitrotProd -->|Verify/Reconstruct| BlobNode2Prod
+        BitrotProd -->|Verify/Reconstruct| BlobNodeNProd
+    end
+
+    subgraph "Simplified Offline Simulation (Educational)"
+        ClientSim["Local Test Client"]
+
+        subgraph "S3StorageService"
+            GatewaySim["In-Process API Gateway"]
+            MetadataSim[("ConcurrentHashMap\n(In-Memory Metadata)")]
+            StorageSim[("ConcurrentHashMap\n(In-Memory Blob Storage)")]
+            AuthSim["Hardcoded HMAC Verification"]
+        end
+        
+        subgraph "MultipartUploadManager"
+            UploadSim[("Multipart Upload State\n(In-Memory HashMaps)")]
+        end
+
+        ClientSim -->|Direct Method Calls <br> putObject/getObject| GatewaySim
+        GatewaySim -->|Read/Write| MetadataSim
+        GatewaySim -->|Read/Write| StorageSim
+        GatewaySim -->|Verify Signature| AuthSim
+        GatewaySim -->|initiate/uploadPart/complete| UploadSim
+    end

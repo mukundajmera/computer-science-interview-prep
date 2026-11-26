@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dp-table",
+      "title": "Separate DP table",
+      "tier": 1,
+      "strategy": "Build a table whose cell stores the minimum path sum to that coordinate.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each of the m by n cells is computed once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "The DP table mirrors the grid size."
+      },
+      "javaPath": "java/solution-1-dp-table/Solution.java",
+      "pythonPath": "python/solution-1-dp-table/solution.py"
+    },
+    {
+      "id": "solution-2-in-place-grid-dp",
+      "title": "In-place grid DP",
+      "tier": 2,
+      "strategy": "Reuse the grid cells to store the minimum path sum to each coordinate.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Every cell is updated once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "No auxiliary table is allocated beyond the input grid storage."
+      },
+      "javaPath": "java/solution-2-in-place-grid-dp/Solution.java",
+      "pythonPath": "python/solution-2-in-place-grid-dp/solution.py"
+    }
+  ]
+}

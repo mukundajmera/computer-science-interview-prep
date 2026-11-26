@@ -1,0 +1,16 @@
+stateDiagram-v2
+    [*] --> RequestReceived
+
+    RequestReceived --> CheckCapacity : Enqueue
+
+    state CheckCapacity {
+        direction LR
+        QueueNotFull --> ExecuteTask
+        QueueFull --> RejectTask
+    }
+
+    CheckCapacity --> TaskCompleted : Success/Failure
+    CheckCapacity --> TaskRejected : Bulkhead Full
+
+    TaskCompleted --> [*]
+    TaskRejected --> [*] : Fallback/Error

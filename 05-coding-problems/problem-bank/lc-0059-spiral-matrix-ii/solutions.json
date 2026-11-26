@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-direction-walk",
+      "title": "Direction walk",
+      "tier": 1,
+      "strategy": "Walk one cell at a time, turning right when the next cell is out of bounds or already filled.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every matrix cell is filled once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Ignoring the output matrix, only coordinates and direction are stored."
+      },
+      "javaPath": "java/solution-1-direction-walk/Solution.java",
+      "pythonPath": "python/solution-1-direction-walk/solution.py"
+    },
+    {
+      "id": "solution-2-layer-boundaries",
+      "title": "Layer boundaries",
+      "tier": 2,
+      "strategy": "Fill the current top row, right column, bottom row, and left column, then shrink the boundaries.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each cell belongs to exactly one boundary segment."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only boundary pointers and the next value are stored besides the output."
+      },
+      "javaPath": "java/solution-2-layer-boundaries/Solution.java",
+      "pythonPath": "python/solution-2-layer-boundaries/solution.py"
+    }
+  ]
+}

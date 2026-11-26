@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-enumerate-splits",
+      "title": "Enumerate split lengths",
+      "tier": 1,
+      "strategy": "Try all three possible lengths for each of the four address parts.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "At most 3^4 split patterns are inspected."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The recursion depth and candidate part count are bounded by four."
+      },
+      "javaPath": "java/solution-1-enumerate-splits/Solution.java",
+      "pythonPath": "python/solution-1-enumerate-splits/solution.py"
+    },
+    {
+      "id": "solution-2-backtracking-pruned",
+      "title": "Backtracking with remaining-length pruning",
+      "tier": 2,
+      "strategy": "Prune when remaining digits cannot fill the remaining parts.",
+      "timeComplexity": {
+        "class": "O(1)",
+        "explanation": "The bounded IPv4 search space is constant, with fewer invalid branches explored."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only four parts are stored."
+      },
+      "javaPath": "java/solution-2-backtracking-pruned/Solution.java",
+      "pythonPath": "python/solution-2-backtracking-pruned/solution.py"
+    }
+  ]
+}

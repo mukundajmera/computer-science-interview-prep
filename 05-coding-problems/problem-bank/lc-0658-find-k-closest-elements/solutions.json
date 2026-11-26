@@ -1,0 +1,52 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-by-distance",
+      "title": "Sort by distance",
+      "tier": 1,
+      "strategy": "Sort all values by distance to x and value, take k, then sort the answer.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting all n values dominates the work."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "A boxed copy of the input values is sorted."
+      },
+      "javaPath": "java/solution-1-sort-by-distance/Solution.java",
+      "pythonPath": "python/solution-1-sort-by-distance/solution.py"
+    },
+    {
+      "id": "solution-2-shrink-window",
+      "title": "Shrink window",
+      "tier": 2,
+      "strategy": "Repeatedly remove the worse endpoint until only k values remain.",
+      "timeComplexity": {
+        "class": "O(n-k)",
+        "explanation": "Each step discards exactly one endpoint."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The returned list stores k values."
+      },
+      "javaPath": "java/solution-2-shrink-window/Solution.java",
+      "pythonPath": "python/solution-2-shrink-window/solution.py"
+    },
+    {
+      "id": "solution-3-binary-search-window",
+      "title": "Binary search window",
+      "tier": 3,
+      "strategy": "Binary-search the left boundary of the optimal length-k window.",
+      "timeComplexity": {
+        "class": "O(log(n-k) + k)",
+        "explanation": "The boundary search is logarithmic and copying the answer costs k."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The returned list stores k values."
+      },
+      "javaPath": "java/solution-3-binary-search-window/Solution.java",
+      "pythonPath": "python/solution-3-binary-search-window/solution.py"
+    }
+  ]
+}

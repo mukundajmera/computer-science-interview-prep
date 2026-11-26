@@ -1,0 +1,67 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "mixed slopes",
+      "input": {
+        "ratings": [
+          2,
+          4,
+          3,
+          5
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "name": "strictly decreasing",
+      "input": {
+        "ratings": [
+          5,
+          4,
+          3,
+          2
+        ]
+      },
+      "expected": 10
+    },
+    {
+      "name": "plateau then rise",
+      "input": {
+        "ratings": [
+          1,
+          1,
+          2,
+          2,
+          3
+        ]
+      },
+      "expected": 7
+    },
+    {
+      "name": "single child",
+      "input": {
+        "ratings": [
+          9
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "name": "valley in middle",
+      "input": {
+        "ratings": [
+          4,
+          2,
+          3,
+          4,
+          1
+        ]
+      },
+      "expected": 9
+    }
+  ]
+}

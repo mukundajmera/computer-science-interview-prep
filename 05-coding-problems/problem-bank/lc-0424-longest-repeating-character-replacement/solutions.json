@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-check-every-window",
+      "title": "Check every window",
+      "tier": 1,
+      "strategy": "Grow every start position while tracking the most frequent character in that window.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every start can extend across the remaining string."
+      },
+      "spaceComplexity": {
+        "class": "O(a)",
+        "explanation": "A fixed alphabet frequency array is stored."
+      },
+      "javaPath": "java/solution-1-check-every-window/Solution.java",
+      "pythonPath": "python/solution-1-check-every-window/solution.py"
+    },
+    {
+      "id": "solution-2-sliding-window",
+      "title": "Sliding window",
+      "tier": 2,
+      "strategy": "Maintain the largest frequency in the current window and shrink when replacements needed exceed k.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each boundary moves only to the right."
+      },
+      "spaceComplexity": {
+        "class": "O(a)",
+        "explanation": "Counts are stored for the alphabet."
+      },
+      "javaPath": "java/solution-2-sliding-window/Solution.java",
+      "pythonPath": "python/solution-2-sliding-window/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+sequenceDiagram
+    autonumber
+
+    actor Client
+    participant API Gateway
+    participant DedupService as Dedup Service
+    participant ImmutableLog as Event Log
+    participant StreamAggregator as Stream Aggregator
+    participant Corrector as Late Event Corrector
+    participant AggregateStore as Aggregate Store
+    actor Advertiser
+    actor Operator
+
+    %% Ingestion Flow
+    Client->>API Gateway: POST /api/v1/click-events
+    API Gateway->>DedupService: Check event_id
+
+    alt Event ID exists
+        DedupService-->>API Gateway: Duplicate
+        API Gateway-->>Client: 200 OK (Idempotent ignore)
+    else New Event ID
+        DedupService-->>API Gateway: Not seen
+        API Gateway->>ImmutableLog: Append to partition
+        ImmutableLog-->>API Gateway: Ack
+        API Gateway->>DedupService: Mark event_id processed
+        API Gateway-->>Client: 202 Accepted
+    end
+
+    %% Stream Processing Flow
+    ImmutableLog->>StreamAggregator: Consume stream
+
+    alt event_time >= watermark (On-time)
+        StreamAggregator->>StreamAggregator: Group by event-time & watermark
+        StreamAggregator->>AggregateStore: Atomic TX [Insert EVENT_BUCKET_CONTRIBUTION, Upsert Bucket]
+        alt Contribution exists
+            AggregateStore-->>StreamAggregator: Skip mutation (Idempotent replay)
+        else New Contribution
+            AggregateStore-->>StreamAggregator: Commit OK
+        end
+    else watermark > event_time >= watermark - allowed_lateness (Accepted-late)
+        StreamAggregator->>Corrector: Route out-of-watermark event
+        Corrector->>AggregateStore: Atomic TX [Insert EVENT_BUCKET_CONTRIBUTION, Upsert Bucket, Insert CORRECTION_LOG]
+        alt Contribution exists
+            AggregateStore-->>Corrector: Skip mutation (Idempotent replay)
+        else New Contribution
+            AggregateStore-->>Corrector: Commit OK
+        end
+    else event_time < watermark - allowed_lateness (Too late)
+        StreamAggregator->>StreamAggregator: Drop event (outside audit window)
+    end
+
+    %% Query Flows
+    Advertiser->>API Gateway: GET /api/v1/advertisers/{advertiser_id}/metrics
+    API Gateway->>AggregateStore: Query buckets & adjustments
+    AggregateStore-->>API Gateway: Aggregated results
+    API Gateway-->>Advertiser: 200 OK (Dashboard data)
+
+    Advertiser->>API Gateway: GET /api/v1/campaigns/{campaign_id}/corrections
+    API Gateway->>AggregateStore: Fetch CORRECTION_LOG
+    AggregateStore-->>API Gateway: Historical correction records
+    API Gateway-->>Advertiser: 200 OK (Correction log)
+
+    Operator->>API Gateway: GET /api/v1/operators/ingest-lag
+    API Gateway->>StreamAggregator: Get consumer offset/lag metrics
+    StreamAggregator-->>API Gateway: Lag stats per partition
+    API Gateway-->>Operator: 200 OK (Ingest lag data)

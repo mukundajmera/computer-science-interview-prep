@@ -1,0 +1,17 @@
+flowchart TD
+    Client1[Client] -->|Request ID| Node1[ID Generator Node 1]
+    Client2[Client] -->|Request ID| Node2[ID Generator Node 2]
+    Client3[Client] -->|Request ID| Node3[ID Generator Node N]
+
+    subgraph Generator Cluster
+        Node1
+        Node2
+        Node3
+    end
+
+    Node1 -.->|Lease Worker ID| ZK[(ZooKeeper Cluster)]
+    Node2 -.->|Lease Worker ID| ZK
+    Node3 -.->|Lease Worker ID| ZK
+
+    classDef db fill:#f9f,stroke:#333,stroke-width:2px;
+    class ZK db;

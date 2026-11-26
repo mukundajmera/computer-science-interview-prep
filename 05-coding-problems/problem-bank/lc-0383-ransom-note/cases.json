@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "enough repeated letters", "input": { "ransomNote": "moon", "magazine": "onomatopoeia" }, "expected": true },
+    { "name": "not enough repeated letters", "input": { "ransomNote": "balloon", "magazine": "balon" }, "expected": false },
+    { "name": "empty target", "input": { "ransomNote": "", "magazine": "abc" }, "expected": true },
+    { "name": "letters out of order", "input": { "ransomNote": "cab", "magazine": "bbaca" }, "expected": true },
+    { "name": "non-ascii character", "input": { "ransomNote": "é", "magazine": "café" }, "expected": true }
+  ]
+}

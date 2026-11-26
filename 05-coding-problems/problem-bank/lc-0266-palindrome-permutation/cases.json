@@ -1,0 +1,29 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "one odd count",
+      "input": {
+        "s": "aab"
+      },
+      "expected": true
+    },
+    {
+      "name": "too many odds",
+      "input": {
+        "s": "abc"
+      },
+      "expected": false
+    },
+    {
+      "name": "even counts",
+      "input": {
+        "s": "aabbcc"
+      },
+      "expected": true
+    }
+  ]
+}

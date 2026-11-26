@@ -1,0 +1,36 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "unordered-list"
+  },
+  "cases": [
+    {
+      "name": "five digits",
+      "input": {
+        "s": "11111"
+      },
+      "expected": [
+        "11.1.1.1",
+        "1.11.1.1",
+        "1.1.11.1",
+        "1.1.1.11"
+      ]
+    },
+    {
+      "name": "zeros as single parts",
+      "input": {
+        "s": "1010"
+      },
+      "expected": [
+        "1.0.1.0"
+      ]
+    },
+    {
+      "name": "too long",
+      "input": {
+        "s": "9999999999999"
+      },
+      "expected": []
+    }
+  ]
+}

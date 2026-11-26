@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant User
+    participant Pipeline as RetrievalPipeline
+    participant Dense as DenseRetriever
+    participant Sparse as SparseRetriever
+    participant Fusion as Hybrid/Score Normalizer
+    participant Ranker as Ranker (RRF/Weighted)
+
+    User->>Pipeline: query("What is hybrid retrieval?", top_k=5)
+
+    par Parallel Retrieval
+        Pipeline->>Dense: retrieve(query_embedding, top_k=10)
+        Dense-->>Pipeline: Dense Candidates (List[RetrievalResult])
+    and
+        Pipeline->>Sparse: retrieve(query_tokens, top_k=10)
+        Sparse-->>Pipeline: Sparse Candidates (List[RetrievalResult])
+    end
+
+    Pipeline->>Fusion: merge_results(dense_results, sparse_results)
+    note right of Fusion: Score Normalization &<br/>Alpha Blending
+    Fusion-->>Pipeline: Merged Results
+
+    Pipeline->>Ranker: rank(Merged Results, top_k=5)
+    note right of Ranker: Apply Reciprocal Rank Fusion<br/>or Weights, Sort Descending
+    Ranker-->>Pipeline: RankedResultSet (Top 5 Deduped)
+
+    Pipeline-->>User: RankedResultSet

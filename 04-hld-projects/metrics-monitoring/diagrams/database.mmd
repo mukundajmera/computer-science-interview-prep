@@ -1,0 +1,54 @@
+erDiagram
+    Metrics ||--o{ MetricTags : "has"
+    Metrics ||--o{ TimeSeriesBuckets : "records"
+    AlertRules ||--o{ NotificationEndpoints : "triggers_via"
+    AlertRules ||--|| Metrics : "evaluates"
+    DashboardConfigs }o--o{ Metrics : "displays"
+
+    Metrics {
+        string metric_id PK
+        string name
+        string description
+        string metric_type
+    }
+
+    MetricTags {
+        string tag_id PK
+        string metric_id FK
+        string key
+        string value
+    }
+
+    TimeSeriesBuckets {
+        string bucket_id PK
+        string metric_id FK
+        timestamp start_time
+        timestamp end_time
+        float min_value
+        float max_value
+        float sum_value
+        int count
+    }
+
+    AlertRules {
+        string rule_id PK
+        string metric_id FK
+        string condition
+        float threshold
+        string duration
+        string status
+    }
+
+    NotificationEndpoints {
+        string endpoint_id PK
+        string rule_id FK
+        string type
+        string target
+    }
+
+    DashboardConfigs {
+        string dashboard_id PK
+        string name
+        string layout_json
+        string created_by
+    }

@@ -1,0 +1,24 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "float-tolerance", "tolerance": 0.000001 },
+  "cases": [
+    {
+      "name": "chain reciprocal and unknown variables",
+      "input": {
+        "equations": [["red", "blue"], ["blue", "green"], ["green", "gold"]],
+        "values": [2.0, 4.0, 0.5],
+        "queries": [["red", "green"], ["gold", "blue"], ["red", "red"], ["red", "black"], ["black", "black"]]
+      },
+      "expected": [8.0, 0.5, 1.0, -1.0, -1.0]
+    },
+    {
+      "name": "separate components and cycle path",
+      "input": {
+        "equations": [["north", "east"], ["east", "south"], ["south", "west"], ["meter", "centimeter"]],
+        "values": [3.0, 2.0, 5.0, 100.0],
+        "queries": [["north", "west"], ["west", "north"], ["meter", "centimeter"], ["centimeter", "meter"], ["north", "meter"]]
+      },
+      "expected": [30.0, 0.03333333333333333, 100.0, 0.01, -1.0]
+    }
+  ]
+}

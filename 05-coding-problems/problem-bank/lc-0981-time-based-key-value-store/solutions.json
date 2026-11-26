@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-linear-history-scan",
+      "title": "Linear history scan",
+      "tier": 1,
+      "strategy": "Keep every key history in insertion order and scan backward for the first visible timestamp.",
+      "timeComplexity": {
+        "class": "O(m)",
+        "explanation": "A get may inspect every version for that key."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "All set calls are retained."
+      },
+      "javaPath": "java/solution-1-linear-history-scan/Solution.java",
+      "pythonPath": "python/solution-1-linear-history-scan/solution.py"
+    },
+    {
+      "id": "solution-2-binary-search-history",
+      "title": "Binary search history",
+      "tier": 2,
+      "strategy": "Keep each key's timestamp history sorted by append order and binary-search the rightmost visible timestamp.",
+      "timeComplexity": {
+        "class": "O(log m)",
+        "explanation": "A get performs one binary search over that key's m versions."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "All set calls are retained."
+      },
+      "javaPath": "java/solution-2-binary-search-history/Solution.java",
+      "pythonPath": "python/solution-2-binary-search-history/solution.py"
+    }
+  ]
+}

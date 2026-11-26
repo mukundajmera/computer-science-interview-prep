@@ -1,0 +1,47 @@
+sequenceDiagram
+    participant User
+    participant GW as API Gateway
+    participant QS as Query Service
+    participant Cache as Semantic Cache
+    participant VDB as Vector DB
+    participant ES as Elasticsearch
+    participant Rerank as Reranker
+    participant PB as Prompt Builder
+    participant LLM as LLM Gateway
+    participant PG as PostgreSQL
+
+    User->>GW: POST /api/v1/query
+    GW->>GW: Auth + rate limit
+    GW->>QS: Forward request
+
+    QS->>Cache: Semantic similarity search
+    alt Cache Hit (cosine > 0.95)
+        Cache-->>QS: Cached answer + sources
+        QS-->>User: Stream cached response
+    else Cache Miss
+        par Vector Search
+            QS->>VDB: Embed query → cosine search (top 20)
+        and Keyword Search
+            QS->>ES: BM25 search (top 20)
+        end
+
+        VDB-->>QS: Semantic results
+        ES-->>QS: Keyword results
+
+        QS->>QS: Reciprocal Rank Fusion → top 30
+        QS->>Rerank: Cross-encoder rerank
+        Rerank-->>QS: Top 5 chunks
+        QS->>QS: Access control filter
+
+        QS->>PB: Build prompt
+        PB->>LLM: Stream generation request
+
+        loop Token by token
+            LLM-->>QS: Token
+            QS-->>User: SSE chunk
+        end
+
+        QS-->>User: SSE done + sources
+        QS->>Cache: Cache result
+        QS->>PG: Log query + response
+    end

@@ -1,0 +1,64 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "ordered small target",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ],
+        "target": 4
+      },
+      "expected": 7
+    },
+    {
+      "name": "no possible sequence",
+      "input": {
+        "nums": [
+          9
+        ],
+        "target": 3
+      },
+      "expected": 0
+    },
+    {
+      "name": "mixed values",
+      "input": {
+        "nums": [
+          2,
+          3,
+          5
+        ],
+        "target": 8
+      },
+      "expected": 6
+    },
+    {
+      "name": "single number repeats",
+      "input": {
+        "nums": [
+          1
+        ],
+        "target": 5
+      },
+      "expected": 1
+    },
+    {
+      "name": "order matters with gaps",
+      "input": {
+        "nums": [
+          4,
+          2,
+          1
+        ],
+        "target": 5
+      },
+      "expected": 10
+    }
+  ]
+}

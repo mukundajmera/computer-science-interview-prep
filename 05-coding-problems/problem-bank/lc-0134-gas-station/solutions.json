@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-try-each-start",
+      "title": "Try each start",
+      "tier": 1,
+      "strategy": "Simulate a full route from every possible start station.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each start station can simulate up to n station visits."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only indexes, tank balance, and counters are stored."
+      },
+      "javaPath": "java/solution-1-try-each-start/Solution.java",
+      "pythonPath": "python/solution-1-try-each-start/solution.py"
+    },
+    {
+      "id": "solution-2-greedy-reset",
+      "title": "Greedy reset on deficit",
+      "tier": 2,
+      "strategy": "Track total surplus and reset the candidate start after any negative running tank.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The station list is scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only total balance, current tank, and candidate start are stored."
+      },
+      "javaPath": "java/solution-2-greedy-reset/Solution.java",
+      "pythonPath": "python/solution-2-greedy-reset/solution.py"
+    }
+  ]
+}

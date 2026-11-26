@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-position-scan",
+      "title": "Used-position scan",
+      "tier": 1,
+      "strategy": "For each needed character, scan the supply for one unused matching position.",
+      "timeComplexity": { "class": "O(r * m)", "explanation": "Each of r target characters can scan up to m supply characters." },
+      "spaceComplexity": { "class": "O(m)", "explanation": "A boolean array tracks which supply positions have been consumed." },
+      "javaPath": "java/solution-1-position-scan/Solution.java",
+      "pythonPath": "python/solution-1-position-scan/solution.py"
+    },
+    {
+      "id": "solution-2-frequency-count",
+      "title": "Frequency count",
+      "tier": 2,
+      "strategy": "Count available characters and decrement counts for the target.",
+      "timeComplexity": { "class": "O(r + m)", "explanation": "The supply and target are each scanned once." },
+      "spaceComplexity": { "class": "O(k)", "explanation": "The map stores counts for each distinct supplied character." },
+      "javaPath": "java/solution-2-frequency-count/Solution.java",
+      "pythonPath": "python/solution-2-frequency-count/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+%% Load Balancer Architecture
+%% Shows traffic distribution to multiple servers with health status
+
+flowchart TB
+    subgraph Clients
+        C1[Client 1]
+        C2[Client 2]
+        C3[Client 3]
+    end
+
+    subgraph LoadBalancing["Load Balancer Layer"]
+        LB[Load Balancer<br/>Round Robin / Least Connections]
+        HC[Health Checker<br/>Interval: 5s]
+    end
+
+    subgraph Servers["Application Servers"]
+        S1[Server 1<br/>192.168.1.10]
+        S2[Server 2<br/>192.168.1.11]
+        S3[Server 3<br/>192.168.1.12]
+        S4[Server 4<br/>192.168.1.13]
+    end
+
+    C1 --> LB
+    C2 --> LB
+    C3 --> LB
+
+    LB --> S1
+    LB --> S2
+    LB --> S3
+    LB -.->|No Traffic| S4
+
+    HC -.->|health check| S1
+    HC -.->|health check| S2
+    HC -.->|health check| S3
+    HC -.->|health check| S4
+
+    %% Styling
+    style LB fill:#4a90d9,stroke:#2c5282,color:#fff
+    style HC fill:#805ad5,stroke:#553c9a,color:#fff
+    style S1 fill:#48bb78,stroke:#276749,color:#fff
+    style S2 fill:#48bb78,stroke:#276749,color:#fff
+    style S3 fill:#48bb78,stroke:#276749,color:#fff
+    style S4 fill:#fc8181,stroke:#c53030,color:#fff

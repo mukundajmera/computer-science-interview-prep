@@ -1,0 +1,95 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "mixed signs",
+      "input": {
+        "nums": [
+          -6,
+          -2,
+          0,
+          3,
+          5
+        ]
+      },
+      "expected": [
+        0,
+        4,
+        9,
+        25,
+        36
+      ]
+    },
+    {
+      "name": "all negative",
+      "input": {
+        "nums": [
+          -9,
+          -4,
+          -1
+        ]
+      },
+      "expected": [
+        1,
+        16,
+        81
+      ]
+    },
+    {
+      "name": "all non negative",
+      "input": {
+        "nums": [
+          0,
+          2,
+          3
+        ]
+      },
+      "expected": [
+        0,
+        4,
+        9
+      ]
+    },
+    {
+      "name": "duplicate absolute values",
+      "input": {
+        "nums": [
+          -2,
+          -2,
+          2,
+          2
+        ]
+      },
+      "expected": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "name": "duplicates zero and mixed signs",
+      "input": {
+        "nums": [
+          -4,
+          -1,
+          -1,
+          0,
+          3,
+          10
+        ]
+      },
+      "expected": [
+        0,
+        1,
+        1,
+        9,
+        16,
+        100
+      ]
+    }
+  ]
+}

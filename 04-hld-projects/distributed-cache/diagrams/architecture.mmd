@@ -1,0 +1,10 @@
+flowchart LR
+    Client --> Router
+    Router --> Ring
+    Ring --> NodeA
+    Ring --> NodeB
+    Ring --> NodeC
+    Ring --> Rebalancer
+    NodeA --> Metrics
+    NodeB --> Metrics
+    NodeC --> Metrics

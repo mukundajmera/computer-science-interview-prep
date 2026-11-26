@@ -1,0 +1,39 @@
+stateDiagram-v2
+    [*] --> Supervisor : start / dispatch goal
+    
+    Supervisor --> TurnLoop : Initialize current_msg to researcher
+    
+    state TurnLoop {
+        [*] --> CheckRecipient
+        
+        CheckRecipient --> IsSupervisor : current_msg.recipient == "supervisor"
+        CheckRecipient --> IsAgent : current_msg.recipient != "supervisor"
+        
+        IsSupervisor --> ConsensusReturn : content == "CONSENSUS_REACHED"
+        IsSupervisor --> SuccessReturn : content != "CONSENSUS_REACHED"
+        
+        IsAgent --> UnknownRecipient : current_msg.recipient not in agents
+        IsAgent --> ProcessAgent : current_msg.recipient in agents
+        
+        ProcessAgent --> CheckCycle : agent.process() -> next_msg
+        
+        CheckCycle --> CycleDetected : msg_signature in seen_signatures
+        CheckCycle --> ForwardConsensus : msg_signature not in seen_signatures
+        
+        ForwardConsensus --> ConsensusReturnForward : next_msg.content == "CONSENSUS_REACHED"
+        ForwardConsensus --> AdvanceTurn : next_msg.content != "CONSENSUS_REACHED"
+        
+        AdvanceTurn --> [*] : current_msg = next_msg
+    }
+    
+    TurnLoop --> CheckRecipient : Next Turn
+    
+    ConsensusReturn --> [*] : Consensus
+    SuccessReturn --> [*] : Success
+    ConsensusReturnForward --> [*] : Consensus
+    
+    UnknownRecipient --> [*] : Failure (Unknown recipient)
+    CycleDetected --> [*] : Failure (Cycle detected)
+    
+    TurnLoop --> TurnExhaustion : loop completes (max_turns)
+    TurnExhaustion --> [*] : Failure (Turn exhaustion)

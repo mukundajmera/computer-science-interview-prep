@@ -1,0 +1,71 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "single valid pair after prefix",
+      "input": {
+        "s": "(()"
+      },
+      "expected": 2
+    },
+    {
+      "name": "broken middle run",
+      "input": {
+        "s": ")()())"
+      },
+      "expected": 4
+    },
+    {
+      "name": "empty string",
+      "input": {
+        "s": ""
+      },
+      "expected": 0
+    },
+    {
+      "name": "all opens invalid",
+      "input": {
+        "s": "((((("
+      },
+      "expected": 0
+    },
+    {
+      "name": "nested plus adjacent",
+      "input": {
+        "s": "()(())"
+      },
+      "expected": 6
+    },
+    {
+      "name": "unclosed suffix",
+      "input": {
+        "s": "()(()"
+      },
+      "expected": 2
+    },
+    {
+      "name": "valid suffix after invalid prefix",
+      "input": {
+        "s": "())(()())"
+      },
+      "expected": 6
+    },
+    {
+      "name": "nested run between invalid ends",
+      "input": {
+        "s": ")((()))("
+      },
+      "expected": 6
+    },
+    {
+      "name": "long nested prefix before extra close",
+      "input": {
+        "s": "((()))())"
+      },
+      "expected": 8
+    }
+  ]
+}

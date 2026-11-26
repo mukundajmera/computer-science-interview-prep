@@ -1,0 +1,15 @@
+flowchart TB
+    C[Clients] --> API[Crawl API]
+    API --> JM[(Job Metadata)]
+    API --> FM[Frontier Manager]
+
+    FM --> FI[(Frontier Items)]
+    FM --> FW[Fetcher Workers]
+    FW --> HRL[Host Rate Limiter]
+    HRL --> HB[(Host Budgets)]
+
+    FW --> P[Parser]
+    P --> CF[Content Fingerprinter]
+    CF --> VU[(Visited URL Index)]
+    P --> S[(Metadata and Content Storage)]
+    P --> FM

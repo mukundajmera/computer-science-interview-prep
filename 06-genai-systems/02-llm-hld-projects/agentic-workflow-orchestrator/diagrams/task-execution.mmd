@@ -1,0 +1,42 @@
+sequenceDiagram
+    participant User
+    participant API as Task API
+    participant Queue as Task Queue
+    participant Plan as Planner (LLM)
+    participant Exec as Step Executor
+    participant Tool as Tool Gateway
+    participant Approve as Approval Mgr
+    participant PG as PostgreSQL
+
+    User->>API: POST /tasks {instruction}
+    API->>PG: Create task (planning)
+    API->>Queue: Enqueue
+    API-->>User: 202 Accepted
+
+    Queue->>Plan: Process task
+    Plan->>Plan: LLM decompose → steps
+    Plan->>PG: Save plan
+
+    loop Each step
+        Plan->>Exec: Execute step
+
+        alt Requires approval
+            Exec->>Approve: Request approval
+            Approve->>PG: awaiting_approval
+            Approve-->>User: Notification
+            User->>API: Approve step
+            Approve->>Exec: Continue
+        end
+
+        Exec->>Tool: Call tool (idempotency key)
+        alt Success
+            Tool-->>Exec: Result
+            Exec->>PG: Checkpoint
+        else Failure
+            Exec->>Exec: Retry (3x backoff)
+            Exec->>Plan: Re-plan if persistent
+        end
+    end
+
+    Exec->>PG: Task completed
+    Exec-->>User: Done notification

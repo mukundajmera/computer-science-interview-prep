@@ -1,0 +1,10 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "two shared values with duplicates", "input": { "nums1": [12, 5, 12, 7, 3], "nums2": [5, 8, 12, 5, 11] }, "expected": [5, 12] },
+    { "name": "no shared values", "input": { "nums1": [13, 17, 19], "nums2": [2, 4] }, "expected": [] },
+    { "name": "negative shared value", "input": { "nums1": [-3, 0, -3, 7], "nums2": [2, -3, 9] }, "expected": [-3] },
+    { "name": "all values overlap once", "input": { "nums1": [6, 1, 6, 2], "nums2": [2, 1, 6] }, "expected": [1, 2, 6] }
+  ]
+}

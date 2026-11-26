@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-extra-buffer",
+      "title": "Extra buffer compaction",
+      "tier": 1,
+      "strategy": "Collect every value that should remain, copy that compacted list into the array prefix, and return its length.",
+      "timeComplexity": { "class": "O(n)", "explanation": "The input array is scanned once and the kept values are copied once." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The temporary buffer can store every input value when no removal occurs." },
+      "javaPath": "java/solution-1-extra-buffer/Solution.java",
+      "pythonPath": "python/solution-1-extra-buffer/solution.py"
+    },
+    {
+      "id": "solution-2-write-pointer",
+      "title": "Stable write pointer",
+      "tier": 2,
+      "strategy": "Use one read pointer and one write pointer, overwriting removed values with the next kept value.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Every array element is inspected once." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only the write index is stored in addition to loop state." },
+      "javaPath": "java/solution-2-write-pointer/Solution.java",
+      "pythonPath": "python/solution-2-write-pointer/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+graph TD
+    A[Concurrency Anomalies] --> B(Dirty Write G0)
+    A --> C(Dirty Read G1)
+    A --> D(Non-Repeatable Read G2a)
+    A --> E(Phantom Read A3)
+    A --> F(Lost Update P4)
+    A --> G(Write Skew A5B)
+    A --> H(Read Skew A5A)
+
+    subgraph SQL-92 Focus
+    C
+    D
+    E
+    end
+
+    subgraph Snapshot Isolation Focus
+    F
+    G
+    H
+    end

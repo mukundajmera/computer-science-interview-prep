@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-brute-force",
+      "title": "Brute force pairs",
+      "tier": 1,
+      "strategy": "Test every ordered pair by concatenating and checking whether the result is a palindrome.",
+      "timeComplexity": {
+        "class": "O(n^2 L)",
+        "explanation": "There are n(n-1) pairs and each check scans up to 2L characters."
+      },
+      "spaceComplexity": {
+        "class": "O(L)",
+        "explanation": "Only the temporary concatenation/check state is extra beyond output."
+      },
+      "javaPath": "java/solution-1-brute-force/Solution.java",
+      "pythonPath": "python/solution-1-brute-force/solution.py"
+    },
+    {
+      "id": "solution-2-reversed-word-map",
+      "title": "Reversed word map",
+      "tier": 2,
+      "strategy": "Index every word, then split each word and match reversed complements when the opposite side is already a palindrome.",
+      "timeComplexity": {
+        "class": "O(nL^2)",
+        "explanation": "Each word has L split points and palindrome/reverse work can scan O(L)."
+      },
+      "spaceComplexity": {
+        "class": "O(nL)",
+        "explanation": "The lookup map stores all words."
+      },
+      "javaPath": "java/solution-2-reversed-word-map/Solution.java",
+      "pythonPath": "python/solution-2-reversed-word-map/solution.py"
+    }
+  ]
+}

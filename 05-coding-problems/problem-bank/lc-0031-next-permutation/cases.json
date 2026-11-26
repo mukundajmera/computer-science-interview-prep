@@ -1,0 +1,112 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "simple increase at end",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": null,
+      "expectedMutations": {
+        "nums": [
+          1,
+          3,
+          2
+        ]
+      }
+    },
+    {
+      "name": "wraps descending order",
+      "input": {
+        "nums": [
+          3,
+          2,
+          1
+        ]
+      },
+      "expected": null,
+      "expectedMutations": {
+        "nums": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "duplicate values",
+      "input": {
+        "nums": [
+          1,
+          1,
+          5
+        ]
+      },
+      "expected": null,
+      "expectedMutations": {
+        "nums": [
+          1,
+          5,
+          1
+        ]
+      }
+    },
+    {
+      "name": "pivot before descending suffix",
+      "input": {
+        "nums": [
+          1,
+          3,
+          2
+        ]
+      },
+      "expected": null,
+      "expectedMutations": {
+        "nums": [
+          2,
+          1,
+          3
+        ]
+      }
+    },
+    {
+      "name": "single element remains unchanged",
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "expected": null,
+      "expectedMutations": {
+        "nums": [
+          1
+        ]
+      }
+    },
+    {
+      "name": "duplicate pivot successor",
+      "input": {
+        "nums": [
+          1,
+          5,
+          1
+        ]
+      },
+      "expected": null,
+      "expectedMutations": {
+        "nums": [
+          5,
+          1,
+          1
+        ]
+      }
+    }
+  ]
+}

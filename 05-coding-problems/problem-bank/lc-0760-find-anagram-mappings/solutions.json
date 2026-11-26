@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-nested-search",
+      "title": "Nested search",
+      "tier": 1,
+      "strategy": "For each nums1 value, scan nums2 for the first unused matching index.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every value may scan nums2."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Used flags track consumed duplicate indices."
+      },
+      "javaPath": "java/solution-1-nested-search/Solution.java",
+      "pythonPath": "python/solution-1-nested-search/solution.py"
+    },
+    {
+      "id": "solution-2-index-queues",
+      "title": "Index queues",
+      "tier": 2,
+      "strategy": "Map each value in nums2 to a queue of matching indices, then pop one index per nums1 value.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Both arrays are scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Queues store every index of nums2."
+      },
+      "javaPath": "java/solution-2-index-queues/Solution.java",
+      "pythonPath": "python/solution-2-index-queues/solution.py"
+    }
+  ]
+}

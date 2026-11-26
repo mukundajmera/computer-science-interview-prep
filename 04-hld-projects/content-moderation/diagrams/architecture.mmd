@@ -1,0 +1,13 @@
+flowchart LR
+    U[Client App] --> IG[Content Ingestion API]
+    IG --> MQ[(Moderation Event Stream)]
+    MQ --> FE[Feature Extractor]
+    FE --> MS[Moderation Scoring Service]
+    MS --> PE[Policy Engine]
+    PE --> AC[Action Executor]
+    PE --> RQ[(Review Queue)]
+    RQ --> MR[Moderator Console]
+    AC --> DS[(Decision Store)]
+    MR --> FB[(Feedback Store)]
+    FB --> EV[Evaluation and Calibration Jobs]
+    EV --> PE

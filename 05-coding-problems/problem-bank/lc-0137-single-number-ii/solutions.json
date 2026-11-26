@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bit-count-modulo-three",
+      "title": "Bit counts modulo three",
+      "tier": 1,
+      "strategy": "Count set bits at each 32-bit position and keep positions whose count is not divisible by three.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "There are 32 fixed bit positions, and each position scans all n values."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only counters and the reconstructed result are stored."
+      },
+      "javaPath": "java/solution-1-bit-count-modulo-three/Solution.java",
+      "pythonPath": "python/solution-1-bit-count-modulo-three/solution.py"
+    },
+    {
+      "id": "solution-2-two-mask-state-machine",
+      "title": "Two-mask state machine",
+      "tier": 2,
+      "strategy": "Track bits seen once and twice; the third sighting clears the bit from both masks.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each value updates the two masks once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The state is held in two integer masks."
+      },
+      "javaPath": "java/solution-2-two-mask-state-machine/Solution.java",
+      "pythonPath": "python/solution-2-two-mask-state-machine/solution.py"
+    }
+  ]
+}

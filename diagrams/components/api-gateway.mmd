@@ -1,0 +1,55 @@
+%% API Gateway Architecture
+%% Shows gateway handling auth, rate limiting, and routing
+
+flowchart TB
+    subgraph Clients
+        WEB[Web Client]
+        MOBILE[Mobile App]
+        THIRD[Third Party]
+    end
+
+    subgraph Gateway["API Gateway"]
+        AUTH[Authentication<br/>JWT/OAuth2]
+        RATE[Rate Limiter<br/>Token Bucket]
+        ROUTER[Request Router<br/>Path-Based]
+        TRANSFORM[Response Transform<br/>Aggregation]
+    end
+
+    subgraph Services["Microservices"]
+        USER[User Service<br/>/api/users/*]
+        ORDER[Order Service<br/>/api/orders/*]
+        PRODUCT[Product Service<br/>/api/products/*]
+        PAYMENT[Payment Service<br/>/api/payments/*]
+    end
+
+    WEB --> AUTH
+    MOBILE --> AUTH
+    THIRD --> AUTH
+
+    AUTH -->|Valid Token| RATE
+    AUTH -.->|Invalid| REJECT[401 Unauthorized]
+
+    RATE -->|Under Limit| ROUTER
+    RATE -.->|Over Limit| THROTTLE[429 Too Many Requests]
+
+    ROUTER --> USER
+    ROUTER --> ORDER
+    ROUTER --> PRODUCT
+    ROUTER --> PAYMENT
+
+    USER --> TRANSFORM
+    ORDER --> TRANSFORM
+    PRODUCT --> TRANSFORM
+    PAYMENT --> TRANSFORM
+
+    TRANSFORM --> WEB
+    TRANSFORM --> MOBILE
+    TRANSFORM --> THIRD
+
+    %% Styling
+    style AUTH fill:#805ad5,stroke:#553c9a,color:#fff
+    style RATE fill:#ed8936,stroke:#c05621,color:#fff
+    style ROUTER fill:#4299e1,stroke:#2b6cb0,color:#fff
+    style TRANSFORM fill:#38b2ac,stroke:#234e52,color:#fff
+    style REJECT fill:#fc8181,stroke:#c53030,color:#fff
+    style THROTTLE fill:#fc8181,stroke:#c53030,color:#fff

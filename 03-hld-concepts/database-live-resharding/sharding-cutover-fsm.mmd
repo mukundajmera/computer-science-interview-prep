@@ -1,0 +1,34 @@
+stateDiagram-v2
+    [*] --> Phase1_DualWrite : Start Migration
+    
+    Phase1_DualWrite : Phase 1 - Dual-Write
+    Phase1_DualWrite : App writes to Source (Auth) and Target (Best-Effort)
+    
+    Phase1_DualWrite --> Phase2_Backfill : Enable Backfill
+    
+    Phase2_Backfill : Phase 2 - Historical Backfill
+    Phase2_Backfill : Copy old data in chunks with LWW
+    
+    Phase2_Backfill --> Phase3_CDC : Backfill Complete
+    
+    Phase3_CDC : Phase 3 - CDC Catch-up
+    Phase3_CDC : Stream missed WAL updates & Reconcile
+    
+    Phase3_CDC --> Phase4_ShadowReads : Lag < Threshold
+    
+    Phase4_ShadowReads : Phase 4 - Shadow Reads
+    Phase4_ShadowReads : Read from both, compare results
+    
+    Phase4_ShadowReads --> Phase5_Cutover : 100% Match Rate
+    Phase4_ShadowReads --> Phase1_DualWrite : High Mismatch Rate (Rollback)
+    
+    Phase5_Cutover : Phase 5 - Read Cutover & Authority Inversion
+    Phase5_Cutover : Target becomes Auth, Source becomes Best-Effort
+    
+    Phase5_Cutover --> Phase6_Decommission : Observation Period Ends
+    Phase5_Cutover --> Phase4_ShadowReads : Target DB Issues (Rollback)
+    
+    Phase6_Decommission : Phase 6 - Decommissioning
+    Phase6_Decommission : Stop Source writes, spin down Source DB
+    
+    Phase6_Decommission --> [*] : Migration Complete

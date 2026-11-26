@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "simple carry", "input": { "digits": [4, 2, 9] }, "expected": [4, 3, 0] },
+    { "name": "all digits carry", "input": { "digits": [9, 9, 9] }, "expected": [1, 0, 0, 0] },
+    { "name": "single zero", "input": { "digits": [0] }, "expected": [1] },
+    { "name": "no carry", "input": { "digits": [2, 5, 6] }, "expected": [2, 5, 7] },
+    { "name": "carry in suffix only", "input": { "digits": [8, 0, 9, 9] }, "expected": [8, 1, 0, 0] }
+  ]
+}

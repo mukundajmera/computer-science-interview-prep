@@ -1,0 +1,31 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "wildcards over shared prefix",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "addWord", "input": { "word": "stone" }, "expected": null },
+        { "type": "call", "method": "addWord", "input": { "word": "stove" }, "expected": null },
+        { "type": "call", "method": "addWord", "input": { "word": "glow" }, "expected": null },
+        { "type": "call", "method": "search", "input": { "word": "stone" }, "expected": true },
+        { "type": "call", "method": "search", "input": { "word": "sto.e" }, "expected": true },
+        { "type": "call", "method": "search", "input": { "word": ".low" }, "expected": true },
+        { "type": "call", "method": "search", "input": { "word": "snow" }, "expected": false }
+      ]
+    },
+    {
+      "name": "wildcards respect length",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "addWord", "input": { "word": "maze" }, "expected": null },
+        { "type": "call", "method": "addWord", "input": { "word": "make" }, "expected": null },
+        { "type": "call", "method": "search", "input": { "word": "ma.e" }, "expected": true },
+        { "type": "call", "method": "search", "input": { "word": "m..e" }, "expected": true },
+        { "type": "call", "method": "search", "input": { "word": "..z." }, "expected": true },
+        { "type": "call", "method": "search", "input": { "word": "m...r" }, "expected": false }
+      ]
+    }
+  ]
+}

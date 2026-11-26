@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-pair-scan",
+      "title": "Pair scan",
+      "tier": 1,
+      "strategy": "For each sentence position, scan the similarity list for a direct pair match.",
+      "timeComplexity": {
+        "class": "O(nm)",
+        "explanation": "n word positions may scan m pairs."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "No extra data structure is required."
+      },
+      "javaPath": "java/solution-1-pair-scan/Solution.java",
+      "pythonPath": "python/solution-1-pair-scan/solution.py"
+    },
+    {
+      "id": "solution-2-undirected-pair-set",
+      "title": "Undirected pair set",
+      "tier": 2,
+      "strategy": "Store both directions of every pair in a set and check each word position in O(1).",
+      "timeComplexity": {
+        "class": "O(n + m)",
+        "explanation": "Build the pair set once and scan both sentences once."
+      },
+      "spaceComplexity": {
+        "class": "O(m)",
+        "explanation": "The set stores two directed keys per pair."
+      },
+      "javaPath": "java/solution-2-undirected-pair-set/Solution.java",
+      "pythonPath": "python/solution-2-undirected-pair-set/solution.py"
+    }
+  ]
+}

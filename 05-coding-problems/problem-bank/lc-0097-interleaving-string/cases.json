@@ -1,0 +1,31 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "alternating sources",
+      "input": { "s1": "abc", "s2": "def", "s3": "adbcef" },
+      "expected": true
+    },
+    {
+      "name": "breaks second-source order",
+      "input": { "s1": "abc", "s2": "def", "s3": "abdfec" },
+      "expected": false
+    },
+    {
+      "name": "all first then second",
+      "input": { "s1": "left", "s2": "right", "s3": "leftright" },
+      "expected": true
+    },
+    {
+      "name": "length mismatch",
+      "input": { "s1": "aa", "s2": "bb", "s3": "ababx" },
+      "expected": false
+    },
+    {
+      "name": "both sources empty",
+      "input": { "s1": "", "s2": "", "s3": "" },
+      "expected": true
+    }
+  ]
+}

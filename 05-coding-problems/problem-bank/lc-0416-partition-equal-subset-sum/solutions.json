@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-memoized-search",
+      "title": "Memoized target search",
+      "tier": 1,
+      "strategy": "Search include/exclude choices for target half-sum while memoizing index and remaining sum.",
+      "timeComplexity": {
+        "class": "O(nS)",
+        "explanation": "There are n indices and S possible remaining sums up to the target."
+      },
+      "spaceComplexity": {
+        "class": "O(nS)",
+        "explanation": "The memo table stores reachable index/remaining states."
+      },
+      "javaPath": "java/solution-1-memoized-search/Solution.java",
+      "pythonPath": "python/solution-1-memoized-search/solution.py"
+    },
+    {
+      "id": "solution-2-one-dimensional-dp",
+      "title": "One-dimensional subset DP",
+      "tier": 2,
+      "strategy": "Track which subset sums up to target are reachable, updating backward for each number.",
+      "timeComplexity": {
+        "class": "O(nS)",
+        "explanation": "Each number scans sums up to the target S."
+      },
+      "spaceComplexity": {
+        "class": "O(S)",
+        "explanation": "The reachable table stores one boolean per target sum."
+      },
+      "javaPath": "java/solution-2-one-dimensional-dp/Solution.java",
+      "pythonPath": "python/solution-2-one-dimensional-dp/solution.py"
+    }
+  ]
+}

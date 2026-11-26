@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dfs-connectivity-cycle",
+      "title": "DFS connectivity cycle",
+      "tier": 1,
+      "strategy": "Reject wrong edge count, then traverse from node zero and verify every node is reached.",
+      "timeComplexity": {
+        "class": "O(n+e)",
+        "explanation": "The adjacency list and traversal visit each node and edge."
+      },
+      "spaceComplexity": {
+        "class": "O(n+e)",
+        "explanation": "The graph and visited set are stored."
+      },
+      "javaPath": "java/solution-1-dfs-connectivity-cycle/Solution.java",
+      "pythonPath": "python/solution-1-dfs-connectivity-cycle/solution.py"
+    },
+    {
+      "id": "solution-2-union-find",
+      "title": "Union-Find",
+      "tier": 2,
+      "strategy": "Reject wrong edge count, then union every edge and fail if an edge connects nodes already in the same set.",
+      "timeComplexity": {
+        "class": "O(n+e alpha(n))",
+        "explanation": "Union-Find operations are nearly constant time."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Parent and rank arrays store one entry per node."
+      },
+      "javaPath": "java/solution-2-union-find/Solution.java",
+      "pythonPath": "python/solution-2-union-find/solution.py"
+    }
+  ]
+}

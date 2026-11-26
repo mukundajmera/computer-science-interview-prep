@@ -1,0 +1,64 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "multiplication before addition",
+      "input": {
+        "s": "7+4*3"
+      },
+      "expected": 19
+    },
+    {
+      "name": "division truncates",
+      "input": {
+        "s": " 8 / 3 "
+      },
+      "expected": 2
+    },
+    {
+      "name": "mixed spaces and division",
+      "input": {
+        "s": " 12+6 / 4 "
+      },
+      "expected": 13
+    },
+    {
+      "name": "subtraction with product",
+      "input": {
+        "s": "100-20*3+6/2"
+      },
+      "expected": 43
+    },
+    {
+      "name": "multi digit chain",
+      "input": {
+        "s": "14-3/2"
+      },
+      "expected": 13
+    },
+    {
+      "name": "negative intermediate truncates toward zero",
+      "input": {
+        "s": "3-10/3"
+      },
+      "expected": 0
+    },
+    {
+      "name": "spaces and negative truncation",
+      "input": {
+        "s": "  0-3/2  "
+      },
+      "expected": -1
+    },
+    {
+      "name": "negative term truncates toward zero",
+      "input": {
+        "s": "1-5/2"
+      },
+      "expected": -1
+    }
+  ]
+}

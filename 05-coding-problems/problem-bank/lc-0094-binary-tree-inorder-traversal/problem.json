@@ -1,0 +1,97 @@
+{
+  "id": "lc-0094-binary-tree-inorder-traversal",
+  "title": "Binary Tree Inorder Traversal",
+  "difficulty": "easy",
+  "status": "verified",
+  "patterns": [
+    "tree",
+    "depth-first-search",
+    "stack"
+  ],
+  "collections": [
+    {
+      "id": "neetcode-all",
+      "order": 381,
+      "group": "Trees",
+      "sourceUrl": "https://leetcode.com/problems/binary-tree-inorder-traversal"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "94",
+    "titleSlug": "binary-tree-inorder-traversal",
+    "url": "https://leetcode.com/problems/binary-tree-inorder-traversal"
+  },
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "inorderTraversal",
+      "returnType": "List<Integer>",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "TreeNode"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "inorderTraversal",
+      "returnType": "List[int]",
+      "parameters": [
+        {
+          "name": "root",
+          "type": "Optional[TreeNode]"
+        }
+      ]
+    }
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-recursive-dfs/Solution.java",
+      "python/solution-1-recursive-dfs/solution.py",
+      "java/solution-2-iterative-stack/Solution.java",
+      "python/solution-2-iterative-stack/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-two-maps",
+      "title": "Two directional maps",
+      "tier": 1,
+      "strategy": "Store source-to-target and target-to-source mappings and reject any conflict.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each aligned character pair is checked once."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "Maps store up to k distinct characters."
+      },
+      "javaPath": "java/solution-1-two-maps/Solution.java",
+      "pythonPath": "python/solution-1-two-maps/solution.py"
+    },
+    {
+      "id": "solution-2-last-seen-signatures",
+      "title": "Last seen position signatures",
+      "tier": 2,
+      "strategy": "Compare the last-seen positions of each aligned character before updating them.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The strings are scanned once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Two fixed-size arrays store character positions for the supported character range."
+      },
+      "javaPath": "java/solution-2-last-seen-signatures/Solution.java",
+      "pythonPath": "python/solution-2-last-seen-signatures/solution.py"
+    }
+  ]
+}

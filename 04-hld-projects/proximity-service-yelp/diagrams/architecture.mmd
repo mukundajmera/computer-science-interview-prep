@@ -1,0 +1,25 @@
+%% Architecture Diagram for Proximity Service
+flowchart TD
+    Client[Client App] -->|Search & View| LB[Load Balancer]
+    BizClient[Business Owner] -->|Manage Profile| LB
+
+    LB --> GW[API Gateway]
+
+    GW -->|GET /search| SearchSvc[Location Search Service]
+    GW -->|POST/PUT /businesses| BizSvc[Business Profile Service]
+
+    subgraph "Fast Read Path (In-Memory)"
+        SearchSvc -->|1. Get 9 Geohashes| RedisGeohash[(Redis: Geohash Sets Cache)]
+        SearchSvc -->|2. Get Profiles| RedisCache[(Redis: Profile Hash Cache)]
+    end
+
+    subgraph "Durable Write Path"
+        BizSvc -->|1. Write| PrimaryDB[(PostgreSQL / Cassandra)]
+        PrimaryDB -->|2. CDC / Event| Kafka[Kafka / Event Bus]
+    end
+
+    subgraph "Async Index Updater (Geo-distributed)"
+        Kafka --> Worker[Index Worker]
+        Worker -->|3. Update Sets| RedisGeohash
+        Worker -->|4. Update Hash| RedisCache
+    end

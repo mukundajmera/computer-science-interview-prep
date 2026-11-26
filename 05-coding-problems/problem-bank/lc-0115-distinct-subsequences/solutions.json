@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-memo",
+      "title": "Recursive memoization",
+      "tier": 1,
+      "strategy": "Memoize `(i, j)` choices for source suffix and target suffix.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each source/target suffix pair is solved once."
+      },
+      "spaceComplexity": {
+        "class": "O(mn)",
+        "explanation": "Memo entries dominate recursion stack storage."
+      },
+      "javaPath": "java/solution-1-recursive-memo/Solution.java",
+      "pythonPath": "python/solution-1-recursive-memo/solution.py"
+    },
+    {
+      "id": "solution-2-one-dimensional-dp",
+      "title": "One-dimensional DP",
+      "tier": 2,
+      "strategy": "Scan source characters and update target-prefix counts from right to left.",
+      "timeComplexity": {
+        "class": "O(mn)",
+        "explanation": "Each source character updates each target position."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The DP array stores counts for target prefixes."
+      },
+      "javaPath": "java/solution-2-one-dimensional-dp/Solution.java",
+      "pythonPath": "python/solution-2-one-dimensional-dp/solution.py"
+    }
+  ]
+}

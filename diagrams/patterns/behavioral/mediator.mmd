@@ -1,0 +1,46 @@
+%% Mediator Pattern Class Diagram
+%% Defines object that encapsulates how objects interact
+
+classDiagram
+    class Mediator {
+        <<interface>>
+        +notify(Component, event) void
+    }
+    
+    class ConcreteMediator {
+        -componentA ComponentA
+        -componentB ComponentB
+        -componentC ComponentC
+        +notify(Component, event) void
+        +reactOnA() void
+        +reactOnB() void
+        +reactOnC() void
+    }
+    
+    class Component {
+        <<abstract>>
+        #mediator Mediator
+        +Component(Mediator)
+        +setMediator(Mediator) void
+    }
+    
+    class ComponentA {
+        +operationA() void
+    }
+    
+    class ComponentB {
+        +operationB() void
+    }
+    
+    class ComponentC {
+        +operationC() void
+    }
+    
+    Mediator <|.. ConcreteMediator
+    Component <|-- ComponentA
+    Component <|-- ComponentB
+    Component <|-- ComponentC
+    Component --> Mediator : notifies
+    ConcreteMediator --> ComponentA
+    ConcreteMediator --> ComponentB
+    ConcreteMediator --> ComponentC

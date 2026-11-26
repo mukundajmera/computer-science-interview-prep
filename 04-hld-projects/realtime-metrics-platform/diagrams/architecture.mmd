@@ -1,0 +1,15 @@
+flowchart TB
+    A[Agents] --> IG[Ingest Gateway]
+    IG --> VQ[Validator and Quota]
+    VQ --> K[(Kafka)]
+
+    K --> SP[Stream Processor]
+    SP --> HT[(Hot TSDB)]
+    SP --> AE[Alert Evaluator]
+    SP --> RP[Rollup Pipeline]
+
+    HT <--> QS[Query Service]
+    QS --> D[Dashboards]
+
+    RP --> CS[(Cold Store)]
+    CS --> QS

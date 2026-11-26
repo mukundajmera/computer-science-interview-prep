@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-cubic-set-dedup",
+      "title": "Cubic enumeration with set deduplication",
+      "tier": 1,
+      "strategy": "Try every triple, sort matching values inside the triple, and use a set to remove duplicates.",
+      "timeComplexity": {
+        "class": "O(n^3)",
+        "explanation": "All index triples can be examined."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The set stores k unique answer triplets."
+      },
+      "javaPath": "java/solution-1-cubic-set-dedup/Solution.java",
+      "pythonPath": "python/solution-1-cubic-set-dedup/solution.py"
+    },
+    {
+      "id": "solution-2-sort-two-pointers",
+      "title": "Sort plus two pointers",
+      "tier": 2,
+      "strategy": "Sort once, fix each first value, then use a two-pointer scan to find matching pairs while skipping duplicates.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each fixed first value runs one linear two-pointer scan after sorting."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The output stores k triplets; sorting may use auxiliary runtime memory."
+      },
+      "javaPath": "java/solution-2-sort-two-pointers/Solution.java",
+      "pythonPath": "python/solution-2-sort-two-pointers/solution.py"
+    }
+  ]
+}

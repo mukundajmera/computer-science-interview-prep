@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-bounded-window-scan",
+      "title": "Compare within each bounded window",
+      "tier": 1,
+      "strategy": "For each index, compare it with only the next k positions that can still satisfy the distance condition.",
+      "timeComplexity": { "class": "O(n * min(n, k))", "explanation": "Each index checks at most k later entries, bounded by the array length." },
+      "spaceComplexity": { "class": "O(1)", "explanation": "Only loop counters are stored." },
+      "javaPath": "java/solution-1-bounded-window-scan/Solution.java",
+      "pythonPath": "python/solution-1-bounded-window-scan/solution.py"
+    },
+    {
+      "id": "solution-2-last-seen-map",
+      "title": "Last seen index map",
+      "tier": 2,
+      "strategy": "Store the latest index for each value and compare the current index with that previous occurrence.",
+      "timeComplexity": { "class": "O(n)", "explanation": "Each array value performs expected constant-time map operations." },
+      "spaceComplexity": { "class": "O(n)", "explanation": "The map can store every distinct value when no nearby duplicate exists." },
+      "javaPath": "java/solution-2-last-seen-map/Solution.java",
+      "pythonPath": "python/solution-2-last-seen-map/solution.py"
+    }
+  ]
+}

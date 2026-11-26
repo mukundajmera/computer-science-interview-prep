@@ -1,0 +1,11 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    { "name": "both zero", "input": { "a": "0", "b": "0" }, "expected": "0" },
+    { "name": "carry grows length", "input": { "a": "1001", "b": "111" }, "expected": "10000" },
+    { "name": "short addend", "input": { "a": "1110", "b": "10" }, "expected": "10000" },
+    { "name": "long carry chain", "input": { "a": "1", "b": "111111" }, "expected": "1000000" },
+    { "name": "no final carry", "input": { "a": "10100", "b": "10" }, "expected": "10110" }
+  ]
+}

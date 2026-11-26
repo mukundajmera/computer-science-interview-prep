@@ -1,0 +1,89 @@
+```mermaid
+erDiagram
+    NOTIFICATIONS {
+        uuid notification_id PK
+        text user_id FK
+        text template_id FK
+        text channel "email/sms/push"
+        text priority "critical/high/normal/low"
+        text status "queued/sent/delivered/failed"
+        map variables "Template variables"
+        timestamp scheduled_at
+        timestamp created_at
+        timestamp sent_at
+        timestamp delivered_at
+        int attempt_count
+        text last_error
+        text provider_message_id
+    }
+    
+    TEMPLATES {
+        text template_id PK
+        text channel
+        text name
+        text subject "For email"
+        text body
+        jsonb variables_schema
+        int version
+        boolean is_active
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    USER_PREFERENCES {
+        text user_id PK
+        boolean email_enabled
+        boolean sms_enabled
+        boolean push_enabled
+        jsonb quiet_hours
+        text[] opted_out_types
+        text email_address
+        text phone_number
+        text[] device_tokens
+        timestamp updated_at
+    }
+    
+    BATCHES {
+        uuid batch_id PK
+        text template_id FK
+        text channel
+        text priority
+        text status "pending/processing/completed/failed"
+        int total_recipients
+        int sent_count
+        int delivered_count
+        int failed_count
+        timestamp scheduled_at
+        timestamp started_at
+        timestamp completed_at
+        text created_by
+    }
+    
+    DELIVERY_LOGS {
+        uuid log_id PK
+        uuid notification_id FK
+        int attempt_number
+        text provider
+        text status
+        text response_code
+        text error_message
+        int latency_ms
+        timestamp attempted_at
+    }
+    
+    PROVIDER_CONFIG {
+        text provider_id PK
+        text channel
+        text api_key_encrypted
+        int rate_limit_per_second
+        boolean is_active
+        int priority_order
+        jsonb config
+    }
+    
+    %% Relationships
+    NOTIFICATIONS ||--o{ DELIVERY_LOGS : "has"
+    NOTIFICATIONS }o--|| TEMPLATES : "uses"
+    NOTIFICATIONS }o--|| USER_PREFERENCES : "sent to"
+    BATCHES ||--o{ NOTIFICATIONS : "contains"
+```

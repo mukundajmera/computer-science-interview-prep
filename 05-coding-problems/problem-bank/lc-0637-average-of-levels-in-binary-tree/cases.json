@@ -1,0 +1,26 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "float-tolerance", "tolerance": 0.000000001 },
+  "cases": [
+    {
+      "name": "complete three levels",
+      "input": { "root": [8, 4, 12, 2, 6, 10, 14] },
+      "expected": [8.0, 8.0, 8.0]
+    },
+    {
+      "name": "sparse tree",
+      "input": { "root": [5, 3, 9, null, 4, null, 10] },
+      "expected": [5.0, 6.0, 7.0]
+    },
+    {
+      "name": "negative values",
+      "input": { "root": [-6, -4, -8, -10, null, -2, -14] },
+      "expected": [-6.0, -6.0, -8.6666666667]
+    },
+    {
+      "name": "empty tree",
+      "input": { "root": [] },
+      "expected": []
+    }
+  ]
+}

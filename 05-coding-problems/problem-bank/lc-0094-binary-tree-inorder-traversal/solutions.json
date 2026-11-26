@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-recursive-dfs",
+      "title": "Recursive DFS",
+      "tier": 1,
+      "strategy": "Use recursive calls around the node visit.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The call stack holds one path of height `h`."
+      },
+      "javaPath": "java/solution-1-recursive-dfs/Solution.java",
+      "pythonPath": "python/solution-1-recursive-dfs/solution.py"
+    },
+    {
+      "id": "solution-2-iterative-stack",
+      "title": "Iterative stack",
+      "tier": 2,
+      "strategy": "Push left descendants, visit, then move right.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each node is pushed and popped once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The stack stores at most one root-to-leaf path."
+      },
+      "javaPath": "java/solution-2-iterative-stack/Solution.java",
+      "pythonPath": "python/solution-2-iterative-stack/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant User
+    participant API as API Gateway
+    participant Rec as Recommendation Service
+    participant Ret as Retrieval Service
+    participant Rank as Ranking Service
+    participant Feature as Online Feature Store
+    participant LLM as LLM Reranker
+
+    User->>API: Get Recommendations
+    API->>Rec: Forward Request
+    Rec->>Ret: Get Candidate Items (1000s)
+    Ret-->>Rec: Top Candidates
+    Rec->>Feature: Fetch Real-time Features for candidates
+    Feature-->>Rec: Features
+    Rec->>Rank: Rank Candidates (Features)
+    Rank-->>Rec: Top 50 Items
+    Rec->>LLM: Rerank & Explain Top 10
+    LLM-->>Rec: Final 10 Items + Explanations
+    Rec-->>API: Response
+    API-->>User: Display Recommendations

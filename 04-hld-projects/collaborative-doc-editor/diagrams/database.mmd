@@ -1,0 +1,22 @@
+erDiagram
+    DOCUMENT ||--o{ OPERATION : receives
+    DOCUMENT ||--o{ SNAPSHOT : compacts
+    DOCUMENT {
+        string document_id PK
+        string owner_id
+        int version
+        string snapshot_ref
+    }
+    OPERATION {
+        string op_id PK
+        string document_id FK
+        int base_version
+        string actor_id
+        string payload
+    }
+    SNAPSHOT {
+        string snapshot_id PK
+        string document_id FK
+        int version
+        datetime created_at
+    }

@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dfs-indexes",
+      "title": "DFS indexes",
+      "tier": 1,
+      "strategy": "Assign complete-tree indexes and remember the first index seen at each depth.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every tree node is visited once."
+      },
+      "spaceComplexity": {
+        "class": "O(h)",
+        "explanation": "The recursion stack and per-depth first indexes scale with tree height."
+      },
+      "javaPath": "java/solution-1-dfs-indexes/Solution.java",
+      "pythonPath": "python/solution-1-dfs-indexes/solution.py"
+    },
+    {
+      "id": "solution-2-normalized-bfs",
+      "title": "Normalized BFS",
+      "tier": 2,
+      "strategy": "Process each level with positional indexes normalized by that level's first index.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every node enters and leaves the queue once."
+      },
+      "spaceComplexity": {
+        "class": "O(w)",
+        "explanation": "The queue stores one level at a time, where w is the maximum real node count on a level."
+      },
+      "javaPath": "java/solution-2-normalized-bfs/Solution.java",
+      "pythonPath": "python/solution-2-normalized-bfs/solution.py"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "id": "lc-0092-reverse-linked-list-ii",
+  "title": "Reverse Linked List II",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "linked-list",
+    "pointer-rewiring"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-13",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "leetcode-top-150",
+      "order": 61,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/reverse-linked-list-ii"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 372,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/reverse-linked-list-ii"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "92",
+    "titleSlug": "reverse-linked-list-ii",
+    "url": "https://leetcode.com/problems/reverse-linked-list-ii",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "reverseBetween",
+      "returnType": "ListNode",
+      "parameters": [
+        {
+          "name": "head",
+          "type": "ListNode"
+        },
+        {
+          "name": "left",
+          "type": "int"
+        },
+        {
+          "name": "right",
+          "type": "int"
+        }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "reverseBetween",
+      "returnType": "Optional[ListNode]",
+      "parameters": [
+        {
+          "name": "head",
+          "type": "Optional[ListNode]"
+        },
+        {
+          "name": "left",
+          "type": "int"
+        },
+        {
+          "name": "right",
+          "type": "int"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-13",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

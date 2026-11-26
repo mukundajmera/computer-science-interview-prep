@@ -1,0 +1,86 @@
+```mermaid
+sequenceDiagram
+    participant R as Rider App
+    participant AG as API Gateway
+    participant RS as Ride Service
+    participant PS as Pricing Service
+    participant MS as Matching Service
+    participant GI as Geo Index
+    participant LS as Location Service
+    participant NS as Notification Service
+    participant D as Driver App
+    participant DB as Database
+    participant Cache as Redis
+
+    Note over R, DB: Ride Request Flow
+
+    R->>AG: POST /rides/request
+    AG->>RS: Create ride request
+    RS->>PS: Calculate fare estimate
+    PS->>Cache: Get surge multiplier for zone
+    Cache-->>PS: Surge data
+    PS->>PS: Apply surge pricing
+    PS-->>RS: Estimated fare with surge
+    RS->>DB: Save ride request (status: requested)
+    RS-->>R: Ride created, searching for driver
+
+    Note over RS, GI: Driver Matching
+
+    RS->>MS: Find matching driver
+    MS->>GI: Query nearby drivers
+    GI->>Cache: Get drivers in geohash cells
+    Cache-->>GI: Available driver locations
+    GI-->>MS: Candidate drivers (sorted by distance)
+    
+    loop For each candidate driver
+        MS->>NS: Send ride offer to driver
+        NS->>D: Push notification
+        D-->>NS: Accept/Reject
+        alt Driver accepts
+            NS-->>MS: Accepted
+            MS->>DB: Update ride (driver_id, status: matched)
+            MS-->>RS: Match found
+        else Driver rejects/timeout
+            NS-->>MS: Rejected/Timeout
+            MS->>MS: Try next driver
+        end
+    end
+
+    RS->>NS: Notify rider of match
+    NS->>R: Driver assigned notification
+    RS-->>R: Driver details + ETA
+
+    Note over D, R: Driver Arrives
+
+    loop Until pickup
+        D->>LS: Update location
+        LS->>Cache: Store driver location
+        LS->>RS: Location update
+        RS->>R: Driver location update
+    end
+
+    D->>RS: Arrived at pickup
+    RS->>DB: Update ride (status: driver_arriving)
+    RS->>NS: Notify rider
+    NS->>R: Driver has arrived
+
+    Note over D, DB: Trip in Progress
+
+    D->>RS: Start trip
+    RS->>DB: Update ride (status: in_progress, pickup_at)
+    RS->>R: Trip started
+
+    loop During trip
+        D->>LS: Update location
+        LS->>DB: Store tracking point
+        LS->>R: Real-time location
+    end
+
+    D->>RS: End trip
+    RS->>PS: Calculate final fare
+    PS->>PS: Distance + time + surge
+    PS-->>RS: Final fare
+    RS->>DB: Update ride (status: completed, actual_fare)
+    RS->>R: Trip completed, show fare
+    RS->>D: Trip completed, show earnings
+```

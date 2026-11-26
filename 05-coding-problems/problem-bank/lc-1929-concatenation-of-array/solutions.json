@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-two-pass-copy",
+      "title": "Two-pass copy",
+      "tier": 1,
+      "strategy": "Allocate a result and copy the input into each half with two loops.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Every output slot is written once."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The returned array has length 2n."
+      },
+      "javaPath": "java/solution-1-two-pass-copy/Solution.java",
+      "pythonPath": "python/solution-1-two-pass-copy/solution.py"
+    },
+    {
+      "id": "solution-2-modulo-fill",
+      "title": "Modulo fill",
+      "tier": 2,
+      "strategy": "Fill each output slot from nums[i % n] in one loop.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "The loop writes 2n slots."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The output array is required."
+      },
+      "javaPath": "java/solution-2-modulo-fill/Solution.java",
+      "pythonPath": "python/solution-2-modulo-fill/solution.py"
+    }
+  ]
+}

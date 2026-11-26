@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-by-distance",
+      "title": "Sort by distance",
+      "tier": 1,
+      "strategy": "Sort every point by squared distance and take the first k points.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting n points dominates the work."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The sorted copy or sort internals can store up to n point references."
+      },
+      "javaPath": "java/solution-1-sort-by-distance/Solution.java",
+      "pythonPath": "python/solution-1-sort-by-distance/solution.py"
+    },
+    {
+      "id": "solution-2-size-k-max-heap",
+      "title": "Size-k max heap",
+      "tier": 2,
+      "strategy": "Keep a heap of the current k best points and evict the farthest point whenever the heap grows too large.",
+      "timeComplexity": {
+        "class": "O(n log k)",
+        "explanation": "Each point performs at most one heap insertion and possibly one removal from a size-k heap."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "Only k candidate points are retained."
+      },
+      "javaPath": "java/solution-2-size-k-max-heap/Solution.java",
+      "pythonPath": "python/solution-2-size-k-max-heap/solution.py"
+    }
+  ]
+}

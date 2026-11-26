@@ -1,0 +1,29 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "word prefix becomes full word later",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "insert", "input": { "word": "orbit" }, "expected": null },
+        { "type": "call", "method": "search", "input": { "word": "orbit" }, "expected": true },
+        { "type": "call", "method": "search", "input": { "word": "orb" }, "expected": false },
+        { "type": "call", "method": "startsWith", "input": { "prefix": "orb" }, "expected": true },
+        { "type": "call", "method": "insert", "input": { "word": "orb" }, "expected": null },
+        { "type": "call", "method": "search", "input": { "word": "orb" }, "expected": true }
+      ]
+    },
+    {
+      "name": "shared branch words",
+      "operations": [
+        { "type": "constructor", "input": {}, "expected": null },
+        { "type": "call", "method": "insert", "input": { "word": "stone" }, "expected": null },
+        { "type": "call", "method": "insert", "input": { "word": "stork" }, "expected": null },
+        { "type": "call", "method": "startsWith", "input": { "prefix": "sto" }, "expected": true },
+        { "type": "call", "method": "search", "input": { "word": "story" }, "expected": false },
+        { "type": "call", "method": "search", "input": { "word": "stork" }, "expected": true }
+      ]
+    }
+  ]
+}

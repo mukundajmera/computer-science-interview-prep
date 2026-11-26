@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-height-from-every-root",
+      "title": "Height from every root",
+      "tier": 1,
+      "strategy": "Run BFS from each node as a root and keep nodes with the smallest height.",
+      "timeComplexity": {
+        "class": "O(n(n+e))",
+        "explanation": "Each possible root runs a graph traversal."
+      },
+      "spaceComplexity": {
+        "class": "O(n+e)",
+        "explanation": "The adjacency list and BFS queue are stored."
+      },
+      "javaPath": "java/solution-1-height-from-every-root/Solution.java",
+      "pythonPath": "python/solution-1-height-from-every-root/solution.py"
+    },
+    {
+      "id": "solution-2-trim-leaves",
+      "title": "Trim leaves",
+      "tier": 2,
+      "strategy": "Repeatedly remove current leaves until one or two centermost nodes remain.",
+      "timeComplexity": {
+        "class": "O(n+e)",
+        "explanation": "Each node and edge is processed as leaves are trimmed."
+      },
+      "spaceComplexity": {
+        "class": "O(n+e)",
+        "explanation": "The adjacency sets and leaf queue are stored."
+      },
+      "javaPath": "java/solution-2-trim-leaves/Solution.java",
+      "pythonPath": "python/solution-2-trim-leaves/solution.py"
+    }
+  ]
+}

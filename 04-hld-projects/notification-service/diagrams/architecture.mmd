@@ -1,0 +1,142 @@
+```mermaid
+flowchart TB
+    subgraph Clients["Client Layer"]
+        WebAPI[Web/Mobile APIs]
+        AdminUI[Admin Dashboard]
+        CampaignMgr[Campaign Manager]
+        ExternalSvc[External Services]
+    end
+    
+    subgraph Gateway["API Gateway"]
+        LB[Load Balancer]
+        RateLimiter[Rate Limiter]
+        AuthService[Auth Service]
+    end
+    
+    subgraph CoreServices["Core Services"]
+        NotifAPI[Notification API<br/>Service]
+        TemplateService[Template<br/>Service]
+        PreferenceService[User Preference<br/>Service]
+        RendererService[Template<br/>Renderer]
+        SchedulerService[Scheduler<br/>Service]
+    end
+    
+    subgraph MessageLayer["Message Layer - Kafka"]
+        subgraph PriorityQueues["Priority Queues"]
+            CriticalQ[Critical Queue<br/>SLA: <1s]
+            HighQ[High Queue<br/>SLA: <30s]
+            NormalQ[Normal Queue<br/>SLA: <5m]
+            LowQ[Low Queue<br/>SLA: <1h]
+        end
+        DLQ[Dead Letter<br/>Queue]
+        RetryQ[Retry Queue]
+    end
+    
+    subgraph Workers["Channel Worker Pools"]
+        subgraph EmailPool["Email Workers"]
+            EmailW1[Email Worker 1]
+            EmailW2[Email Worker 2]
+            EmailWN[Email Worker N]
+        end
+        subgraph SMSPool["SMS Workers"]
+            SMSW1[SMS Worker 1]
+            SMSW2[SMS Worker 2]
+        end
+        subgraph PushPool["Push Workers"]
+            PushW1[Push Worker 1]
+            PushW2[Push Worker 2]
+        end
+    end
+    
+    subgraph Providers["External Providers"]
+        subgraph EmailProviders["Email"]
+            SendGrid[SendGrid]
+            SES[AWS SES]
+            Mailgun[Mailgun]
+        end
+        subgraph SMSProviders["SMS"]
+            Twilio[Twilio]
+            Vonage[Vonage]
+        end
+        subgraph PushProviders["Push"]
+            FCM[Firebase FCM]
+            APNs[Apple APNs]
+        end
+    end
+    
+    subgraph Storage["Data Storage"]
+        Cassandra[(Cassandra<br/>Notifications)]
+        PostgreSQL[(PostgreSQL<br/>Templates/Config)]
+        Redis[(Redis Cache<br/>Preferences)]
+    end
+    
+    subgraph Monitoring["Observability"]
+        Prometheus[Prometheus]
+        Grafana[Grafana]
+        ELK[ELK Stack]
+        Alerting[PagerDuty]
+    end
+    
+    %% Client connections
+    WebAPI --> LB
+    AdminUI --> LB
+    CampaignMgr --> LB
+    ExternalSvc --> LB
+    
+    %% Gateway flow
+    LB --> RateLimiter --> AuthService
+    AuthService --> NotifAPI
+    AuthService --> TemplateService
+    
+    %% Service interactions
+    NotifAPI --> PreferenceService
+    NotifAPI --> RendererService
+    RendererService --> TemplateService
+    SchedulerService --> NotifAPI
+    
+    %% Queue routing
+    NotifAPI --> CriticalQ
+    NotifAPI --> HighQ
+    NotifAPI --> NormalQ
+    NotifAPI --> LowQ
+    
+    %% Worker consumption
+    CriticalQ --> EmailPool
+    CriticalQ --> SMSPool
+    CriticalQ --> PushPool
+    HighQ --> EmailPool
+    NormalQ --> EmailPool
+    LowQ --> EmailPool
+    
+    %% Provider connections
+    EmailW1 --> SendGrid
+    EmailW2 --> SES
+    SMSW1 --> Twilio
+    PushW1 --> FCM
+    PushW2 --> APNs
+    
+    %% Failure handling
+    EmailPool --> DLQ
+    SMSPool --> DLQ
+    PushPool --> DLQ
+    DLQ --> RetryQ
+    
+    %% Storage connections
+    NotifAPI --> Cassandra
+    NotifAPI --> Redis
+    TemplateService --> PostgreSQL
+    PreferenceService --> Redis
+    PreferenceService --> PostgreSQL
+    
+    %% Monitoring
+    NotifAPI -.-> Prometheus
+    EmailPool -.-> Prometheus
+    Prometheus --> Grafana
+    Prometheus --> Alerting
+    
+    style CriticalQ fill:#ff6b6b
+    style HighQ fill:#ffa94d
+    style NormalQ fill:#69db7c
+    style LowQ fill:#74c0fc
+    style DLQ fill:#868e96
+```

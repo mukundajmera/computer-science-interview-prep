@@ -1,0 +1,59 @@
+flowchart TD
+    subgraph Mobile Clients
+        C1[Client 1]
+        C2[Client 2]
+        C3[Client N]
+    end
+
+    LB[Load Balancer]
+
+    subgraph Real-Time Tier
+        WS1[WebSocket Server 1]
+        WS2[WebSocket Server 2]
+        WS3[WebSocket Server N]
+    end
+
+    subgraph Internal Routing & State
+        RedisCache[(Redis Location Cache\nTTL: 10m)]
+        RedisPubSub((Redis Pub/Sub Cluster\n14M ops/sec))
+        FriendGraph[(Friend Graph Service)]
+    end
+
+    subgraph Async Persistence
+        KafkaQueue[[Kafka Topic\nlocation_events]]
+        Workers[Storage Workers]
+        Cassandra[(Cassandra\nLocation History)]
+    end
+
+    C1 <-->|WebSocket| LB
+    C2 <-->|WebSocket| LB
+    C3 <-->|WebSocket| LB
+
+    LB <--> WS1
+    LB <--> WS2
+    LB <--> WS3
+
+    %% Real-time flow
+    WS1 -.->|1. Fetch Friends| FriendGraph
+    WS1 -.->|2. Initial State Query| RedisCache
+    WS1 -->|3. Publish Update| RedisPubSub
+    WS1 -->|4. Update Cache| RedisCache
+
+    RedisPubSub -->|5. Fan-out| WS2
+    RedisPubSub -->|5. Fan-out| WS3
+
+    %% Async flow
+    WS1 -->|Async Copy| KafkaQueue
+    WS2 -->|Async Copy| KafkaQueue
+    WS3 -->|Async Copy| KafkaQueue
+
+    KafkaQueue --> Workers
+    Workers -->|Batch Write| Cassandra
+
+    classDef db fill:#f9f0ff,stroke:#d0bfff,stroke-width:2px;
+    classDef queue fill:#fff4e6,stroke:#ffc078,stroke-width:2px;
+    classDef compute fill:#e6f3ff,stroke:#74c0fc,stroke-width:2px;
+
+    class RedisCache,Cassandra,FriendGraph db;
+    class KafkaQueue,RedisPubSub queue;
+    class WS1,WS2,WS3,Workers compute;

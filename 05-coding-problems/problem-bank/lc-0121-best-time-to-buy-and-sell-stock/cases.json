@@ -1,0 +1,26 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": { "type": "exact" },
+  "cases": [
+    {
+      "name": "valley before peak",
+      "input": { "prices": [8, 2, 4, 1, 9, 3] },
+      "expected": 8
+    },
+    {
+      "name": "monotonic drop",
+      "input": { "prices": [9, 7, 4, 3] },
+      "expected": 0
+    },
+    {
+      "name": "single day",
+      "input": { "prices": [5] },
+      "expected": 0
+    },
+    {
+      "name": "best trade at end",
+      "input": { "prices": [2, 4, 1, 8] },
+      "expected": 7
+    }
+  ]
+}

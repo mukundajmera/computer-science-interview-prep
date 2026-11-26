@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-memoized-count",
+      "title": "Memoized Catalan recursion",
+      "tier": 1,
+      "strategy": "Memoize counts by number of nodes and sum each possible root split.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Each size computes n split products across all sizes."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The memo table stores one count per size."
+      },
+      "javaPath": "java/solution-1-memoized-count/Solution.java",
+      "pythonPath": "python/solution-1-memoized-count/solution.py"
+    },
+    {
+      "id": "solution-2-bottom-up-dp",
+      "title": "Bottom-up Catalan DP",
+      "tier": 2,
+      "strategy": "Build counts for sizes from zero to n.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every size tries every left-subtree size."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The DP array stores n plus one counts."
+      },
+      "javaPath": "java/solution-2-bottom-up-dp/Solution.java",
+      "pythonPath": "python/solution-2-bottom-up-dp/solution.py"
+    }
+  ]
+}

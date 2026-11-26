@@ -1,0 +1,18 @@
+graph LR
+    subgraph Transaction Read View
+    RV[Read View] --> Min[min_trx_id: 100]
+    RV --> Max[max_trx_id: 150]
+    RV --> Act[active_trx_ids: 105, 120]
+    end
+
+    subgraph Tuples
+    T1[Tuple 1: xmin=90]
+    T2[Tuple 2: xmin=105]
+    T3[Tuple 3: xmin=130]
+    T4[Tuple 4: xmin=160]
+    end
+
+    RV -->|Visible: < 100| T1
+    RV -->|Not Visible: In Active List| T2
+    RV -->|Visible: < 150 and Not Active| T3
+    RV -->|Not Visible: >= 150| T4

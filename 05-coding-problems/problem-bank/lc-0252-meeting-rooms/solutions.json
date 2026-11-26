@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-compare-all-pairs",
+      "title": "Compare all pairs",
+      "tier": 1,
+      "strategy": "Check every pair of intervals for positive overlap.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every pair of meetings can be compared."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "Only loop counters are stored beyond the input."
+      },
+      "javaPath": "java/solution-1-compare-all-pairs/Solution.java",
+      "pythonPath": "python/solution-1-compare-all-pairs/solution.py"
+    },
+    {
+      "id": "solution-2-sort-by-start",
+      "title": "Sort by start",
+      "tier": 2,
+      "strategy": "Sort intervals by start time and compare each meeting with the previous ending time.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting dominates the linear overlap scan."
+      },
+      "spaceComplexity": {
+        "class": "O(log n)",
+        "explanation": "The Java sort may use stack space; Python uses a sorted copy in the driver-isolated input."
+      },
+      "javaPath": "java/solution-2-sort-by-start/Solution.java",
+      "pythonPath": "python/solution-2-sort-by-start/solution.py"
+    }
+  ]
+}

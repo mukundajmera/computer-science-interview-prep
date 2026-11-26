@@ -1,0 +1,43 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two-digit subtractive",
+      "input": {
+        "num": 42
+      },
+      "expected": "XLII"
+    },
+    {
+      "name": "multiple subtractive places",
+      "input": {
+        "num": 444
+      },
+      "expected": "CDXLIV"
+    },
+    {
+      "name": "current year style value",
+      "input": {
+        "num": 2026
+      },
+      "expected": "MMXXVI"
+    },
+    {
+      "name": "single subtractive value",
+      "input": {
+        "num": 9
+      },
+      "expected": "IX"
+    },
+    {
+      "name": "largest repeated-symbol mix",
+      "input": {
+        "num": 3888
+      },
+      "expected": "MMMDCCCLXXXVIII"
+    }
+  ]
+}

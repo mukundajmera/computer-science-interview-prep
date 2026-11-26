@@ -1,0 +1,62 @@
+graph TD
+    subgraph Conversation Memory Store Architecture
+        Client([Client Application]) --> API[Memory Management API]
+
+        API --> Core[Memory Store Controller]
+
+        subgraph Memory Tiers
+            direction TB
+
+            subgraph Short-Term Memory
+                BWM[Buffer Window Memory]
+                desc1[Keeps last N verbatim turns]
+                BWM --- desc1
+            end
+
+            subgraph Mid-Term Memory
+                SM[Summary Memory]
+                desc2[Rolling conversational summary]
+                SM --- desc2
+
+                HCT[Hierarchical Condensing Tier]
+                desc3[Aggregates older summaries]
+                HCT --- desc3
+
+                SM --> HCT
+            end
+
+            subgraph Long-Term Memory
+                EM[Entity Memory]
+                desc4[Extracted facts & user profiles]
+                EM --- desc4
+
+                VSR[Vector Semantic Recall Index]
+                desc5[Embeddings for relevance search]
+                VSR --- desc5
+            end
+        end
+
+        Core --> BWM
+        Core --> SM
+        Core --> EM
+        Core --> VSR
+
+        BWM -. Triggers .-> SM
+
+        subgraph Storage Layer
+            DB[(Operational DB)]
+            VDB[(Vector DB)]
+        end
+
+        BWM --> DB
+        SM --> DB
+        HCT --> DB
+        EM --> DB
+        VSR --> VDB
+    end
+
+    style desc1 fill:none,stroke:none
+    style desc2 fill:none,stroke:none
+    style desc3 fill:none,stroke:none
+    style desc4 fill:none,stroke:none
+    style desc5 fill:none,stroke:none

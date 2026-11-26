@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-dp-array",
+      "title": "DP array",
+      "tier": 1,
+      "strategy": "Store the best total through every prefix and choose between skipping or taking each value.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each house contributes one DP transition."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The DP array stores one value for each prefix."
+      },
+      "javaPath": "java/solution-1-dp-array/Solution.java",
+      "pythonPath": "python/solution-1-dp-array/solution.py"
+    },
+    {
+      "id": "solution-2-rolling-two-state",
+      "title": "Rolling two-state DP",
+      "tier": 2,
+      "strategy": "Keep only the best totals for the previous and previous-previous prefixes.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each value is processed once."
+      },
+      "spaceComplexity": {
+        "class": "O(1)",
+        "explanation": "The DP state is compressed into two integers."
+      },
+      "javaPath": "java/solution-2-rolling-two-state/Solution.java",
+      "pythonPath": "python/solution-2-rolling-two-state/solution.py"
+    }
+  ]
+}

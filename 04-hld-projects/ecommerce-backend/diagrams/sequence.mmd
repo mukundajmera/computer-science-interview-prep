@@ -1,0 +1,104 @@
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant GW as API Gateway
+    participant CS as Cart Service
+    participant OS as Order Service
+    participant IS as Inventory Service
+    participant PS as Payment Service
+    participant NS as Notification Service
+    participant DB as Database
+
+    Note over C, DB: Checkout Flow (Saga Pattern)
+
+    C->>GW: POST /api/v1/checkout
+    GW->>CS: Get user cart
+    CS->>DB: Query cart items
+    DB-->>CS: Cart data
+    CS-->>GW: Cart with items
+
+    GW->>OS: Create order
+    OS->>DB: Insert order (status: pending)
+    OS->>OS: Calculate totals
+
+    Note over OS, IS: Step 1: Reserve Inventory
+
+    OS->>IS: Reserve inventory
+    IS->>DB: Check available quantity
+    
+    alt Inventory Available
+        IS->>DB: Decrement available, increment reserved
+        IS->>DB: Create reservation record
+        IS-->>OS: Reservation successful
+        
+        Note over OS, PS: Step 2: Process Payment
+        
+        OS->>PS: Process payment
+        PS->>DB: Create payment record (pending)
+        PS->>PS: Call payment provider
+        
+        alt Payment Successful
+            PS->>DB: Update payment (completed)
+            PS-->>OS: Payment successful
+            
+            Note over OS, IS: Step 3: Commit Inventory
+            
+            OS->>IS: Commit reservation
+            IS->>DB: Update reservation (committed)
+            IS-->>OS: Committed
+            
+            OS->>DB: Update order (status: confirmed)
+            OS->>NS: Send confirmation
+            NS-->>C: Email/SMS confirmation
+            
+            OS-->>GW: Order confirmed
+            GW-->>C: 201 Created (order details)
+            
+        else Payment Failed
+            PS->>DB: Update payment (failed)
+            PS-->>OS: Payment failed
+            
+            Note over OS, IS: Compensation: Release Inventory
+            
+            OS->>IS: Release reservation
+            IS->>DB: Restore available quantity
+            IS->>DB: Update reservation (released)
+            
+            OS->>DB: Update order (status: cancelled)
+            OS-->>GW: Payment failed
+            GW-->>C: 400 Payment Failed
+        end
+        
+    else Inventory Unavailable
+        IS-->>OS: Reservation failed
+        OS->>DB: Update order (status: cancelled)
+        OS-->>GW: Out of stock
+        GW-->>C: 409 Conflict (items out of stock)
+    end
+
+    Note over C, DB: Add to Cart Flow
+
+    C->>GW: POST /api/v1/cart/items
+    GW->>CS: Add item to cart
+    CS->>DB: Check product exists and in stock
+    DB-->>CS: Product info
+    CS->>DB: HSET cart:{user_id} (Redis)
+    CS-->>GW: Item added
+    GW-->>C: 200 OK (updated cart)
+
+    Note over C, DB: Product Search Flow
+
+    C->>GW: GET /api/v1/search?q=headphones
+    GW->>GW: Check cache
+    
+    alt Cache Hit
+        GW-->>C: Cached results
+    else Cache Miss
+        GW->>OS: Search products
+        OS->>DB: Query Elasticsearch
+        DB-->>OS: Search results
+        OS->>GW: Results with facets
+        GW->>GW: Cache results (60s TTL)
+        GW-->>C: Search results
+    end
+```

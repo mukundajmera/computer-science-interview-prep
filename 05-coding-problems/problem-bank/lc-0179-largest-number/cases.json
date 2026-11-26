@@ -1,0 +1,82 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "two numbers",
+      "input": {
+        "nums": [
+          10,
+          2
+        ]
+      },
+      "expected": "210"
+    },
+    {
+      "name": "multiple prefixes",
+      "input": {
+        "nums": [
+          3,
+          30,
+          34,
+          5,
+          9
+        ]
+      },
+      "expected": "9534330"
+    },
+    {
+      "name": "all zeroes collapse",
+      "input": {
+        "nums": [
+          0,
+          0
+        ]
+      },
+      "expected": "0"
+    },
+    {
+      "name": "shared prefix order",
+      "input": {
+        "nums": [
+          12,
+          121
+        ]
+      },
+      "expected": "12121"
+    },
+    {
+      "name": "long shared prefix",
+      "input": {
+        "nums": [
+          111311,
+          1113
+        ]
+      },
+      "expected": "1113111311"
+    },
+    {
+      "name": "strong shared prefix comparator",
+      "input": {
+        "nums": [
+          34323,
+          3432
+        ]
+      },
+      "expected": "343234323"
+    },
+    {
+      "name": "zeroes with nonzero prefix",
+      "input": {
+        "nums": [
+          0,
+          0,
+          1
+        ]
+      },
+      "expected": "100"
+    }
+  ]
+}

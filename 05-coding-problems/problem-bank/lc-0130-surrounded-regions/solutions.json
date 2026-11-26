@@ -1,0 +1,24 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-reachability-matrix",
+      "title": "Boundary reachability matrix",
+      "tier": 1,
+      "strategy": "Mark all O cells reachable from a boundary O in a separate matrix, then flip unmarked O cells.",
+      "timeComplexity": { "class": "O(m*n)", "explanation": "Boundary DFS and the final board pass together inspect each cell a constant number of times." },
+      "spaceComplexity": { "class": "O(m*n)", "explanation": "The safe-cell matrix stores one boolean per board cell, and DFS can also recurse through many cells." },
+      "javaPath": "java/solution-1-reachability-matrix/Solution.java",
+      "pythonPath": "python/solution-1-reachability-matrix/solution.py"
+    },
+    {
+      "id": "solution-2-boundary-marker",
+      "title": "In-place boundary marker",
+      "tier": 2,
+      "strategy": "Temporarily mark boundary-connected O cells, flip the remaining O cells, then restore the marked cells.",
+      "timeComplexity": { "class": "O(m*n)", "explanation": "Each cell is visited by search or final normalization a constant number of times." },
+      "spaceComplexity": { "class": "O(m*n)", "explanation": "The board is marked in place, but recursive DFS can use stack space proportional to the number of connected O cells." },
+      "javaPath": "java/solution-2-boundary-marker/Solution.java",
+      "pythonPath": "python/solution-2-boundary-marker/solution.py"
+    }
+  ]
+}

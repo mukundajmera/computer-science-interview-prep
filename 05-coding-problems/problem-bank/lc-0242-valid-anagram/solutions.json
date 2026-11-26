@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-sort-compare",
+      "title": "Sort and compare",
+      "tier": 1,
+      "strategy": "Sort both strings and compare the normalized character order.",
+      "timeComplexity": {
+        "class": "O(n log n)",
+        "explanation": "Sorting dominates the work for strings of length n; the final comparison is linear."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "Both implementations materialize sorted character sequences proportional to the input length."
+      },
+      "javaPath": "java/solution-1-sort-compare/Solution.java",
+      "pythonPath": "python/solution-1-sort-compare/solution.py"
+    },
+    {
+      "id": "solution-2-counting-map",
+      "title": "Counting map",
+      "tier": 2,
+      "strategy": "Increment counts from one string and decrement them with the other string.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each character from both strings is processed a constant number of times."
+      },
+      "spaceComplexity": {
+        "class": "O(k)",
+        "explanation": "The count map stores one entry per distinct character, where k is the character variety."
+      },
+      "javaPath": "java/solution-2-counting-map/Solution.java",
+      "pythonPath": "python/solution-2-counting-map/solution.py"
+    }
+  ]
+}

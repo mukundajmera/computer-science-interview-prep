@@ -1,0 +1,36 @@
+{
+  "source": "repo-authored-clean-room",
+  "matcher": {
+    "type": "exact"
+  },
+  "cases": [
+    {
+      "name": "even digit palindrome",
+      "input": {
+        "x": 1221
+      },
+      "expected": true
+    },
+    {
+      "name": "odd digit palindrome",
+      "input": {
+        "x": 12321
+      },
+      "expected": true
+    },
+    {
+      "name": "trailing zero mismatch",
+      "input": {
+        "x": 12340
+      },
+      "expected": false
+    },
+    {
+      "name": "negative number",
+      "input": {
+        "x": -454
+      },
+      "expected": false
+    }
+  ]
+}

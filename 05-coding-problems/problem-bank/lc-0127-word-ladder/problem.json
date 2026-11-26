@@ -1,0 +1,108 @@
+{
+  "id": "lc-0127-word-ladder",
+  "title": "Word Ladder",
+  "difficulty": "hard",
+  "status": "verified",
+  "patterns": [
+    "Graph BFS",
+    "Graphs",
+    "graph"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-bfs-word-scan/Solution.java",
+      "java/solution-2-bfs-pattern-index/Solution.java",
+      "python/solution-1-bfs-word-scan/solution.py",
+      "python/solution-2-bfs-pattern-index/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 59,
+      "group": "graph",
+      "sourceUrl": "https://leetcode.com/problems/word-ladder"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 97,
+      "group": "Graph BFS",
+      "sourceUrl": "https://leetcode.com/problems/word-ladder"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 622,
+      "group": "Graphs",
+      "sourceUrl": "https://leetcode.com/problems/word-ladder"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "127",
+    "titleSlug": "word-ladder",
+    "url": "https://leetcode.com/problems/word-ladder",
+    "paidOnly": false
+  },
+  "signature": {
+    "java": {
+      "className": "Solution",
+      "methodName": "ladderLength",
+      "returnType": "int",
+      "parameters": [
+        { "name": "beginWord", "type": "String" },
+        { "name": "endWord", "type": "String" },
+        { "name": "wordList", "type": "List<String>" }
+      ]
+    },
+    "python": {
+      "className": "Solution",
+      "methodName": "ladderLength",
+      "returnType": "int",
+      "parameters": [
+        { "name": "beginWord", "type": "str" },
+        { "name": "endWord", "type": "str" },
+        { "name": "wordList", "type": "List[str]" }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

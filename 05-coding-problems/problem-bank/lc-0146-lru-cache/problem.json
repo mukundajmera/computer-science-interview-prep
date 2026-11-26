@@ -1,0 +1,105 @@
+{
+  "id": "lc-0146-lru-cache",
+  "title": "LRU Cache",
+  "difficulty": "medium",
+  "status": "verified",
+  "patterns": [
+    "design",
+    "hash-map",
+    "linked-list"
+  ],
+  "provenance": {
+    "sourceUse": "metadata-only",
+    "problemSummary": "repo-authored-clean-room",
+    "examples": "repo-authored-clean-room",
+    "cases": "repo-authored-clean-room"
+  },
+  "cleanRoomReview": {
+    "reviewedAt": "2026-06-14",
+    "reviewer": "codex",
+    "scope": [
+      "problem.json",
+      "README.md",
+      "cases.json",
+      "solutions.json",
+      "java/solution-1-timestamped-scan/Solution.java",
+      "java/solution-2-linked-hash-map/Solution.java",
+      "python/solution-1-timestamped-scan/solution.py",
+      "python/solution-2-ordered-dict/solution.py"
+    ],
+    "verdict": "no-source-statement-or-example-copying-detected"
+  },
+  "collections": [
+    {
+      "id": "grind-169",
+      "order": 74,
+      "group": "linked-list",
+      "sourceUrl": "https://leetcode.com/problems/lru-cache"
+    },
+    {
+      "id": "leetcode-top-150",
+      "order": 67,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/lru-cache"
+    },
+    {
+      "id": "neetcode-all",
+      "order": 376,
+      "group": "Linked List",
+      "sourceUrl": "https://leetcode.com/problems/lru-cache"
+    }
+  ],
+  "leetcode": {
+    "frontendId": "146",
+    "titleSlug": "lru-cache",
+    "url": "https://leetcode.com/problems/lru-cache",
+    "paidOnly": false
+  },
+  "signature": {
+    "kind": "object",
+    "java": {
+      "className": "LRUCache",
+      "constructor": { "parameters": [{ "name": "capacity", "type": "int" }] },
+      "methods": [
+        { "name": "get", "returnType": "int", "parameters": [{ "name": "key", "type": "int" }] },
+        { "name": "put", "returnType": "void", "parameters": [{ "name": "key", "type": "int" }, { "name": "value", "type": "int" }] }
+      ]
+    },
+    "python": {
+      "className": "LRUCache",
+      "constructor": { "parameters": [{ "name": "capacity", "type": "int" }] },
+      "methods": [
+        { "name": "get", "returnType": "int", "parameters": [{ "name": "key", "type": "int" }] },
+        { "name": "put", "returnType": "None", "parameters": [{ "name": "key", "type": "int" }, { "name": "value", "type": "int" }] }
+      ]
+    }
+  },
+  "validation": {
+    "validatedAt": "2026-06-14",
+    "checks": [
+      {
+        "name": "catalog-strict",
+        "status": "passed",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --strict"
+      },
+      {
+        "name": "driver-generation",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --driver-generation"
+      },
+      {
+        "name": "python-drivers",
+        "status": "passed",
+        "language": "python",
+        "command": "python3 -B scripts/check_coding_problem_catalog.py --drivers --allow-unsafe-driver-execution --language python"
+      },
+      {
+        "name": "java-drivers",
+        "status": "passed",
+        "language": "java",
+        "command": "python3 -B scripts/check_repo_smoke.py --only check_coding_problem_java_drivers --allow-unsafe-driver-execution"
+      }
+    ]
+  }
+}

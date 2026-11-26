@@ -1,0 +1,36 @@
+{
+  "solutions": [
+    {
+      "id": "solution-1-prefix-brute-force",
+      "title": "Prefix brute force",
+      "tier": 1,
+      "strategy": "Build prefix balances and test every interval for equal start and end balance.",
+      "timeComplexity": {
+        "class": "O(n^2)",
+        "explanation": "Every pair of interval boundaries can be examined."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The prefix balance array stores n+1 values."
+      },
+      "javaPath": "java/solution-1-prefix-brute-force/Solution.java",
+      "pythonPath": "python/solution-1-prefix-brute-force/solution.py"
+    },
+    {
+      "id": "solution-2-first-balance-index",
+      "title": "First balance index",
+      "tier": 2,
+      "strategy": "Treat zero as -1 and one as +1; the same balance at two indices marks a balanced interval.",
+      "timeComplexity": {
+        "class": "O(n)",
+        "explanation": "Each number is processed once and each balance lookup is constant average time."
+      },
+      "spaceComplexity": {
+        "class": "O(n)",
+        "explanation": "The map can store one first index for each distinct balance."
+      },
+      "javaPath": "java/solution-2-first-balance-index/Solution.java",
+      "pythonPath": "python/solution-2-first-balance-index/solution.py"
+    }
+  ]
+}
