@@ -1,5 +1,7 @@
 """WindowStrategy for ad-click-aggregator (v2-extended)."""
 
+from __future__ import annotations
+
 class WindowStrategy:
     def __init__(self, window_size_ms: int = 60000, slide_step_ms: int = 10000) -> None:
         self.window_size_ms = window_size_ms

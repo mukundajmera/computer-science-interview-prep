@@ -1,5 +1,7 @@
 """Interview execution policy for deterministic next-step recommendations."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Dict, Mapping, Tuple

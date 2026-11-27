@@ -3,6 +3,8 @@ Car Rental System - V3 Optimized
 Implements dynamic seasonal pricing on top of V2 features.
 """
 
+from __future__ import annotations
+
 from datetime import date
 from enum import Enum
 from typing import List, Optional

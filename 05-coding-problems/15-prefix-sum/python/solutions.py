@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class NumArray:
     def __init__(self, nums: list[int]):
         self.prefix = [0] * (len(nums) + 1)

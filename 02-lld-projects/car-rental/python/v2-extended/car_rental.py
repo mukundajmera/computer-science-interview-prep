@@ -3,6 +3,8 @@ Car Rental System - V2 Extended
 Implements custom vehicle equipment add-ons and late return penalty strategies.
 """
 
+from __future__ import annotations
+
 from datetime import date
 from enum import Enum
 from typing import List, Optional

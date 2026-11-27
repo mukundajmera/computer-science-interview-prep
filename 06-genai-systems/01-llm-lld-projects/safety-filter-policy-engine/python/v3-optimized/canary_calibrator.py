@@ -2,6 +2,8 @@
 Canary calibration and rollback manager.
 """
 
+from __future__ import annotations
+
 from typing import Optional, Dict
 
 class BayesianEstimator:

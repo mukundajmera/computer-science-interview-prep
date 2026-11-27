@@ -3,6 +3,8 @@ Car Rental System - V1 Basic
 Core implementation with vehicles, customers, and reservations.
 """
 
+from __future__ import annotations
+
 from datetime import date
 from enum import Enum
 from typing import List, Optional
