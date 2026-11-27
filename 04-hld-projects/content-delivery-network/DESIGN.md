@@ -1,4 +1,4 @@
-# Content Delivery Network (CDN) System
+# Content Delivery Network (CDN) System Design
 
 > **Evidence Contract Note:** This template adheres to the `curriculum-evidence-contract.md`. 
 > Target Layer: [Staff]
