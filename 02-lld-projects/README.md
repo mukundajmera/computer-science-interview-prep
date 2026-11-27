@@ -6,7 +6,7 @@ Practical LLD interview problems with progressive Java and Python implementation
 
 ## 📦 Catalog Snapshot
 
-- **Total projects:** 56
+- **Total projects:** 61
 - **Core project docs:** `PROBLEM.md`, `APPROACH.md`, `DESIGN.md`, and `CODE-WALKTHROUGH.md`
 - **Depth tracking:** use the [LLD coverage matrix](./lld-doc-coverage-matrix.md) for exact rubric, pitfalls, follow-up, code, and test coverage per project.
 - **Code layout:** `java/` + `python/` with `v1-basic`, `v2-extended`, `v3-optimized`, plus tests.
@@ -21,18 +21,23 @@ Practical LLD interview problems with progressive Java and Python implementation
 | [Ad Click Aggregator](./ad-click-aggregator/) | ⭐⭐⭐ | ✅ |
 | [Amazon Locker](./amazon-locker/) | ⭐⭐⭐ | ✅ |
 | [API Gateway](./api-gateway/) | ⭐⭐⭐ | ✅ |
+| [API Gateway Middleware](./api-gateway-middleware/) | ⭐⭐⭐ | ✅ |
 | [ATM System](./atm-system/) | ⭐⭐⭐ | ✅ |
 | [Car Rental](./car-rental/) | ⭐⭐⭐ | ✅ |
 | [Chess Game](./chess-game/) | ⭐⭐⭐ | ✅ |
 | [Circuit Breaker](./circuit-breaker/) | ⭐⭐⭐ | ✅ |
+| [Circuit Breaker Engine](./circuit-breaker-engine/) | ⭐⭐⭐ | ✅ |
 | [Connect Four](./connect-four/) | ⭐⭐⭐ | ✅ |
 | [Deck of Cards](./deck-of-cards/) | ⭐⭐⭐ | ✅ |
 | [Distributed Counter](./distributed-counter/) | ⭐⭐⭐ | ✅ |
+| [Dynamic Config Feature Flag](./dynamic-config-feature-flag/) | ⭐⭐⭐ | ✅ |
 | [Dynamic Config Service](./dynamic-config-service/) | ⭐⭐⭐ | ✅ |
 | [Elevator System](./elevator-system/) | ⭐⭐⭐ | ✅ |
+| [Event Bus Pub-Sub Broker](./event-bus-pubsub-broker/) | ⭐⭐⭐ | ✅ |
 | [File System](./file-system/) | ⭐⭐⭐ | ✅ |
 | [Finite State Machine](./finite-state-machine/) | ⭐⭐⭐ | ✅ |
 | [Food Delivery Platform](./food-delivery-platform/) | ⭐⭐⭐ | ✅ |
+| [Food Delivery System](./food-delivery-system/) | ⭐⭐⭐ | ✅ |
 | [Hotel Management System](./hotel-management-system/) | ⭐⭐⭐ | ✅ |
 | [Hotel Reservation](./hotel-reservation/) | ⭐⭐⭐ | ✅ |
 | [In-Memory Event Bus](./in-memory-event-bus/) | ⭐⭐⭐ | ✅ |
