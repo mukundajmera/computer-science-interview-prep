@@ -113,6 +113,25 @@ GET /api/v1/id
 
 ![Architecture](diagrams/architecture.mmd)
 
+```mermaid
+flowchart TD
+    Clients["Client Microservices<br/>(gRPC / REST)"] --> LB["Load Balancer"]
+    LB --> N1["ID Generator Node 1<br/>(workerId, lastTimestamp, sequence)"]
+    LB --> N2["ID Generator Node 2<br/>(workerId, lastTimestamp, sequence)"]
+    LB --> NN["ID Generator Node N<br/>(workerId, lastTimestamp, sequence)"]
+
+    subgraph BitLayout["In-Memory 64-Bit ID Composition"]
+        Compose["1-bit Sign (0) + 41-bit Custom Timestamp + 10-bit Worker ID + 12-bit Sequence<br/>Backward Clock Drift Guard (Wait / 503 Fail-Fast)"]
+    end
+
+    N1 -.->|"Local Lock-Free Bitwise OR"| Compose
+    N1 -.->|"Lease Ephemeral Sequential ID (0-1023)"| ZK[("ZooKeeper / etcd Cluster")]
+    N2 -.->|"Lease Ephemeral Sequential ID (0-1023)"| ZK
+    NN -.->|"Lease Ephemeral Sequential ID (0-1023)"| ZK
+```
+
+Client microservices call `GET /api/v1/id` through a Load Balancer to any stateless ID Generator node, eliminating any central database bottleneck on the hot generation path. Each generator node leases a unique 10-bit `workerId` (0–1023) at startup via ephemeral sequential nodes in ZooKeeper/etcd so crashed workers automatically release their IDs upon session expiration. On each request, the node combines the 41-bit custom-epoch timestamp, its leased `workerId`, and an in-memory 12-bit per-millisecond sequence counter via bitwise OR—blocking on sequence overflow or waiting/failing fast with `503` if NTP shifts the clock backward.
+
 ### Component List
 - **ID Generator Application:** The stateless (except for local sequence/time) service generating the IDs.
 - **ZooKeeper Cluster:** Manages the assignment and leases of the 10-bit Worker IDs.

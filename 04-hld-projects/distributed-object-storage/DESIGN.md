@@ -97,6 +97,31 @@ CREATE TABLE chunk_blocks (
 
 ![Architecture Diagram](./diagrams/architecture.mmd)
 
+```mermaid
+flowchart TD
+    Client["Client Applications"] -->|"HTTP PUT / GET / DELETE"| GW["API Gateway<br/>(SSL, Auth, Rate Limit)"]
+    GW --> Router["Storage Router<br/>(Data Node Manager)"]
+
+    subgraph ControlPlane["Control Plane"]
+        Router -->|"Lookup / Commit Versioned Metadata"| MetaSvc["Metadata Service"]
+        MetaSvc -->|"Partitioned by bucket_id"| MetaDB[("Metadata DB (Cassandra)<br/>buckets & versioned objects")]
+    end
+
+    subgraph DataPlane["Data Plane (8+4 Erasure Coding)"]
+        Router -->|"Stream 12 Shards"| CS1["Chunk Server 1<br/>(1GB Append-Only Containers + SQLite Index)"]
+        Router -->|"Stream 12 Shards"| CS2["Chunk Server 2<br/>(1GB Append-Only Containers + SQLite Index)"]
+        Router -->|"Stream 12 Shards"| CSN["Chunk Server N<br/>(1GB Append-Only Containers + SQLite Index)"]
+    end
+
+    subgraph Background["Background Services"]
+        Repair["Placement & Repair Service"] -->|"SHA-256 Scrub & EC Rebuild"| CS1
+        Repair -->|"SHA-256 Scrub & EC Rebuild"| CS2
+        GC["Garbage Collector"] -->|"Compact Fragmented Containers"| CSN
+    end
+```
+
+Client requests enter through the API Gateway for TLS termination, authentication, and rate limiting before reaching the Storage Router, which coordinates between the control plane and data plane. On `PUT`, the Storage Router applies 8+4 erasure coding, writes shards synchronously across distinct Chunk Servers—each appending data to 1GB container files indexed locally by SQLite—and commits the versioned object record to Cassandra via the Metadata Service once a quorum acknowledges. In the background, the Placement & Repair Service monitors SHA-256 checksums to rebuild failed drives from surviving shards while the Garbage Collector compacts dead space out of fragmented containers.
+
 ### Component List
 1. **API Gateway:** Handles SSL termination, Authentication, and Rate Limiting.
 2. **Metadata Service:** A stateless service handling all interactions with the Metadata Database (Cassandra).

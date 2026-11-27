@@ -73,6 +73,37 @@ The system consists of the following key components:
 3.  **Matching Service:** Manages the task queues. It matches available tasks with polling workers. It receives task schedules from the History service.
 4.  **Worker Fleet:** User-managed processes running the workflow and activity logic.
 
+```mermaid
+flowchart TD
+    Client["Client"] -->|"Start Workflow / Get History"| API["Frontend / API Gateway"]
+
+    subgraph ControlPlane["Control Plane"]
+        API -->|"State Transitions"| History["History Service<br/>(Core State Machine)"]
+        History -->|"Schedule Tasks"| Matching["Matching Service<br/>(Task Queue Dispatch)"]
+        API -->|"Long-Poll / Heartbeat / Complete"| Matching
+    end
+
+    subgraph Storage["Strongly Consistent DB (CockroachDB / Spanner / Cassandra LWT)"]
+        ExecDB[("workflow_executions")]
+        HistDB[("workflow_history_events")]
+        QueueDB[("task_queues")]
+    end
+
+    History <-->|"Atomic State & Event Writes"| ExecDB
+    History <-->|"Append / Read History"| HistDB
+    Matching <-->|"Enqueue / Dequeue & Leases"| QueueDB
+
+    subgraph Workers["Worker Fleet"]
+        WW["Workflow Workers<br/>(Replay History & Emit Commands)"]
+        AW["Activity Workers<br/>(Execute Tasks & Heartbeat)"]
+    end
+
+    WW -->|"Long-Poll Workflow Tasks & Complete"| API
+    AW -->|"Long-Poll Activity Tasks, Heartbeat & Complete"| API
+```
+
+Clients start executions and query event histories through the Frontend / API Gateway, which routes state transitions to the History Service—the core state machine that atomically persists execution state and append-only events in a strongly consistent distributed database. When workflow code schedules work, the History Service records the event and hands off to the Matching Service, which manages DB-backed `task_queues` and tracks activity lease timeouts. User-managed Workflow and Activity Workers long-poll the Matching Service via the gateway, replaying event history to recover workflow state deterministically and reporting heartbeats or task completions back to the History Service.
+
 ### Cross-Links
 - [Architecture Diagram](diagrams/architecture.mmd)
 - [Problem Context](PROBLEM.md)
