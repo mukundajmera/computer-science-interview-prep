@@ -91,6 +91,29 @@ GET /.well-known/jwks.json (Upstream dependency)
 
 ## 5. 🏗️ High-Level Architecture
 
+### Architecture Diagram
+
+```mermaid
+flowchart LR
+    CL["Client (HTTP/2)"] --> LB["L4/L7 Load Balancer (mTLS Termination)"]
+    LB --> AUTH
+
+    subgraph GatewayNode["Gateway Node (Filter Chain)"]
+        AUTH["1. Security / Auth Filter (JWT + Header Scrubbing)"] --> RL["2. Rate Limit Filter (Local Token Batch)"]
+        RL --> RT["3. Routing Filter (Path / Host Map)"]
+        RT --> CB["4. Circuit Breaker Filter (CLOSED / OPEN / HALF-OPEN)"]
+        CB -->|"CLOSED / HALF-OPEN"| PX["5. Proxy Execution (HTTP/2 to HTTP/1.1)"]
+    end
+
+    AUTH -.->|"Cached JWKS"| JWKS["JWKS Cache / IdP"]
+    RL <--> RED[("Redis Cluster (Lua Token Bucket)")]
+    RT -.->|"Resolve Instances"| SD["Service Discovery"]
+    CB -->|"OPEN: Fast-Fail"| ERR["503 Service Unavailable"]
+    PX -->|"HTTP/1.1"| UP["Downstream Microservices"]
+```
+
+Incoming HTTP/2 client requests terminate mTLS at the L4/L7 Load Balancer before entering a stateless Gateway Node that runs a five-stage filter chain. The Security Filter validates JWT signatures against a local JWKS cache and scrubs internal headers, while the Rate Limit Filter consumes pre-fetched local token batches backed by atomic Redis Lua scripts to sustain 100k peak QPS within the 10 ms P99 budget. The Routing Filter resolves target endpoints via Service Discovery, and the Circuit Breaker Filter either sheds load immediately with `503 Service Unavailable` when open or passes requests to Proxy Execution for HTTP/2-to-HTTP/1.1 forwarding.
+
 ### Component List
 - **L4/L7 Load Balancer**: mTLS termination.
 - **Gateway Nodes**: Stateless, auto-scaled application instances executing the Filter Chain.

@@ -280,6 +280,31 @@ public class RiskEngine {
 
 ## 5. High-Level Architecture
 
+### Architecture Diagram
+
+```mermaid
+flowchart TB
+    subgraph InlinePath["Inline Evaluation Path (Under 5ms Budget)"]
+        C["Client Request (IP, Headers, JA3/JA4)"] --> GW["Edge API Gateway (Zero-Trust + Fail-Open)"]
+        GW -->|"gRPC evaluate"| RE["Inline Risk Engine"]
+        RE <--> RD[("Redis Cluster (Sliding-Window Limits + Hot Profiles)")]
+        RE --> PE["Policy & Action Engine"]
+        PE -->|"Allow / PoW / CAPTCHA / MFA / 403"| GW
+        PE -.->|"Disputed Blocks"| AP["Appeal API & Human Investigators"]
+    end
+
+    subgraph AsyncPath["Async Telemetry & Feature Pipeline"]
+        SDK["Client SDK (Batched Mouse, Keystroke, Canvas/WebGL)"] -->|"REST /telemetry"| TI["Telemetry Ingestion Service"]
+        TI --> KF[("Apache Kafka")]
+        KF --> FW["Feature Computation Workers (Apache Flink)"]
+        FW --> CS[("Cassandra / ScyllaDB (Historical Profiles & Signals)")]
+        FW -->|"Update Hot Profiles"| RD
+        AP -.->|"Verified Labels"| FW
+    end
+```
+
+On the critical inline path, the Edge API Gateway extracts client IP, headers, and TLS metadata and calls the Inline Risk Engine over gRPC, which queries Redis for sliding-window rate limits and cached device profiles within a strict 5 ms budget (failing open on timeout to protect 99.99% availability). The Policy & Action Engine translates risk scores into graduated mitigations—allow, silent Proof-of-Work, CAPTCHA, step-up MFA, or a hard 403 block—while routing contested blocks to the Appeal API for investigator review. In parallel, consented client SDKs batch behavioral and hardware telemetry to the Telemetry Ingestion Service and Kafka, where Apache Flink workers compute temporal features, persist long-term records in Cassandra/ScyllaDB, and refresh hot profiles in Redis.
+
 ### Component List
 - **Edge API Gateway:** Intercepts traffic, calls the bot detection service, and enforces actions.
 - **Telemetry Ingestion Service:** Receives background signals from the client SDKs.
