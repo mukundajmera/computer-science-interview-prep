@@ -21,19 +21,19 @@ Practical LLD interview problems with progressive Java and Python implementation
 | [Ad Click Aggregator](./ad-click-aggregator/) | ⭐⭐⭐ | ✅ |
 | [Amazon Locker](./amazon-locker/) | ⭐⭐⭐ | ✅ |
 | [API Gateway](./api-gateway/) | ⭐⭐⭐ | ✅ |
-| [API Gateway Middleware](./api-gateway-middleware/) | ⭐⭐⭐ | ✅ |
+| [API Gateway Middleware](./api-gateway-middleware/) | ⭐⭐⭐ | 🔜 |
 | [ATM System](./atm-system/) | ⭐⭐⭐ | ✅ |
 | [Car Rental](./car-rental/) | ⭐⭐⭐ | ✅ |
 | [Chess Game](./chess-game/) | ⭐⭐⭐ | ✅ |
 | [Circuit Breaker](./circuit-breaker/) | ⭐⭐⭐ | ✅ |
-| [Circuit Breaker Engine](./circuit-breaker-engine/) | ⭐⭐⭐ | ✅ |
+| [Circuit Breaker Engine](./circuit-breaker-engine/) | ⭐⭐⭐ | 🔜 |
 | [Connect Four](./connect-four/) | ⭐⭐⭐ | ✅ |
 | [Deck of Cards](./deck-of-cards/) | ⭐⭐⭐ | ✅ |
 | [Distributed Counter](./distributed-counter/) | ⭐⭐⭐ | ✅ |
-| [Dynamic Config Feature Flag](./dynamic-config-feature-flag/) | ⭐⭐⭐ | ✅ |
+| [Dynamic Config Feature Flag](./dynamic-config-feature-flag/) | ⭐⭐⭐ | 🔜 |
 | [Dynamic Config Service](./dynamic-config-service/) | ⭐⭐⭐ | ✅ |
 | [Elevator System](./elevator-system/) | ⭐⭐⭐ | ✅ |
-| [Event Bus Pub-Sub Broker](./event-bus-pubsub-broker/) | ⭐⭐⭐ | ✅ |
+| [Event Bus Pub-Sub Broker](./event-bus-pubsub-broker/) | ⭐⭐⭐ | 🔜 |
 | [File System](./file-system/) | ⭐⭐⭐ | ✅ |
 | [Finite State Machine](./finite-state-machine/) | ⭐⭐⭐ | ✅ |
 | [Food Delivery Platform](./food-delivery-platform/) | ⭐⭐⭐ | ✅ |
