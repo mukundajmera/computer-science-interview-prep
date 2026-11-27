@@ -86,8 +86,8 @@
 **Practice:** [lc-0064-minimum-path-sum](problem-bank/lc-0064-minimum-path-sum/README.md)
 
 **Hints:**
-1. Let $dp[i][j]$ be the minimum path sum to reach cell $(i, j)$.
-2. You can only arrive at $(i, j)$ from $(i-1, j)$ or $(i, j-1)$. So $dp[i][j] = grid[i][j] + \min(dp[i-1][j], dp[i][j-1])$.
+1. Let `dp[i][j]` be the minimum path sum to reach cell $(i, j)$.
+2. You can only arrive at $(i, j)$ from $(i-1, j)$ or $(i, j-1)$. So `dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1])`.
 3. You can optimize space to $O(N)$ by keeping only the previous row or modifying the grid in-place if allowed.
 
 **Complexity:**
@@ -102,9 +102,9 @@
 **Practice:** [lc-0072-edit-distance](problem-bank/lc-0072-edit-distance/README.md)
 
 **Hints:**
-1. Let $dp[i][j]$ be the edit distance between the first $i$ characters of $word1$ and the first $j$ characters of $word2$.
-2. If $word1[i-1] == word2[j-1]$, then $dp[i][j] = dp[i-1][j-1]$.
-3. Else, $dp[i][j] = 1 + \min(dp[i-1][j-1]$ (replace), $dp[i-1][j]$ (delete), $dp[i][j-1]$ (insert)$)$.
+1. Let `dp[i][j]` be the edit distance between the first $i$ characters of $word1$ and the first $j$ characters of $word2$.
+2. If $word1[i-1] == word2[j-1]$, then `dp[i][j] = dp[i-1][j-1]`.
+3. Else, `dp[i][j]` = 1 + min(`dp[i-1][j-1]` (replace), `dp[i-1][j]` (delete), `dp[i][j-1]` (insert)).
 
 **Complexity:**
 - Time: $O(M 	imes N)$
@@ -118,8 +118,8 @@
 **Practice:** [lc-0221-maximal-square](problem-bank/lc-0221-maximal-square/README.md)
 
 **Hints:**
-1. Let $dp[i][j]$ be the side length of the maximal square whose bottom-right corner is at $(i, j)$.
-2. If $matrix[i][j] == '1'$, $dp[i][j] = \min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1$.
+1. Let `dp[i][j]` be the side length of the maximal square whose bottom-right corner is at $(i, j)$.
+2. If `matrix[i][j] == '1'`, `dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1`.
 3. The area is the maximum side length squared. Space can be optimized to $O(N)$.
 
 **Complexity:**
