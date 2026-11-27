@@ -76,6 +76,9 @@ Coach answer outlines for flagship interview problems.
 | Semantic Retrieval Platform | GenAI HLD | ⭐⭐⭐⭐ | [genai-hld-semantic-retrieval-platform.md](genai-hld-semantic-retrieval-platform.md) | Yes |
 | LLM Inference Serving Engine | GenAI HLD | ⭐⭐⭐⭐⭐ | [genai-hld-llm-inference-serving-engine.md](genai-hld-llm-inference-serving-engine.md) | Yes |
 | Multi-Tenant Enterprise RAG | GenAI HLD | ⭐⭐⭐⭐⭐ | [genai-hld-multi-tenant-enterprise-rag.md](genai-hld-multi-tenant-enterprise-rag.md) | Yes |
+| AI Search Engine | GenAI HLD | ⭐⭐⭐⭐ | [genai-hld-ai-search-engine.md](genai-hld-ai-search-engine.md) | Yes |
+| LoRA Fine-Tuning Pipeline | GenAI HLD | ⭐⭐⭐⭐ | [genai-hld-fine-tuning-pipeline.md](genai-hld-fine-tuning-pipeline.md) | Yes |
+| LLM Inference Serving Platform | GenAI HLD | ⭐⭐⭐⭐⭐ | [genai-hld-inference-serving-platform.md](genai-hld-inference-serving-platform.md) | Yes |
 | [Key-Value Store LSM](../02-lld-projects/key-value-store-lsm/) | [Solution](./lld-key-value-store-lsm.md) |
 
 ---

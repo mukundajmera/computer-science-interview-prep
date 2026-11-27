@@ -669,6 +669,27 @@ export const INTERVIEW_PROBLEMS: InterviewProblem[] = [
     solutionPath: "solutions/genai-hld-multi-tenant-enterprise-rag.md",
   },
   {
+    slug: "ai-search-engine",
+    title: "AI Search Engine",
+    type: "genai-hld",
+    difficulty: "advanced",
+    solutionPath: "solutions/genai-hld-ai-search-engine.md",
+  },
+  {
+    slug: "fine-tuning-pipeline",
+    title: "LoRA Fine-Tuning Pipeline",
+    type: "genai-hld",
+    difficulty: "advanced",
+    solutionPath: "solutions/genai-hld-fine-tuning-pipeline.md",
+  },
+  {
+    slug: "inference-serving-platform",
+    title: "LLM Inference Serving Platform",
+    type: "genai-hld",
+    difficulty: "advanced",
+    solutionPath: "solutions/genai-hld-inference-serving-platform.md",
+  },
+  {
     slug: "ad-click-aggregator",
     title: "Ad Click Aggregator",
     type: "hld",
