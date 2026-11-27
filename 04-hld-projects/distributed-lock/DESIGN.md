@@ -62,7 +62,7 @@ See [PROBLEM.md](./PROBLEM.md) for the core problem statement and requirements.
 
 ### Cluster Sizing (QPS to Shards to Nodes)
 - A single 5-node Raft consensus group across 3 AZs with NVMe group-committed `fsync` sustains `10,000–15,000` committed write ops/s at `p99 <= 15 ms` (1–2 ms intra-region quorum RTT + 2–5 ms batched NVMe `fsync`).
-- Sizing each Raft shard for `10,000` peak write QPS (leaving ~33–50% headroom):
+- Sizing each Raft shard for `10,000` peak write QPS (leaving up to ~33% headroom against the 10–15k per-shard ceiling):
   - Required Raft shards: `80,000 peak write QPS / 10,000 QPS per shard = 8 Raft shards`.
   - Total Raft replicas: `8 shards × 5 replicas = 40 replicas`.
   - Physical/VM node layout: `15 nodes` (`5 nodes per AZ` across 3 AZs), each hosting `2–3` Raft shard replicas with leaders balanced across nodes.
