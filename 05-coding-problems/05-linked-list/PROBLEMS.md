@@ -3,7 +3,7 @@
 ## 1. Reverse Linked List
 
 **Summary:** Reverse the direction of a singly linked list.
-**Practice:** [lc-0206-reverse-linked-list](problem-bank/lc-0206-reverse-linked-list/README.md)
+**Practice:** [lc-0206-reverse-linked-list](../problem-bank/lc-0206-reverse-linked-list/README.md)
 
 - **Hints:** 
     1. You need to keep track of the previous node.
@@ -14,7 +14,7 @@
 ## 2. Linked List Cycle
 
 **Summary:** Decide whether following next pointers in a linked list ever loops back.
-**Practice:** [lc-0141-linked-list-cycle](problem-bank/lc-0141-linked-list-cycle/README.md)
+**Practice:** [lc-0141-linked-list-cycle](../problem-bank/lc-0141-linked-list-cycle/README.md)
 
 - **Hints:**
     1. Can you use two pointers?
@@ -25,7 +25,7 @@
 ## 3. Merge Two Sorted Lists
 
 **Summary:** Splice two sorted linked lists together into one sorted list.
-**Practice:** [lc-0021-merge-two-sorted-lists](problem-bank/lc-0021-merge-two-sorted-lists/README.md)
+**Practice:** [lc-0021-merge-two-sorted-lists](../problem-bank/lc-0021-merge-two-sorted-lists/README.md)
 
 - **Hints:**
     1. Create a dummy node to act as the head of the new list.
@@ -36,7 +36,7 @@
 ## 4. Middle of the Linked List
 
 **Summary:** Return the middle node of a linked list, choosing the second middle when the length is even.
-**Practice:** [lc-0876-middle-of-the-linked-list](problem-bank/lc-0876-middle-of-the-linked-list/README.md)
+**Practice:** [lc-0876-middle-of-the-linked-list](../problem-bank/lc-0876-middle-of-the-linked-list/README.md)
 
 - **Hints:**
     1. Can you use two pointers?
@@ -47,7 +47,7 @@
 ## 5. Remove Nth Node From End of List
 
 **Summary:** Delete the node that is n positions from the tail of a linked list in a single pass.
-**Practice:** [lc-0019-remove-nth-node-from-end-of-list](problem-bank/lc-0019-remove-nth-node-from-end-of-list/README.md)
+**Practice:** [lc-0019-remove-nth-node-from-end-of-list](../problem-bank/lc-0019-remove-nth-node-from-end-of-list/README.md)
 
 - **Hints:**
     1. Can you use two pointers?
@@ -58,7 +58,7 @@
 ## 6. Palindrome Linked List
 
 **Summary:** Decide whether the values of a linked list read the same forwards and backwards.
-**Practice:** [lc-0234-palindrome-linked-list](problem-bank/lc-0234-palindrome-linked-list/README.md)
+**Practice:** [lc-0234-palindrome-linked-list](../problem-bank/lc-0234-palindrome-linked-list/README.md)
 
 - **Hints:**
     1. Can you find the middle of the linked list?
@@ -79,7 +79,7 @@
 ## 8. LRU Cache
 
 **Summary:** Design a fixed-capacity cache that evicts the least recently used entry, with constant-time get and put.
-**Practice:** [lc-0146-lru-cache](problem-bank/lc-0146-lru-cache/README.md)
+**Practice:** [lc-0146-lru-cache](../problem-bank/lc-0146-lru-cache/README.md)
 
 - **Hints:**
     1. You need a data structure that supports fast insertions, deletions, and lookups.

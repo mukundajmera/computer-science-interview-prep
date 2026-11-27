@@ -3,7 +3,7 @@
 ## Valid Sudoku
 
 **Summary:** Check that the filled cells of a partially completed 9-by-9 Sudoku board break no row, column, or box rule.
-**Practice:** [lc-0036-valid-sudoku](problem-bank/lc-0036-valid-sudoku/README.md)
+**Practice:** [lc-0036-valid-sudoku](../problem-bank/lc-0036-valid-sudoku/README.md)
 
 **Hints:** 
 1. Use hash sets to keep track of the values seen in each row, column, and 3x3 box.
@@ -14,7 +14,7 @@
 ## Spiral Matrix
 
 **Summary:** Return the elements of a matrix in clockwise spiral order.
-**Practice:** [lc-0054-spiral-matrix](problem-bank/lc-0054-spiral-matrix/README.md)
+**Practice:** [lc-0054-spiral-matrix](../problem-bank/lc-0054-spiral-matrix/README.md)
 
 **Hints:** 
 1. Maintain 4 pointers: top, bottom, left, and right to define the current boundaries.
@@ -25,7 +25,7 @@
 ## Rotate Image
 
 **Summary:** Rotate a square matrix ninety degrees clockwise in place.
-**Practice:** [lc-0048-rotate-image](problem-bank/lc-0048-rotate-image/README.md)
+**Practice:** [lc-0048-rotate-image](../problem-bank/lc-0048-rotate-image/README.md)
 
 **Hints:** 
 1. A clockwise rotation by 90 degrees can be achieved by first transposing the matrix, then reversing each row.
@@ -36,7 +36,7 @@
 ## Set Matrix Zeroes
 
 **Summary:** If a matrix cell is zero, set its entire row and column to zero, ideally without extra space.
-**Practice:** [lc-0073-set-matrix-zeroes](problem-bank/lc-0073-set-matrix-zeroes/README.md)
+**Practice:** [lc-0073-set-matrix-zeroes](../problem-bank/lc-0073-set-matrix-zeroes/README.md)
 
 **Hints:** 
 1. To do this in O(1) space, use the first row and first column of the matrix to keep track of which rows and columns need to be set to zero.
@@ -47,7 +47,7 @@
 ## Game of Life
 
 **Summary:** Advance a grid of live and dead cells by one generation using neighbour-count rules, updating in place.
-**Practice:** [lc-0289-game-of-life](problem-bank/lc-0289-game-of-life/README.md)
+**Practice:** [lc-0289-game-of-life](../problem-bank/lc-0289-game-of-life/README.md)
 
 **Hints:** 
 1. To do this in-place, encode the next state into the current value so you can retrieve both the current and next state.
@@ -58,7 +58,7 @@
 ## Search a 2D Matrix
 
 **Summary:** Search for a value in a matrix whose rows are sorted and each row continues from the previous one.
-**Practice:** [lc-0074-search-a-2d-matrix](problem-bank/lc-0074-search-a-2d-matrix/README.md)
+**Practice:** [lc-0074-search-a-2d-matrix](../problem-bank/lc-0074-search-a-2d-matrix/README.md)
 
 **Hints:** 
 1. Because of the sorting properties, if we flatten the matrix it becomes a single sorted array.

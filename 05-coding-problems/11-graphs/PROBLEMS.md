@@ -3,7 +3,7 @@
 ## 1. Course Schedule
 
 **Summary:** Courses have prerequisite pairs; decide whether all courses can be completed without a circular dependency.
-**Practice:** [lc-0207-course-schedule](problem-bank/lc-0207-course-schedule/README.md)
+**Practice:** [lc-0207-course-schedule](../problem-bank/lc-0207-course-schedule/README.md)
 
 **Hints**:
 1. Build an adjacency list and an in-degree array.
@@ -15,7 +15,7 @@
 ## 2. Course Schedule II
 
 **Summary:** Produce an order in which all courses can be taken respecting prerequisites, or nothing if a cycle exists.
-**Practice:** [lc-0210-course-schedule-ii](problem-bank/lc-0210-course-schedule-ii/README.md)
+**Practice:** [lc-0210-course-schedule-ii](../problem-bank/lc-0210-course-schedule-ii/README.md)
 
 **Hints**:
 1. Similar to Course Schedule, but record the courses as they are processed.
@@ -27,7 +27,7 @@
 ## 3. Graph Valid Tree
 
 **Summary:** Decide whether a set of undirected edges over n nodes forms a single tree.
-**Practice:** [lc-0261-graph-valid-tree](problem-bank/lc-0261-graph-valid-tree/README.md)
+**Practice:** [lc-0261-graph-valid-tree](../problem-bank/lc-0261-graph-valid-tree/README.md)
 
 **Hints**:
 1. A valid tree has exactly `n-1` edges.
@@ -39,7 +39,7 @@
 ## 4. Alien Dictionary
 
 **Summary:** Given words sorted by an unknown alphabet, recover one valid ordering of the letters, or report that none exists.
-**Practice:** [lc-0269-alien-dictionary](problem-bank/lc-0269-alien-dictionary/README.md)
+**Practice:** [lc-0269-alien-dictionary](../problem-bank/lc-0269-alien-dictionary/README.md)
 
 **Hints**:
 1. Compare adjacent words to find the first differing character to form a directed edge.
@@ -62,7 +62,7 @@
 ## 6. Cheapest Flights Within K Stops
 
 **Summary:** Find the cheapest route between two cities that uses at most a given number of intermediate stops.
-**Practice:** [lc-0787-cheapest-flights-within-k-stops](problem-bank/lc-0787-cheapest-flights-within-k-stops/README.md)
+**Practice:** [lc-0787-cheapest-flights-within-k-stops](../problem-bank/lc-0787-cheapest-flights-within-k-stops/README.md)
 
 **Hints**:
 1. Use Bellman-Ford algorithm with `k+1` iterations.

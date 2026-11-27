@@ -29,7 +29,7 @@
 ## 3. Number of Connected Components in an Undirected Graph
 
 **Summary:** Count how many separate connected groups an undirected graph contains.
-**Practice:** [lc-0323-number-of-connected-components-in-an-undirected-graph](problem-bank/lc-0323-number-of-connected-components-in-an-undirected-graph/README.md)
+**Practice:** [lc-0323-number-of-connected-components-in-an-undirected-graph](../problem-bank/lc-0323-number-of-connected-components-in-an-undirected-graph/README.md)
 
 **Hints:**
 - Start with `n` individual components.
@@ -43,7 +43,7 @@
 ## 4. Graph Valid Tree
 
 **Summary:** Decide whether a set of undirected edges over n nodes forms a single tree.
-**Practice:** [lc-0261-graph-valid-tree](problem-bank/lc-0261-graph-valid-tree/README.md)
+**Practice:** [lc-0261-graph-valid-tree](../problem-bank/lc-0261-graph-valid-tree/README.md)
 
 **Hints:**
 - A valid tree with `n` nodes must have exactly `n-1` edges.
@@ -57,7 +57,7 @@
 ## 5. Accounts Merge
 
 **Summary:** Several accounts list email addresses under a name; combine accounts that share any email into one merged record.
-**Practice:** [lc-0721-accounts-merge](problem-bank/lc-0721-accounts-merge/README.md)
+**Practice:** [lc-0721-accounts-merge](../problem-bank/lc-0721-accounts-merge/README.md)
 
 **Hints:**
 - Connect all emails belonging to the same account.
@@ -71,7 +71,7 @@
 ## 6. Longest Consecutive Sequence
 
 **Summary:** Find the length of the longest run of consecutive integers present in an unsorted array.
-**Practice:** [lc-0128-longest-consecutive-sequence](problem-bank/lc-0128-longest-consecutive-sequence/README.md)
+**Practice:** [lc-0128-longest-consecutive-sequence](../problem-bank/lc-0128-longest-consecutive-sequence/README.md)
 
 **Hints:**
 - Remove duplicates first.
