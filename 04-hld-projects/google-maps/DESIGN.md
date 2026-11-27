@@ -178,3 +178,31 @@ See [PITFALLS.md](./PITFALLS.md).
 
 ## 11. 🧮 Scoring Rubric (Cross-links)
 See [RUBRIC.md](./RUBRIC.md).
+
+---
+
+## 12. 🛑 Bottlenecks and Failure Modes
+
+Global navigation separates immutable map tile delivery from real-time telemetry and routing so degraded traffic pipelines never take down base routing or offline turn-by-turn guidance.
+
+### Failure Modes
+
+| Failure | Impact | Detection | Mitigation |
+|---|---|---|---|
+| Bad tile or routing-graph release | Broken turn-by-turn routes, wrong ETAs, or client tile decode errors | Canary region route-error rate, ETA drift alerts, and client decode-failure telemetry | Publish immutable versioned tile bundles and CH graphs (`v{N}`) to S3; flip manifest pointer back to `v{N-1}` |
+| Traffic feed outage (Kafka/Flink lag) | Live segment speeds freeze; dynamic rerouting stalls | Kafka consumer lag, Flink checkpoint failures, and stale-edge age in Graph Cache | Degrade routing weights to time-of-day historical speeds and static `speed_limit` until live probes resume |
+| Stale CDN map tiles | Clients render outdated road geometry after closures or map edits | Tile version mismatch counters and CDN cache-age telemetry | Use versioned tile URLs, targeted CDN edge purges for edited regions, and `stale-while-revalidate` TTLs |
+| Routing graph cache node loss | Route calculation latency spikes above 1s SLA | Graph cache health checks, routing P99 latency alarms, and timeout rates | Route queries to healthy regional replicas; auto-warm replacement nodes from S3 CH snapshots before serving |
+| Cellular disconnect or telemetry spike | Lost GPS pings or dropped reroute pushes for active drivers | Client upload error rate, API Gateway 5xx/429 spikes, and Redis session heartbeat gaps | Cache corridor tiles on device for offline turn-by-turn; buffer and retry GPS uploads on reconnect |
+
+### Recovery and Rollback
+- **Tile and routing-graph rollback:** Offline pipelines publish vector tiles and precomputed Contraction Hierarchies (CH) graphs to immutable versioned prefixes in S3 and roll them out region by region.
+- **Atomic pointer switch:** If canary validation detects routing regressions or malformed protobuf tiles, operators roll back the active manifest pointer to `v{N-1}` without recomputing shortcuts.
+- **Traffic outage degradation:** When Flink stream processing stalls, Routing Engines serve routes using historical time-of-day speed profiles and static edge speed limits rather than failing `/api/v1/routes`.
+- **Navigation session recovery:** Active Redis sessions (`nav:session:<user_id>`) are treated as soft state; on shard failover, clients keep navigating from locally cached route geometry and re-register on the next sync.
+
+### Retry and Replay
+- **Idempotent telemetry retries:** Mobile clients batch GPS pings during cellular blackouts and retry `POST /api/v1/telemetry` with exponential backoff and jitter.
+- **Safe upserts and DLQ:** Cassandra keys telemetry by `(user_id, timestamp)` so duplicate retries are idempotent upserts; malformed payloads route to a dead-letter queue (DLQ) for offline inspection.
+- **Bounded stream replay:** After a Flink restart, consumers replay from committed Kafka offsets while dropping probe events older than a freshness window (e.g., 10 minutes) so stale traffic cannot overwrite current speeds.
+- **Reroute push recovery:** If a reroute push times out or fails to reach a driver, the Reroute Service does not storm retries; the client reconciles updated ETAs and detours on its next periodic navigation poll.

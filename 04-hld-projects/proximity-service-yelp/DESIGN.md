@@ -179,4 +179,32 @@ CREATE TABLE businesses (
 - [Strong Answer](STRONG-ANSWER.md)
 
 ---
+
+## 13. 🛑 Bottlenecks and Failure Modes
+
+Because nearby search is 100:1 read-heavy over a compact ~3.2 GB Geohash index, failure handling focuses on fast Redis shard recovery, bounded PostGIS fallback, and safe replay of asynchronous business updates.
+
+### Failure Modes
+
+| Failure | Impact | Detection | Mitigation |
+|---|---|---|---|
+| Geo-index Redis shard loss | Higher search latency or missing businesses in affected Geohash cells | Redis sentinel/cluster heartbeat alarms, cache-miss spikes, and P99 latency alerts | Promote standby replica automatically; route overflow reads to PostGIS with circuit breakers while rebuilding |
+| Full regional cache cold start | Search QPS hits PostgreSQL directly, risking connection exhaustion | Regional cache-hit ratio drop and primary DB CPU/connection saturation | Pre-warm new Redis nodes from object-storage Geohash snapshots or DB read replicas before shifting traffic |
+| Write-vs-read index lag (Kafka/CDC) | Newly added, moved, or closed businesses appear stale in nearby searches | CDC/Kafka consumer lag metrics and write-to-index visibility delay probes | Accept bounded eventual consistency for search; apply version checks and scale consumer partitions |
+| Profile cache miss storm | Enriching `business_id` lists floods PostgreSQL read replicas | `biz:<id>` hit-rate drop and DB read latency/QPS spikes | Use single-flight request coalescing per `business_id`, bounded DB timeouts, and jittered cache TTLs |
+| Geohash precision rollout bug | Oversized result sets in dense cities or missed neighbors across cell edges | Empty-result rate spikes, Redis payload size alerts, and P99 search latency | Dual-write under a versioned key prefix (`geohash_v2:`) and flip read routing back on regression |
+
+### Recovery and Rollback
+- **Geo-index rebuild:** Because the full 200M-business 6-character Geohash index is ~3.2 GB, each Redis shard keeps hot replicas for fast failover; on total shard loss, a backfill worker streams `(geohash, business_id)` pairs from a PostgreSQL read replica or latest snapshot.
+- **Degraded search fallback:** When a Redis shard is unreachable, Location Search Service trips a circuit breaker and falls back to bounded PostGIS spatial queries on read replicas with strict timeouts and load shedding.
+- **Regional traffic draining:** If an entire regional cache cluster degrades, GeoDNS shifts nearby search traffic to the closest healthy region while the local Redis cluster warms and verifies key counts.
+- **Index schema rollback:** Precision changes (such as length-6 to length-7 Geohashes in dense metros) or profile serialization updates dual-write to a new key namespace so rollback is an instant read-path config flip.
+
+### Retry and Replay
+- **Idempotent profile writes:** Business Profile Service commits to PostgreSQL first using idempotency keys and bounded retries on transient database errors before emitting change events.
+- **Consumer retries and DLQ:** Kafka index-updater workers retry transient Redis failures with exponential backoff and route poison messages to a dead-letter queue (DLQ) without blocking healthy partitions.
+- **Ordered event replay:** After consumer outages, workers replay from committed Kafka offsets and check monotonic `updated_at` timestamps so replayed older events never overwrite newer coordinates or reopen closed businesses.
+- **Periodic parity reconciliation:** A nightly sweep compares business counts per Geohash prefix against PostgreSQL and triggers targeted cell backfills if drift is detected.
+
+---
 **Real-world reference**: See how Uber solved this in the [Uber case study](../../case-studies/uber-realtime/)
