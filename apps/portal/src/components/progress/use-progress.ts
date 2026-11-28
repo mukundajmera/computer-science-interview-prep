@@ -3,9 +3,12 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
 import {
   emptyProgressState,
+  mergeProgressStates,
   normalizeProgressState,
+  parseProgressExportFile,
   parseProgressState,
   STORAGE_KEY,
+  type ParseProgressExportResult,
   type ProgressState,
 } from "../../lib/progress-schema";
 
@@ -79,19 +82,27 @@ export function useProgress(knownIds?: readonly string[]) {
     });
   }, [normalizeOptions]);
 
-  const importProgress = useCallback((rawJson: string) => {
-    try {
-      const parsed = normalizeProgressState(JSON.parse(rawJson), normalizeOptions);
-      setProgress(parsed);
-      saveProgress(parsed);
-      return true;
-    } catch (e) {
-      console.error("Invalid progress data", e);
-      return false;
-    }
-  }, [normalizeOptions]);
+  const validateProgressFile = useCallback(
+    (rawJson: string): ParseProgressExportResult =>
+      parseProgressExportFile(rawJson, normalizeOptions),
+    [normalizeOptions]
+  );
+
+  const importProgress = useCallback(
+    (rawJson: string, mode: "merge" | "replace"): ParseProgressExportResult => {
+      const parsed = parseProgressExportFile(rawJson, normalizeOptions);
+      if (!parsed.ok) return parsed;
+      const next =
+        mode === "merge" ? mergeProgressStates(progress, parsed.state) : parsed.state;
+      const normalized = normalizeProgressState(next, normalizeOptions);
+      setProgress(normalized);
+      saveProgress(normalized);
+      return { ok: true, state: normalized };
+    },
+    [normalizeOptions, progress]
+  );
 
   const completedCount = Object.keys(progress.completed).length;
 
-  return { progress, isCompleted, toggleComplete, removeLegacy, importProgress, completedCount };
+  return { progress, isCompleted, toggleComplete, removeLegacy, validateProgressFile, importProgress, completedCount };
 }

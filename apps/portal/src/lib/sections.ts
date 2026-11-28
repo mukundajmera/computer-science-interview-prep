@@ -97,3 +97,18 @@ export const PORTAL_SECTIONS: PortalSection[] = [
     description: "Local study progress",
   },
 ];
+
+/** Maps a content-registry category onto the label of the portal section
+ * that displays it. Used to attribute completion percentages to sections. */
+export const CATEGORY_TO_SECTION_LABEL: Record<string, string> = {
+  "theory": "Theory",
+  "pattern": "Design Patterns",
+  "lld-project": "LLD Projects",
+  "hld-concept": "HLD Concepts",
+  "hld-project": "HLD Projects",
+  "genai-concept": "GenAI Systems",
+  "genai-lld": "GenAI Systems",
+  "genai-hld": "GenAI Systems",
+  "coding-topic": "Coding Patterns",
+  "case-study": "Case Studies",
+};

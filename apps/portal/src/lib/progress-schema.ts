@@ -119,6 +119,91 @@ export function parseProgressState(
   }
 }
 
+export type ParseProgressExportResult =
+  | { ok: true; state: ProgressState }
+  | { ok: false; error: string };
+
+function isStringRecord(value: unknown): value is Record<string, string> {
+  return (
+    isRecord(value) && Object.values(value).every((v) => typeof v === "string")
+  );
+}
+
+/**
+ * Strictly validates an exported progress file. Unlike parseProgressState,
+ * which silently repairs whatever localStorage holds, an import must refuse
+ * anything it cannot account for: corrupt JSON, a missing version, an
+ * unknown version, or maps that are not id-to-timestamp records.
+ */
+export function parseProgressExportFile(
+  rawJson: string,
+  options?: NormalizeProgressOptions
+): ParseProgressExportResult {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(rawJson);
+  } catch {
+    return { ok: false, error: "That file is not valid JSON." };
+  }
+
+  if (!isRecord(parsed)) {
+    return { ok: false, error: "That file does not contain a progress object." };
+  }
+
+  if (parsed.version === undefined) {
+    return { ok: false, error: "That file has no progress version field." };
+  }
+
+  if (parsed.version !== CURRENT_PROGRESS_VERSION) {
+    return {
+      ok: false,
+      error: `Unsupported progress file version: ${String(
+        parsed.version
+      )}. This site reads version ${CURRENT_PROGRESS_VERSION}.`,
+    };
+  }
+
+  if (parsed.completed !== undefined && !isStringRecord(parsed.completed)) {
+    return {
+      ok: false,
+      error: "The completed field is not an id-to-timestamp map.",
+    };
+  }
+
+  if (
+    parsed.legacyCompleted !== undefined &&
+    !isStringRecord(parsed.legacyCompleted)
+  ) {
+    return {
+      ok: false,
+      error: "The legacyCompleted field is not an id-to-timestamp map.",
+    };
+  }
+
+  return { ok: true, state: normalizeProgressState(parsed, options) };
+}
+
+/** Merges two states, keeping the later timestamp per id. */
+export function mergeProgressStates(
+  current: ProgressState,
+  incoming: ProgressState
+): ProgressState {
+  const merged = emptyProgressState();
+  for (const [id, timestamp] of Object.entries(current.completed)) {
+    mergeTimestamp(merged.completed, id, timestamp);
+  }
+  for (const [id, timestamp] of Object.entries(incoming.completed)) {
+    mergeTimestamp(merged.completed, id, timestamp);
+  }
+  for (const [id, timestamp] of Object.entries(current.legacyCompleted)) {
+    mergeTimestamp(merged.legacyCompleted, id, timestamp);
+  }
+  for (const [id, timestamp] of Object.entries(incoming.legacyCompleted)) {
+    mergeTimestamp(merged.legacyCompleted, id, timestamp);
+  }
+  return merged;
+}
+
 if (process.env.NODE_ENV === "test") {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
