@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant Client as Client
+    participant Resolver as Recursive resolver
+    participant Root as Root nameserver
+    participant TLD as TLD nameserver
+    participant Auth as Authoritative nameserver
+
+    Client->>Resolver: Query www.example.com
+    Resolver->>Resolver: Check local cache
+    alt Cached answer within TTL
+        Resolver-->>Client: Cached answer
+    else Cache miss
+        Resolver->>Root: Query www.example.com
+        Root-->>Resolver: Referral to .com TLD nameserver
+        Resolver->>TLD: Query www.example.com
+        TLD-->>Resolver: Referral to example.com authoritative nameserver
+        Resolver->>Auth: Query www.example.com
+        Auth-->>Resolver: A record answer with TTL
+        Resolver->>Resolver: Store answer in cache for the TTL
+        Resolver-->>Client: A record answer
+    end
