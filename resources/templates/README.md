@@ -30,7 +30,6 @@ Blank templates for practice. Use these to structure your interview answers.
 | 🧾 **Salary Negotiation Mock Scorecard** | Structured worksheet for logging rounds, risks, and debrief actions | [salary-negotiation-mock-scorecard.md](salary-negotiation-mock-scorecard.md) |
 | 🧠 **HLD Core Concepts Practice** | Time-boxed rubric for CAP/sharding/hashing/capacity judgment drills | [practice-hld-core-concepts.md](practice-hld-core-concepts.md) |
 | 🤖 **GenAI HLD Practice** | Time-boxed rubric, scoring, and checklist for GenAI SD interviews | [practice-genai-hld.md](practice-genai-hld.md) |
-| 🛠️ **Jules Task Delivery Prompt** | Reusable, quota-bounded prompt template for scoped implementation, review, verification, and PR delivery across repositories | [jules-task-delivery-prompt.md](jules-task-delivery-prompt.md) |
 
 ### 🏆 Coach Answers
 
