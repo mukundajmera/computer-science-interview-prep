@@ -1,0 +1,9 @@
+flowchart TD
+    P[Producer] -->|Send message| B[Broker queue]
+    B -->|Deliver| C[Consumer in a consumer group]
+    C --> R{Processing result}
+    R -->|Success| A[ACK: offset committed and message removed]
+    R -->|Failure| N{Retry budget left?}
+    N -->|Yes| RQ[NACK: message requeued for redelivery]
+    RQ --> B
+    N -->|No, attempts exhausted| D[Move to the dead-letter queue for manual review]

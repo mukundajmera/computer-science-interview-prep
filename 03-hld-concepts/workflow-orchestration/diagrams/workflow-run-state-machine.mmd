@@ -1,0 +1,11 @@
+stateDiagram-v2
+    [*] --> Started: start with idempotency key
+    Started --> StepRunning: persist state and step plan
+    StepRunning --> StepRunning: retry policy on transient failure
+    StepRunning --> Checkpointed: step succeeds, persist checkpoint
+    Checkpointed --> StepRunning: advance to next step
+    StepRunning --> Compensating: retries exhausted
+    Compensating --> Failed: compensation chain done, publish failure event
+    Checkpointed --> Succeeded: all steps done, publish success event
+    Succeeded --> [*]
+    Failed --> [*]

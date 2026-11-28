@@ -90,6 +90,10 @@ It is the pattern of managing ordered steps, durable state, retries, and compens
 - Priority queues for urgent workflows.
 - Region-local orchestration with global audit stream.
 
+## 📊 Diagrams
+
+- [Workflow run state machine](./diagrams/workflow-run-state-machine.mmd) - the durable lifecycle of one workflow run: start with an idempotency key, execute steps under a retry policy with checkpoints, and move to the compensation chain when retries are exhausted.
+
 ## Related concepts
 
 - [Idempotency](../idempotency/THEORY.md)
