@@ -23,7 +23,7 @@ Complexity: O(log n) time, O(1) space.
 ## Problem 3: Search Insert Position
 
 **Summary:** In a sorted array, find the index of a target or where it would be inserted.
-**Practice:** [lc-0035-search-insert-position](problem-bank/lc-0035-search-insert-position/README.md)
+**Practice:** [lc-0035-search-insert-position](../problem-bank/lc-0035-search-insert-position/README.md)
 
 Hints:
 1. This is lower bound.
@@ -34,7 +34,7 @@ Complexity: O(log n) time, O(1) space.
 ## Problem 4: Search in Rotated Sorted Array
 
 **Summary:** Find a target in a sorted array that has been rotated at an unknown pivot, in logarithmic time.
-**Practice:** [lc-0033-search-in-rotated-sorted-array](problem-bank/lc-0033-search-in-rotated-sorted-array/README.md)
+**Practice:** [lc-0033-search-in-rotated-sorted-array](../problem-bank/lc-0033-search-in-rotated-sorted-array/README.md)
 
 Hints:
 1. One half is always sorted.
@@ -45,7 +45,7 @@ Complexity: O(log n) time, O(1) space.
 ## Problem 5: Find Minimum in Rotated Sorted Array
 
 **Summary:** A sorted array of distinct values was rotated; locate its smallest element faster than a full scan.
-**Practice:** [lc-0153-find-minimum-in-rotated-sorted-array](problem-bank/lc-0153-find-minimum-in-rotated-sorted-array/README.md)
+**Practice:** [lc-0153-find-minimum-in-rotated-sorted-array](../problem-bank/lc-0153-find-minimum-in-rotated-sorted-array/README.md)
 
 Hints:
 1. Compare mid with right pointer.
@@ -66,7 +66,7 @@ Complexity: O(n log(max_pile)) time, O(1) space.
 ## Problem 7: Search a 2D Matrix
 
 **Summary:** Search for a value in a matrix whose rows are sorted and each row continues from the previous one.
-**Practice:** [lc-0074-search-a-2d-matrix](problem-bank/lc-0074-search-a-2d-matrix/README.md)
+**Practice:** [lc-0074-search-a-2d-matrix](../problem-bank/lc-0074-search-a-2d-matrix/README.md)
 
 Hints:
 1. Treat matrix as 1D array.

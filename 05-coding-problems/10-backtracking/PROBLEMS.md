@@ -3,7 +3,7 @@
 ## 1. Subsets
 
 **Summary:** List every possible subset of a set of distinct numbers.
-**Practice:** [lc-0078-subsets](problem-bank/lc-0078-subsets/README.md)
+**Practice:** [lc-0078-subsets](../problem-bank/lc-0078-subsets/README.md)
 
 **Hints**:
 1. At each element, you have two choices: include it or exclude it.
@@ -14,7 +14,7 @@
 ## 2. Combination Sum
 
 **Summary:** List every unique combination of candidate numbers (each reusable) that sums to a target.
-**Practice:** [lc-0039-combination-sum](problem-bank/lc-0039-combination-sum/README.md)
+**Practice:** [lc-0039-combination-sum](../problem-bank/lc-0039-combination-sum/README.md)
 
 **Hints**:
 1. Sort candidates to prune early if sum exceeds target.
@@ -25,7 +25,7 @@
 ## 3. Combinations
 
 **Summary:** Generate every way to choose k numbers out of 1 through n.
-**Practice:** [lc-0077-combinations](problem-bank/lc-0077-combinations/README.md)
+**Practice:** [lc-0077-combinations](../problem-bank/lc-0077-combinations/README.md)
 
 **Hints**:
 1. Start backtracking with `start = 1`.
@@ -36,7 +36,7 @@
 ## 4. Permutations
 
 **Summary:** List every ordering of a set of distinct numbers.
-**Practice:** [lc-0046-permutations](problem-bank/lc-0046-permutations/README.md)
+**Practice:** [lc-0046-permutations](../problem-bank/lc-0046-permutations/README.md)
 
 **Hints**:
 1. Use a boolean array to track used elements, or just check if `num` is in `path`.
@@ -47,7 +47,7 @@
 ## 5. Generate Parentheses
 
 **Summary:** List every balanced arrangement of n pairs of parentheses.
-**Practice:** [lc-0022-generate-parentheses](problem-bank/lc-0022-generate-parentheses/README.md)
+**Practice:** [lc-0022-generate-parentheses](../problem-bank/lc-0022-generate-parentheses/README.md)
 
 **Hints**:
 1. Keep track of the number of opening and closing brackets placed.
@@ -58,7 +58,7 @@
 ## 6. Word Search
 
 **Summary:** Decide whether a word can be traced through adjacent cells of a letter grid without reusing a cell.
-**Practice:** [lc-0079-word-search](problem-bank/lc-0079-word-search/README.md)
+**Practice:** [lc-0079-word-search](../problem-bank/lc-0079-word-search/README.md)
 
 **Hints**:
 1. Search starting from each cell matching `word[0]`.
@@ -69,7 +69,7 @@
 ## 7. N-Queens
 
 **Summary:** Place n queens on an n-by-n board so that none attack each other, and list the valid layouts.
-**Practice:** [lc-0051-n-queens](problem-bank/lc-0051-n-queens/README.md)
+**Practice:** [lc-0051-n-queens](../problem-bank/lc-0051-n-queens/README.md)
 
 **Hints**:
 1. Place queens row by row.
@@ -80,7 +80,7 @@
 ## 8. Letter Combinations of a Phone Number
 
 **Summary:** Given digits on a phone keypad, list every letter string they could spell.
-**Practice:** [lc-0017-letter-combinations-of-a-phone-number](problem-bank/lc-0017-letter-combinations-of-a-phone-number/README.md)
+**Practice:** [lc-0017-letter-combinations-of-a-phone-number](../problem-bank/lc-0017-letter-combinations-of-a-phone-number/README.md)
 
 **Hints**:
 1. Map digits to letters (e.g., `'2': 'abc'`).

@@ -3,7 +3,7 @@
 ## 1. Binary Tree Level Order Traversal
 
 **Summary:** Visit a binary tree's nodes row by row, from top to bottom, returning each row's values.
-**Practice:** [lc-0102-binary-tree-level-order-traversal](problem-bank/lc-0102-binary-tree-level-order-traversal/README.md)
+**Practice:** [lc-0102-binary-tree-level-order-traversal](../problem-bank/lc-0102-binary-tree-level-order-traversal/README.md)
 
 ### Hints
 1. Use a queue to keep track of nodes at the current level.
@@ -34,7 +34,7 @@
 ## 3. Binary Tree Right Side View
 
 **Summary:** List the values you would see looking at a binary tree from its right side, one per depth.
-**Practice:** [lc-0199-binary-tree-right-side-view](problem-bank/lc-0199-binary-tree-right-side-view/README.md)
+**Practice:** [lc-0199-binary-tree-right-side-view](../problem-bank/lc-0199-binary-tree-right-side-view/README.md)
 
 ### Hints
 1. Perform a standard level-order traversal using a queue.
@@ -50,7 +50,7 @@
 ## 4. Number of Islands
 
 **Summary:** Count the separate groups of connected land cells in a grid of land and water.
-**Practice:** [lc-0200-number-of-islands](problem-bank/lc-0200-number-of-islands/README.md)
+**Practice:** [lc-0200-number-of-islands](../problem-bank/lc-0200-number-of-islands/README.md)
 
 ### Hints
 1. Iterate over every cell. When you find a `'1'`, increment your island count and start a BFS.
@@ -66,7 +66,7 @@
 ## 5. Rotting Oranges
 
 **Summary:** Rot spreads between adjacent grid cells each minute; find how long until all fresh oranges rot, or that some never will.
-**Practice:** [lc-0994-rotting-oranges](problem-bank/lc-0994-rotting-oranges/README.md)
+**Practice:** [lc-0994-rotting-oranges](../problem-bank/lc-0994-rotting-oranges/README.md)
 
 ### Hints
 1. This is a multi-source BFS problem. Enqueue all initially rotten oranges with depth (minute) 0.
@@ -97,7 +97,7 @@
 ## 7. Word Ladder
 
 **Summary:** Find the shortest chain of single-letter changes from one word to another, using only dictionary words.
-**Practice:** [lc-0127-word-ladder](problem-bank/lc-0127-word-ladder/README.md)
+**Practice:** [lc-0127-word-ladder](../problem-bank/lc-0127-word-ladder/README.md)
 
 ### Hints
 1. Model this as an unweighted graph where words are nodes, and edges exist if they differ by one character.
@@ -113,7 +113,7 @@
 ## 8. Course Schedule
 
 **Summary:** Courses have prerequisite pairs; decide whether all courses can be completed without a circular dependency.
-**Practice:** [lc-0207-course-schedule](problem-bank/lc-0207-course-schedule/README.md)
+**Practice:** [lc-0207-course-schedule](../problem-bank/lc-0207-course-schedule/README.md)
 
 ### Hints
 1. This is a topological sort problem that can be solved with Kahn's Algorithm (BFS).

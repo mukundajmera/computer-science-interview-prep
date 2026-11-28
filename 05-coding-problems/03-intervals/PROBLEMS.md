@@ -3,7 +3,7 @@
 ## 1. Merge Intervals
 
 **Summary:** Combine all overlapping ranges in a list into the smallest set of disjoint ranges.
-**Practice:** [lc-0056-merge-intervals](problem-bank/lc-0056-merge-intervals/README.md)
+**Practice:** [lc-0056-merge-intervals](../problem-bank/lc-0056-merge-intervals/README.md)
 
 - **Hints**:
   1. Sort the intervals by their start times.
@@ -14,7 +14,7 @@
 ## 2. Insert Interval
 
 **Summary:** Add a new interval into a sorted list of non-overlapping intervals, merging anything that overlaps.
-**Practice:** [lc-0057-insert-interval](problem-bank/lc-0057-insert-interval/README.md)
+**Practice:** [lc-0057-insert-interval](../problem-bank/lc-0057-insert-interval/README.md)
 
 - **Hints**:
   1. Find all intervals ending before `newInterval` starts and add them directly.
@@ -25,7 +25,7 @@
 ## 3. Non-overlapping Intervals
 
 **Summary:** Find the fewest intervals to remove so that the rest do not overlap.
-**Practice:** [lc-0435-non-overlapping-intervals](problem-bank/lc-0435-non-overlapping-intervals/README.md)
+**Practice:** [lc-0435-non-overlapping-intervals](../problem-bank/lc-0435-non-overlapping-intervals/README.md)
 
 - **Hints**:
   1. This is a classic greedy problem.
@@ -36,7 +36,7 @@
 ## 4. Meeting Rooms
 
 **Summary:** Given meeting time ranges, decide whether one person could attend all of them.
-**Practice:** [lc-0252-meeting-rooms](problem-bank/lc-0252-meeting-rooms/README.md)
+**Practice:** [lc-0252-meeting-rooms](../problem-bank/lc-0252-meeting-rooms/README.md)
 
 - **Hints**:
   1. Sort intervals by start time.
@@ -47,7 +47,7 @@
 ## 5. Meeting Rooms II
 
 **Summary:** Given meeting time ranges, find the minimum number of rooms needed so none overlap in a room.
-**Practice:** [lc-0253-meeting-rooms-ii](problem-bank/lc-0253-meeting-rooms-ii/README.md)
+**Practice:** [lc-0253-meeting-rooms-ii](../problem-bank/lc-0253-meeting-rooms-ii/README.md)
 
 - **Hints**:
   1. You can use a min-heap to track end times of meetings.
@@ -58,7 +58,7 @@
 ## 6. Minimum Number of Arrows to Burst Balloons
 
 **Summary:** Balloons occupy horizontal ranges; find the fewest vertical shots that pop them all.
-**Practice:** [lc-0452-minimum-number-of-arrows-to-burst-balloons](problem-bank/lc-0452-minimum-number-of-arrows-to-burst-balloons/README.md)
+**Practice:** [lc-0452-minimum-number-of-arrows-to-burst-balloons](../problem-bank/lc-0452-minimum-number-of-arrows-to-burst-balloons/README.md)
 
 - **Hints**:
   1. Sort balloons by their end coordinate.

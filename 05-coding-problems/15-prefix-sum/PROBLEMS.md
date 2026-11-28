@@ -13,7 +13,7 @@
 ## 2. Subarray Sum Equals K
 
 **Summary:** Count the contiguous runs of an array whose sum equals a target.
-**Practice:** [lc-0560-subarray-sum-equals-k](problem-bank/lc-0560-subarray-sum-equals-k/README.md)
+**Practice:** [lc-0560-subarray-sum-equals-k](../problem-bank/lc-0560-subarray-sum-equals-k/README.md)
 
 **Hints**:
 - Hint 1: We can use a hash map to store the frequency of all prefix sums.
