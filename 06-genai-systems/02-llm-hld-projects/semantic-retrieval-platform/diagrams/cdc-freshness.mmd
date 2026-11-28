@@ -1,4 +1,3 @@
-```mermaid
 flowchart LR
     Source[Upstream CMS/DB] --> Debezium[Debezium CDC]
     Debezium --> KafkaTopic[Raw Doc Topic]
@@ -6,4 +5,3 @@ flowchart LR
     IngestSvc --> Chunk[Chunker]
     Chunk --> Embed[Embedder]
     Embed --> VectorDB[(Vector DB)]
-```
