@@ -30,7 +30,7 @@ Deep-dive analyses of production systems at massive scale.
 | [Real-Time Metrics Platform](../04-hld-projects/realtime-metrics-platform/) | [Google Spanner](./google-spanner-truetime/) |
 | [Ride Sharing Backend System](../04-hld-projects/ride-sharing/) | [Uber](./uber-realtime/) |
 | [Search Autocomplete - Problem Statement](../04-hld-projects/search-autocomplete/) | [Airbnb](./airbnb-search/) |
-| [Distributed Social Graph Engine (Meta TAO)](../04-hld-projects/social-graph-engine-tao/) | [LinkedIn](./linkedin-feed/) |
+| [Distributed Social Graph Engine (Meta TAO)](../04-hld-projects/social-graph-engine-tao/) | [Meta](./meta-memcache-tao/) |
 | [Social Post Search System](../04-hld-projects/social-post-search/) | [Twitter](./twitter-timeline/) |
 | [Stock Exchange Matching Engine](../04-hld-projects/stock-exchange-matching-engine/) | [Stripe](./stripe-ledger-engine/) |
 | [Video Recommendations](../04-hld-projects/video-recommendations/) | [YouTube](./youtube-video/) |
@@ -59,6 +59,7 @@ Deep-dive analyses of production systems at massive scale.
 | [GitHub Copilot](github-copilot/) | Code Assist & Coding Agent | Paid-plan cloud agent, 59-minute session cap | Current source-backed; see [scale metrics](github-copilot/#scale-and-provenance-metrics) | Repository context + branch-contained agents | AI coding systems |
 | [Discord](discord-messaging-storage/) | Message Storage | Trillions of messages stored | Current source-backed; see [scale metrics](discord-messaging-storage/#scale-metrics) | Hot partitions at chat scale | Chat/message storage design |
 | [Snowflake](snowflake-data-warehouse/) | Cloud Data Warehouse | Petabytes per large customer, hundreds of millions of queries/day fleet-wide | Widely known public facts; see [provenance](snowflake-data-warehouse/#-provenance-and-sources) | Storage/compute separation | Data platforms/analytics |
+| [Meta](meta-memcache-tao/) | Social Graph & Cache Tier | 1B+ reads/sec on the graph store (TAO paper, 2013) | Public papers; see [scale metrics](meta-memcache-tao/#scale-metrics) | Read-heavy graph serving | Caching strategies, social feeds |
 
 ---
 
