@@ -117,6 +117,33 @@ The system decouples the **Metadata Service** from the **Data Storage**. The Sta
 
 ![Sequence Diagram](diagrams/sequence.mmd)
 
+```mermaid
+flowchart TD
+    Client["Client"] -->|"PUT / GET / DELETE / Multipart"| LB["API Gateway / Load Balancer"]
+    LB --> Frontend["Stateless API Gateway /<br/>Storage Frontend"]
+
+    subgraph ControlPlane["Control Plane (Metadata)"]
+        Frontend -->|"Resolve / Commit Metadata"| MetaSvc["Metadata Service"]
+        MetaSvc --> MetaDB[("CockroachDB / Spanner<br/>(Buckets, Objects, Chunks)")]
+    end
+
+    subgraph DataPlane["Data Plane (64MB Chunks, 8+4 EC)"]
+        Frontend -->|"Stream Chunks"| Node1[("Chunk Server / Blob Node 1<br/>(JBOD)")]
+        Frontend -->|"Stream Chunks"| Node2[("Chunk Server / Blob Node 2<br/>(JBOD)")]
+        Frontend -->|"Stream Chunks"| NodeN[("Chunk Server / Blob Node N<br/>(JBOD)")]
+    end
+
+    subgraph Background["Background Daemons"]
+        GC["Garbage Collection &<br/>Multipart Lifecycle"] -->|"Scan Deleted / Expired"| MetaSvc
+        GC -->|"Free Chunks"| Node1
+        GC -->|"Free Chunks"| Node2
+        Scrub["Bitrot Scrubbing Daemon"] -->|"Verify Checksums & Rebuild"| Node1
+        Scrub -->|"Verify Checksums & Rebuild"| NodeN
+    end
+```
+
+The Stateless API Gateway (Storage Frontend) sits behind a Load Balancer and decouples object metadata from raw payload storage. On writes, it allocates chunk placements through the strongly consistent Metadata Service (CockroachDB/Spanner), streams 64MB chunks across JBOD Blob Nodes using 8+4 Reed-Solomon erasure coding (or 3x replication for small objects), and commits metadata only after durable writes succeed to guarantee read-after-write consistency. Background daemons run independently to reclaim deleted or expired multipart upload chunks and continuously scrub disks for silent bitrot corruption.
+
 ### Read Path (GetObject)
 1. Client calls `GET /{bucket}/{object_key}`.
 2. API Gateway requests Metadata Service to resolve `{bucket}/{object_key}` to `chunk_ids` and their locations (`node_ids`).

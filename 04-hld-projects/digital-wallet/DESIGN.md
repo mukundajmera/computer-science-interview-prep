@@ -143,6 +143,33 @@ CREATE TABLE tcc_phase_status (
 
 ## 5. 🏗️ High-Level Architecture
 
+```mermaid
+flowchart TD
+    Client["Client Apps"] --> GW["API Gateway<br/>(mTLS / OAuth2)"]
+    GW -->|"Read Balance"| AccSvc["Account Service"]
+    GW -->|"Transfer / Hold"| Orch["Transfer Orchestrator<br/>(TC/C & Saga)"]
+    Orch -->|"Check / Store Key"| Idem[("Idempotency Store<br/>Redis / DynamoDB")]
+    Orch -->|"1. TRY (Hold Funds)<br/>3. CONFIRM / CANCEL"| S1["Raft Shard Group 1<br/>(Source Account)"]
+    Orch -->|"2. TRY (Validate Dest)<br/>4. CONFIRM (Credit)"| S2["Raft Shard Group 2<br/>(Destination Account)"]
+    AccSvc -->|"Linearizable Read<br/>(Leader)"| S1
+
+    subgraph Shard1["Source Shard Internals"]
+        S1 --> WAL1[("Append-Only WAL")]
+        WAL1 --> LSM1[("LSM State (RocksDB)")]
+        LSM1 -.-> Acc1["accounts View"]
+        LSM1 -.-> Led1["ledger_entries Log"]
+    end
+
+    subgraph Shard2["Destination Shard Internals"]
+        S2 --> WAL2[("Append-Only WAL")]
+        WAL2 --> LSM2[("LSM State (RocksDB)")]
+        LSM2 -.-> Acc2["accounts View"]
+        LSM2 -.-> Led2["ledger_entries Log"]
+    end
+```
+
+The API Gateway terminates external requests and routes balance reads through the Account Service to the owning Raft leader for linearizable reads, while transfer and hold mutations go to the Transfer Orchestrator. After deduplicating requests against the Idempotency Store, the orchestrator coordinates cross-shard transfers using a Try-Confirm-Cancel (TC/C) flow—reserving funds on the source shard and validating the destination shard before committing both sides, or canceling on failure. Inside each Raft shard group, mutations append sequentially to an immutable Write-Ahead Log (WAL) backed by RocksDB LSM storage, from which both the double-entry `ledger_entries` log and materialized `accounts` balances are derived.
+
 ### Component List
 - **API Gateway:** Handles authentication, rate limiting, and request routing.
 - **Transfer Orchestrator:** Manages the Saga/TC/C distributed transaction process.

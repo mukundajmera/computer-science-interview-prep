@@ -150,6 +150,34 @@ CREATE TABLE email_attachments (
 
 ## 5. 🏗️ High-Level Architecture
 
+```mermaid
+flowchart TD
+    Web["Web / Mobile Client"] -->|"HTTPS REST"| WebGW["Web API Gateway"]
+    IMAPClient["Third-Party Mail Client"] -->|"Stateful TCP (IMAP)"| IMAPGW["IMAP Gateway"]
+    ExtMTA["External Mail Servers"] -->|"SMTP In"| SMTPIn["Inbound SMTP Workers (MTA)"]
+
+    WebGW -->|"Read Folder / Search"| ReadSvc["Read & Search Service"]
+    IMAPGW -->|"Proxy IMAP Commands"| ReadSvc
+    WebGW -->|"Send Outbound"| Kafka["Message Queue (Kafka)"]
+
+    SMTPIn -->|"1. Persist Raw .eml"| S3[("Object Store (S3)<br/>Raw Bodies & Attachments")]
+    SMTPIn -->|"2. Enqueue S3 Ref"| Kafka
+
+    Kafka -->|"Consume Inbound"| SpamAV["Spam / Antivirus Workers"]
+    SpamAV --> MDA["Mail Delivery Agent (MDA)"]
+    MDA -->|"Write Mailbox & Threads"| Cassandra[("Metadata DB (Cassandra)<br/>User-Partitioned")]
+    MDA -->|"Update User Index"| SearchIdx[("User-Partitioned Search Index<br/>RocksDB / Lucene")]
+
+    Kafka -->|"Consume Outbound"| SMTPOut["Outbound SMTP Workers (MTA)"]
+    SMTPOut -->|"SMTP Out"| ExtMTA
+
+    ReadSvc -->|"Fetch Mailbox"| Cassandra
+    ReadSvc -->|"Query Index"| SearchIdx
+    ReadSvc -->|"Fetch Attachments"| S3
+```
+
+Web clients connect through a stateless Web API Gateway while third-party desktop and mobile clients terminate long-lived connections at a dedicated IMAP Gateway, both delegating mailbox queries to internal read services backed by user-partitioned Cassandra tables, S3 blob storage, and per-user Lucene/RocksDB search indexes. Inbound mail from external MTAs is first persisted raw to S3 by Inbound SMTP Workers before returning `250 OK` and enqueuing a reference on Kafka to guarantee zero data loss. Downstream Spam/Antivirus workers and the Mail Delivery Agent (MDA) asynchronously filter messages, resolve RFC 5322 conversation threads, and update Cassandra and the user's search index, while Outbound SMTP Workers drain Kafka to deliver external mail.
+
 ### Component List
 - **Web API Gateway:** Terminates HTTP, handles auth, routes to internal services.
 - **IMAP Gateway:** Terminates stateful TCP connections for third-party clients and proxies commands to internal stateless services.

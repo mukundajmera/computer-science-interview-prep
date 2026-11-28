@@ -62,6 +62,19 @@ We use a columnar model. Each span is a row.
 
 ![Architecture](diagrams/architecture.mmd)
 
+```mermaid
+flowchart LR
+    App["App + SDK<br/>(W3C traceparent,<br/>Head Sampling)"] -->|"localhost UDP / gRPC"| Sidecar["Local Sidecar<br/>(Batch & Compress)"]
+    Sidecar -->|"OTLP gRPC / HTTP"| GW["Ingestion Gateway"]
+    GW -->|"Partition by trace_id"| Kafka[("Kafka Buffer<br/>(Spike & Outage Durability)")]
+    Kafka --> Workers["Ingestion Workers<br/>(Tail Sampling &<br/>DAG Assembly)"]
+    Workers -->|"Batch Insert"| CH[("ClickHouse<br/>(Columnar spans Table,<br/>14-Day Hot Storage)")]
+    UI["Observability UI"] --> QueryAPI["Query API"]
+    QueryAPI -->|"Deduplicated Query<br/>(ReplacingMergeTree)"| CH
+```
+
+Instrumented microservices propagate W3C `traceparent` context via the App SDK (with optional head-based sampling) and emit spans over `localhost` to a Local Sidecar that batches and compresses payloads to keep application latency overhead under 2ms. The Ingestion Gateway writes incoming OTLP batches into Kafka partitioned by `trace_id`, providing a durable buffer that absorbs traffic spikes and ClickHouse outages while routing all spans of a trace to the same worker. Stateful Ingestion Workers buffer spans in memory to apply tail-based sampling and assemble valid trace DAGs before writing to ClickHouse, where the Query API serves deduplicated trace lookups to the Observability UI.
+
 ### Components
 1. **App SDK:** Generates `traceparent` headers. Implements Head-based sampling (e.g., 1% of requests).
 2. **Local Sidecar:** Receives spans on `localhost`. Batches and compresses them.
