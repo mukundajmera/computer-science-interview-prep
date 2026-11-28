@@ -18,7 +18,7 @@ public class AdClickAggregatorService {
     }
 }
 ```
-**Reference:** [ad-click-aggregator](./ad-click-aggregator/README.md)
+**Reference:** [ad-click-aggregator](./ad-click-aggregator/)
 
 ---
 
@@ -34,7 +34,7 @@ public class LockerAllocationStrategy {
     }
 }
 ```
-**Reference:** [amazon-locker](./amazon-locker/README.md)
+**Reference:** [amazon-locker](./amazon-locker/)
 
 ---
 
@@ -50,7 +50,7 @@ public class RateLimiterFilter {
     }
 }
 ```
-**Reference:** [api-gateway](./api-gateway/README.md)
+**Reference:** [api-gateway](./api-gateway/)
 
 ---
 
@@ -66,7 +66,7 @@ public class TransactionManager {
     }
 }
 ```
-**Reference:** [atm-system](./atm-system/README.md)
+**Reference:** [atm-system](./atm-system/)
 
 ---
 
@@ -82,7 +82,7 @@ public class BookingService {
     }
 }
 ```
-**Reference:** [car-rental](./car-rental/README.md)
+**Reference:** [car-rental](./car-rental/)
 
 ---
 
@@ -98,7 +98,7 @@ public class MoveValidator {
     }
 }
 ```
-**Reference:** [chess-game](./chess-game/README.md)
+**Reference:** [chess-game](./chess-game/)
 
 ---
 
@@ -114,7 +114,7 @@ public class CircuitBreakerState {
     }
 }
 ```
-**Reference:** [circuit-breaker](./circuit-breaker/README.md)
+**Reference:** [circuit-breaker](./circuit-breaker/)
 
 ---
 
@@ -130,7 +130,7 @@ public class WinChecker {
     }
 }
 ```
-**Reference:** [connect-four](./connect-four/README.md)
+**Reference:** [connect-four](./connect-four/)
 
 ---
 
@@ -146,7 +146,7 @@ public class DeckManager {
     }
 }
 ```
-**Reference:** [deck-of-cards](./deck-of-cards/README.md)
+**Reference:** [deck-of-cards](./deck-of-cards/)
 
 ---
 
@@ -162,7 +162,7 @@ public class ShardedCounter {
     }
 }
 ```
-**Reference:** [distributed-counter](./distributed-counter/README.md)
+**Reference:** [distributed-counter](./distributed-counter/)
 
 ---
 
@@ -178,7 +178,7 @@ public class ConfigNotifier {
     }
 }
 ```
-**Reference:** [dynamic-config-service](./dynamic-config-service/README.md)
+**Reference:** [dynamic-config-service](./dynamic-config-service/)
 
 ---
 
@@ -194,7 +194,7 @@ public class ElevatorDispatcher {
     }
 }
 ```
-**Reference:** [elevator-system](./elevator-system/README.md)
+**Reference:** [elevator-system](./elevator-system/)
 
 ---
 
@@ -210,7 +210,7 @@ public class DirectoryNode {
     }
 }
 ```
-**Reference:** [file-system](./file-system/README.md)
+**Reference:** [file-system](./file-system/)
 
 ---
 
@@ -226,7 +226,7 @@ public class StateTransitionTable {
     }
 }
 ```
-**Reference:** [finite-state-machine](./finite-state-machine/README.md)
+**Reference:** [finite-state-machine](./finite-state-machine/)
 
 ---
 
@@ -242,7 +242,7 @@ public class ETACalculator {
     }
 }
 ```
-**Reference:** [food-delivery-system](./food-delivery-system/README.md)
+**Reference:** [food-delivery-system](./food-delivery-system/)
 
 ---
 
@@ -258,7 +258,7 @@ public class PricingStrategy {
     }
 }
 ```
-**Reference:** [hotel-management-system](./hotel-management-system/README.md)
+**Reference:** [hotel-management-system](./hotel-management-system/)
 
 ---
 
@@ -274,7 +274,7 @@ public class EventDispatcher {
     }
 }
 ```
-**Reference:** [in-memory-event-bus](./in-memory-event-bus/README.md)
+**Reference:** [in-memory-event-bus](./in-memory-event-bus/)
 
 ---
 
@@ -306,7 +306,7 @@ public class InventoryService {
     }
 }
 ```
-**Reference:** [inventory-management](./inventory-management/README.md)
+**Reference:** [inventory-management](./inventory-management/)
 
 ---
 
@@ -322,7 +322,7 @@ public class JobExecutor {
     }
 }
 ```
-**Reference:** [job-scheduler](./job-scheduler/README.md)
+**Reference:** [job-scheduler](./job-scheduler/)
 
 ---
 
@@ -338,7 +338,7 @@ public class MemtableManager {
     }
 }
 ```
-**Reference:** [key-value-store-lsm](./key-value-store-lsm/README.md)
+**Reference:** [key-value-store-lsm](./key-value-store-lsm/)
 
 ---
 
@@ -354,7 +354,7 @@ public class FineCalculator {
     }
 }
 ```
-**Reference:** [library-management](./library-management/README.md)
+**Reference:** [library-management](./library-management/)
 
 ---
 
@@ -370,7 +370,7 @@ public class ConnectionFinder {
     }
 }
 ```
-**Reference:** [linkedin-connection](./linkedin-connection/README.md)
+**Reference:** [linkedin-connection](./linkedin-connection/)
 
 ---
 
@@ -402,7 +402,7 @@ public class AsyncAppender {
     }
 }
 ```
-**Reference:** [logging-framework](./logging-framework/README.md)
+**Reference:** [logging-framework](./logging-framework/)
 
 ---
 
@@ -418,7 +418,7 @@ public class LRUCache {
     }
 }
 ```
-**Reference:** [lru-cache](./lru-cache/README.md)
+**Reference:** [lru-cache](./lru-cache/)
 
 ---
 
@@ -434,7 +434,7 @@ public class AlertEvaluator {
     }
 }
 ```
-**Reference:** [market-alert-engine](./market-alert-engine/README.md)
+**Reference:** [market-alert-engine](./market-alert-engine/)
 
 ---
 
@@ -450,7 +450,7 @@ public class ScheduleFinder {
     }
 }
 ```
-**Reference:** [meeting-room-scheduler](./meeting-room-scheduler/README.md)
+**Reference:** [meeting-room-scheduler](./meeting-room-scheduler/)
 
 ---
 
@@ -466,7 +466,7 @@ public class OffsetManager {
     }
 }
 ```
-**Reference:** [message-queue](./message-queue/README.md)
+**Reference:** [message-queue](./message-queue/)
 
 ---
 
@@ -482,7 +482,7 @@ public class SeatLockManager {
     }
 }
 ```
-**Reference:** [movie-ticket-booking](./movie-ticket-booking/README.md)
+**Reference:** [movie-ticket-booking](./movie-ticket-booking/)
 
 ---
 
@@ -498,7 +498,7 @@ public class CacheContext {
     }
 }
 ```
-**Reference:** [multi-policy-cache](./multi-policy-cache/README.md)
+**Reference:** [multi-policy-cache](./multi-policy-cache/)
 
 ---
 
@@ -514,7 +514,7 @@ public class NotificationRouter {
     }
 }
 ```
-**Reference:** [notification-service](./notification-service/README.md)
+**Reference:** [notification-service](./notification-service/)
 
 ---
 
@@ -546,7 +546,7 @@ public class CodeSandbox {
     }
 }
 ```
-**Reference:** [online-code-judge](./online-code-judge/README.md)
+**Reference:** [online-code-judge](./online-code-judge/)
 
 ---
 
@@ -562,7 +562,7 @@ public class DiscountEngine {
     }
 }
 ```
-**Reference:** [online-shopping-cart](./online-shopping-cart/README.md)
+**Reference:** [online-shopping-cart](./online-shopping-cart/)
 
 ---
 
@@ -578,7 +578,7 @@ public class SpotFinder {
     }
 }
 ```
-**Reference:** [parking-lot](./parking-lot/README.md)
+**Reference:** [parking-lot](./parking-lot/)
 
 ---
 
@@ -594,7 +594,7 @@ public class PaymentRouter {
     }
 }
 ```
-**Reference:** [payment-gateway-router](./payment-gateway-router/README.md)
+**Reference:** [payment-gateway-router](./payment-gateway-router/)
 
 ---
 
@@ -626,7 +626,7 @@ public class SlidingWindowLimiter {
     }
 }
 ```
-**Reference:** [rate-limiter](./rate-limiter/README.md)
+**Reference:** [rate-limiter](./rate-limiter/)
 
 ---
 
@@ -642,7 +642,7 @@ public class TableManager {
     }
 }
 ```
-**Reference:** [restaurant-management](./restaurant-management/README.md)
+**Reference:** [restaurant-management](./restaurant-management/)
 
 ---
 
@@ -658,7 +658,7 @@ public class Matcher {
     }
 }
 ```
-**Reference:** [ride-sharing-system](./ride-sharing-system/README.md)
+**Reference:** [ride-sharing-system](./ride-sharing-system/)
 
 ---
 

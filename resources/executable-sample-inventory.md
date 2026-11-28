@@ -12,21 +12,27 @@ Status meanings:
 
 | Path | Status | Evidence |
 |------|--------|----------|
+| `00-theory/distributed-systems/code/java/fallacies/FallaciesDemo.java` | illustrative-only | No same-language test suite present. |
+| `00-theory/distributed-systems/code/python/fallacies/fallacies_demo.py` | illustrative-only | No same-language test suite present. |
 | `03-hld-concepts/api-design/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/api-design/java/v1-simple/IdempotencyStore.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/api-design/java/v1-simple/VersionedBookingApi.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/api-design/python/v1-simple/idempotency_store.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/api-design/python/v1-simple/versioned_booking_api.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/api-gateway/java/v1-simple/SimpleGateway.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/api-gateway/java/v2/GatewayV2.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/api-gateway/java/v3/GatewayV3.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/api-gateway/python/v1-simple/simple_gateway.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/api-gateway/python/v2/gateway_v2.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/api-gateway/python/v3/gateway_v3.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/cache-invalidation-patterns/java/ResilientCacheService.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/cache-invalidation-patterns/python/resilient_cache_service.py` | tested | Same-language test suite present. |
-| `03-hld-concepts/caching/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/caching/java/v1-simple/SimpleCache.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/caching/java/v2-realistic/Demo.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/caching/java/v2-realistic/LRUCache.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/caching/java/v3-production/Demo.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/caching/java/v3-production/WriteThruCache.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/caching/java/v1_simple/SimpleCache.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/caching/java/v1_simple/V1Demo.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/caching/java/v2_realistic/LRUCache.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/caching/java/v2_realistic/V2Demo.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/caching/java/v3_production/V3Demo.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/caching/java/v3_production/WriteThruCache.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/caching/java/v4_xfetch/SingleflightMutex.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/caching/java/v4_xfetch/XFetchCache.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/caching/python/v1-simple/simple_cache.py` | tested | Same-language test suite present. |
@@ -39,21 +45,21 @@ Status meanings:
 | `03-hld-concepts/cap-theorem/python/v1-simple/cap_mode.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/cassandra/java/v1-simple/SimpleCassandraTable.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/cassandra/python/v1-simple/simple_cassandra_table.py` | tested | Same-language test suite present. |
-| `03-hld-concepts/cdn/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/cdn/java/v1-simple/SimpleDemo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/cdn/java/v1-simple/SimpleProxyCache.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/cdn/java/v2-realistic/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/cdn/java/v2-realistic/GeographicCDN.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/cdn/java/v3-production/Demo.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/cdn/java/v2-realistic/GeographicDemo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/cdn/java/v3-production/ProductionCDN.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/cdn/java/v3-production/ProductionDemo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/cdn/python/v1-simple/simple_proxy_cache.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/cdn/python/v2-realistic/geographic_cdn.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/cdn/python/v3-production/production_cdn.py` | tested | Same-language test suite present. |
-| `03-hld-concepts/consistent-hashing/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/consistent-hashing/java/v1-simple/SimpleConsistentHash.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/consistent-hashing/java/v2-realistic/Demo.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/consistent-hashing/java/v1-simple/SimpleDemo.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/consistent-hashing/java/v2-realistic/RealisticDemo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/consistent-hashing/java/v2-realistic/VirtualNodeConsistentHash.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/consistent-hashing/java/v3-production/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/consistent-hashing/java/v3-production/ProductionConsistentHash.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/consistent-hashing/java/v3-production/ProductionDemo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/consistent-hashing/python/v1-simple/simple_consistent_hash.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/consistent-hashing/python/v2-realistic/virtual_node_hash.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/consistent-hashing/python/v3-production/production_hash.py` | tested | Same-language test suite present. |
@@ -128,7 +134,11 @@ Status meanings:
 | `03-hld-concepts/idempotency/java/v1-simple/IdempotencyKeyManager.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/idempotency/python/v1-simple/idempotency_key_manager.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/kafka/java/v1-simple/SimpleProducerConsumer.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/kafka/java/v2-realistic/PartitionedLog.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/kafka/java/v3-production/ReplicatedLog.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/kafka/python/v1-simple/simple_producer_consumer.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/kafka/python/v2-realistic/partitioned_log.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/kafka/python/v3-production/replicated_log.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/large-blob-handling/java/v1-simple/ChunkedBlobUploader.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/large-blob-handling/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/large-blob-handling/python/v1-simple/chunked_blob_uploader.py` | tested | Same-language test suite present. |
@@ -186,6 +196,13 @@ Status meanings:
 | `03-hld-concepts/nosql-databases/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/nosql-databases/java/v1-simple/LsmKeyStore.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/nosql-databases/python/v1-simple/lsm_key_store.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/object-storage/java/V1ChecksummedStore.java` | illustrative-only | No same-language test suite present. |
+| `03-hld-concepts/object-storage/java/V2ChunkedReplicatedStore.java` | illustrative-only | No same-language test suite present. |
+| `03-hld-concepts/object-storage/java/V3XorParityStore.java` | illustrative-only | No same-language test suite present. |
+| `03-hld-concepts/object-storage/python/test_object_storage.py` | illustrative-only | No same-language test suite present. |
+| `03-hld-concepts/object-storage/python/v1_checksummed.py` | illustrative-only | No same-language test suite present. |
+| `03-hld-concepts/object-storage/python/v2_chunked_replicated.py` | illustrative-only | No same-language test suite present. |
+| `03-hld-concepts/object-storage/python/v3_xor_parity.py` | illustrative-only | No same-language test suite present. |
 | `03-hld-concepts/pacelc-theorem/java/src/PacelcSimulator.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/pacelc-theorem/python/pacelc_simulator.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/pattern-selection/java/ConsistencyLevel.java` | illustrative-only | No same-language test suite present. |
@@ -195,13 +212,17 @@ Status meanings:
 | `03-hld-concepts/pattern-selection/python/pattern_evaluator.py` | illustrative-only | No same-language test suite present. |
 | `03-hld-concepts/pattern-selection/python/test_pattern_evaluator.py` | illustrative-only | No same-language test suite present. |
 | `03-hld-concepts/postgresql/java/v1-simple/PostgresReadWritePlanner.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/postgresql/java/v2-advanced/Partitioning.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/postgresql/java/v3-expert/SkipLockedQueue.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/postgresql/python/v1-simple/postgres_read_write_planner.py` | tested | Same-language test suite present. |
-| `03-hld-concepts/rate-limiting/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/postgresql/python/v2-advanced/partitioning.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/postgresql/python/v3-expert/skip_locked.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/rate-limiting/java/v1-simple/SimpleDemo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/rate-limiting/java/v1-simple/TokenBucketRateLimiter.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/rate-limiting/java/v2-realistic/Demo.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/rate-limiting/java/v2-realistic/RealisticDemo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/rate-limiting/java/v2-realistic/SlidingWindowRateLimiter.java` | tested | Same-language test suite present. |
-| `03-hld-concepts/rate-limiting/java/v3-production/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/rate-limiting/java/v3-production/DistributedRateLimiter.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/rate-limiting/java/v3-production/ProductionDemo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/rate-limiting/python/v1-simple/token_bucket.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/rate-limiting/python/v2-realistic/sliding_window.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/rate-limiting/python/v3-production/distributed_limiter.py` | tested | Same-language test suite present. |
@@ -215,7 +236,12 @@ Status meanings:
 | `03-hld-concepts/real-time-updates/python/v2-realistic/connection_registry.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/real-time-updates/python/v3-production/distributed_realtime_router.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/redis/java/v1-simple/SimpleRedisCache.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/redis/java/v2/EvictionStore.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/redis/java/v3/Node.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/redis/java/v3/ShardedClient.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/redis/python/v1-simple/simple_redis_cache.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/redis/python/v2/eviction_store.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/redis/python/v3/sharded_client.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/relational-databases/java/v1-simple/BPlusTreeIndex.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/relational-databases/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/relational-databases/python/v1-simple/b_plus_tree_index.py` | tested | Same-language test suite present. |
@@ -246,7 +272,13 @@ Status meanings:
 | `03-hld-concepts/stream-processing/python/v1-simple/sliding_window_aggregator.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/time-series-databases/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/time-series-databases/java/v1-simple/TimeSeriesDownsampler.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/time-series-databases/java/v1_append/AppendStore.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/time-series-databases/java/v2_compression/GorillaCompression.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/time-series-databases/java/v3_blocks/TsdbEngine.java` | tested | Same-language test suite present. |
+| `03-hld-concepts/time-series-databases/python/v1-append/append_store.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/time-series-databases/python/v1-simple/time_series_downsampler.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/time-series-databases/python/v2-compression/gorilla.py` | tested | Same-language test suite present. |
+| `03-hld-concepts/time-series-databases/python/v3-blocks/tsdb.py` | tested | Same-language test suite present. |
 | `03-hld-concepts/websockets/java/v1-simple/ConnectionManager.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/websockets/java/v1-simple/Demo.java` | tested | Same-language test suite present. |
 | `03-hld-concepts/websockets/python/v1-simple/connection_manager.py` | tested | Same-language test suite present. |

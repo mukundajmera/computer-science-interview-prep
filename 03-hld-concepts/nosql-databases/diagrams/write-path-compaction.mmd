@@ -1,0 +1,30 @@
+flowchart TD
+    Client[Client Write] --> Coord[Coordinator / Storage Node]
+
+    subgraph Durability["1. Sequential Append (Disk)"]
+        WAL[(Commit Log / WAL)]
+    end
+
+    subgraph Memory["2. In-Memory Buffer (RAM)"]
+        Mem[Active Memtable<br/>Sorted Structure]
+        Imm[Immutable Memtable]
+    end
+
+    subgraph Disk["3. Immutable SSTables & Compaction (Disk)"]
+        L0[Level 0 SSTables<br/>Overlapping Key Ranges]
+        Comp[Background Compaction<br/>Merge-Sort, Deduplicate, Drop Tombstones]
+        L1[Level 1 SSTables<br/>Non-Overlapping Sorted Runs]
+        L2[Level 2+ SSTables<br/>Larger Sorted Runs]
+    end
+
+    Coord -->|1a. Append for crash recovery| WAL
+    Coord -->|1b. Insert sorted key-value| Mem
+    Mem -.->|Ack once WAL + Memtable succeed| Client
+
+    Mem -->|2. Size threshold reached| Imm
+    Imm -->|3. Sequential flush| L0
+    WAL -.->|Truncate flushed segment| L0
+
+    L0 -->|4. Trigger compaction| Comp
+    Comp -->|5. Write merged runs| L1
+    L1 -->|6. Promote & compact| L2

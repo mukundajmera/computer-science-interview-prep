@@ -3,7 +3,7 @@
 ## 1. Implement Trie (Prefix Tree)
 
 **Summary:** Build a prefix tree supporting word insertion, exact lookup, and prefix lookup.
-**Practice:** [lc-0208-implement-trie-prefix-tree](problem-bank/lc-0208-implement-trie-prefix-tree/README.md)
+**Practice:** [lc-0208-implement-trie-prefix-tree](../problem-bank/lc-0208-implement-trie-prefix-tree/README.md)
 
 **Hints:**
 1. A node needs a map of children and a boolean terminal flag.
@@ -56,7 +56,7 @@
 ## 5. Word Search II
 
 **Summary:** Find all dictionary words that can be traced through adjacent cells of a letter grid.
-**Practice:** [lc-0212-word-search-ii](problem-bank/lc-0212-word-search-ii/README.md)
+**Practice:** [lc-0212-word-search-ii](../problem-bank/lc-0212-word-search-ii/README.md)
 
 **Hints:**
 1. Build a trie of the words.

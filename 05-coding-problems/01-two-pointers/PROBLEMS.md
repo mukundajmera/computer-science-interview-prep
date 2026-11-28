@@ -3,7 +3,7 @@
 ## 1. Container With Most Water
 
 **Summary:** Given bar heights, choose two bars that, with the gap between them, hold the largest area of water.
-**Practice:** [lc-0011-container-with-most-water](problem-bank/lc-0011-container-with-most-water/README.md)
+**Practice:** [lc-0011-container-with-most-water](../problem-bank/lc-0011-container-with-most-water/README.md)
 
 **Hints:**
 1. Start with the maximum possible width (pointers at both ends).
@@ -19,7 +19,7 @@
 ## 2. Two Sum II - Input Array Is Sorted
 
 **Summary:** In a sorted array, find the two positions whose values add up to a target.
-**Practice:** [lc-0167-two-sum-ii-input-array-is-sorted](problem-bank/lc-0167-two-sum-ii-input-array-is-sorted/README.md)
+**Practice:** [lc-0167-two-sum-ii-input-array-is-sorted](../problem-bank/lc-0167-two-sum-ii-input-array-is-sorted/README.md)
 
 **Hints:**
 1. Use the sorted property to your advantage.
@@ -35,7 +35,7 @@
 ## 3. 3Sum
 
 **Summary:** Find every distinct triple of values in an array that adds up to zero, with no repeated triples.
-**Practice:** [lc-0015-3sum](problem-bank/lc-0015-3sum/README.md)
+**Practice:** [lc-0015-3sum](../problem-bank/lc-0015-3sum/README.md)
 
 **Hints:**
 1. Sorting the array helps in avoiding duplicates and allows the use of two pointers.
@@ -66,7 +66,7 @@
 ## 5. Move Zeroes
 
 **Summary:** Shift all zeros to the end of an array in place while keeping the order of the other values.
-**Practice:** [lc-0283-move-zeroes](problem-bank/lc-0283-move-zeroes/README.md)
+**Practice:** [lc-0283-move-zeroes](../problem-bank/lc-0283-move-zeroes/README.md)
 
 **Hints:**
 1. Keep a pointer for the position of the next non-zero element.
@@ -82,7 +82,7 @@
 ## 6. Sort Colors
 
 **Summary:** Sort an array containing only three distinct values in place in a single pass.
-**Practice:** [lc-0075-sort-colors](problem-bank/lc-0075-sort-colors/README.md)
+**Practice:** [lc-0075-sort-colors](../problem-bank/lc-0075-sort-colors/README.md)
 
 **Hints:**
 1. This is the Dutch National Flag problem.
@@ -98,7 +98,7 @@
 ## 7. Trapping Rain Water
 
 **Summary:** Given bar heights, compute how much rain would be trapped between the bars.
-**Practice:** [lc-0042-trapping-rain-water](problem-bank/lc-0042-trapping-rain-water/README.md)
+**Practice:** [lc-0042-trapping-rain-water](../problem-bank/lc-0042-trapping-rain-water/README.md)
 
 **Hints:**
 1. The water trapped above a bar is determined by the minimum of the maximum heights to its left and right, minus its own height.

@@ -15,7 +15,7 @@
 - **C**: This distractor (Draw a full UML upfront) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Explain design patterns before domain model) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-1)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-1-)
 
 ### Question 2
 **Answer: B**
@@ -28,7 +28,7 @@
 - **C**: This distractor (Naming style) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (IDE shortcuts) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-2)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-2-)
 
 ### Question 3
 **Answer: C**
@@ -41,7 +41,7 @@
 - **B**: This distractor ("I'll design core flows and skip all edge cases.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor ("I'll focus only on class names.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-3)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-3-)
 
 ### Question 4
 **Answer: B**
@@ -54,7 +54,7 @@
 - **C**: This distractor ("I will use Java for faster coding.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor ("I will avoid exceptions.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-4)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-4-)
 
 ### Question 5
 **Answer: C**
@@ -67,7 +67,7 @@
 - **B**: This distractor (Assume the most complex scenario) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Refuse to continue until exact requirements are provided) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-5)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-5-)
 
 ### Question 6
 **Answer: B**
@@ -80,7 +80,7 @@
 - **C**: This distractor (Copy a known system design) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Use inheritance for all entities) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-6)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-6-)
 
 ### Question 7
 **Answer: D**
@@ -93,7 +93,7 @@
 - **B**: This distractor (Association) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **C**: This distractor (Aggregation) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-7)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-7-)
 
 ### Question 8
 **Answer: B**
@@ -106,7 +106,7 @@
 - **C**: This distractor (Private fields and public methods) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Focused interfaces) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-8)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-8-)
 
 ### Question 9
 **Answer: A**
@@ -119,7 +119,7 @@
 - **C**: This distractor (Need to simplify subsystem API) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Need to notify subscribers) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-9)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-9-)
 
 ### Question 10
 **Answer: C**
@@ -132,7 +132,7 @@
 - **B**: This distractor (Centralized logging) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (One app-wide configuration object) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-10)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-10-)
 
 ### Question 11
 **Answer: B**
@@ -145,7 +145,7 @@
 - **C**: This distractor (Deep inheritance hierarchy) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (No exceptions raised) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-11)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-11-)
 
 ### Question 12
 **Answer: B**
@@ -158,7 +158,7 @@
 - **C**: This distractor (Remove validation) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Use global variables) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-12)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-12-)
 
 ### Question 13
 **Answer: B**
@@ -171,7 +171,7 @@
 - **C**: This distractor (Duplicate code everywhere for speed) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Avoid abstractions entirely) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-13)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-13-)
 
 ### Question 14
 **Answer: B**
@@ -184,7 +184,7 @@
 - **C**: This distractor (Using enums) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Writing helper methods) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-14)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-14-)
 
 ### Question 15
 **Answer: C**
@@ -197,7 +197,7 @@
 - **B**: This distractor ("It is popular in interviews.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor ("It reduces lines of code.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-15)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-15-)
 
 ### Question 16
 **Answer: B**
@@ -210,7 +210,7 @@
 - **C**: This distractor (Implementation details only) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Language-specific optimizations only) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-16)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-16-)
 
 ### Question 17
 **Answer: B**
@@ -223,7 +223,7 @@
 - **C**: This distractor (Redraw the entire system from scratch) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Avoid answering without benchmarks) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-17)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-17-)
 
 ### Question 18
 **Answer: C**
@@ -236,7 +236,7 @@
 - **B**: This distractor (Restart everything) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Add unrelated patterns) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-18)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-18-)
 
 ### Question 19
 **Answer: C**
@@ -249,7 +249,7 @@
 - **B**: This distractor (Long theoretical monologue) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Constantly changing direction without summary) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-19)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-19-)
 
 ### Question 20
 **Answer: C**
@@ -262,7 +262,7 @@
 - **B**: This distractor (Only if asked at the end) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Before requirements are clear) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-20)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-20-)
 
 ### Question 21
 **Answer: B**
@@ -275,7 +275,7 @@
 - **C**: This distractor (Duplicate ParkingLot per tenant) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Remove pricing from domain) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-21)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-21-)
 
 ### Question 22
 **Answer: B**
@@ -288,7 +288,7 @@
 - **C**: This distractor (Inline conditionals in UI layer) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Ignore variant support) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-22)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-22-)
 
 ### Question 23
 **Answer: B**
@@ -301,7 +301,7 @@
 - **C**: This distractor (Disable cancel flow) represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor (Skip inventory checks) represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-23)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-23-)
 
 ### Question 24
 **Answer: B**
@@ -314,7 +314,7 @@
 - **C**: This distractor ("I avoided all abstractions.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor ("I optimized distributed scaling first.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-24)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-24-)
 
 ### Question 25
 **Answer: C**
@@ -327,4 +327,4 @@
 - **B**: This distractor ("I used many patterns so it is correct.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 - **D**: This distractor ("I need more time to pick a language.") represents a suboptimal trade-off or incorrect assumption for this scenario.
 
-[Read more about this framework concept](../lld-interview-framework-quiz.md#question-25)
+[Read more about this framework concept](../lld-interview-framework-quiz.md#question-25-)

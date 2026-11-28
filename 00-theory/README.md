@@ -48,6 +48,7 @@ This section covers the foundational concepts every software engineer should mas
 - [Concurrency Paradigms](./system-design-fundamentals/concurrency-paradigms.md) - Shared Memory vs Actors vs CSP vs Reactive Streams
 - [Lock-Free Data Structures & ABA](./concurrency/lock-free-data-structures-and-aba.md) - Herlihy hierarchy, Treiber Stack, Michael-Scott Queue, and ABA mitigation
 - [Synchronization Primitives & Barriers](./concurrency/synchronization-primitives-and-barriers.md) - Mutexes, Semaphores, Memory Barriers, JMM vs Python GIL
+- [Lock-Free Ring Buffers](./concurrency/ring-buffers.md) - SPSC/MPSC rings, power-of-two masking, cache-line padding, and acquire-release ordering
 - [System Design Interview Delivery Framework](./system-design-fundamentals/system-design-interview-delivery-framework.md) - Structured 45-60 minute interview execution plan
 
 ### [Distributed Systems](./distributed-systems/)
@@ -187,6 +188,7 @@ For beginners, we recommend this sequence:
   - [ ] Understand Concurrency Paradigms
   - [ ] Understand Lock-Free Data Structures & ABA
   - [ ] Understand Synchronization Primitives & Barriers
+  - [ ] Understand Lock-Free Ring Buffers
   - [ ] Understand System Design Interview Delivery Framework
 - [ ] Distributed Systems
   - [ ] Understand Paxos Consensus Variants

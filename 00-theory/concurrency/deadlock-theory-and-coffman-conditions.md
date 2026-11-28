@@ -180,9 +180,9 @@ While prevention restricts how requests are made, **Deadlock Avoidance** dynamic
 Let:
 - $n$: number of processes, $m$: number of resource types.
 - $\text{Available}[m]$: vector of available units per resource type.
-- $\text{Max}[n][m]$: maximum demand matrix of each process.
-- $\text{Allocation}[n][m]$: current allocation matrix.
-- $\text{Need}[n][m] = \text{Max}[i][j] - \text{Allocation}[i][j]$.
+- `Max[n][m]`: maximum demand matrix of each process.
+- `Allocation[n][m]`: current allocation matrix.
+- `Need[n][m] = Max[i][j] - Allocation[i][j]`.
 
 **Safety Condition:** A state is safe if there exists a sequence $\langle P_1, P_2, \dots, P_n \rangle$ such that for each $P_i$, the resources that $P_i$ can still request can be satisfied by the current $\text{Available}$ plus the resources held by all prior $P_j$ ($j < i$).
 

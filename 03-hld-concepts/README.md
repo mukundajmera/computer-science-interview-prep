@@ -91,6 +91,7 @@ High-Level Design focuses on:
 | [Contention Control](./contention-control/) | Coordinate writes under conflict | Transactions, Distributed locks | ✅ Complete |
 | [Workflow Orchestration](./workflow-orchestration/) | Durable multi-step processing | Message Queues, Outbox, Sagas | ✅ Complete |
 | [Resilience Patterns](./resilience-patterns/) | Handle cascading failures gracefully | Circuit Breakers, Bulkheads, Retries | ✅ Complete |
+| [Multi-Region Active-Active](./multi-region-active-active/) | Global low-latency reads/writes, regional failover, and conflict resolution (LWW, CRDTs) | Database Replication, CAP Theorem, Logical Clocks & TrueTime | ✅ Complete |
 
 ### Observability & Operations
 
@@ -306,6 +307,7 @@ High-Level Design focuses on:
 | [Workflow Orchestration](./workflow-orchestration/) | E-commerce Backend, Payment System, File Storage, Brokerage Platform |
 | [Logical Clocks & TrueTime](./logical-clocks-truetime/) | DynamoDB, Cassandra, Relational Databases, multi-region setups |
 | [Resilience Patterns](./resilience-patterns/) | Microservices, API Gateway, Distributed Systems |
+| [Multi-Region Active-Active](./multi-region-active-active/) | Multi-Region Active-Active, File Storage, Distributed Cache, URL Shortener, Ad Click Aggregator |
 | [Distributed Unique ID Generator](./distributed-unique-id/) | URL Shortener, Twitter, Instagram, Ticket Servers |
 | [Database Isolation Levels](./database-isolation-levels/) | Financial Ledger, Digital Wallet, E-commerce Checkout, Booking System |
 | [Network Protocol Evolution](./network-protocol-evolution/) | Video Streaming, Live Chat, Real-Time Gaming, API Gateway |
@@ -380,6 +382,7 @@ High-Level Design focuses on:
 - [x] Contention Control
 - [x] Workflow Orchestration
 - [x] Resilience Patterns
+- [x] Multi-Region Active-Active
 - [x] Monitoring & Observability
 - [x] Service Discovery
 - [x] Distributed Coordination

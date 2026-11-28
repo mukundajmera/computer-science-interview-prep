@@ -14,7 +14,7 @@
 ## 2. Minimum Size Subarray Sum
 
 **Summary:** Find the shortest contiguous run of positive numbers whose sum reaches a target.
-**Practice:** [lc-0209-minimum-size-subarray-sum](problem-bank/lc-0209-minimum-size-subarray-sum/README.md)
+**Practice:** [lc-0209-minimum-size-subarray-sum](../problem-bank/lc-0209-minimum-size-subarray-sum/README.md)
 
 **Hints**:
 1. Use a variable-size window with `left` and `right` pointers.
@@ -26,7 +26,7 @@
 ## 3. Longest Substring Without Repeating Characters
 
 **Summary:** Find the length of the longest substring in which no character repeats.
-**Practice:** [lc-0003-longest-substring-without-repeating-characters](problem-bank/lc-0003-longest-substring-without-repeating-characters/README.md)
+**Practice:** [lc-0003-longest-substring-without-repeating-characters](../problem-bank/lc-0003-longest-substring-without-repeating-characters/README.md)
 
 **Hints**:
 1. Maintain a frequency map or boolean array for the current window.
@@ -71,7 +71,7 @@
 ## 7. Sliding Window Maximum
 
 **Summary:** For every window of size k moving across an array, report the largest value.
-**Practice:** [lc-0239-sliding-window-maximum](problem-bank/lc-0239-sliding-window-maximum/README.md)
+**Practice:** [lc-0239-sliding-window-maximum](../problem-bank/lc-0239-sliding-window-maximum/README.md)
 
 **Hints**:
 1. Maintain a monotonic decreasing deque of indices.
