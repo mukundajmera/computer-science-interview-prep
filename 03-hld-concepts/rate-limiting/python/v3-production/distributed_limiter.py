@@ -12,6 +12,8 @@ This demonstrates patterns used in production API gateways
 like Kong, AWS API Gateway, and Stripe.
 """
 
+from __future__ import annotations
+
 import time
 import threading
 from dataclasses import dataclass, field

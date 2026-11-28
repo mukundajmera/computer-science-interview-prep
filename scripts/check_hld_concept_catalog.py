@@ -168,9 +168,15 @@ def parse_table_rows(
         if slug is None:
             continue
         if slug in rows:
+            row_kind = (
+                finding_kind[len("malformed-"):]
+                if finding_kind.startswith("malformed-")
+                else finding_kind
+            )
+            row_kind = row_kind[:-len("-row")] if row_kind.endswith("-row") else row_kind
             findings.append(
                 Finding(
-                    f"duplicate-{finding_kind.removeprefix('malformed-').removesuffix('-row')}-row",
+                    f"duplicate-{row_kind}-row",
                     slug,
                     f"{README_FILE}:{line_number}",
                     f"duplicate local concept link for {slug}",

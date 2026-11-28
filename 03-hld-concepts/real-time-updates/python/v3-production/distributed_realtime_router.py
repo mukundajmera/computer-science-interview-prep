@@ -1,5 +1,7 @@
 """v3-production: fanout + replay offset coordination."""
 
+from __future__ import annotations
+
 from typing import Callable, Dict, List, Tuple
 from collections import deque
 

@@ -1,4 +1,7 @@
 """ShardedStateStore for ad-click-aggregator (v3-optimized)."""
+
+from __future__ import annotations
+
 import threading
 from typing import Dict
 from aggregation_key import AggregationKey

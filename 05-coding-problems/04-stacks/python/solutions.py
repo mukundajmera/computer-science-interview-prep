@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class Solutions:
     # 1. Valid Parentheses
     def isValid(self, s: str) -> bool:

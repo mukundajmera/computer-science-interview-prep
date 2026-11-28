@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class Solutions:
     def climbStairs(self, n: int) -> int:
         if n <= 2: return n

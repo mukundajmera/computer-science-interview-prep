@@ -2,6 +2,8 @@
 Streaming safety filter optimized for early cancellation.
 """
 
+from __future__ import annotations
+
 from typing import Iterator
 
 class PolicyViolationError(Exception):

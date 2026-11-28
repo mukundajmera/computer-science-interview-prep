@@ -3,6 +3,8 @@ Stack Overflow - V1 Basic
 Core implementation with users, questions, answers, and voting.
 """
 
+from __future__ import annotations
+
 from datetime import datetime
 from enum import Enum
 from typing import List, Optional
