@@ -278,3 +278,8 @@ The TSDB is no longer just a passive observer; it is in the critical path of the
 This elevated status means that the latency, durability, and availability of the TSDB must match or exceed the systems it is monitoring.
 If the TSDB fails, the auto-scaler cannot make decisions, and the system flies blind.
 Therefore, understanding the deep mechanics of TSDBs—how they flush blocks, how they compress bits, and how they resolve cardinality—is essential knowledge for any modern infrastructure engineer.
+
+## 📊 Diagrams
+
+- [Downsampling and retention tiers](./diagrams/downsampling-retention-tiers.mmd): the lifecycle of a data point from high-resolution recent blocks through progressively coarser aggregates, ending in object-storage blocks or O(1) deletion when retention expires.
+- [Push vs pull ingestion](./diagrams/push-vs-pull-ingestion.mmd): the two ingestion models, where clients push metrics to the TSDB endpoint or the TSDB scrapes each target's /metrics endpoint, and the trade-offs of each.

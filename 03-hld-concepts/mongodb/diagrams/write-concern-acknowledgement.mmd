@@ -1,0 +1,11 @@
+graph TD
+    Write["Client write"] --> Primary["Primary applies the write"]
+    Primary -->|"replicate"| SecA["Secondary 1"]
+    Primary -->|"replicate"| SecB["Secondary 2"]
+
+    Primary -->|"w: 1"| Weak["Acknowledge after the primary only<br/>faster, can roll back on failover"]
+    SecA -->|"w: majority"| Strong["Acknowledge after a majority<br/>survives primary failover"]
+    SecB -->|"w: majority"| Strong
+
+    Weak --> Response["Response returned to client"]
+    Strong --> Response

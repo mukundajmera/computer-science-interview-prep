@@ -1,0 +1,13 @@
+graph TD
+    Client["Client search request"] --> Coord["Coordinating node"]
+
+    Coord -->|"broadcasts query to all shards"| P0["Shard P0 or replica R0"]
+    Coord -->|"broadcasts query to all shards"| P1["Shard P1 or replica R1"]
+    Coord -->|"broadcasts query to all shards"| P2["Shard P2 or replica R2"]
+
+    P0 -->|"top 10 IDs and scores"| Merge
+    P1 -->|"top 10 IDs and scores"| Merge
+    P2 -->|"top 10 IDs and scores"| Merge
+
+    Merge["Query phase: coordinator merges and sorts by relevance score"]
+    Merge -->|"fetch phase: retrieve full documents for top hits"| Response["Top 10 overall returned to client"]
