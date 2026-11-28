@@ -169,5 +169,31 @@ For global availability:
 - [APPROACH.md](./APPROACH.md)
 - [diagrams/architecture.mmd](./diagrams/architecture.mmd)
 
+## 10. Bottlenecks and Failure Modes
+
+The two-tier Follower/Leader cache isolates MySQL shards from 10M QPS read storms, so failure handling focuses on preserving read-your-writes, preventing out-of-order cache invalidation, and recovering cleanly from tier or shard outages.
+
+### Failure Modes
+
+| Failure | Impact | Detection | Mitigation |
+|---|---|---|---|
+| Cache invalidation race | Stale edge lists persist in Followers when a slow DB fill overtakes a newer write | Version-skew counters, cache-vs-DB audit sampling, and stale-read reports | Stamp objects and edges with monotonic timestamps/versions; drop older fills or invalidations; serialize writes at Leader |
+| Follower (L1) node failure | Local cache miss spike for web servers mapped to the failed Follower | Web-tier timeout/error spikes and Follower health-check failures | Re-route reads to peer Followers via consistent hashing; Leader collapses resulting concurrent misses |
+| Leader (L2) node failure | Writes stall for the shard and Follower misses lose request collapsing | Leader heartbeat loss, write-path 5xx spikes, and DB connection surges | Fail over shard ownership to a standby Leader; rate-limit temporary direct DB fallback reads |
+| Cross-region replication and Wormhole lag | Remote regions serve stale associations; writers may miss their own recent edits | MySQL replica lag metrics and Wormhole binlog-to-invalidation latency alarms | Update originating Follower synchronously for read-your-writes; pin recent writers to primary/Leader reads during high lag |
+| Primary DB shard outage | Graph writes fail for `id1` keys owned by that shard; uncached reads time out | Shard write-error rate, MySQL health checks, and Leader DB pool exhaustion | Serve cached reads in degraded read-only mode from Followers/Leaders; fail over to promoted MySQL replica |
+
+### Recovery and Rollback
+- **Leader/Follower failover:** Stateless Followers fail over by remapping web-tier consistent hashing to healthy peers in the same datacenter while the Leader collapses cold-start misses; Leader failover promotes a standby Leader so one coordinator owns shard writes.
+- **Read-your-writes under lag:** The originating Follower updates its local cache synchronously upon DB commit confirmation; if a user's next read hits a lagging Follower or remote region, session-pinned routing or a short-lived write-version token directs the read to the Leader or primary region.
+- **Degraded read availability:** During a MySQL shard outage or cross-region network partition, Followers continue serving cached objects and recent edge lists while rejecting or shedding non-critical mutations until primary health returns.
+- **Supernode and config rollback:** Changes to supernode virtual-bucket counts (`M`) or edge-list eviction thresholds roll out behind dual-read/dual-write feature flags so routing can roll back immediately without losing edges.
+
+### Retry and Replay
+- **Idempotent edge retries:** `assoc_add` and `assoc_delete` are idempotent on `(id1, atype, id2)` with client timestamps, enabling bounded retries with backoff on transient Leader-to-DB timeouts.
+- **Bidirectional edge repair:** For mutual friendships (`(A, FRIEND, B)` and `(B, FRIEND, A)`), if the second shard write fails after the first commits, an asynchronous retry queue and periodic reconciliation backfill repair the asymmetry without distributed 2PC locks.
+- **Binlog invalidation replay:** If Wormhole consumers drop or lag, they replay from durable MySQL binlog positions; if lag exceeds binlog retention, affected Followers run targeted key invalidation or a controlled cache flush.
+- **Dead-letter isolation:** Unparseable or repeatedly failing invalidation events are routed to a dead-letter queue (DLQ) with alerting so one bad shard event cannot stall binlog tailing for healthy shards.
+
 ---
 **Real-world reference**: See how LinkedIn solved this in the [LinkedIn case study](../../case-studies/linkedin-feed/)
