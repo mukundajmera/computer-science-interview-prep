@@ -1,4 +1,3 @@
-```mermaid
 erDiagram
     URLS {
         string short_code PK "Primary Key - 7 char base62"
@@ -49,4 +48,3 @@ erDiagram
     USERS ||--o{ URLS : "creates"
     URLS ||--o{ CLICKS : "receives"
     URLS ||--|| ANALYTICS_DAILY : "aggregates to"
-```
