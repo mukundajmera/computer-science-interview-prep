@@ -1,0 +1,7 @@
+flowchart TD
+    W([Client writes data]) --> P[Primary database commits the write]
+    P --> T["Primary returns a RYW token (timestamp or replication sequence number)"]
+    T --> R([Client issues a later read carrying the token])
+    R --> Q{Replica state caught up to the token?}
+    Q -->|Yes| S1[Serve the read from the replica]
+    Q -->|No| S2[Route the read to the primary or a sufficiently updated replica]

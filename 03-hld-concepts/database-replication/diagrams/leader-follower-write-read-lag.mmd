@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant Client
+    participant Primary as Primary (leader)
+    participant Replica as Replica (follower)
+
+    Client->>Primary: Write X = 100
+    Primary->>Primary: Append to the WAL and commit
+    Primary-->>Client: Write acknowledged
+    Primary->>Replica: Stream the WAL entry
+    Note over Primary,Replica: Replication lag window
+    Client->>Replica: Read X during the lag
+    Replica-->>Client: Stale value X = 50
+    Replica->>Replica: Apply the WAL entry
+    Client->>Replica: Read X after the apply
+    Replica-->>Client: Fresh value X = 100
