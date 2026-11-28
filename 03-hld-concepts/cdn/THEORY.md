@@ -363,3 +363,7 @@ flowchart TB
     style ASIA fill:#ed8936,stroke:#c05621,color:#fff
 ```
 
+## 📊 Diagrams
+
+- [Cache purge and invalidation propagation](./diagrams/cache-purge-invalidation-sequence.mmd) - traces a purge API call from the CDN control plane to the edge nodes, then shows the next request repopulating the edge through the origin shield and origin after the purge has propagated.
+

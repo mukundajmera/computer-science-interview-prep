@@ -298,6 +298,10 @@ Load Balancer                    Server
 
 ---
 
+## 📊 Diagrams
+
+- [L4 vs L7 routing decision](./diagrams/l4-vs-l7-routing-decision.mmd) - how a load balancer routes a request when only transport data (Layer 4: IP and port) is visible, versus when application data like URLs, headers, and cookies (Layer 7) can drive content-based routing.
+
 ## Related Concepts
 - [Consistent Hashing](../consistent-hashing/) - For sticky session distribution
 - [Service Discovery](../service-discovery/) - Finding backend servers

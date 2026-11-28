@@ -1,0 +1,12 @@
+flowchart LR
+    subgraph WT["Write-through: synchronous"]
+        WT1[App writes data] --> WT2[Cache updated]
+        WT2 --> WT3[(Backing store updated)]
+        WT3 --> WT4[Ack after both writes succeed]
+    end
+
+    subgraph WB["Write-behind: asynchronous"]
+        WB1[App writes data] --> WB2[Cache updated]
+        WB2 --> WB3[Ack at the cache]
+        WB2 -.->|Flushed later| WB4[(Backing store updated)]
+    end
