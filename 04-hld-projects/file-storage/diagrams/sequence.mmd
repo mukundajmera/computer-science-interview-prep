@@ -1,4 +1,3 @@
-```mermaid
 sequenceDiagram
     autonumber
     participant Client
@@ -49,4 +48,3 @@ sequenceDiagram
     Client->>CDN: GET file content
     CDN->>S3: Fetch from origin (cache miss)
     CDN-->>Client: Stream file content
-```
