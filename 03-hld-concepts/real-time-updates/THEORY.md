@@ -139,6 +139,10 @@ graph TD
 - Region-local fanout with async cross-region replication.
 - Edge push gateway for geo-latency optimization.
 
+## 📊 Diagrams
+
+- [Channel selection flow](./diagrams/channel-selection-flow.mmd): how update frequency and direction pick the channel, from simple polling through long polling and SSE up to WebSocket for frequent bidirectional traffic.
+
 ## Related concepts
 
 - [Load Balancing](../load-balancing/THEORY.md)
