@@ -26,7 +26,7 @@ Quick-reference counts (auto-discovery means these grow without portal changes):
 
 | Section | Items | Source |
 |---------|-------|--------|
-| Theory articles | 74 | `00-theory/` (9 topic areas) |
+| Theory articles | 77 | `00-theory/` (9 topic areas) |
 | Design Patterns | 23 | `01-design-patterns/` (5 creational + 7 structural + 11 behavioral) |
 | LLD Projects | 61 | `02-lld-projects/` |
 | HLD Concepts | 64 | `03-hld-concepts/` |
@@ -53,7 +53,7 @@ filesystem** and **reachable through the portal UI**.
 
 | # | Category | Source Directory | File / Dir Pattern | Registry Key (`types.ts`) | Portal Route | Nav Link | Discovery Method | Items |
 |---|----------|------------------|--------------------|--------------------------|--------------|----------|------------------|-------|
-| 1 | Theory | `00-theory/` | `<topicArea>/*.md` | `theory` · `TheoryArticle[]` | `/theory` → `/theory/[topicArea]` → `/theory/[topicArea]/[article]` | Theory | Scans subdirs → markdown files | 74 |
+| 1 | Theory | `00-theory/` | `<topicArea>/*.md` | `theory` · `TheoryArticle[]` | `/theory` → `/theory/[topicArea]` → `/theory/[topicArea]/[article]` | Theory | Scans subdirs → markdown files | 77 |
 | 2 | Design Patterns | `01-design-patterns/` | `<creational\|structural\|behavioral>/<pattern>/` | `patterns` · `DesignPattern[]` | `/patterns` → `/patterns/[category]` → `/patterns/[category]/[pattern]` | Design Patterns | Scans category dirs → pattern dirs | 23 |
 | 3 | LLD Projects | `02-lld-projects/` | `<project>/` (PROBLEM.md, DESIGN.md, …) | `lldProjects` · `LLDProject[]` | `/lld` → `/lld/[project]` | LLD Projects | Scans subdirs | 61 |
 | 4 | HLD Concepts | `03-hld-concepts/` | `<concept>/` (THEORY.md, INTERVIEW-QA.md) | `hldConcepts` · `HLDConcept[]` | `/hld-concepts` → `/hld-concepts/[concept]` | HLD Concepts | Scans subdirs | 64 |
@@ -194,7 +194,7 @@ Mismatches detected during the coherence audit and their resolutions.
 | 9 | `02-lld-projects/HOW-TO-APPROACH.md` and `02-lld-projects/lld-doc-coverage-matrix.md` are root-level files not scanned by registry | Low | Root-level guide and maintenance matrix; registry scans project subdirectories only. Accessible on GitHub. Could be relocated into dedicated subdirectories if portal discoverability is desired. |
 | 10 | `04-hld-projects/DESIGN-TEMPLATE.md` is a root-level file not scanned by registry | Low | Authoritative template; registry scans project subdirectories only. Not user-facing curriculum content. |
 | 11 | Non-coding inventory and portal counts drifted from repository discovery, and `Prompt Workflow Files` row was missing (2026-11-28) | Resolved | Updated non-coding counts across Content Inventory and Portal-Covered Categories (Theory 67→72, LLD Projects 56→61, HLD Concepts 59→64, HLD Projects 48→54, GenAI Concepts 14→18, GenAI HLD 10→16, Interview Problems/Mode 38→98, Resources portal 47→48, Executable Sample Files 255→287) and added `Prompt Workflow Files` with count `0` (not published in this public repository). Coding pattern counts remain at `10` pending alignment on numbered vs. unnumbered folders under `05-coding-problems/`. |
-| 12 | Coding pattern and Theory counts drifted again (2026-11-28) | Resolved | Coding Patterns 10→27 (the portal publishes all 27 folders under `05-coding-problems/`; only the 10 unnumbered packs need an Interview Mode coach answer, `check_content_inventory.py` now encodes that), Interview Problems/Mode 98→104, Theory 72→73. |
+| 12 | Coding pattern and Theory counts drifted again (2026-11-28) | Resolved | Coding Patterns 10→27 (the portal publishes all 27 folders under `05-coding-problems/`; only the 10 unnumbered packs need an Interview Mode coach answer, `check_content_inventory.py` now encodes that), Interview Problems/Mode 98→104, Theory 72→73, then 73→76 with GEM-034. |
 
 ---
 

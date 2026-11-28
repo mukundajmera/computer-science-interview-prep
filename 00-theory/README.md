@@ -50,6 +50,7 @@ This section covers the foundational concepts every software engineer should mas
 - [Synchronization Primitives & Barriers](./concurrency/synchronization-primitives-and-barriers.md) - Mutexes, Semaphores, Memory Barriers, JMM vs Python GIL
 - [Lock-Free Ring Buffers](./concurrency/ring-buffers.md) - SPSC/MPSC rings, power-of-two masking, cache-line padding, and acquire-release ordering
 - [System Design Interview Delivery Framework](./system-design-fundamentals/system-design-interview-delivery-framework.md) - Structured 45-60 minute interview execution plan
+- [Lambda vs. Kappa Architecture](./system-design-fundamentals/lambda-vs-kappa-architecture.md) - Batch + speed layers vs. single-log stream processing, reprocessing, and correctness drift
 
 ### [Distributed Systems](./distributed-systems/)
 - [Paxos Consensus Variants](./distributed-systems/paxos-consensus-variants.md) - Paxos Consensus Protocols
