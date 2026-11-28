@@ -49,6 +49,37 @@ Response:
 
 [Architecture Diagram](./diagrams/architecture.mmd)
 
+```mermaid
+flowchart LR
+    E["Sensitive User Action Event"] --> SI["Signal Ingest"]
+    SI --> FS[("Feature Store")]
+
+    subgraph DualLane["Dual-Lane Evaluation"]
+        FS --> SUP["Supervised Risk Scorer (Known Campaigns)"]
+        FS --> ANOM["Novelty / Anomaly Detector (Unknown Patterns)"]
+        SUP --> CAL["Decision Calibrator (Risk + Confidence)"]
+        ANOM --> CAL
+    end
+
+    subgraph Remediation["Staged Remediation"]
+        CAL --> ORCH["Remediation Orchestrator (Allow / Limit / Challenge / Suspend)"]
+        ORCH --> GATE["Product Gate"]
+    end
+
+    subgraph FeedbackLoop["Review & Feedback Loop"]
+        CAL -->|"Borderline Cases"| IQ["Priority Investigator Queue"]
+        IQ --> IT["Investigator Tooling"]
+        ORCH --> AUD[("Audit + Timeline Store")]
+        AUD --> CM["Campaign Monitor"]
+    end
+
+    IT -.->|"Investigator Labels"| SUP
+    CM -.->|"Delayed Signals"| FS
+    ORCH -.->|"FP Guardrail Breach"| RB["Canary Stop / Policy Rollback"]
+```
+
+Sensitive user actions flow through Signal Ingest into the Feature Store, which feeds two parallel scoring lanes: a Supervised Risk Scorer for known attack campaigns and a Novelty/Anomaly Detector for previously unseen behavioral patterns. The Decision Calibrator merges both risk and confidence scores to drive the Remediation Orchestrator's staged ladder (allow and monitor, limit or challenge, or suspend at the Product Gate) while routing borderline traffic to a priority Investigator Queue. Every decision is logged to the Audit and Timeline Store for the Campaign Monitor, closing the feedback loop with investigator labels and delayed signals while triggering canary stops or policy rollbacks if false-positive guardrails breach.
+
 ### Read/Write Paths
 
 1. Sensitive user action emits risk-eval request.

@@ -251,6 +251,30 @@ CREATE TABLE raw_clicks (
 
 ## 5. 🏗️ High-Level Architecture
 
+### Architecture Diagram
+
+```mermaid
+flowchart LR
+    subgraph WritePath["Write Path (Ingestion & Stream Processing)"]
+        SDK["Browser / Mobile SDK"] -->|"POST /events/clicks (event_id)"| GW["API Gateway / LB"]
+        GW --> ING["Ingestion Service (Validate + Hash IP)"]
+        ING --> K[("Apache Kafka (raw_clicks)")]
+        K --> FL["Apache Flink (Dedup, Fraud Filter, 1m/5m/Session Windows)"]
+        FL <--> RD[("Redis / RocksDB (Dedup + HLL State)")]
+        FL -->|"Late Events (over 10m)"| DLQ[("Side-Output DLQ")]
+        FL -->|"2PC / Idempotent Upserts"| CH[("ClickHouse / Druid (ad_metrics_1m)")]
+        FL -->|"Enriched Raw Events + Checkpoints"| S3[("Amazon S3 + Iceberg")]
+    end
+
+    subgraph ReadPath["Read Path (Advertiser Analytics)"]
+        DASH["Advertiser Dashboard"] -->|"REST Metrics Query"| QS["Query Service"]
+        QS <--> RC[("Redis Query Cache")]
+        QS --> CH
+    end
+```
+
+Click and impression attempts flow from browser and mobile SDKs through the API Gateway and Ingestion Service, which validates schemas, hashes client IPs, and appends events to Kafka partitioned by campaign ID. Apache Flink consumes the stream to deduplicate `event_id` keys via Redis or local RocksDB, apply real-time fraud filters, compute tumbling, sliding, and session window aggregates, and route events arriving past the 10-minute lateness bound to a side-output DLQ. Aligned with distributed checkpoints in S3, Flink commits idempotent rollups to ClickHouse or Druid for sub-200 ms dashboard queries served through the Query Service and Redis cache, while archiving enriched raw events in S3/Iceberg for replay.
+
 ### Component List
 - API Gateway / Load Balancer: Ingests traffic and terminates TLS.
 - Ingestion Service: Lightweight stateless Go/Rust service to validate schemas and publish to Kafka.

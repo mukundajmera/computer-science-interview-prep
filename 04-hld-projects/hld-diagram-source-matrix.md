@@ -15,15 +15,15 @@ This matrix tracks whether each HLD project has auditable Mermaid source files. 
 
 | Project | Primary docs | Inline Mermaid blocks | External .mmd sources | Classification | Required follow-up | Notes |
 |---|---|---:|---:|---|---|---|
-| [API Gateway](./api-gateway/) | [DESIGN.md](./api-gateway/DESIGN.md) | 0 | 1 | `external .mmd` | Keep source synchronized with design text. | Architecture source exists. |
-| [Ad Click Aggregator](./ad-click-aggregator/) | [DESIGN.md](./ad-click-aggregator/DESIGN.md) | 0 | 1 | `external .mmd` | Keep source synchronized with design text. | Architecture source exists. |
-| [Bot Detection](./bot-detection/) | [DESIGN.md](./bot-detection/DESIGN.md) | 0 | 1 | `external .mmd` | Keep source synchronized with design text. | Architecture source exists. |
+| [API Gateway](./api-gateway/) | [DESIGN.md](./api-gateway/DESIGN.md) | 1 | 1 | `external .mmd` | Keep source synchronized with design text. | Architecture source exists. |
+| [Ad Click Aggregator](./ad-click-aggregator/) | [DESIGN.md](./ad-click-aggregator/DESIGN.md) | 1 | 1 | `external .mmd` | Keep source synchronized with design text. | Architecture source exists. |
+| [Bot Detection](./bot-detection/) | [DESIGN.md](./bot-detection/DESIGN.md) | 1 | 1 | `external .mmd` | Keep source synchronized with design text. | Architecture source exists. |
 | [Bot Detection Platform](./bot-detection-platform/) | [DESIGN.md](./bot-detection-platform/DESIGN.md) | 1 | 0 | `inline-only with rationale` | Extract architecture diagram when this project is next edited. | Advanced variant currently embeds the diagram. |
 | [Brokerage Platform](./brokerage-platform/) | [DESIGN.md](./brokerage-platform/DESIGN.md) | 1 | 3 | `external .mmd` | Reconcile inline architecture with external sources. | Existing sources cover architecture, sequence, and database views. |
 | [Chat Service](./chat-service/) | [DESIGN.md](./chat-service/DESIGN.md) | 5 | 3 | `external .mmd` | Reconcile inline flows with external sources. | Multiple inline flows remain in the design doc. |
 | [Collaborative Doc Editor](./collaborative-doc-editor/) | [DESIGN.md](./collaborative-doc-editor/DESIGN.md) | 1 | 3 | `external .mmd` | Reconcile inline architecture with external sources. | Existing sources cover architecture, sequence, and database views. |
 | [Content Delivery Network](./content-delivery-network/) | [DESIGN.md](./content-delivery-network/DESIGN.md) | 0 | 1 | `external .mmd` | Keep source synchronized with design text. | Architecture source exists. |
-| [Content Moderation](./content-moderation/) | [DESIGN.md](./content-moderation/DESIGN.md) | 0 | 1 | `external .mmd` | Keep source synchronized with design text. | Baseline moderation source exists. |
+| [Content Moderation](./content-moderation/) | [DESIGN.md](./content-moderation/DESIGN.md) | 1 | 1 | `external .mmd` | Keep source synchronized with design text. | Baseline moderation source exists. |
 | [Content Moderation Platform](./content-moderation-platform/) | [DESIGN.md](./content-moderation-platform/DESIGN.md) | 1 | 0 | `inline-only with rationale` | Extract architecture diagram when this project is next edited. | Advanced variant currently embeds the diagram. |
 | [Digital Wallet](./digital-wallet/) | [DESIGN.md](./digital-wallet/DESIGN.md) | 0 | 1 | `external .mmd` | Keep source synchronized with design text. | Architecture source exists. |
 | [Distributed Cache](./distributed-cache/) | [DESIGN.md](./distributed-cache/DESIGN.md) | 1 | 3 | `external .mmd` | Reconcile inline architecture with external sources. | Existing sources cover architecture, sequence, and database views. |

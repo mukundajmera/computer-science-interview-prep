@@ -242,6 +242,36 @@ A concrete normal worked trace:
 
 ## 5. 🏗️ High-Level Architecture
 
+### Architecture Diagram
+
+```mermaid
+flowchart TB
+    CL["Client UGC (Text, Image, Video)"] -->|"POST /evaluate"| GW["API Gateway (TLS, Auth, Redis Lua Rate Limit)"]
+    GW --> ING["Ingestion Service (202 Accepted)"]
+    ING --> KF[("Apache Kafka")]
+
+    subgraph Engine["Multi-Modal Moderation Engine"]
+        KF --> TXT["Text Worker (Normalization + Toxicity)"]
+        KF --> IMG["Image Worker (SHA-256 Exact + PDQ Perceptual Hash)"]
+        KF --> VID["Video Worker (Chunk & Frame Extraction)"]
+        VID -->|"Sampled Frames"| IMG
+        VID -->|"Audio Track"| TXT
+        IMG -.->|"Media / Frames"| S3[("Object Storage (S3)")]
+    end
+
+    TXT --> DE["Decision Engine (Three-Tier Policy)"]
+    IMG --> DE
+    DE -->|"Tier 1 (under 0.15) / Tier 2 (over 0.85 or Exact Hash)"| DB[("PostgreSQL / CockroachDB + Redis Cache")]
+    DE -->|"Tier 3 (0.15-0.85 / Perceptual Near-Match)"| WF["Workflow Service (Priority Queue, Double-Blind, Fatigue Rotation)"]
+    WF --> REV["Human Moderators & Appeals Lifecycle"]
+    REV -->|"Decisions & Overrides"| DB
+
+    CL -->|"GET /decision"| GW
+    GW -.->|"Read Path"| DB
+```
+
+User-generated text, image, and video submissions enter through the API Gateway—which enforces TLS, auth, and Redis Lua rate limiting—into the Ingestion Service, returning `202 Accepted` once persisted to Kafka. Specialized workers in the Multi-Modal Moderation Engine normalize and score text for toxicity, check images with exact SHA-256 and perceptual PDQ hashes, and split videos into sampled frames and audio tracks routed back through the image and text pipelines. The Decision Engine applies the three-tier policy—auto-approving low-risk items, auto-blocking high-risk or exact-hash matches, and routing ambiguous scores or perceptual near-matches to the Workflow Service's priority human review and appeals lifecycle—while storing auditable decisions in PostgreSQL/CockroachDB and Redis.
+
 ### Component List
 - API Gateway: Handles TLS termination, rate limiting, and authentication.
 - Ingestion Service: Validates payloads and publishes to message broker.

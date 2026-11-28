@@ -49,6 +49,31 @@ Response:
 
 [Architecture Diagram](diagrams/architecture.mmd)
 
+```mermaid
+flowchart LR
+    CE["Content Event"] --> MG
+
+    subgraph SyncPath["Sync Path"]
+        MG["Moderation Gateway"] --> FF["Feature Fetch"]
+        FF --> INF["Inference Service (Risk + Confidence)"]
+        INF --> CAL["Decision Calibrator (Category Thresholds)"]
+    end
+
+    subgraph AsyncEnf["Async Enforcement"]
+        CAL -->|"Allow / Demote / Remove"| ENF["Enforcement Service"]
+        ENF --> SRF["Serving Surfaces"]
+    end
+
+    CAL -->|"Near-Threshold / Timeout Fallback"| RQ["Priority Review Queue"]
+    RQ --> RC["Reviewer Console"]
+    ENF --> AUD[("Audit Store")]
+    RC --> AUD
+    AUD --> MON["Eval + Drift Monitor (Canary & Rollback)"]
+    MON -.->|"Threshold Updates / Rollback"| CAL
+```
+
+New content events enter the synchronous path at the Moderation Gateway, which fetches features, runs the Inference Service to produce both risk and confidence scores, and passes them to the Decision Calibrator. Using category-specific thresholds with stricter confidence guardrails for irreversible `remove` actions than `demote`, the calibrator dispatches automated actions to the asynchronous Enforcement Service for serving surfaces while routing near-threshold items or inference timeouts to a prioritized Review Queue. Both automated enforcement and Reviewer Console outcomes are recorded in the Audit Store, feeding the Eval and Drift Monitor to canary threshold updates or roll back to last-known-good policy profiles.
+
 ### Read/Write Paths
 
 1. New content enters moderation gateway.
