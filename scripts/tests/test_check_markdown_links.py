@@ -316,6 +316,43 @@ class MarkdownLinkCheckerTest(unittest.TestCase):
         self.assertIn("blocked-source-path", result.stdout)
         self.assertNotIn("missing-anchor", result.stdout)
 
+    def test_reports_invalid_encoding_without_crashing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            docs = root / "docs"
+            docs.mkdir()
+            (docs / "cp1252.md").write_bytes(
+                b"# Title\n\nNorth-South traffic\x97entering.\n"
+            )
+            (docs / "valid.md").write_text(
+                "\n".join(
+                    [
+                        "# Valid",
+                        "",
+                        "[Anchor in undecodable](./cp1252.md#title)",
+                        "[Missing](./missing.md)",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                [sys.executable, str(SCRIPT), str(docs)],
+                cwd=root,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+            )
+
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertEqual(result.stderr, "")
+        self.assertIn("docs/cp1252.md:0: invalid-encoding:", result.stdout)
+        self.assertIn("docs/valid.md:3: invalid-encoding: ./cp1252.md#title", result.stdout)
+        self.assertIn("not valid UTF-8", result.stdout)
+        self.assertIn("docs/valid.md:4: missing-file: ./missing.md", result.stdout)
+        self.assertIn("checked 2 markdown files", result.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

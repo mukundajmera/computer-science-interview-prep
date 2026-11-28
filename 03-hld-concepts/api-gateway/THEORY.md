@@ -17,8 +17,8 @@ Understanding the API Gateway requires distinguishing it from other similar comp
 - **API Gateway:** A specialized L7 proxy that understands API semantics. It applies complex routing rules, authenticates users, enforces quotas, transforms payloads, and aggregates responses.
 
 ### Gateway vs Service Mesh
-- **API Gateway:** Focuses on "North-South" traffic—traffic entering the system from the outside world. It handles public-facing security, rate limiting, and client-friendly data aggregation.
-- **Service Mesh:** Focuses on "East-West" traffic—internal service-to-service communication. It handles internal load balancing, mTLS between microservices, and internal retries.
+- **API Gateway:** Focuses on "North-South" trafficâ€”traffic entering the system from the outside world. It handles public-facing security, rate limiting, and client-friendly data aggregation.
+- **Service Mesh:** Focuses on "East-West" trafficâ€”internal service-to-service communication. It handles internal load balancing, mTLS between microservices, and internal retries.
 - *Pattern:* Often used together, where the Gateway is the ingress point to the Service Mesh.
 
 ### Gateway vs BFF (Backend for Frontend)
@@ -107,7 +107,7 @@ Every hop adds latency. A Gateway must strictly manage its budget.
 When multiple identical requests arrive for an uncached or expired resource simultaneously, a Gateway can use a technique called request collapsing. Instead of forwarding all requests to the backend (causing a thundering herd), the Gateway holds all but the first request, forwards that single request to the backend, and then uses the resulting response to satisfy all waiting clients. This significantly reduces backend load during cache expiration spikes.
 
 ### Payload Transformation and Adapters
-Modern mobile applications might require a heavily optimized JSON payload, while legacy external partners might expect XML. An API Gateway can perform payload transformation—converting JSON to XML, dropping unnecessary fields for mobile clients to save bandwidth, or renaming fields to maintain backwards compatibility when the backend API contract changes.
+Modern mobile applications might require a heavily optimized JSON payload, while legacy external partners might expect XML. An API Gateway can perform payload transformationâ€”converting JSON to XML, dropping unnecessary fields for mobile clients to save bandwidth, or renaming fields to maintain backwards compatibility when the backend API contract changes.
 
 ### Canary Deployments and Blue-Green Deployments
 API Gateways are essential for progressive delivery. During a canary deployment, the Gateway can be configured to route a small percentage (e.g., 5%) of traffic to a new version of a backend service (the canary), while sending the rest to the stable version. By monitoring error rates and latency on the canary traffic, teams can confidently promote or rollback the new version.
@@ -180,7 +180,7 @@ Historically, SOA (Service Oriented Architecture) relied on ESBs. These were hea
 With the rise of REST and microservices, the industry moved to lighter-weight edge proxies (like NGINX or HAProxy) that focused purely on load balancing and basic routing, pushing business logic back to the microservices.
 
 ### Generation 3: The API Gateway
-As microservices proliferated, teams realized they needed to centralize certain cross-cutting concerns (Auth, Rate Limiting) without rebuilding the heavy ESB. The modern API Gateway emerged as a balance—a specialized L7 proxy configured dynamically via a Control Plane.
+As microservices proliferated, teams realized they needed to centralize certain cross-cutting concerns (Auth, Rate Limiting) without rebuilding the heavy ESB. The modern API Gateway emerged as a balanceâ€”a specialized L7 proxy configured dynamically via a Control Plane.
 
 ### Generation 4: Gateway + Service Mesh
 Today, the trend is combining the API Gateway (for North-South edge traffic) with a Service Mesh (like Istio or Linkerd) for East-West internal traffic. Both often share the same underlying proxy technology (e.g., Envoy), providing a unified control plane for all network policies.

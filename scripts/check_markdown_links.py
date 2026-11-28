@@ -257,7 +257,17 @@ def check_target(source: Path, line: int, target: str, root: Path) -> Finding | 
             return Finding("missing-anchor", source, line, normalized, "target has no Markdown file for anchor")
         if not is_within(root, existing):
             return Finding("unsafe-path", source, line, normalized, "target path is outside the repository")
-        anchors = anchor_candidates(existing.read_text(encoding="utf-8"))
+        try:
+            target_markdown = existing.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            return Finding(
+                "invalid-encoding",
+                source,
+                line,
+                normalized,
+                "target file is not valid UTF-8",
+            )
+        anchors = anchor_candidates(target_markdown)
         if fragment not in anchors:
             return Finding("missing-anchor", source, line, normalized, "heading anchor does not exist")
 
@@ -287,7 +297,19 @@ def collect_markdown_files(paths: Sequence[Path], root: Path) -> list[Path]:
 def check_files(files: Iterable[Path], root: Path, allowlist: set[str]) -> list[Finding]:
     findings: list[Finding] = []
     for source in files:
-        markdown = source.read_text(encoding="utf-8")
+        try:
+            markdown = source.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            findings.append(
+                Finding(
+                    "invalid-encoding",
+                    source,
+                    0,
+                    repository_relative(source, root),
+                    "file is not valid UTF-8",
+                )
+            )
+            continue
         definitions = reference_definitions(markdown)
         for usage in iter_reference_usages(markdown):
             if normalize_reference_label(usage.label) not in definitions:
