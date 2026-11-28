@@ -1,0 +1,6 @@
+graph TD
+    Need{"How do clients need to receive updates?"}
+    Need -->|"low-frequency checks"| Poll["Simple polling<br/>stateless pull, high overhead"]
+    Need -->|"occasional updates"| Long["Long polling<br/>server holds the request until data is ready"]
+    Need -->|"one-way server push"| SSE["SSE<br/>live scores, feeds"]
+    Need -->|"frequent client events too"| WS["WebSocket<br/>chat, multiplayer"]

@@ -65,6 +65,11 @@ API design defines how clients and services interact. In HLD interviews, a stron
 - Hybrid API: external REST + internal gRPC.
 - Async command API with job status resource.
 
+## 📊 Diagrams
+
+- [Versioning evolution flow](./diagrams/versioning-evolution-flow.mmd): how a breaking change is shipped as a parallel v2, clients migrate gradually without forced upgrades, and v1 is deprecated only after migration completes.
+- [Pagination selection](./diagrams/pagination-selection.mmd): the offset versus cursor decision for large list endpoints, driven by whether clients need deep pages over fast-changing data.
+
 ## Related concepts
 
 - [REST API Design](../../00-theory/networking-basics/rest-api-design.md)

@@ -1,0 +1,15 @@
+graph TD
+    subgraph Sync["Synchronous request-response"]
+        A["Service A"] -->|"HTTP or gRPC request"| B["Service B"]
+        B -->|"response"| A
+        A --> Timeout{"Response before timeout?"}
+        Timeout -->|"yes"| Done["Return result"]
+        Timeout -->|"no: fail fast, then retry"| Retry["Retry with exponential backoff<br/>0ms, 100ms, 200ms, 400ms plus jitter"]
+        Retry --> B
+    end
+
+    subgraph Async["Asynchronous event-driven"]
+        P["Service A"] -->|"publish"| Q[("Message queue<br/>Kafka, RabbitMQ, SQS")]
+        Q -->|"subscribe"| C["Service B"]
+        Q -->|"subscribe"| D["Service C"]
+    end

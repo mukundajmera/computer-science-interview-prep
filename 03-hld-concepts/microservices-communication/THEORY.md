@@ -95,3 +95,8 @@ Fail fast rather than wait indefinitely.
 3. **Circuit breakers prevent cascading failures**
 4. **Idempotency is crucial for retries**
 5. **Monitor latency and error rates**
+
+## 📊 Diagrams
+
+- [Sync versus async with retry](./diagrams/sync-vs-async-with-retry.mmd): a synchronous HTTP or gRPC call guarded by a timeout and exponential-backoff retry, contrasted with asynchronous publish-subscribe fan-out through a message queue.
+- [Circuit breaker states](./diagrams/circuit-breaker-states.mmd): the CLOSED, OPEN, and HALF_OPEN states and the transitions that stop calls to a failing service and probe its recovery.
