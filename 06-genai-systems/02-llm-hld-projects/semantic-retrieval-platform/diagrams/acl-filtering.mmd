@@ -1,4 +1,3 @@
-```mermaid
 sequenceDiagram
     participant Client
     participant RetSvc as Retrieval Service
@@ -10,4 +9,3 @@ sequenceDiagram
     Note over VectorDB: HNSW traversal ignores nodes<br/>failing the ACL filter but<br/>continues graph expansion.
     VectorDB-->>RetSvc: Returns exact top 10 allowed chunks
     RetSvc-->>Client: Ranked chunks with citations
-```
