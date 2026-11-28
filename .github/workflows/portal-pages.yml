@@ -1,7 +1,7 @@
 name: Portal Pages
 
 env:
-  # The private repo currently has no GitHub Pages site. Build and test on every event,
+  # Pages deploy is wired but off until the owner opts in. Build and test on every event,
   # but publish only after an owner explicitly opts in via this repository variable.
   SHOULD_DEPLOY: ${{ vars.ENABLE_GITHUB_PAGES_DEPLOYMENT == 'true' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) }}
 

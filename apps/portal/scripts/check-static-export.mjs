@@ -158,7 +158,7 @@ export function existsForUrl(urlPath, rootDir = outDir) {
   });
 }
 
-function normalizeHref(filePath, href) {
+function normalizeHref(filePath, href, rootDir = outDir) {
   const withoutFragment = href.split(/[?#]/)[0];
   if (!withoutFragment) return null;
 
@@ -172,15 +172,15 @@ function normalizeHref(filePath, href) {
   if (withoutFragment.startsWith("/")) return withoutFragment;
 
   const absolutePath = path.resolve(path.dirname(filePath), withoutFragment);
-  return `/${path.relative(outDir, absolutePath).split(path.sep).join("/")}`;
+  return `/${path.relative(rootDir, absolutePath).split(path.sep).join("/")}`;
 }
 
-function validateInternalLinks() {
+export function validateInternalLinks(rootDir = outDir) {
   const failures = [];
   const basePathFailures = [];
 
-  for (const filePath of walkIndexFiles(outDir)) {
-    const relativeFile = path.relative(outDir, filePath);
+  for (const filePath of walkIndexFiles(rootDir)) {
+    const relativeFile = path.relative(rootDir, filePath);
     if (relativeFile.startsWith("404/")) continue;
 
     const html = fs.readFileSync(filePath, "utf-8");
@@ -196,9 +196,9 @@ function validateInternalLinks() {
         basePathFailures.push(`${relativeFile} -> ${href}`);
       }
 
-      const normalized = normalizeHref(filePath, href);
+      const normalized = normalizeHref(filePath, href, rootDir);
       if (!normalized) continue;
-      if (!existsForUrl(normalized)) {
+      if (!existsForUrl(normalized, rootDir)) {
         failures.push(`${relativeFile} -> ${href} -> ${normalized}`);
       }
     }
@@ -213,6 +213,67 @@ function validateInternalLinks() {
   if (basePathFailures.length > 0) {
     throw new Error(
       `Root-relative links are not GitHub Pages basePath safe:\n${basePathFailures
+        .slice(0, 120)
+        .join("\n")}`
+    );
+  }
+}
+
+// Largest per-route JavaScript payload measured on the 2026-11-28 build:
+// 460,186 bytes (progress/index.html, 777 routes scanned). Budget is that
+// baseline plus 15 percent, rounded up to the next 1,000 bytes. SITE-10
+// re-baselines this after the theme, reading-layout and search work lands.
+export const PER_ROUTE_JS_BUDGET_BYTES = 530000;
+
+const nextAssetPrefix = "/_next/";
+
+function isNextJavaScriptUrl(url) {
+  const withoutQuery = url.split(/[?#]/)[0];
+  return withoutQuery.includes(nextAssetPrefix) && withoutQuery.endsWith(".js");
+}
+
+// Sums the bytes of every distinct Next chunk a route's HTML references and
+// fails when any route exceeds the budget. Reported per route so the owner
+// sees exactly which page got heavier.
+export function validateJsBudget(
+  rootDir = outDir,
+  budgetBytes = PER_ROUTE_JS_BUDGET_BYTES
+) {
+  const failures = [];
+
+  for (const filePath of walkIndexFiles(rootDir)) {
+    const relativeFile = path.relative(rootDir, filePath).split(path.sep).join("/");
+    if (relativeFile.startsWith("404/")) continue;
+
+    const html = fs.readFileSync(filePath, "utf-8");
+    const seenChunks = new Set();
+    let totalBytes = 0;
+
+    for (const match of html.matchAll(attributeUrlPattern)) {
+      const url = match[1];
+      if (!isNextJavaScriptUrl(url)) continue;
+
+      const normalized = normalizeHref(filePath, url, rootDir);
+      if (!normalized || seenChunks.has(normalized)) continue;
+      seenChunks.add(normalized);
+
+      const chunkPath = path.resolve(rootDir, normalized.replace(/^\/+/, ""));
+      if (isFile(chunkPath)) {
+        totalBytes += fs.statSync(chunkPath).size;
+      }
+      // A missing chunk is already reported by validateInternalLinks.
+    }
+
+    if (totalBytes > budgetBytes) {
+      failures.push(
+        `${relativeFile}: ${totalBytes} bytes of JavaScript exceeds the ${budgetBytes} byte budget`
+      );
+    }
+  }
+
+  if (failures.length > 0) {
+    throw new Error(
+      `Per-route JavaScript size budget exceeded:\n${failures
         .slice(0, 120)
         .join("\n")}`
     );
@@ -315,6 +376,7 @@ function main() {
   validateManifestRoutes();
   validateRevealRoutePairs();
   validateInternalLinks();
+  validateJsBudget();
 
   console.log("static-export: ok");
 }

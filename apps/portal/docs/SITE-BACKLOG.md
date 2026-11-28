@@ -7,7 +7,7 @@
 
 | ID | Item | Needs decision | Depends on | Status |
 |----|------|----------------|------------|--------|
-| SITE-01 | Deploy readiness: test the root-path build, fix stale workflow text, owner runbook, link check and size budget | D2 to go live | none | 🔜 |
+| SITE-01 | Deploy readiness: test the root-path build, fix stale workflow text, owner runbook, link check and size budget | D2 to go live | none | ✅ |
 | SITE-02 | Theme: design tokens, class-based dark mode, toggle, no theme flash; fixes the white-body dark-text bug | none | SITE-01 | 🔜 |
 | SITE-03 | Reading layout: line length, type scale, on-page contents, heading anchors, previous/next | none | SITE-02 | 🔜 |
 | SITE-04 | Build-time syntax highlighting (leaves `mermaid` blocks untouched) | D3 | SITE-02 | 🔜 |
