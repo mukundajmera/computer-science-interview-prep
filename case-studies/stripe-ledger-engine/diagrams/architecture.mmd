@@ -1,0 +1,21 @@
+flowchart TD
+    %% Write path: idempotency, double-entry validation, immutable ledger write
+    Client["API Client"] -->|"POST transaction with Idempotency-Key"| Idem{"Idempotency key already seen?"}
+    Idem -->|"yes"| Replay["Replay the stored response<br>no financial side effects"]
+    Idem -->|"no: insert key and hold lock"| Validate{"Double-entry check<br>sum of all legs equals zero?"}
+    Validate -->|"no"| Reject["Reject the transaction"]
+    Validate -->|"yes"| Log[("Append-only ledger log<br>immutable double-entry postings")]
+    Log --> OCC{"OCC balance update<br>account version unchanged?"}
+    OCC -->|"version conflict"| Retry["Re-read balance and retry"]
+    Retry --> OCC
+    OCC -->|"updated"| Commit["Commit postings"]
+    Commit --> Bus{{"Kafka event bus<br>downstream consumers"}}
+
+    %% Read path: snapshot plus replay of recent events
+    Rollup["Periodic balance rollup job"] --> Snap[("Balance snapshots")]
+    Log --> Rollup
+    ReadReq["Balance read request"] --> Snap
+    ReadReq --> Tail["Replay events written after the snapshot"]
+    Log --> Tail
+    Snap --> Balance["Current balance response"]
+    Tail --> Balance

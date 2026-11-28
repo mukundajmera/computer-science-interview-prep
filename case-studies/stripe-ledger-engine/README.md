@@ -44,6 +44,12 @@ Stripe built a dedicated Ledger Engine based on event sourcing, double-entry boo
 - **Balances** are derived from this log and snapshotted periodically.
 - **Idempotency** is enforced at the edge of the ledger.
 
+## 📊 Diagrams
+
+- [Architecture: write and read paths](diagrams/architecture.mmd) - idempotency key check, double-entry validation, the immutable ledger write, and the snapshot-plus-replay read path.
+
+---
+
 ---
 
 ## 3. Core Accounting Invariant
