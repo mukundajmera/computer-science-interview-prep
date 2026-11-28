@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant Client
+    participant API as API server
+    participant Store as Job status store
+    participant Queue as Job queue
+    participant Worker as Worker pool
+
+    Client->>API: Submit job with idempotency key
+    API->>Store: Record status: accepted
+    API->>Queue: Enqueue the job
+    API-->>Client: Job ID returned immediately
+    Worker->>Queue: Dequeue the job
+    Worker->>Store: Update status: running, then done or failed
+    Note over Worker: Retries are capped; poison jobs move to the DLQ
+    Client->>API: Poll job status with the job ID
+    API->>Store: Read current status
+    API-->>Client: Status, and the result when done
