@@ -6,28 +6,28 @@ const plans = [
     title: "1-Week Crash Course",
     duration: "7 Days",
     desc: "For urgent upcoming interviews. Covers absolute essentials.",
-    href: "/resources/study-plans/1-week",
+    href: "/resources/study-plans/1-week-plan",
   },
   {
     id: "1-month",
     title: "1-Month Intensive",
     duration: "30 Days",
     desc: "Solid preparation covering HLD concepts and top 5 LLD/HLD projects.",
-    href: "/resources/study-plans/1-month",
+    href: "/resources/study-plans/1-month-plan",
   },
   {
     id: "60-day",
     title: "60-Day Comprehensive",
     duration: "60 Days",
     desc: "In-depth coverage including deep dives, advanced patterns, and GenAI.",
-    href: "/resources/study-plans/60-day",
+    href: "/resources/study-plans/60-day-plan",
   },
   {
     id: "90-day",
     title: "90-Day Mastery",
     duration: "90 Days",
     desc: "The ultimate guide for Staff+ roles. Leaves no stone unturned.",
-    href: "/resources/study-plans/90-day",
+    href: "/resources/study-plans/90-day-plan",
   },
 ];
 

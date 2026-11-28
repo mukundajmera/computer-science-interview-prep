@@ -174,6 +174,8 @@ test("createRouteManifest preserves stable routes for content, quizzes, and inte
     manifest.routes.map((route) => route.href),
     [
       "/",
+      "/start",
+      "/learning-paths",
       "/theory",
       "/patterns",
       "/coding",
@@ -184,6 +186,7 @@ test("createRouteManifest preserves stable routes for content, quizzes, and inte
       "/case-studies",
       "/interview",
       "/quizzes",
+      "/flashcards",
       "/resources",
       "/progress",
       "/theory/oop",
@@ -210,7 +213,7 @@ test("createRouteManifest preserves stable routes for content, quizzes, and inte
   assert.equal(manifest.counts.bySection["Interview Mode"], 2);
   assert.equal(manifest.counts.bySection.Resources, 1);
   assert.equal(manifest.counts.bySection.Quizzes, 2);
-  assert.equal(manifest.counts.total, 28);
+  assert.equal(manifest.counts.total, 31);
 
   const hrefs = new Set(manifest.routes.map((route) => route.href));
   assert.equal(hrefs.has("/interview/lld"), false);

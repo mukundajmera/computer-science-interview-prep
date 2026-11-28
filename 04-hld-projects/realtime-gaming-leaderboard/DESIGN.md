@@ -119,7 +119,7 @@ CREATE TABLE user_tournament_score (
 
 ## 5. 🏗️ High-Level Architecture
 
-![Architecture Diagram](diagrams/architecture.mmd)
+[Architecture Diagram (Mermaid source)](diagrams/architecture.mmd)
 
 ### Component List
 - **API Gateway:** Routes requests and handles auth/rate-limiting.

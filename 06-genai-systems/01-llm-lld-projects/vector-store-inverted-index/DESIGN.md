@@ -33,7 +33,7 @@ This is represented by a dictionary/map (e.g., `self.graph`) mapping a vector `i
 *   **Insertion**: When a new vector is added, it queries the graph for its `M` nearest neighbors and connects to them.
 *   **Entry Point**: `self.entry_point` keeps track of a starting node to begin graph traversals.
 
-![HNSW Graph](diagrams/vector-store-hnsw.mmd)
+[HNSW Graph (Mermaid source)](diagrams/vector-store-hnsw.mmd)
 
 ## 4. Search Operations
 

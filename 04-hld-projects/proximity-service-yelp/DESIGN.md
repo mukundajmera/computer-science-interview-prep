@@ -109,7 +109,7 @@ CREATE TABLE businesses (
 
 ## 5. 🏗️ High-Level Architecture
 
-![Architecture Diagram](diagrams/architecture.mmd)
+[Architecture Diagram (Mermaid source)](diagrams/architecture.mmd)
 
 ### Component List
 - **API Gateway:** Routes requests.

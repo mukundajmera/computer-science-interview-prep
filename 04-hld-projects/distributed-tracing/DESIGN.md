@@ -60,7 +60,7 @@ We use a columnar model. Each span is a row.
 
 ## 4. High-Level Architecture
 
-![Architecture](diagrams/architecture.mmd)
+[Architecture (Mermaid source)](diagrams/architecture.mmd)
 
 ```mermaid
 flowchart LR

@@ -5,7 +5,7 @@ An API Gateway is a central management layer that sits between clients (like web
 
 By intercepting all incoming traffic, the API Gateway centralizes routing and cross-cutting concerns, ensuring that policy enforcement, security, and observability are applied consistently before requests ever reach backend applications.
 
-![](../../diagrams/components/api-gateway.mmd)
+[API Gateway components diagram (Mermaid source)](../../diagrams/components/api-gateway.mmd)
 
 ## Gateway vs Other Networking Components
 

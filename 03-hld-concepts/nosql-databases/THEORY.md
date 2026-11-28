@@ -228,7 +228,7 @@ If the system must ingest an astronomical volume of writes—such as millions of
 
 ### Write/read path (conceptual)
 
-![Write Path and Compaction](diagrams/write-path-compaction.mmd)
+[Write Path and Compaction (Mermaid source)](diagrams/write-path-compaction.mmd)
 
 - Writes are append-friendly and optimized for high throughput.
 - Coordinator node routes to replicas based on key placement.

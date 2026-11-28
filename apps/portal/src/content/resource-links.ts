@@ -245,7 +245,9 @@ function repoPathToPortalRoute(
   if (root === "03-hld-concepts") {
     if (segments.length === 1) return "/hld-concepts";
     if (segments.length === 2) {
-      return second === "README" ? "/hld-concepts" : `/hld-concepts/${second}`;
+      if (second === "README") return "/hld-concepts";
+      // Root-level docs such as TECHNOLOGY-SELECTION.md have no portal route.
+      return isSectionDoc(second) ? null : `/hld-concepts/${second}`;
     }
     if (segments.length === 3 && HLD_CONCEPT_DOCS.has(third)) {
       return `/hld-concepts/${second}`;

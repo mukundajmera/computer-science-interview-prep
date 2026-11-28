@@ -111,7 +111,7 @@ GET /api/v1/id
 
 ## 5. 🏗️ High-Level Architecture
 
-![Architecture](diagrams/architecture.mmd)
+[Architecture (Mermaid source)](diagrams/architecture.mmd)
 
 ```mermaid
 flowchart TD

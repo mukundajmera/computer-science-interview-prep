@@ -84,7 +84,7 @@ At a 15 GB target per partition, five partitions are a storage lower bound; prov
 
 ## 🏗️ Implementation and operations
 
-![Partitioning Resharding](diagrams/partitioning-resharding.mmd)
+[Partitioning Resharding (Mermaid source)](diagrams/partitioning-resharding.mmd)
 
 ### Resharding without downtime
 
