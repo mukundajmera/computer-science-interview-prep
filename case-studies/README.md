@@ -60,6 +60,7 @@ Deep-dive analyses of production systems at massive scale.
 | [Discord](discord-messaging-storage/) | Message Storage | Trillions of messages stored | Current source-backed; see [scale metrics](discord-messaging-storage/#scale-metrics) | Hot partitions at chat scale | Chat/message storage design |
 | [Snowflake](snowflake-data-warehouse/) | Cloud Data Warehouse | Petabytes per large customer, hundreds of millions of queries/day fleet-wide | Widely known public facts; see [provenance](snowflake-data-warehouse/#-provenance-and-sources) | Storage/compute separation | Data platforms/analytics |
 | [Meta](meta-memcache-tao/) | Social Graph & Cache Tier | 1B+ reads/sec on the graph store (TAO paper, 2013) | Public papers; see [scale metrics](meta-memcache-tao/#scale-metrics) | Read-heavy graph serving | Caching strategies, social feeds |
+| [Shopify](shopify-flash-sale/) | Multi-Tenant Commerce Platform | 284M edge requests/min peak (BFCM 2024, Shopify News) | Current source-backed; see [scale metrics](shopify-flash-sale/#scale-metrics) | Flash-sale write bursts & tenant isolation | E-commerce, high-contention checkout |
 
 ---
 
