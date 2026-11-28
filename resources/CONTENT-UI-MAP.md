@@ -26,7 +26,7 @@ Quick-reference counts (auto-discovery means these grow without portal changes):
 
 | Section | Items | Source |
 |---------|-------|--------|
-| Theory articles | 73 | `00-theory/` (9 topic areas) |
+| Theory articles | 74 | `00-theory/` (9 topic areas) |
 | Design Patterns | 23 | `01-design-patterns/` (5 creational + 7 structural + 11 behavioral) |
 | LLD Projects | 61 | `02-lld-projects/` |
 | HLD Concepts | 64 | `03-hld-concepts/` |
@@ -53,7 +53,7 @@ filesystem** and **reachable through the portal UI**.
 
 | # | Category | Source Directory | File / Dir Pattern | Registry Key (`types.ts`) | Portal Route | Nav Link | Discovery Method | Items |
 |---|----------|------------------|--------------------|--------------------------|--------------|----------|------------------|-------|
-| 1 | Theory | `00-theory/` | `<topicArea>/*.md` | `theory` · `TheoryArticle[]` | `/theory` → `/theory/[topicArea]` → `/theory/[topicArea]/[article]` | Theory | Scans subdirs → markdown files | 73 |
+| 1 | Theory | `00-theory/` | `<topicArea>/*.md` | `theory` · `TheoryArticle[]` | `/theory` → `/theory/[topicArea]` → `/theory/[topicArea]/[article]` | Theory | Scans subdirs → markdown files | 74 |
 | 2 | Design Patterns | `01-design-patterns/` | `<creational\|structural\|behavioral>/<pattern>/` | `patterns` · `DesignPattern[]` | `/patterns` → `/patterns/[category]` → `/patterns/[category]/[pattern]` | Design Patterns | Scans category dirs → pattern dirs | 23 |
 | 3 | LLD Projects | `02-lld-projects/` | `<project>/` (PROBLEM.md, DESIGN.md, …) | `lldProjects` · `LLDProject[]` | `/lld` → `/lld/[project]` | LLD Projects | Scans subdirs | 61 |
 | 4 | HLD Concepts | `03-hld-concepts/` | `<concept>/` (THEORY.md, INTERVIEW-QA.md) | `hldConcepts` · `HLDConcept[]` | `/hld-concepts` → `/hld-concepts/[concept]` | HLD Concepts | Scans subdirs | 64 |
