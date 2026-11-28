@@ -26,21 +26,22 @@ Quick-reference counts (auto-discovery means these grow without portal changes):
 
 | Section | Items | Source |
 |---------|-------|--------|
-| Theory articles | 67 | `00-theory/` (9 topic areas) |
+| Theory articles | 72 | `00-theory/` (9 topic areas) |
 | Design Patterns | 23 | `01-design-patterns/` (5 creational + 7 structural + 11 behavioral) |
-| LLD Projects | 56 | `02-lld-projects/` |
-| HLD Concepts | 59 | `03-hld-concepts/` |
-| HLD Projects | 48 | `04-hld-projects/` |
-| GenAI Concepts | 14 | `06-genai-systems/00-concepts/` |
+| LLD Projects | 61 | `02-lld-projects/` |
+| HLD Concepts | 64 | `03-hld-concepts/` |
+| HLD Projects | 54 | `04-hld-projects/` |
+| GenAI Concepts | 18 | `06-genai-systems/00-concepts/` |
 | GenAI LLD Projects | 17 | `06-genai-systems/01-llm-lld-projects/` |
-| GenAI HLD Projects | 10 | `06-genai-systems/02-llm-hld-projects/` |
+| GenAI HLD Projects | 16 | `06-genai-systems/02-llm-hld-projects/` |
 | Coding Pattern Packs | 10 | `05-coding-problems/` (`two-pointers`, `sliding-window`, `binary-search`, `bfs-dfs`, `dynamic-programming`, `greedy`, `backtracking`, `heap-priority-queue`, `trie`, `union-find`) |
 | Case Studies | 15 | `case-studies/` |
 | Quizzes | 41 | `quizzes/` (networking-fundamentals, database-internals, os-concurrency, security-auth, design-patterns, lld-projects, lld-interview-framework, hld-concepts, hld-projects, infra-technologies, two-pointers, sliding-window, binary-search, bfs-dfs, dynamic-programming, greedy, backtracking, heap-priority-queue, trie, union-find, ai-coding-interview, ai-coding-interviews, applied-ml-system-design, genai-system-design, behavioral-interviews, salary-negotiation, distributed-systems-core, graph-algorithms, monotonic-stack, intervals-sweepline, bit-manipulation) |
-| Interview Problems | 38 | `solutions/` (curated non-coding list plus auto-discovered coding pattern packs from `solutions/coding-*.md`) |
+| Interview Problems | 98 | `solutions/` (curated non-coding list plus auto-discovered coding pattern packs from `solutions/coding-*.md`) |
 | Resources | 48 | `resources/{study-plans,cheatsheets,interview-tips,templates}/` public learner resource files (excludes category README files) |
 | Flashcard Decks | 28 | `flashcards/` (design-patterns, lld-concepts, hld-concepts, infra-technologies, ai-coding-interview, ai-coding-interviews, applied-ml-system-design, genai-system-design, two-pointers, sliding-window, binary-search, bfs-dfs, dynamic-programming, greedy, backtracking, heap-priority-queue, trie, union-find, behavioral-interviews, salary-negotiation, distributed-systems-core) |
-| Executable Sample Files | 255 | `00-theory/`, `03-hld-concepts/`, and `06-genai-systems/00-concepts/` source samples; excludes tests and `__init__.py` |
+| Prompt Workflow Files | 0 | `prompts/` (not published in this public repository) |
+| Executable Sample Files | 287 | `00-theory/`, `03-hld-concepts/`, and `06-genai-systems/00-concepts/` source samples; excludes tests and `__init__.py` |
 | Mermaid Diagrams | 29 | `diagrams/` (23 patterns + 6 components) |
 
 ---
@@ -52,19 +53,19 @@ filesystem** and **reachable through the portal UI**.
 
 | # | Category | Source Directory | File / Dir Pattern | Registry Key (`types.ts`) | Portal Route | Nav Link | Discovery Method | Items |
 |---|----------|------------------|--------------------|--------------------------|--------------|----------|------------------|-------|
-| 1 | Theory | `00-theory/` | `<topicArea>/*.md` | `theory` · `TheoryArticle[]` | `/theory` → `/theory/[topicArea]` → `/theory/[topicArea]/[article]` | Theory | Scans subdirs → markdown files | 67 |
+| 1 | Theory | `00-theory/` | `<topicArea>/*.md` | `theory` · `TheoryArticle[]` | `/theory` → `/theory/[topicArea]` → `/theory/[topicArea]/[article]` | Theory | Scans subdirs → markdown files | 72 |
 | 2 | Design Patterns | `01-design-patterns/` | `<creational\|structural\|behavioral>/<pattern>/` | `patterns` · `DesignPattern[]` | `/patterns` → `/patterns/[category]` → `/patterns/[category]/[pattern]` | Design Patterns | Scans category dirs → pattern dirs | 23 |
-| 3 | LLD Projects | `02-lld-projects/` | `<project>/` (PROBLEM.md, DESIGN.md, …) | `lldProjects` · `LLDProject[]` | `/lld` → `/lld/[project]` | LLD Projects | Scans subdirs | 56 |
-| 4 | HLD Concepts | `03-hld-concepts/` | `<concept>/` (THEORY.md, INTERVIEW-QA.md) | `hldConcepts` · `HLDConcept[]` | `/hld-concepts` → `/hld-concepts/[concept]` | HLD Concepts | Scans subdirs | 59 |
-| 5 | HLD Projects | `04-hld-projects/` | `<project>/` (PROBLEM.md, DESIGN.md, …) | `hldProjects` · `HLDProject[]` | `/hld` → `/hld/[project]` | HLD Projects | Scans subdirs | 48 |
-| 6 | GenAI Concepts | `06-genai-systems/00-concepts/` | `<concept>/README.md` | `genaiConcepts` · `GenAIConcept[]` | `/genai` → `/genai/concepts/[concept]` | GenAI Systems | Scans subdirs | 14 |
+| 3 | LLD Projects | `02-lld-projects/` | `<project>/` (PROBLEM.md, DESIGN.md, …) | `lldProjects` · `LLDProject[]` | `/lld` → `/lld/[project]` | LLD Projects | Scans subdirs | 61 |
+| 4 | HLD Concepts | `03-hld-concepts/` | `<concept>/` (THEORY.md, INTERVIEW-QA.md) | `hldConcepts` · `HLDConcept[]` | `/hld-concepts` → `/hld-concepts/[concept]` | HLD Concepts | Scans subdirs | 64 |
+| 5 | HLD Projects | `04-hld-projects/` | `<project>/` (PROBLEM.md, DESIGN.md, …) | `hldProjects` · `HLDProject[]` | `/hld` → `/hld/[project]` | HLD Projects | Scans subdirs | 54 |
+| 6 | GenAI Concepts | `06-genai-systems/00-concepts/` | `<concept>/README.md` | `genaiConcepts` · `GenAIConcept[]` | `/genai` → `/genai/concepts/[concept]` | GenAI Systems | Scans subdirs | 18 |
 | 7 | GenAI LLD | `06-genai-systems/01-llm-lld-projects/` | `<project>/` (PROBLEM.md, …) | `genaiLLD` · `GenAILLDProject[]` | `/genai` → `/genai/lld/[project]` | (same nav) | Scans subdirs | 17 |
-| 8 | GenAI HLD | `06-genai-systems/02-llm-hld-projects/` | `<project>/` (PROBLEM.md, …) | `genaiHLD` · `GenAIHLDProject[]` | `/genai` → `/genai/hld/[project]` | (same nav) | Scans subdirs | 10 |
+| 8 | GenAI HLD | `06-genai-systems/02-llm-hld-projects/` | `<project>/` (PROBLEM.md, …) | `genaiHLD` · `GenAIHLDProject[]` | `/genai` → `/genai/hld/[project]` | (same nav) | Scans subdirs | 16 |
 | 9 | Coding Patterns | `05-coding-problems/` | `<topic>/README.md` | `codingTopics` · `CodingTopic[]` | `/coding` → `/coding/[topic]` | Coding Patterns | Scans subdirs | 10 |
 | 10 | Case Studies | `case-studies/` | `<study>/README.md` | `caseStudies` · `CaseStudy[]` | `/case-studies` → `/case-studies/[study]` | Case Studies | Scans subdirs | 15 |
 | 11 | Quizzes | `quizzes/` | `*-quiz.md` (answers in `answers/`) | *(not in registry — uses `listMarkdownFiles` directly)* | `/quizzes` → `/quizzes/[quiz]` | Quizzes | Scans `*-quiz.md` files | 41 |
-| 12 | Interview Mode | `solutions/` + project dirs | Curated non-coding list plus `solutions/coding-*.md` | *(not in registry — uses `interviews.ts`)* | `/interview` → `/interview/[type]/[project]` | Interview Mode | Curated non-coding entries plus coding solution scan | 38 |
-| 13 | Resources | `resources/{study-plans,cheatsheets,interview-tips,templates}/` | `<resource>.md` excluding category `README.md` files | *(not in registry — uses `resources.ts`)* | `/resources` → `/resources/[category]` → `/resources/[category]/[resource]` | Resources | Scans approved resource categories | 47 |
+| 12 | Interview Mode | `solutions/` + project dirs | Curated non-coding list plus `solutions/coding-*.md` | *(not in registry — uses `interviews.ts`)* | `/interview` → `/interview/[type]/[project]` | Interview Mode | Curated non-coding entries plus coding solution scan | 98 |
+| 13 | Resources | `resources/{study-plans,cheatsheets,interview-tips,templates}/` | `<resource>.md` excluding category `README.md` files | *(not in registry — uses `resources.ts`)* | `/resources` → `/resources/[category]` → `/resources/[category]/[resource]` | Resources | Scans approved resource categories | 48 |
 
 ### Coverage Notes
 
@@ -192,6 +193,7 @@ Mismatches detected during the coherence audit and their resolutions.
 | 8 | `06-genai-systems/CLASSIC-VS-GENAI.md`, `GENAI-SD-FRAMEWORK.md`, `PITFALLS.md` exist at root of `06-genai-systems/` but are not scanned by registry | Medium | Registry only scans `00-concepts/`, `01-llm-lld-projects/`, `02-llm-hld-projects/` subdirectories. These root-level guides are accessible on GitHub and referenced by study plans. Moving them into `00-concepts/` as dedicated concept directories would make them portal-discoverable without code changes. |
 | 9 | `02-lld-projects/HOW-TO-APPROACH.md` and `02-lld-projects/lld-doc-coverage-matrix.md` are root-level files not scanned by registry | Low | Root-level guide and maintenance matrix; registry scans project subdirectories only. Accessible on GitHub. Could be relocated into dedicated subdirectories if portal discoverability is desired. |
 | 10 | `04-hld-projects/DESIGN-TEMPLATE.md` is a root-level file not scanned by registry | Low | Authoritative template; registry scans project subdirectories only. Not user-facing curriculum content. |
+| 11 | Non-coding inventory and portal counts drifted from repository discovery, and `Prompt Workflow Files` row was missing (2026-11-28) | Resolved | Updated non-coding counts across Content Inventory and Portal-Covered Categories (Theory 67→72, LLD Projects 56→61, HLD Concepts 59→64, HLD Projects 48→54, GenAI Concepts 14→18, GenAI HLD 10→16, Interview Problems/Mode 38→98, Resources portal 47→48, Executable Sample Files 255→287) and added `Prompt Workflow Files` with count `0` (not published in this public repository). Coding pattern counts remain at `10` pending alignment on numbered vs. unnumbered folders under `05-coding-problems/`. |
 
 ---
 
@@ -287,7 +289,7 @@ a mismatch.
 
 ---
 
-*Last updated: 2026-04-01 — source 04-07 moderation/bot/recommendation sync and inventory update.*
+*Last updated: 2026-11-28 — refreshed non-coding inventory and portal category counts and added the Prompt Workflow Files row.*
 
 ---
 
