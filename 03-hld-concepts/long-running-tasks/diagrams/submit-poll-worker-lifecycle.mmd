@@ -11,7 +11,7 @@ sequenceDiagram
     API-->>Client: Job ID returned immediately
     Worker->>Queue: Dequeue the job
     Worker->>Store: Update status: running, then done or failed
-    Note over Worker: Retries are capped; poison jobs move to the DLQ
+    Note over Worker: Retries are capped, so poison jobs move to the DLQ
     Client->>API: Poll job status with the job ID
     API->>Store: Read current status
     API-->>Client: Status, and the result when done
