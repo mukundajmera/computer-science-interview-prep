@@ -79,6 +79,9 @@ Coach answer outlines for flagship interview problems.
 | AI Search Engine | GenAI HLD | ⭐⭐⭐⭐ | [genai-hld-ai-search-engine.md](genai-hld-ai-search-engine.md) | Yes |
 | LoRA Fine-Tuning Pipeline | GenAI HLD | ⭐⭐⭐⭐ | [genai-hld-fine-tuning-pipeline.md](genai-hld-fine-tuning-pipeline.md) | Yes |
 | LLM Inference Serving Platform | GenAI HLD | ⭐⭐⭐⭐⭐ | [genai-hld-inference-serving-platform.md](genai-hld-inference-serving-platform.md) | Yes |
+| Recommendation Feature Store | GenAI HLD | ⭐⭐⭐⭐ | [genai-hld-recommendation-feature-store.md](genai-hld-recommendation-feature-store.md) | Yes |
+| Text-to-SQL Analytics Assistant | GenAI HLD | ⭐⭐⭐⭐ | [genai-hld-text-to-sql-assistant.md](genai-hld-text-to-sql-assistant.md) | Yes |
+| Real-Time Voice Assistant | GenAI HLD | ⭐⭐⭐⭐ | [genai-hld-voice-assistant.md](genai-hld-voice-assistant.md) | Yes |
 | [Key-Value Store LSM](../02-lld-projects/key-value-store-lsm/) | [Solution](./lld-key-value-store-lsm.md) |
 
 ---

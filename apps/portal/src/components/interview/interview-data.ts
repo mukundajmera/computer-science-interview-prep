@@ -690,6 +690,27 @@ export const INTERVIEW_PROBLEMS: InterviewProblem[] = [
     solutionPath: "solutions/genai-hld-inference-serving-platform.md",
   },
   {
+    slug: "recommendation-feature-store",
+    title: "Recommendation Feature Store",
+    type: "genai-hld",
+    difficulty: "advanced",
+    solutionPath: "solutions/genai-hld-recommendation-feature-store.md",
+  },
+  {
+    slug: "text-to-sql-assistant",
+    title: "Text-to-SQL Analytics Assistant",
+    type: "genai-hld",
+    difficulty: "advanced",
+    solutionPath: "solutions/genai-hld-text-to-sql-assistant.md",
+  },
+  {
+    slug: "voice-assistant",
+    title: "Real-Time Voice Assistant",
+    type: "genai-hld",
+    difficulty: "advanced",
+    solutionPath: "solutions/genai-hld-voice-assistant.md",
+  },
+  {
     slug: "ad-click-aggregator",
     title: "Ad Click Aggregator",
     type: "hld",
