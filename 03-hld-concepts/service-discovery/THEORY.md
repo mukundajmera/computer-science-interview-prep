@@ -78,3 +78,7 @@ Service discovery is the process of automatically detecting and tracking the net
 3. **TTL for deregistration**: Auto-cleanup on crashes
 4. **Caching with invalidation**: Balance latency and freshness
 5. **Consistency requirements**: CP vs AP trade-offs
+
+## 📊 Diagrams
+
+- [Client-side vs server-side discovery](./diagrams/client-vs-server-side-discovery.mmd) - compares the two discovery flows against a shared registry: clients querying the registry and calling an instance directly, versus clients hitting a load balancer that queries the registry and routes, with health heartbeats keeping the registry current.

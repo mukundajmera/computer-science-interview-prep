@@ -70,6 +70,10 @@ DNS maps human-readable names to network endpoints. In system design interviews,
 - Split-horizon DNS for internal vs external clients.
 - Multi-provider DNS for control-plane resilience.
 
+## 📊 Diagrams
+
+- [Recursive resolution with caching](./diagrams/recursive-resolution-caching.mmd) - the full lookup path from client to recursive resolver, root, TLD, and authoritative nameserver, with the resolver's cache short-circuiting the walk when a fresh answer is already stored.
+
 ## Related concepts
 
 - [Networking Essentials](../../00-theory/networking-basics/networking-essentials.md)
