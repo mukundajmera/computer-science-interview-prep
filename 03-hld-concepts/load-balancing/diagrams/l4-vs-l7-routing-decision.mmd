@@ -1,0 +1,9 @@
+flowchart TD
+    Req([Incoming request]) --> LB[Load balancer]
+    LB --> Q{Which layer makes the routing decision?}
+    Q -->|Layer 4: transport| L4["Inspect source IP and port only"]
+    Q -->|Layer 7: application| L7["Inspect URL, headers, and cookies"]
+    L4 --> L4R["Route by IP and port to a server pool: fast, low CPU"]
+    L7 --> L7R["Route by content, for example /api to the API pool"]
+    L4R --> Pool[(Backend servers)]
+    L7R --> Pool

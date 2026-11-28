@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant Op as Operator or CI
+    participant CP as CDN control plane
+    participant Edge as Edge nodes
+    participant Shield as Origin shield
+    participant Origin as Origin server
+
+    Op->>CP: Purge API call for a cache key
+    CP->>Edge: Invalidate the key at every edge
+    Note over Edge: Propagation can take seconds to minutes
+    Edge->>Shield: Next request for the key misses
+    Shield->>Origin: Fetch the fresh object
+    Origin-->>Shield: Fresh response
+    Shield-->>Edge: Response stored at the edge
+    Edge-->>Edge: Fresh copy served until the TTL expires

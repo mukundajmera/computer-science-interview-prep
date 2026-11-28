@@ -1,0 +1,7 @@
+flowchart TD
+    Start([Read request for a key]) --> Check[App checks the cache first]
+    Check --> Hit{Key present in cache?}
+    Hit -->|Cache hit| ServeHit[Return cached value]
+    Hit -->|Cache miss| Read[Read from the backing store]
+    Read --> Fill[Store value in cache with a TTL]
+    Fill --> ServeMiss[Return value to the caller]
