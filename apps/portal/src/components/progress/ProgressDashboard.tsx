@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function ProgressDashboard({ knownIds, registryMap, sections }: Props) {
-  const { progress, completedCount, toggleComplete, removeLegacy, importProgress } = useProgress(knownIds);
+  const { progress, completedCount, toggleComplete, removeLegacy, validateProgressFile, importProgress } = useProgress(knownIds);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const entries = Object.entries(progress.completed).sort(
@@ -68,10 +68,33 @@ export function ProgressDashboard({ knownIds, registryMap, sections }: Props) {
     const reader = new FileReader();
     reader.onload = (event) => {
       const content = event.target?.result as string;
-      if (importProgress(content)) {
-        alert("Progress imported successfully!");
+      const validation = validateProgressFile(content);
+      if (!validation.ok) {
+        alert(`Could not import progress: ${validation.error}`);
+        return;
+      }
+
+      let mode: "merge" | "replace" = "replace";
+      if (completedCount > 0) {
+        const merge = window.confirm(
+          "Press OK to merge the file into your current progress (the newer timestamp wins per topic). Press Cancel to replace your current progress with the file instead."
+        );
+        if (!merge) {
+          const confirmed = window.confirm(
+            "Replacing overwrites all progress stored in this browser. Continue?"
+          );
+          if (!confirmed) return;
+          mode = "replace";
+        } else {
+          mode = "merge";
+        }
+      }
+
+      const result = importProgress(content, mode);
+      if (result.ok) {
+        alert(mode === "merge" ? "Progress merged successfully!" : "Progress imported successfully!");
       } else {
-        alert("Failed to import progress data.");
+        alert(`Could not import progress: ${result.error}`);
       }
     };
     reader.readAsText(file);

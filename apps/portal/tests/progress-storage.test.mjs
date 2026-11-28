@@ -150,3 +150,141 @@ test("invalid progress timestamps are ignored during normalization", () => {
   });
   assert.deepEqual(state.legacyCompleted, {});
 });
+
+const {
+  parseProgressExportFile,
+  mergeProgressStates,
+  emptyProgressState,
+} = await importTypeScriptModule("../src/lib/progress-schema.ts");
+
+test("export file round trip restores identical state", () => {
+  const original = {
+    version: 1,
+    completed: {
+      "lld-parking-lot": "2026-01-01T00:00:00.000Z",
+      "hld-url-shortener": "2026-02-01T00:00:00.000Z",
+    },
+    legacyCompleted: {
+      "retired-topic": "2026-03-01T00:00:00.000Z",
+    },
+  };
+
+  const parsed = parseProgressExportFile(JSON.stringify(original));
+
+  assert.equal(parsed.ok, true);
+  assert.deepEqual(parsed.state, original);
+});
+
+test("corrupt export file is rejected with a clear message", () => {
+  const parsed = parseProgressExportFile("{ not json");
+
+  assert.equal(parsed.ok, false);
+  assert.match(parsed.error, /not valid JSON/);
+});
+
+test("non-object export file is rejected", () => {
+  const parsed = parseProgressExportFile("[1,2,3]");
+
+  assert.equal(parsed.ok, false);
+  assert.match(parsed.error, /progress object/);
+});
+
+test("unknown version is refused and names the version", () => {
+  const parsed = parseProgressExportFile(
+    JSON.stringify({ version: 99, completed: { "a": "2026-01-01T00:00:00.000Z" } })
+  );
+
+  assert.equal(parsed.ok, false);
+  assert.match(parsed.error, /Unsupported progress file version: 99/);
+});
+
+test("missing version is refused", () => {
+  const parsed = parseProgressExportFile(
+    JSON.stringify({ completed: { "a": "2026-01-01T00:00:00.000Z" } })
+  );
+
+  assert.equal(parsed.ok, false);
+  assert.match(parsed.error, /no progress version/);
+});
+
+test("malformed completed map is refused", () => {
+  const parsed = parseProgressExportFile(
+    JSON.stringify({ version: 1, completed: { "a": 123 } })
+  );
+
+  assert.equal(parsed.ok, false);
+  assert.match(parsed.error, /id-to-timestamp/);
+});
+
+test("merge keeps the newer timestamp per id and unions both maps", () => {
+  const current = {
+    version: 1,
+    completed: {
+      "a": "2026-01-01T00:00:00.000Z",
+      "b": "2026-01-02T00:00:00.000Z",
+    },
+    legacyCompleted: {},
+  };
+  const incoming = {
+    version: 1,
+    completed: {
+      "a": "2026-06-01T00:00:00.000Z",
+      "c": "2026-06-02T00:00:00.000Z",
+    },
+    legacyCompleted: {},
+  };
+
+  const merged = mergeProgressStates(current, incoming);
+
+  assert.deepEqual(merged.completed, {
+    "a": "2026-06-01T00:00:00.000Z",
+    "b": "2026-01-02T00:00:00.000Z",
+    "c": "2026-06-02T00:00:00.000Z",
+  });
+});
+
+test("merge keeps the current timestamp when it is newer", () => {
+  const current = {
+    version: 1,
+    completed: { "a": "2026-06-01T00:00:00.000Z" },
+    legacyCompleted: {},
+  };
+  const incoming = {
+    version: 1,
+    completed: { "a": "2026-01-01T00:00:00.000Z" },
+    legacyCompleted: {},
+  };
+
+  const merged = mergeProgressStates(current, incoming);
+
+  assert.deepEqual(merged.completed, { "a": "2026-06-01T00:00:00.000Z" });
+});
+
+test("replace semantics: incoming state stands alone, current ids do not leak", () => {
+  const current = {
+    version: 1,
+    completed: { "old-only": "2026-01-01T00:00:00.000Z" },
+    legacyCompleted: {},
+  };
+  const incomingParsed = parseProgressExportFile(
+    JSON.stringify({
+      version: 1,
+      completed: { "new-only": "2026-02-01T00:00:00.000Z" },
+      legacyCompleted: {},
+    })
+  );
+
+  assert.equal(incomingParsed.ok, true);
+  const replaced = incomingParsed.state;
+
+  assert.deepEqual(replaced.completed, { "new-only": "2026-02-01T00:00:00.000Z" });
+  assert.equal(replaced.completed["old-only"], undefined);
+  assert.equal(current.completed["old-only"], "2026-01-01T00:00:00.000Z");
+});
+
+test("emptyProgressState exports and re-imports cleanly", () => {
+  const parsed = parseProgressExportFile(JSON.stringify(emptyProgressState()));
+
+  assert.equal(parsed.ok, true);
+  assert.deepEqual(parsed.state, emptyProgressState());
+});

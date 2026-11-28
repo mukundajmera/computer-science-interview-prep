@@ -1,9 +1,36 @@
 import { SectionCard } from "@/components/content/SectionCard";
+import { buildRegistry } from "@/content/registry";
 import { buildSectionSummaries } from "@/content/section-summaries";
+import { CATEGORY_TO_SECTION_LABEL } from "@/lib/sections";
 import Link from "next/link";
+
+function buildSectionItemIds(): Record<string, string[]> {
+  const registry = buildRegistry();
+  const all = [
+    ...registry.theory,
+    ...registry.patterns,
+    ...registry.lldProjects,
+    ...registry.hldConcepts,
+    ...registry.hldProjects,
+    ...registry.genaiConcepts,
+    ...registry.genaiLLD,
+    ...registry.genaiHLD,
+    ...registry.codingTopics,
+    ...registry.caseStudies,
+  ];
+
+  const bySection: Record<string, string[]> = {};
+  for (const item of all) {
+    const label = CATEGORY_TO_SECTION_LABEL[item.category];
+    if (!label) continue;
+    (bySection[label] ??= []).push(item.id);
+  }
+  return bySection;
+}
 
 export default function HomePage() {
   const sections = buildSectionSummaries();
+  const sectionItemIds = buildSectionItemIds();
 
   return (
     <div>
@@ -39,6 +66,7 @@ export default function HomePage() {
             label={section.label}
             description={section.description}
             summary={section.summary}
+            progressItemIds={sectionItemIds[section.label]}
           />
         ))}
       </div>
