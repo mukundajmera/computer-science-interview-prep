@@ -1,0 +1,11 @@
+graph TD
+    Client["Client write request"] --> Coord["Coordinating node"]
+    Coord -->|"hash of document ID picks the shard"| Primary["Primary shard"]
+
+    Primary --> Buffer["1. Add to in-memory buffer"]
+    Primary --> Translog[("2. Append to translog<br/>durability")]
+    Buffer -->|"periodic refresh, default 1s"| Searchable["3. Refresh makes the document searchable<br/>near real-time, not real-time"]
+    Primary -->|"4. Replicate"| Replicas["Replica shards"]
+    Replicas --> Ack["Acknowledge to client after quorum"]
+    Translog --> Ack
+    Ack --> Client

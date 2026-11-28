@@ -1,0 +1,7 @@
+graph TD
+    Ingest["Ingested points<br/>WAL plus Head block"] --> Raw["High-resolution blocks<br/>1-second resolution kept 2 days"]
+    Raw -->|"downsample"| Mid["1-minute averages<br/>kept 30 days"]
+    Mid -->|"downsample"| Old["1-hour averages<br/>kept 1 year"]
+    Old -->|"retention expiry"| Drop["Delete the block directory<br/>O(1) removal"]
+    Old -->|"long-term tier"| S3[("Compacted blocks in object storage<br/>Thanos or Cortex")]
+    S3 -.->|"query-time merge with the Head block"| Query["Query results"]

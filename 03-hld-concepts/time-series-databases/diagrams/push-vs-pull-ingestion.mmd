@@ -1,0 +1,11 @@
+graph TD
+    subgraph Pull["Pull model, Prometheus style"]
+        Scraper["TSDB scraper"] -->|"scrapes the /metrics endpoint"| Target["Application /metrics endpoint"]
+        Target -.->|"failed scrape means dead service detected instantly"| Scraper
+        Note1["Good for centralized control<br/>and liveness detection"]
+    end
+
+    subgraph Push["Push model, InfluxDB style"]
+        Agent["Client or agent"] -->|"sends metrics to the ingest endpoint"| Endpoint["TSDB ingest endpoint"]
+        Note2["Good for ephemeral jobs<br/>and NAT-restricted clients"]
+    end
