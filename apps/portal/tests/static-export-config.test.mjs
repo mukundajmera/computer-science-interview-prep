@@ -114,7 +114,7 @@ test("static export start script serves the exported out directory", () => {
   assert.match(exportCheckSource, /GITHUB_PAGES_BASE_PATH/);
   assert.match(exportCheckSource, /routes-manifest\.json/);
   assert.match(exportCheckSource, /app-path-routes-manifest\.json/);
-  assert.match(exportCheckSource, /path\.relative\(outDir, filePath\)/);
+  assert.match(exportCheckSource, /path\.relative\((?:outDir|rootDir), filePath\)/);
   assert.match(exportCheckSource, /\?:href\|src/);
   assert.match(exportCheckSource, /decodeURIComponent/);
   assert.match(exportCheckSource, /validateRevealRoutePairs/);
@@ -257,4 +257,94 @@ test("static export URL checks reject directories without index pages", async ()
   assert.equal(existsForUrl("/reveal/solution/lld/", outputRoot), false);
   assert.equal(existsForUrl("/interview/lld/parking-lot/", outputRoot), true);
   assert.equal(existsForUrl("/asset", outputRoot), true);
+});
+
+test("base path resolution covers unset, empty-string and custom values", async () => {
+  const { resolveGitHubPagesBasePath } = await import("../site-config.mjs");
+
+  assert.equal(
+    resolveGitHubPagesBasePath({}),
+    "/computer-science-interview-prep",
+    "unset falls back to the repository name"
+  );
+  assert.equal(
+    resolveGitHubPagesBasePath({ GITHUB_PAGES_BASE_PATH: "" }),
+    "",
+    "empty string builds for a domain root"
+  );
+  assert.equal(
+    resolveGitHubPagesBasePath({ GITHUB_PAGES_BASE_PATH: "/custom-portal/" }),
+    "/custom-portal",
+    "custom values are normalized"
+  );
+});
+
+test("static export link check fails a fixture with a broken internal link", async () => {
+  const outputRoot = fs.mkdtempSync(path.join(os.tmpdir(), "portal-broken-link-test-"));
+  fs.writeFileSync(
+    path.join(outputRoot, "index.html"),
+    '<!doctype html>\n<a href="/no-such-page/">missing</a>\n'
+  );
+
+  const exportCheckPath = path.join(portalRoot, "scripts/check-static-export.mjs");
+  const { validateInternalLinks } = await import(
+    `${pathToFileURL(exportCheckPath).href}?broken-link-fixture-test`
+  );
+
+  assert.throws(
+    () => validateInternalLinks(outputRoot),
+    /Broken static export links:\nindex\.html -> \/no-such-page\//
+  );
+});
+
+test("static export JavaScript budget fails an oversize route with route and size", async () => {
+  const outputRoot = fs.mkdtempSync(path.join(os.tmpdir(), "portal-js-budget-test-"));
+  const chunkDir = path.join(outputRoot, "_next", "static", "chunks");
+  fs.mkdirSync(chunkDir, { recursive: true });
+  fs.writeFileSync(path.join(chunkDir, "heavy.js"), "x".repeat(500));
+  fs.writeFileSync(
+    path.join(outputRoot, "index.html"),
+    '<!doctype html>\n<script src="/_next/static/chunks/heavy.js"></script>\n'
+  );
+
+  const exportCheckPath = path.join(portalRoot, "scripts/check-static-export.mjs");
+  const { validateJsBudget } = await import(
+    `${pathToFileURL(exportCheckPath).href}?js-budget-fixture-test`
+  );
+
+  assert.throws(
+    () => validateJsBudget(outputRoot, 250),
+    /index\.html: 500 bytes of JavaScript exceeds the 250 byte budget/
+  );
+});
+
+test("static export checks pass a clean fixture", async () => {
+  const outputRoot = fs.mkdtempSync(path.join(os.tmpdir(), "portal-clean-fixture-test-"));
+  const chunkDir = path.join(outputRoot, "_next", "static", "chunks");
+  fs.mkdirSync(chunkDir, { recursive: true });
+  fs.writeFileSync(path.join(chunkDir, "small.js"), "x".repeat(50));
+  fs.mkdirSync(path.join(outputRoot, "about"));
+  fs.writeFileSync(path.join(outputRoot, "about", "index.html"), "<!doctype html>\n");
+  fs.writeFileSync(
+    path.join(outputRoot, "index.html"),
+    '<!doctype html>\n<a href="/about/">about</a>\n<script src="/_next/static/chunks/small.js"></script>\n'
+  );
+
+  const originalBasePath = process.env.GITHUB_PAGES_BASE_PATH;
+  process.env.GITHUB_PAGES_BASE_PATH = "";
+  try {
+    const exportCheckPath = path.join(portalRoot, "scripts/check-static-export.mjs");
+    const { validateInternalLinks, validateJsBudget } = await import(
+      `${pathToFileURL(exportCheckPath).href}?clean-fixture-test`
+    );
+
+    assert.doesNotThrow(() => validateInternalLinks(outputRoot));
+    assert.doesNotThrow(() => validateJsBudget(outputRoot, 250));
+  } finally {
+    if (originalBasePath === undefined) {
+      delete process.env.GITHUB_PAGES_BASE_PATH;
+    } else {
+      process.env.GITHUB_PAGES_BASE_PATH = originalBasePath;
+    }
+  }
 });
