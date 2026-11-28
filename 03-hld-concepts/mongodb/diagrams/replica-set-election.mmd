@@ -1,0 +1,14 @@
+graph TD
+    subgraph Normal["Normal operation"]
+        Writes["Client writes"] --> Primary["Primary<br/>receives all writes"]
+        Primary -->|"replicate"| SecA["Secondary"]
+        Primary -->|"replicate"| SecB["Secondary"]
+    end
+
+    subgraph Failover["Primary failure and election"]
+        Primary -.->|"heartbeats lost"| Election["Members elect a new primary"]
+        SecA --> Election
+        SecB --> Election
+        Election --> NewPrimary["New primary"]
+        NewPrimary --> Resume["Clients retry idempotently<br/>and resume writes"]
+    end

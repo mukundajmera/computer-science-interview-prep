@@ -1,0 +1,6 @@
+graph TD
+    Change["A breaking change is needed"] --> V2["Introduce v2 alongside v1<br/>backward-compatible evolution preserves existing clients"]
+    V2 --> Coexist["v1 and v2 run in parallel"]
+    Coexist --> Migrate["Migrate clients gradually<br/>no forced immediate migration"]
+    Migrate --> Deprecate["Deprecate v1 only after migration completes"]
+    Pitfall["Pitfall: designing versioning only after breaking clients"] -.-> Change

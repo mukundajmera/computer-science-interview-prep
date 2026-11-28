@@ -269,6 +269,10 @@ To successfully deploy these write scaling strategies, engineering teams must de
 
 To successfully deploy these write scaling strategies, engineering teams must deeply understand their disk topologies. Utilizing NVMe SSDs, separating WAL logs from data files on different physical disks, and meticulously tuning the operating system's page cache and dirty ratio settings can unlock significant throughput multipliers. The physics of disk rotation and flash wear-leveling remain fundamental constraints.
 
+## 📊 Diagrams
+
+- [Hot-key detection and shard-split decision](./diagrams/hot-key-shard-split-decision.mmd) - the decision flow when one key or partition takes disproportionate write traffic: keep routing, salt the key across partitions, or split and reshard the hot shard.
+
 ## Related concepts
 
 - [Caching](../caching/THEORY.md)

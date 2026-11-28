@@ -1,0 +1,16 @@
+flowchart TD
+    subgraph CS["Client-Side Discovery"]
+        C1[Client] -->|1. Query registry| R1[(Service registry)]
+        R1 -->|2. Healthy instances| C1
+        C1 -->|3. Direct call to a chosen instance| S1[Service instance]
+    end
+
+    subgraph SS["Server-Side Discovery"]
+        C2[Client] -->|1. Call load balancer| LB[Load balancer]
+        LB -->|2. Query registry| R2[(Service registry)]
+        R2 -->|3. Healthy instances| LB
+        LB -->|4. Route to an instance| S2[Service instance]
+    end
+
+    S1 -.->|Heartbeats and health status| R1
+    S2 -.->|Heartbeats and health status| R2

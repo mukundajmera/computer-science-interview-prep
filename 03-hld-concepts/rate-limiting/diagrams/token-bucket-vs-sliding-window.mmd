@@ -1,0 +1,14 @@
+flowchart TD
+    subgraph TB["Token Bucket"]
+        TB0([Request arrives]) --> TB1{Token available in bucket?}
+        TB1 -->|Yes| TB2[Consume 1 token and allow request]
+        TB1 -->|No| TB3[Reject with HTTP 429]
+        TB4[Tokens refilled at a fixed rate up to bucket capacity] -.-> TB1
+    end
+
+    subgraph SW["Sliding Window Counter"]
+        SW0([Request arrives]) --> SW1["Weighted count = previous window count x overlap percent + current window count"]
+        SW1 --> SW2{Weighted count under limit?}
+        SW2 -->|Yes| SW3[Increment current window count and allow request]
+        SW2 -->|No| SW4[Reject with HTTP 429]
+    end

@@ -81,6 +81,7 @@ This section covers the foundational concepts every software engineer should mas
 - [WebSockets](./networking-basics/websockets.md) - Real-time communication
 - [gRPC](./networking-basics/grpc.md) - High-performance RPC
 - [Networking Essentials](./networking-basics/networking-essentials.md) - Latency, throughput, routing, resiliency
+- [TCP, UDP & Congestion Control](./networking-basics/tcp-udp-and-congestion-control.md) - Transport guarantees, handshake, reliability, congestion control
 
 ### [Security & Auth](./security-and-auth/)
 - [Authentication & Sessions](./security-and-auth/authentication-sessions-and-jwts.md) - User Authentication, Session State, and Tokens
@@ -218,6 +219,7 @@ For beginners, we recommend this sequence:
   - [ ] Understand WebSockets
   - [ ] Understand gRPC
   - [ ] Understand Networking Essentials
+  - [ ] Understand TCP, UDP & Congestion Control
 - [ ] Security & Auth
   - [ ] Understand Authentication & Sessions
   - [ ] Understand OAuth2 & OIDC

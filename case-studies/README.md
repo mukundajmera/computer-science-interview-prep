@@ -57,6 +57,7 @@ Deep-dive analyses of production systems at massive scale.
 | [Google Spanner](google-spanner-truetime/) | Globally Distributed Database | Petabytes, multi-continent | Historical/approximate; see [scale metrics](google-spanner-truetime/#scale-metrics) | Strict serializability via TrueTime | Distributed databases |
 | [ChatGPT](chatgpt-inference/) | Enterprise Assistant & Agent Platform | 5M+ business users | Current source-backed; see [scale metrics](chatgpt-inference/#scale-and-provenance-metrics) | Tool orchestration + tenant controls | GenAI assistants |
 | [GitHub Copilot](github-copilot/) | Code Assist & Coding Agent | Paid-plan cloud agent, 59-minute session cap | Current source-backed; see [scale metrics](github-copilot/#scale-and-provenance-metrics) | Repository context + branch-contained agents | AI coding systems |
+| [Discord](discord-messaging-storage/) | Message Storage | Trillions of messages stored | Current source-backed; see [scale metrics](discord-messaging-storage/#scale-metrics) | Hot partitions at chat scale | Chat/message storage design |
 
 ---
 

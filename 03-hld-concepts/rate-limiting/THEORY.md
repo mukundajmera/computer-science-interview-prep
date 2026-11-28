@@ -527,3 +527,7 @@ Interviewers often move from architecture to code-level design. Map concepts dir
 See the paired LLD project:
 - [Rate Limiter Problem](../../02-lld-projects/rate-limiter/PROBLEM.md)
 - [Rate Limiter Design](../../02-lld-projects/rate-limiter/DESIGN.md)
+
+## 📊 Diagrams
+
+- [Token bucket vs sliding window decision flow](./diagrams/token-bucket-vs-sliding-window.mmd) - how each algorithm decides a request: token bucket consumes one token if available and refills at a fixed rate, while sliding window counter weights the previous window by overlap and adds the current count before comparing against the limit.

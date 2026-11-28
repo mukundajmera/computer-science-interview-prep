@@ -60,6 +60,10 @@ API servers validate and enqueue work, return a job ID immediately, and worker p
 - **Long workflows:** orchestrator/state machine with per-step retries.
 - **Strict correctness:** transactional outbox for durable enqueue semantics.
 
+## 📊 Diagrams
+
+- [Submit, poll, and worker lifecycle](./diagrams/submit-poll-worker-lifecycle.mmd) - the accept-execute split: the API validates and enqueues the job and returns a job ID immediately, workers update the status store with capped retries, and the client polls for status and result.
+
 ## Related concepts
 
 - [Caching](../caching/THEORY.md)

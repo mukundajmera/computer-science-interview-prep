@@ -1,0 +1,5 @@
+graph TD
+    List["List endpoint over a large collection"] --> Paginate["Paginate explicitly<br/>with ordering guarantees"]
+    Paginate --> Decide{"Deep pages or fast-changing data?"}
+    Decide -->|"no: simple, stable lists"| Offset["Offset pagination"]
+    Decide -->|"yes: stable cursoring over changing data"| Cursor["Cursor pagination"]

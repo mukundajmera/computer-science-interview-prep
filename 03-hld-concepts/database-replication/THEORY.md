@@ -262,3 +262,7 @@ To prove the backup is viable without touching production or using dangerous "cr
 3. **Failover is hard**: Test regularly, automate carefully
 4. **Read replicas scale reads**: Not writes
 5. **Split-brain is dangerous**: Use proper fencing and quorum
+
+## 📊 Diagrams
+
+- [Leader-follower write and replication-lag read path](./diagrams/leader-follower-write-read-lag.mmd) - a write committed on the primary streams to the replica through the WAL, and a read that lands on the replica during the lag window still sees the old value until the entry is applied.

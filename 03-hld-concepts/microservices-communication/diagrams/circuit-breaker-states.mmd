@@ -1,0 +1,5 @@
+graph LR
+    Closed["CLOSED<br/>normal operation, track failures"] -->|"failure threshold reached"| Open["OPEN<br/>stop calling, return error immediately"]
+    Open -->|"cool-down elapsed"| Half["HALF_OPEN<br/>allow a test request to check recovery"]
+    Half -->|"test request succeeds"| Closed
+    Half -->|"test request fails"| Open

@@ -269,6 +269,10 @@ This is an additional paragraph to extend the read scaling theory text and provi
 
 This is an additional paragraph to extend the read scaling theory text and provide more context about how systems gracefully handle massive scale, the trade-offs of caching layers, and the operational burden of maintaining large fleets of read replicas. The engineering effort required to maintain high cache hit rates and low replica lag should not be underestimated.
 
+## 📊 Diagrams
+
+- [Read-your-writes routing decision](./diagrams/read-your-writes-routing.mmd) - how RYW tokens keep a client from seeing its own write as stale: the primary returns a token on write, and the router sends later reads to a replica only when that replica has caught up to the token.
+
 ## Related concepts
 
 - [Caching](../caching/THEORY.md)

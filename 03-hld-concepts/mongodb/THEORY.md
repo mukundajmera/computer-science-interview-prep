@@ -228,6 +228,11 @@ For reliability I usually run a replica set and choose read and write concern ba
 6. How do you migrate a document schema without downtime?
 7. What metrics tell you an index or shard-key decision is failing?
 
+## 📊 Diagrams
+
+- [Replica set election](./diagrams/replica-set-election.mmd): how the primary serves writes and replicates to secondaries in normal operation, and how the set elects a new primary when heartbeats fail while clients retry idempotently.
+- [Write concern acknowledgement](./diagrams/write-concern-acknowledgement.mmd): how the chosen write concern (`w: 1` versus majority) decides when a write is acknowledged and how durable it stays across failover.
+
 ## Related Concepts And Projects
 
 - [NoSQL Databases](../nosql-databases/)

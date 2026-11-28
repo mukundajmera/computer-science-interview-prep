@@ -460,3 +460,7 @@ Message queues are essential infrastructure in LLM-powered systems for decouplin
 - **Priority queues for model tiers**: Route premium-tier users to faster models while queueing free-tier requests for batch inference.
 
 > **Deep dive →** [RAG Architecture](../../06-genai-systems/00-concepts/rag-architecture/) · [Prompting, Tools & Agents](../../06-genai-systems/00-concepts/prompting-tools-agents/)
+
+## 📊 Diagrams
+
+- [Ack, retry, and dead-letter flow](./diagrams/ack-retry-dead-letter-flow.mmd) - the delivery lifecycle from producer through broker to a consumer group: ACK commits the offset, a NACK within the retry budget requeues the message, and exhausted attempts move it to the dead-letter queue.

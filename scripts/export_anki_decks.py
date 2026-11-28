@@ -18,20 +18,41 @@ def parse_markdown_to_html(md_text):
     except ImportError:
         pass
         
-    # Regex fallback implementation
+    # Regex fallback implementation.
+    # Stash fenced code blocks and inline code first so the emphasis rules
+    # below never rewrite characters inside code (e.g. `__init__`, `_x_`).
+    stashed_code = []
+
+    def _stash_code(html_fragment):
+        stashed_code.append(html_fragment)
+        return '\x00CODE%d\x00' % (len(stashed_code) - 1)
+
     # Code blocks
-    html = re.sub(r'```(.*?)```', r'<pre><code>\1</code></pre>', md_text, flags=re.DOTALL)
-    
+    html = re.sub(
+        r'```(.*?)```',
+        lambda m: _stash_code('<pre><code>%s</code></pre>' % m.group(1)),
+        md_text,
+        flags=re.DOTALL,
+    )
+
     # Inline code
-    html = re.sub(r'`(.*?)`', r'<code>\1</code>', html)
-    
+    html = re.sub(
+        r'`(.*?)`',
+        lambda m: _stash_code('<code>%s</code>' % m.group(1)),
+        html,
+    )
+
     # Bold
     html = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', html)
     html = re.sub(r'__(.*?)__', r'<b>\1</b>', html)
-    
-    # Italic
-    html = re.sub(r'\*(.*?)\*', r'<i>\1</i>', html)
-    html = re.sub(r'_(.*?)_', r'<i>\1</i>', html)
+
+    # Italic with '*': require non-space text directly after the opening '*'
+    # and directly before the closing '*', so "a * b * c" stays plain.
+    html = re.sub(r'\*(\S(?:.*?\S)?)\*', r'<i>\1</i>', html)
+    # Italic with '_': only when the underscores are not inside a word (the
+    # opening '_' must not follow a letter/digit, the closing '_' must not be
+    # followed by one), so snake_case_name stays intact.
+    html = re.sub(r'(?<![A-Za-z0-9])_(.+?)_(?![A-Za-z0-9])', r'<i>\1</i>', html)
     
     # Lists (simple implementation)
     # Just replacing bullet with HTML, let Anki handle it or just use simple tags
@@ -58,8 +79,26 @@ def parse_markdown_to_html(md_text):
     html = html.replace('<br><ul>', '<ul>').replace('</ul><br>', '</ul>')
     html = html.replace('<li>', '<li>').replace('</li><br>', '</li>')
     html = html.replace('\n', ' ')
-    
+
+    # Restore stashed code fragments after all emphasis and list rewriting.
+    html = re.sub(
+        r'\x00CODE(\d+)\x00',
+        lambda m: stashed_code[int(m.group(1))],
+        html,
+    )
+
     return html.strip().replace('\t', '    ')
+
+def deck_tags(deck_name):
+    """Build the tag list for a deck. Callers sort and deduplicate it."""
+    tags = [deck_name.replace('-', '_')]
+    if 'hld' in deck_name:
+        tags.extend(['hld', 'system-design'])
+    if 'lld' in deck_name or 'design-pattern' in deck_name:
+        tags.extend(['lld', 'system-design'])
+    if 'algo' in deck_name or deck_name in ['bfs-dfs', 'union-find', 'heap-priority-queue', 'trie', 'dynamic-programming', 'sliding-window', 'greedy', 'backtracking', 'two-pointers', 'binary-search']:
+        tags.append('algorithms')
+    return tags
 
 def process_file(filepath, dry_run):
     deck_name = os.path.splitext(os.path.basename(filepath))[0]
@@ -127,16 +166,8 @@ def main():
             
         print(f"[{deck_name}] Found {len(cards)} cards")
         
-        # Generate tags:
-        tags = [deck_name.replace('-', '_')]
-        if 'hld' in deck_name:
-            tags.extend(['hld', 'system-design'])
-        if 'lld' in deck_name or 'design-pattern' in deck_name:
-            tags.extend(['lld', 'system-design'])
-        if 'algo' in deck_name or deck_name in ['bfs-dfs', 'union-find', 'heap-priority-queue', 'trie', 'dynamic-programming', 'sliding-window', 'greedy', 'backtracking', 'two-pointers', 'binary-search']:
-            tags.append('algorithms')
-            
-        tags_str = " ".join(set(tags)) # Deduplicate
+        # Generate tags (deduplicated and sorted so the TSV is deterministic):
+        tags_str = " ".join(sorted(set(deck_tags(deck_name))))
         
         if args.dry_run:
             print(f"  (Dry run) Would write {len(cards)} cards to {deck_name}.tsv")

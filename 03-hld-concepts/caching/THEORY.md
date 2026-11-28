@@ -159,6 +159,11 @@ Say: "I would add caching only after naming the hot read or expensive compute pa
 - Per-tenant namespace isolation and quota-aware eviction.
 - Distributed-cache cluster mode: consistent hashing, replica promotion, and progressive rebalance.
 
+## 📊 Diagrams
+
+- [Cache-aside read path](./diagrams/cache-aside-read-path.mmd) - the default read flow: check the cache first, and on a miss read the backing store, fill the cache with a TTL, then return.
+- [Write-through vs write-behind](./diagrams/write-patterns-comparison.mmd) - compares the synchronous write-through path, acknowledged after both stores are updated, with the asynchronous write-behind path, acknowledged at the cache and flushed later.
+
 ## Related concepts
 
 - [Redis](../redis/) - Primary implementation for distributed caching

@@ -1,0 +1,8 @@
+flowchart TD
+    W([Write traffic per key and partition is monitored]) --> D{Hot key or hot partition detected?}
+    D -->|No| N[Keep the current routing]
+    D -->|Yes| C{Mitigation choice}
+    C -->|Salt the key| S["Append a random salt so the hot key's writes spread across partitions; reads query all salted partitions and merge"]
+    C -->|Split or reshard| R[Dynamic resharding: split the hot shard and move part of its key range to another node]
+    S --> OK[Per-partition write load back under the threshold]
+    R --> OK
