@@ -134,7 +134,7 @@ For targeting specific areas or filling knowledge gaps. [**Full Topic Paths →*
 
 ---
 
-### 02-lld-projects/ - 56 Projects
+### 02-lld-projects/ - 61 Projects
 **Estimated Time:** 30-40 hours total
 
 | Difficulty | Projects | Est. Time Each | Start Here |

@@ -165,7 +165,7 @@ Track your preparation by checking off completed items:
 - [ ] Template Method
 - [ ] Visitor
 
-### LLD Projects (56)
+### LLD Projects (61)
 **Beginner**
 - [ ] Parking Lot
 - [ ] Tic-Tac-Toe
