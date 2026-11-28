@@ -95,7 +95,7 @@ CREATE TABLE chunk_blocks (
 
 ## 5. 🏗️ High-Level Architecture
 
-![Architecture Diagram](./diagrams/architecture.mmd)
+[Architecture Diagram (Mermaid source)](./diagrams/architecture.mmd)
 
 ```mermaid
 flowchart TD

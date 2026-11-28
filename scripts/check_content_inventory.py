@@ -85,7 +85,7 @@ def count_dirs(relative: str) -> Callable[[Path], int]:
     return lambda root: len(child_dirs(root, relative))
 
 
-def coding_pack_slugs(root: Path) -> list[str]:
+def coding_topic_dirs(root: Path) -> list[str]:
     return [
         directory.name
         for directory in child_dirs(root, "05-coding-problems")
@@ -93,8 +93,17 @@ def coding_pack_slugs(root: Path) -> list[str]:
     ]
 
 
+def coding_pack_slugs(root: Path) -> list[str]:
+    """Unnumbered pattern packs; each needs an Interview Mode coach answer.
+
+    Numbered folders (``NN-topic``) are executable practice packs that are
+    published as portal topics but have no coach-answer page.
+    """
+    return [name for name in coding_topic_dirs(root) if not re.match(r"^\d{2}-", name)]
+
+
 def count_coding_pattern_packs(root: Path) -> int:
-    return len(coding_pack_slugs(root))
+    return len(coding_topic_dirs(root))
 
 
 def count_project_dirs(relative: str, required_file: str) -> Callable[[Path], int]:

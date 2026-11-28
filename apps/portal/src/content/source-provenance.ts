@@ -236,7 +236,10 @@ export function getBlockedSourcePaths(): BlockedSourcePath[] {
 
   const ledgerPath = path.join(REPO_ROOT, DERIVATIVE_REVIEW_LEDGER);
   if (!fs.existsSync(ledgerPath)) {
-    throw new Error(`Missing derivative review ledger: ${DERIVATIVE_REVIEW_LEDGER}`);
+    // The review ledger is a private, ignored artifact and is not published in
+    // this public repository; scripts/check_assessment_coverage.py behaves the same.
+    cachedBlockedSourcePaths = [];
+    return cachedBlockedSourcePaths;
   }
 
   cachedBlockedSourcePaths = parseBlockedSourcePaths(

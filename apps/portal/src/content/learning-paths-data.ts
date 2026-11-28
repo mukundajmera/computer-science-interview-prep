@@ -243,7 +243,7 @@ export const LEARNING_PATHS: LearningTrack[] = [
           {
             id: "sen-hld-payment",
             title: "Distributed Payment Gateway & Double-Entry Ledger",
-            href: "/hld/payment-system-hld",
+            href: "/hld/payment-system",
             description: "Idempotency keys, reconciliation engines, settlement pipelines, and ACID ledgering.",
             estimatedHours: 8,
           },

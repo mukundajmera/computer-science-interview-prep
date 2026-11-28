@@ -50,13 +50,17 @@ test("breadcrumb and section nav use route-aware matching", () => {
   const sectionNavSource = fs.readFileSync(sectionNavPath, "utf-8");
   const breadcrumbSource = fs.readFileSync(breadcrumbPath, "utf-8");
   const appShellSource = fs.readFileSync(appShellPath, "utf-8");
+  const layoutSource = fs.readFileSync(
+    fileURLToPath(new URL("../src/app/layout.tsx", import.meta.url)),
+    "utf-8"
+  );
 
   assert.match(sectionNavSource, /isActiveSectionRoute\(pathname,\s*section\.href\)/);
-  assert.match(sectionNavSource, /sections\.map/);
+  assert.match(sectionNavSource, /sidebarSections\.map/);
   assert.doesNotMatch(sectionNavSource, /pathname\.startsWith\(section\.href\)/);
-  assert.match(appShellSource, /buildSectionSummaries\(\)/);
+  assert.match(layoutSource, /buildSectionSummaries\(\)/);
   assert.match(appShellSource, /<SectionNav sections=\{sections\}/);
-  assert.match(appShellSource, /const routeHrefs = searchEntries\.map/);
+  assert.match(layoutSource, /const routeHrefs = searchEntries\.map/);
   assert.match(appShellSource, /<Breadcrumb routeHrefs=\{routeHrefs\}/);
   assert.match(breadcrumbSource, /knownRoutes\.has\(href\)/);
 });

@@ -40,6 +40,7 @@ async function importInterviewsModule() {
     `export function listMarkdownFiles(relativePath) {
       if (relativePath !== "solutions") return [];
       return [
+        "lld-parking-lot.md",
         "coding-bfs-dfs.md",
         "coding-dynamic-programming.md",
         "coding-greedy.md",
@@ -170,6 +171,7 @@ test("Interview Mode discovers coding packs from solution markdown", async () =>
     listInterviewProblems().map((problem) => problem.slug),
     [
       "behavioral-big-three",
+      "parking-lot",
       "two-pointers-pack",
       "sliding-window-pack",
       "binary-search-pack",
@@ -180,7 +182,6 @@ test("Interview Mode discovers coding packs from solution markdown", async () =>
       "heap-priority-queue-pack",
       "trie-pack",
       "union-find-pack",
-      "parking-lot",
     ]
   );
 

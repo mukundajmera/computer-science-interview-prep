@@ -113,9 +113,9 @@ POST /{bucket}/{object_key}?uploadId=... (Complete Multipart Upload)
 ### Decoupled Architecture
 The system decouples the **Metadata Service** from the **Data Storage**. The Stateless API Gateway coordinates between them.
 
-![Architecture Diagram](diagrams/architecture.mmd)
+[Architecture Diagram (Mermaid source)](diagrams/architecture.mmd)
 
-![Sequence Diagram](diagrams/sequence.mmd)
+[Sequence Diagram (Mermaid source)](diagrams/sequence.mmd)
 
 ```mermaid
 flowchart TD

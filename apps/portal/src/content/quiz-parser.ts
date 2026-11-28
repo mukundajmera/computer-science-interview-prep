@@ -93,12 +93,39 @@ export function parseAnswerKey(answerContent: string): Record<number, QuizAnswer
   const answers: Record<number, QuizAnswer> = {};
   let currentQ: number | null = null;
   let expText: string[] = [];
+  let tableHeaders: string[] = [];
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
 
+    if (line.trim().startsWith('|')) {
+      const cells = line.trim().replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim());
+      if (/^question$|^#$/i.test(cells[0] ?? '')) {
+        tableHeaders = cells;
+        continue;
+      }
+      const letterCell = (cells[1] ?? '').match(/^\*{0,2}([A-Z])\*{0,2}(?:\s*[-:)]\s*(.*))?$/i);
+      if (/^\d+$/.test(cells[0] ?? '') && letterCell && cells.length > 2) {
+        const questionNumber = parseInt(cells[0], 10);
+        answers[questionNumber] = {
+          answer: letterCell[1].toUpperCase(),
+          explanation: [letterCell[2] ? `**Answer:** ${letterCell[2]}` : '', ...cells
+            .slice(2)
+            .map((cell, index) => {
+              const header = tableHeaders[index + 2];
+              return header && cells.length > 3 ? `**${header}:** ${cell}` : cell;
+            })]
+            .filter(Boolean)
+            .join('\n\n'),
+        };
+        currentQ = null;
+        expText = [];
+        continue;
+      }
+    }
+
     const qMatch1 = line.match(/^###\s+Question\s+(\d+)/i);
-    const qMatch2 = line.match(/^(\d+)[.\-]\s*([A-Z])/i);
+    const qMatch2 = line.match(/^(\d+)[.\-)]\s*\*{0,2}([A-Z])\b/i);
 
     if (qMatch1) {
       if (currentQ) {
