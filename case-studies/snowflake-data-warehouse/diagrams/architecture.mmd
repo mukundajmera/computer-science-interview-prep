@@ -1,0 +1,9 @@
+flowchart TD
+    %% The three-layer architecture: cloud services, virtual warehouses, storage
+    Client["SQL clients and BI tools"] --> CS["Cloud services layer<br>authentication, SQL parsing, query optimization, access control"]
+    Meta[("Metadata catalog<br>min-max stats per micro-partition")] --> CS
+    CS --> Cache[("Result cache<br>persisted query results")]
+    CS -->|"compiled plan dispatched"| VW1["Virtual warehouse A<br>independent MPP compute cluster"]
+    CS -->|"compiled plan dispatched"| VW2["Virtual warehouse B<br>independent MPP compute cluster"]
+    VW1 -->|"scans only partitions that survive pruning"| Store[("Centralized object storage<br>immutable micro-partitions in columnar format")]
+    VW2 --> Store

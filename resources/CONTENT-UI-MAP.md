@@ -35,7 +35,7 @@ Quick-reference counts (auto-discovery means these grow without portal changes):
 | GenAI LLD Projects | 17 | `06-genai-systems/01-llm-lld-projects/` |
 | GenAI HLD Projects | 16 | `06-genai-systems/02-llm-hld-projects/` |
 | Coding Pattern Packs | 27 | `05-coding-problems/` (10 unnumbered doc packs with Interview Mode coach answers plus 17 numbered executable practice packs `01-two-pointers` to `17-union-find`: `two-pointers`, `sliding-window`, `binary-search`, `bfs-dfs`, `dynamic-programming`, `greedy`, `backtracking`, `heap-priority-queue`, `trie`, `union-find`) |
-| Case Studies | 16 | `case-studies/` |
+| Case Studies | 17 | `case-studies/` |
 | Quizzes | 41 | `quizzes/` (networking-fundamentals, database-internals, os-concurrency, security-auth, design-patterns, lld-projects, lld-interview-framework, hld-concepts, hld-projects, infra-technologies, two-pointers, sliding-window, binary-search, bfs-dfs, dynamic-programming, greedy, backtracking, heap-priority-queue, trie, union-find, ai-coding-interview, ai-coding-interviews, applied-ml-system-design, genai-system-design, behavioral-interviews, salary-negotiation, distributed-systems-core, graph-algorithms, monotonic-stack, intervals-sweepline, bit-manipulation) |
 | Interview Problems | 104 | `solutions/` (curated non-coding list plus auto-discovered coding pattern packs from `solutions/coding-*.md`) |
 | Resources | 48 | `resources/{study-plans,cheatsheets,interview-tips,templates}/` public learner resource files (excludes category README files) |
@@ -62,7 +62,7 @@ filesystem** and **reachable through the portal UI**.
 | 7 | GenAI LLD | `06-genai-systems/01-llm-lld-projects/` | `<project>/` (PROBLEM.md, …) | `genaiLLD` · `GenAILLDProject[]` | `/genai` → `/genai/lld/[project]` | (same nav) | Scans subdirs | 17 |
 | 8 | GenAI HLD | `06-genai-systems/02-llm-hld-projects/` | `<project>/` (PROBLEM.md, …) | `genaiHLD` · `GenAIHLDProject[]` | `/genai` → `/genai/hld/[project]` | (same nav) | Scans subdirs | 16 |
 | 9 | Coding Patterns | `05-coding-problems/` | `<topic>/README.md` | `codingTopics` · `CodingTopic[]` | `/coding` → `/coding/[topic]` | Coding Patterns | Scans subdirs | 27 |
-| 10 | Case Studies | `case-studies/` | `<study>/README.md` | `caseStudies` · `CaseStudy[]` | `/case-studies` → `/case-studies/[study]` | Case Studies | Scans subdirs |16 |
+| 10 | Case Studies | `case-studies/` | `<study>/README.md` | `caseStudies` · `CaseStudy[]` | `/case-studies` → `/case-studies/[study]` | Case Studies | Scans subdirs |17 |
 | 11 | Quizzes | `quizzes/` | `*-quiz.md` (answers in `answers/`) | *(not in registry — uses `listMarkdownFiles` directly)* | `/quizzes` → `/quizzes/[quiz]` | Quizzes | Scans `*-quiz.md` files | 41 |
 | 12 | Interview Mode | `solutions/` + project dirs | Curated non-coding list plus `solutions/coding-*.md` | *(not in registry — uses `interviews.ts`)* | `/interview` → `/interview/[type]/[project]` | Interview Mode | Curated non-coding entries plus coding solution scan | 104 |
 | 13 | Resources | `resources/{study-plans,cheatsheets,interview-tips,templates}/` | `<resource>.md` excluding category `README.md` files | *(not in registry — uses `resources.ts`)* | `/resources` → `/resources/[category]` → `/resources/[category]/[resource]` | Resources | Scans approved resource categories | 48 |
